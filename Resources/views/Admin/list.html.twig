@@ -1,0 +1,15 @@
+{% extends 'LIN3SAdminBundle::layout.html.twig' %}
+
+{% block lin3s_admin_actions %}
+    <div id="palomar-admin-actions">
+        <a href="{{ url('lin3s_admin_new', {'entity': entityConfig.name }) }}" class="button small">
+            New
+        </a>
+    </div>
+{% endblock %}
+
+{% block lin3s_admin_content %}
+    <div id="palomar-admin-list">
+        {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
+    </div>
+{% endblock %}

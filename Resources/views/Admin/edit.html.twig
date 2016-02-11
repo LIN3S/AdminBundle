@@ -1,0 +1,17 @@
+{% extends 'LIN3SAdminBundle::layout.html.twig' %}
+
+{% block lin3s_admin_content %}
+    <div id="palomar-admin-form" class="row">
+        <div class="large-8 column">
+            {{ form_start(form) }}
+            <div id="form">
+                {% for field in form.children if field.vars.name != '_token' %}
+                    {{ form_row(field) }}
+                {% endfor %}
+                {{ form_rest(form) }}
+                <button type="submit">Submit</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

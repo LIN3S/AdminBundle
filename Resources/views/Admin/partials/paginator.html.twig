@@ -1,0 +1,69 @@
+{# https://gist.github.com/SimonSimCity/4594748
+
+  Parameters:
+    * currentPage (int) : the current page you are in
+    * lastPage (int) : represents the total number of existing pages
+#}
+{% set separator %}
+    {% block lin3s_admin_paginator_separator %}
+        <span class="admin__paginator-separator">...</span>
+    {% endblock %}
+{% endset %}
+
+{% macro button(text, page, variant) %}
+    {% block lin3s_admin_paginator_button %}
+        <a class="button button--small button--light admin__paginator-button"
+           href="{{ paginatorPath(page) }}">
+            {{ text | raw }}
+        </a>
+    {% endblock %}
+{% endmacro %}
+
+{% import _self as pagination %}
+
+{% spaceless %}
+    {% if lastPage > 1 %}
+
+        {# the number of first and last pages to be displayed #}
+        {% set extremePagesLimit = 3 %}
+
+        {# the number of pages that are displayed around the active page #}
+        {% set nearbyPagesLimit = 2 %}
+
+        <div class="admin__paginator">
+            {% if currentPage > 1 %}
+                {{ pagination.button('&lt;&lt;', currentPage - 1) }}
+
+                {% for i in range(1, extremePagesLimit) if ( i < currentPage - nearbyPagesLimit ) %}
+                    {{ pagination.button(i, i) }}
+                {% endfor %}
+
+                {% if extremePagesLimit + 1 < currentPage - nearbyPagesLimit %}
+                    {{ separator }}
+                {% endif %}
+
+                {% for i in range(currentPage-nearbyPagesLimit, currentPage-1) if ( i > 0 ) %}
+                    {{ pagination.button(i, i) }}
+                {% endfor %}
+            {% endif %}
+
+            {{ pagination.button(currentPage, currentPage, 'current') }}
+
+            {% if currentPage < lastPage %}
+                {% for i in range(currentPage+1, currentPage + nearbyPagesLimit) if ( i <= lastPage ) %}
+                    {{ pagination.button(i, i) }}
+                {% endfor %}
+
+                {% if  (lastPage - extremePagesLimit) > (currentPage + nearbyPagesLimit) %}
+                    {{ separator }}
+                {% endif %}
+
+                {% for i in range(lastPage - extremePagesLimit+1, lastPage) if ( i > currentPage + nearbyPagesLimit ) %}
+                    {{ pagination.button(i, i) }}
+                {% endfor %}
+
+                {{ pagination.button('&gt;&gt;', currentPage + 1) }}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endspaceless %}

@@ -1,0 +1,11 @@
+{% for flash_message in app.session.flashbag.get('lin3s_admin_success') %}
+    <div class="admin__flash admin__flash--success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
+{% for flash_message in app.session.flashbag.get('lin3s_admin_error') %}
+    <div class="admin__flash admin__flash--error">
+        {{ flash_message }}
+    </div>
+{% endfor %}

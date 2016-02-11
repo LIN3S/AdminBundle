@@ -1,0 +1,144 @@
+{% extends 'LIN3SAdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="page-title">
+        <h1>Nombre de la página</h1>
+        <nav class="breadcrumbs">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a class="unavailable" href="#">Gene Splicing</a>
+            <a class="current" href="#">Cloning</a>
+        </nav>
+    </div>
+    <div class="row full-width">
+        <div class="large-6 column">
+            <div class="widget">
+                <h2>Prueba de tablas <span class="label round">5</span></h2>
+                <table>
+                    <thead>
+                    <th>field</th>
+                    <th>field</th>
+                    <th>field</th>
+                    <th>field</th>
+                    <th>field</th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    {% for i in 1..10 %}
+                        <tr>
+                            <td>Texto</td>
+                            <td>Texto</td>
+                            <td>Texto</td>
+                            <td>Texto</td>
+                            <td>
+                                <span class="label">Tag 1</span>
+                                <span class="label">Tag 2</span>
+                            </td>
+                            <td>
+                                <a href="">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="large-6 column">
+            <div class="widget">
+                <h2>Prueba de formularios</h2>
+                <form>
+                    <div class="row collapse">
+                        <div class="small-3 large-2 columns">
+                            <span class="prefix">http://</span>
+                        </div>
+                        <div class="small-9 large-10 columns">
+                            <input type="text" placeholder="Enter your URL...">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <div class="row collapse">
+                                <div class="small-10 columns">
+                                    <input type="text" placeholder="Hex Value">
+                                </div>
+                                <div class="small-2 columns">
+                                    <a href="#" class="button postfix">Go</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <div class="row collapse prefix-radius">
+                                <div class="small-3 columns">
+                                    <span class="prefix">Label</span>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input type="text" placeholder="Value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="large-6 columns">
+                            <div class="row collapse postfix-radius">
+                                <div class="small-9 columns">
+                                    <input type="text" placeholder="Value">
+                                </div>
+                                <div class="small-3 columns">
+                                    <span class="postfix">Label</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <div class="row collapse prefix-round">
+                                <div class="small-3 columns">
+                                    <a href="#" class="button prefix">Go</a>
+                                </div>
+                                <div class="small-9 columns">
+                                    <input type="text" placeholder="Value">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="large-6 columns">
+                            <div class="row collapse postfix-round">
+                                <div class="small-9 columns">
+                                    <input type="text" placeholder="Value">
+                                </div>
+                                <div class="small-3 columns">
+                                    <a href="#" class="button postfix">Go</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row full-width">
+        <div class="large-9 column">
+            <div class="widget">
+                <h2>Prueba de formulario</h2>
+                <form>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <input type="text" placeholder="Title" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <input type="text" placeholder="Subtitle" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <textarea placeholder="Excerpt"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>{% block title %}Palomar Admin{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('bundles/palomaradmin/css/admin.css') }}" type="text/css">
+    {% endblock %}
+</head>
+
+<body>
+    <aside>
+        <div class="aside-logo">
+            <img src="{{ asset('bundles/palomaradmin/images/logo.png') }}">
+        </div>
+        <nav>
+            {#<a href="{{ url('palomar_admin_list', {'entity': 'page'}) }}">#}
+                {#<i class="fa fa-tachometer"></i>#}
+                {#<span>Dashboard</span>#}
+            {#</a>#}
+            {#<a href="{{ url('palomar_admin_list', {'entity': 'page'}) }}">#}
+                {#<i class="fa fa-bar-chart"></i>#}
+                {#<span>Analítica</span>#}
+            {#</a>#}
+            {#<a href="{{ url('palomar_admin_list', {'entity': 'page'}) }}">#}
+                {#<i class="fa fa-file-o"></i>#}
+                {#<span>Páginas</span>#}
+            {#</a>#}
+            {#<a href="{{ url('palomar_admin_list', {'entity': 'page'}) }}">#}
+                {#<i class="fa fa-comment-o"></i>#}
+                {#<span>Sugerencias</span>#}
+            {#</a>#}
+            {#<a href="{{ url('palomar_admin_list', {'entity': 'page'}) }}">#}
+                {#<i class="fa fa-check-square-o"></i>#}
+                {#<span>Subscripciones</span>#}
+            </a>
+        </nav>
+    </aside>
+    <article>
+        {% block content %}{% endblock %}
+    </article>
+</body>
+</html>

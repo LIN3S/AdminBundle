@@ -1,0 +1,40 @@
+<table>
+    <thead>
+    {% if entityConfig.listBatchActions | length > 0 %}
+        <th></th>
+    {% endif %}
+    {% for field in entityConfig.listFields %}
+        <th>
+            <a href="{{ filterPath(field.field, app.request.get('orderBy'), app.request.get('order')) }}"
+               class="admin__sortable
+                {{ app.request.get('orderBy') == field.field ? ' admin__sortable--selected'}}
+                {{ app.request.get('orderBy') == field.field and app.request.get('order') == "DESC" ? ' admin__sortable--desc' : ' admin__sortable--asc' }}">
+                {{ field.name }}</th>
+            </a>
+    {% endfor %}
+    <th></th>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            {% if entityConfig.listBatchActions | length > 0 %}
+                <td>
+                    <input type="checkbox"/>
+                </td>
+            {% endif %}
+            {% for field in entityConfig.listFields %}
+                <td>{{ field.toString(entity) }}</td>
+            {% endfor %}
+            {% block lin3s_admin_list_table_row_actions %}
+                <td>
+                    {% for action in entityActions %}
+                    <a href="{{ url('lin3s_admin_batch', {'entity': entityConfig.name , 'id': entity.id , 'action': action.alias }) }}">
+                        {{ action.name }}
+                    </a>
+                    {% endfor %}
+                </td>
+            {% endblock %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

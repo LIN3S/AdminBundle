@@ -1,0 +1,44 @@
+services:
+    lin3s_admin.action.registry:
+        class: LIN3S\AdminBundle\Action\Registry\ActionRegistry
+
+    lin3s_admin.action.type.edit:
+        class: LIN3S\AdminBundle\Action\Type\EditAction
+        arguments: ['@router']
+        tags:
+            - { name: 'lin3s_admin.action' }
+
+    lin3s_admin.action.type.delete:
+        class: LIN3S\AdminBundle\Action\Type\DeleteAction
+        arguments: ['@router', '@session']
+        tags:
+            - { name: 'lin3s_admin.action' }
+
+    lin3s_admin.configuration.entity_configuration_registry:
+        class: LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistry
+
+    lin3s_admin.event_listener.entity_configuration_annotation:
+        class: LIN3S\AdminBundle\EventListener\EntityConfigurationAnnotationListener
+        arguments: ['@annotation_reader', '@lin3s_admin.configuration.entity_configuration_registry']
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    lin3s_admin.form.handler:
+        class: LIN3S\AdminBundle\Form\FormHandler
+        arguments: ['@form.factory', '@doctrine.orm.entity_manager']
+
+    lin3s_admin.repository:
+        class: LIN3S\AdminBundle\Repository\AdminRepository
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    lin3s_admin.twig.filter_path:
+        class: LIN3S\AdminBundle\Twig\TwigFilterPathFunction
+        arguments: ['@router', '@request_stack']
+        tags:
+            - { name: twig.extension }
+
+    lin3s_admin.twig.paginator_path:
+        class: LIN3S\AdminBundle\Twig\TwigPaginatorPathFunction
+        arguments: ['@router', '@request_stack']
+        tags:
+            - { name: twig.extension }

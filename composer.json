@@ -1,0 +1,25 @@
+{
+    "name": "lin3s/admin-bundle",
+    "description": "Admin Bundle in the LIN3S way",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LIN3S",
+            "email": "info@lin3s.com",
+            "homepage": "https://lin3s.com"
+        }
+    ],
+    "require": {
+        "php":                      "^5.5|^7.0",
+        "symfony/framework-bundle": "^2.8|^3.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec":          "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "LIN3S\\AdminBundle\\": "src/LIN3S/AdminBundle/"
+        }
+    }
+}

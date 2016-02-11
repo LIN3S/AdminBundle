@@ -12,6 +12,7 @@
 namespace LIN3S\AdminBundle\Action;
 
 use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
+use LIN3S\AdminBundle\Entity\Entity;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 interface ActionInterface
@@ -33,9 +34,10 @@ interface ActionInterface
     /**
      * Executes logic required to perform the action requested. It's called once for each entity.
      *
-     * @param object $entity Entity in which you can apply changes
+     * @param Entity                       $entity Entity in which you can apply changes
+     * @param EntityConfigurationInterface $config The entity configuration
      *
      * @return RedirectResponse Redirection that needs to be done after action success
      */
-    public function execute($entity, EntityConfigurationInterface $config);
+    public function execute(Entity $entity, EntityConfigurationInterface $config);
 }

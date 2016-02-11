@@ -13,6 +13,7 @@ namespace LIN3S\AdminBundle\Action\Type;
 
 use LIN3S\AdminBundle\Action\ActionInterface;
 use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
+use LIN3S\AdminBundle\Entity\Entity;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -23,7 +24,8 @@ class EditAction implements ActionInterface
      */
     private $router;
 
-    public function __construct(RouterInterface $router) {
+    public function __construct(RouterInterface $router)
+    {
 
         $this->router = $router;
     }
@@ -47,11 +49,11 @@ class EditAction implements ActionInterface
     /**
      * @inheritDoc
      */
-    public function execute($entity, EntityConfigurationInterface $config)
+    public function execute(Entity $entity, EntityConfigurationInterface $config)
     {
         return new RedirectResponse($this->router->generate('lin3s_admin_edit', [
             'entity' => $config->name(),
-            'id' => $entity->pageBase()->id()
+            'id'     => $entity->id(),
         ]));
     }
 

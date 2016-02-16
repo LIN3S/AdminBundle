@@ -49,7 +49,7 @@ class EditAction implements ActionInterface
     /**
      * @inheritDoc
      */
-    public function execute(Entity $entity, EntityConfigurationInterface $config)
+    public function execute($entity, EntityConfigurationInterface $config)
     {
         return new RedirectResponse($this->router->generate('lin3s_admin_edit', [
             'entity' => $config->name(),

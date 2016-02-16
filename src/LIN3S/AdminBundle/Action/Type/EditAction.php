@@ -56,7 +56,15 @@ class EditAction implements ActionInterface
         } elseif (method_exists($entity, 'get' . ucfirst($config->idField()))) {
             $id = call_user_func([$entity, 'get' . ucfirst($config->idField())]);
         } else {
-            throw new \Exception('The id getter does not exist');
+            throw new \Exception(
+                sprintf(
+                    'You have configured "%s" as id field, not %s public property found nor %s() nor, get%s() methods found',
+                    $config->idField(),
+                    $config->idField(),
+                    $config->idField(),
+                    ucfirst($config->idField())
+                )
+            );
         }
 
         return new RedirectResponse($this->router->generate('lin3s_admin_edit', [

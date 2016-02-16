@@ -107,10 +107,6 @@ class AdminController extends Controller
             $entityConfig->form(), $entity, $request
         );
 
-        if (true === method_exists($entity, 'setUpdatedAt')) {
-            $entity->setUpdatedAt(new \DateTimeImmutable());
-        }
-
         if($form->isValid()) {
             $this->addFlash(
                 'lin3s_admin_success',

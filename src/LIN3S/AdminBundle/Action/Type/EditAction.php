@@ -49,11 +49,27 @@ class EditAction implements ActionInterface
     /**
      * @inheritDoc
      */
-    public function execute(Entity $entity, EntityConfigurationInterface $config)
+    public function execute($entity, EntityConfigurationInterface $config)
     {
+        if (method_exists($entity, $config->idField())) {
+            $id = call_user_func([$entity, $config->idField()]);
+        } elseif (method_exists($entity, 'get' . ucfirst($config->idField()))) {
+            $id = call_user_func([$entity, 'get' . ucfirst($config->idField())]);
+        } else {
+            throw new \Exception(
+                sprintf(
+                    'You have configured "%s" as id field, not %s public property found nor %s() nor, get%s() methods found',
+                    $config->idField(),
+                    $config->idField(),
+                    $config->idField(),
+                    ucfirst($config->idField())
+                )
+            );
+        }
+
         return new RedirectResponse($this->router->generate('lin3s_admin_edit', [
             'entity' => $config->name(),
-            'id'     => $entity->id(),
+            'id'     => $id,
         ]));
     }
 

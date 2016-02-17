@@ -56,7 +56,7 @@ class DeleteAction implements ActionInterface
     /**
      * @inheritDoc
      */
-    public function execute(Entity $entity, EntityConfigurationInterface $config)
+    public function execute($entity, EntityConfigurationInterface $config)
     {
         $this->session->getFlashBag()->add('lin3s_admin_error', 'Not implemented yet!');
 

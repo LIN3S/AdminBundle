@@ -34,10 +34,10 @@ interface ActionInterface
     /**
      * Executes logic required to perform the action requested. It's called once for each entity.
      *
-     * @param Entity                       $entity Entity in which you can apply changes
+     * @param mixed                        $entity Entity in which you can apply changes
      * @param EntityConfigurationInterface $config The entity configuration
      *
      * @return RedirectResponse Redirection that needs to be done after action success
      */
-    public function execute(Entity $entity, EntityConfigurationInterface $config);
+    public function execute($entity, EntityConfigurationInterface $config);
 }

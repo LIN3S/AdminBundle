@@ -1,0 +1,92 @@
+// This file is part of the Guggenheim microsites project.
+//
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  background: $white;
+  font-family: $font-family-name;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-x: hidden; // Prevents mobile menu been shown when is hidden
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font-family-name-headers;
+  font-weight: $font-weight-bold;
+  line-height: 1.3em;
+  margin: 16px 0;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+h4 {
+  font-size: 19px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 13.5px;
+  line-height: 1.6em;
+
+  &:not(:last-child) {
+    margin-bottom: .8em;
+  }
+}
+
+a {
+  color: $primary-color;
+  font-size: 14px;
+  font-weight: $font-weight-regular;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+small {
+  font-size: .7em;
+}
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+em {
+  font-style: italic;
+}

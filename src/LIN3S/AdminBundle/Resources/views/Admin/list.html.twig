@@ -1,15 +1,26 @@
 {% extends 'LIN3SAdminBundle::layout.html.twig' %}
 
 {% block lin3s_admin_actions %}
-    <div id="palomar-admin-actions">
-        <a href="{{ url('lin3s_admin_new', {'entity': entityConfig.name }) }}" class="button small">
-            New
-        </a>
-    </div>
+    <h1>{{ entityConfig.name }}</h1>
+    <a href="{{ url('lin3s_admin_new', {'entity': entityConfig.name }) }}" class="button small">
+        New
+    </a>
+{% endblock %}
+
+{% block lin3s_admin_breadcrumb %}
+    {#<a class="admin__breadcrumb link" href="{{ path('lin3s_admin_dashboard') }}">Admin</a>#}
+    {#<span class="admin__breadcrumb">{{ entityConfig.name | capitalize }}</span>#}
 {% endblock %}
 
 {% block lin3s_admin_content %}
-    <div id="palomar-admin-list">
-        {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
+    <div class="admin__batch-actions">
+    </div>
+    <div class="admin__list">
+            {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
+            {% include '@LIN3SAdmin/Admin/partials/paginator.html.twig' with {
+                currentPage: app.request.get('page') ?: 1,
+                lastPage: (totalCount / entityConfig.listEntitiesPerPage) | round(0, 'ceil')
+            } %}
+        </div>
     </div>
 {% endblock %}

@@ -1,0 +1,48 @@
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+
+
+// Named colors
+$black: #000;
+$white: #fff;
+$darkgrey: #616161;
+$grey: #999;
+$darkblue: #2390bd;
+$blue: #2aabe2;
+$lightgrey: #f1f1f1;
+$green: #46B450;
+$red: #B11818;
+
+// Theme colors
+$primary-color: #23282D;
+$secondary-color: #00b9eb;
+
+//Components
+$flash-success: $green;
+$flash-error: $red;
+
+$form-required: $red;
+
+$layout-background: #F1F1F1;
+
+$menu-background: #23282D;
+$menu-link: #eee;
+$menu-background-hover: #191e23;
+$menu-link-hover: $secondary-color;
+
+$paginator-separator: $black;
+
+$panel-background: $white;
+$panel-border: #e5e5e5;
+
+$table-row-odd-color: #F9F9F9;
+$table-row-even-color: $white;
+$table-border: #E1E1E1;
+
+

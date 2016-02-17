@@ -1,0 +1,24 @@
+{
+  "name": "guggenheim-microsites",
+  "main": "gulpfile.js",
+  "author": "LIN3S",
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "jquery": "^2.1.4",
+    "svg4everybody": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-modernizr": "0.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-scss-lint": "^0.3.9",
+    "gulp-svg-sprite": "^1.2.19",
+    "gulp-uglify": "^1.5.1"
+  }
+}

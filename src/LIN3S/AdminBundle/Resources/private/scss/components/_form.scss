@@ -1,0 +1,117 @@
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+// @author Beñat Espiña <bespina@lin3s.com>
+@import '../base/colors';
+
+$form-input-height: 45px;
+
+input,
+textarea,
+select {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  color: $black;
+  font-family: inherit;
+  font-size: inherit;
+  outline: 0;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form__column--left {
+  flex: 1 1 66.666%;
+  padding-right: 15px;
+}
+
+.form__column--right {
+  flex: 1 1 33.333%;
+  padding-left: 15px;
+}
+
+.form__label {
+  order: 1;
+  padding: 8px 12px;
+  position: relative;
+  transition: color .3s;
+
+  &.required:before {
+    color: $red;
+    content: '*';
+    left: 0;
+    position: absolute;
+  }
+}
+
+%form__input {
+  background: $white;
+  border: 1px solid #ddd;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .07);
+  color: $primary-color;
+  order: 2;
+  outline: 0;
+  padding: 8px 12px;
+  transition: 50ms border-color ease-in-out;
+
+  &:focus {
+    border-color: $secondary-color;
+    box-shadow: 0 0 2px rgba($secondary-color, .8);
+
+    ~ .form__label {
+      color: $secondary-color;
+    }
+  }
+
+  // In case is nested
+  > * {
+    width: 100%;
+  }
+}
+
+.form__input,
+.form__select {
+  @extend %form__input;
+}
+
+.form__textarea {
+  @extend %form__input;
+  min-height: 250px;
+}
+
+.form__checkbox {
+  align-items: center;
+  display: flex;
+  order: 2;
+
+  > input {
+    border: 1px solid $black;
+    cursor: pointer;
+    height: 20px;
+    margin-right: 8px;
+    width: 20px;
+
+    &:checked {
+      background: $black;
+    }
+  }
+
+  > label {
+    margin-right: 15px;
+  }
+}
+
+.form__group {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  margin-bottom: 15px;
+}

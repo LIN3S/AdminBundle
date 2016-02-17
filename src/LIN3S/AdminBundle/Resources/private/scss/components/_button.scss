@@ -1,0 +1,65 @@
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+// @author Beñat Espiña <bespina@lin3s.com>
+
+//.button {
+//  color: #555;
+//  border-color: #ccc;
+//  background: #f7f7f7;
+//  -webkit-box-shadow: 0 1px 0 #ccc;
+//  box-shadow: 0 1px 0 #ccc;
+//  vertical-align: top;
+//
+//  display: inline-block;
+//  text-decoration: none;
+//  font-size: 13px;
+//  line-height: 26px;
+//  height: 28px;
+//  margin: 0;
+//  padding: 0 10px 1px;
+//  cursor: pointer;
+//  border-width: 1px;
+//  border-style: solid;
+//  -webkit-appearance: none;
+//  border-radius: 3px;
+//  white-space: nowrap;
+//  box-sizing: border-box;
+//}
+//
+//.button--secondary {
+//  background: #0085ba;
+//  border-color: #0073aa #006799 #006799;
+//  -webkit-box-shadow: 0 1px 0 #006799;
+//  box-shadow: 0 1px 0 #006799;
+//  color: #fff;
+//  text-decoration: none;
+//  text-shadow: 0 -1px 1px #006799,1px 0 1px #006799,0 1px 1px #006799,-1px 0 1px #006799;
+//}
+
+.button {
+  -webkit-appearance: none;
+  background: #f7f7f7;
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #ccc;
+  color: #555;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+
+.button--secondary {
+  background: #0085ba;
+  border-color: #0073aa #006799 #006799;
+  box-shadow: 0 1px 0 #006799;
+  color: $white;
+  text-decoration: none;
+}

@@ -7,12 +7,12 @@
         <th>
             <a href="{{ filterPath(field.field, app.request.get('orderBy'), app.request.get('order')) }}"
                class="admin__sortable
-                {{ app.request.get('orderBy') == field.field ? ' admin__sortable--selected'}}
-                {{ app.request.get('orderBy') == field.field and app.request.get('order') == "DESC" ? ' admin__sortable--desc' : ' admin__sortable--asc' }}">
+                {{ app.request.get('orderBy') == field.field ? ' table__sortable--selected'}}
+                {{ app.request.get('orderBy') == field.field and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">
                 {{ field.name }}</th>
             </a>
     {% endfor %}
-    <th></th>
+    <th>Actions</th>
     </thead>
     <tbody>
     {% for entity in entities %}

@@ -6,13 +6,13 @@
 #}
 {% set separator %}
     {% block lin3s_admin_paginator_separator %}
-        <span class="admin__paginator-separator">...</span>
+        <span class="paginator-separator">...</span>
     {% endblock %}
 {% endset %}
 
 {% macro button(text, page, variant) %}
     {% block lin3s_admin_paginator_button %}
-        <a class="button button--small button--light admin__paginator-button"
+        <a class="button button--small button--light paginator-button"
            href="{{ paginatorPath(page) }}">
             {{ text | raw }}
         </a>
@@ -30,7 +30,7 @@
         {# the number of pages that are displayed around the active page #}
         {% set nearbyPagesLimit = 2 %}
 
-        <div class="admin__paginator">
+        <div class="paginator">
             {% if currentPage > 1 %}
                 {{ pagination.button('&lt;&lt;', currentPage - 1) }}
 

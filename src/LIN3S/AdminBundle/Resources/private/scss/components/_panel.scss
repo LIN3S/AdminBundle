@@ -1,0 +1,48 @@
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+
+@import '../base/colors.scss';
+@import '../base/grid.scss';
+
+%panel {
+  background: $panel-background;
+  border: 1px solid $panel-border;
+  box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.panel {
+  @extend %panel;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.panel--padding {
+  padding: 23px 10px 0;
+}
+
+.panel__header {
+  border-bottom: 1px solid $panel-border;
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
+}
+
+.panel__title {
+  font-size: 14px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.panel__content {
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
+}
+
+.panel__content--hidden {
+  display: none;
+}

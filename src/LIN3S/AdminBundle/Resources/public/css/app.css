@@ -326,6 +326,15 @@ select {
           flex-direction: column;
   margin-bottom: 15px; }
 
+.form__collection {
+  margin: 0 -15px; }
+
+.form__collection-item {
+  padding-left: 15px;
+  padding-right: 15px; }
+  .form__collection-item:nth-child(even) {
+    background: #f1f1f1; }
+
 .header__actions {
   -webkit-box-align: center;
   -webkit-align-items: center;

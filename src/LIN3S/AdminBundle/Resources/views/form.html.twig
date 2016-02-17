@@ -18,9 +18,13 @@
 {%- endblock textarea_widget %}
 
 {% block collection_row -%}
-    <div class="collection form__group">
-        <div class="collection__items" data-prototype="{{ form_widget(form.vars.prototype)|e }}">
-            {{ block('form_widget', form.children) }}
+    <div class="form__collection">
+        <div class="form__collection-items" data-prototype="{{ form_widget(form.vars.prototype)|e }}">
+            {% for children in form.children %}
+                <div class="form__collection-item">
+                    {{ form_row(children) }}
+                </div>
+            {% endfor %}
         </div>
         <button class="button js-collection-add">Add</button>
     </div>

@@ -115,3 +115,16 @@ select {
   flex-direction: column;
   margin-bottom: 15px;
 }
+
+.form__collection {
+  margin: 0 -15px;
+}
+
+.form__collection-item {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  &:nth-child(even) {
+    background: #f1f1f1;
+  }
+}

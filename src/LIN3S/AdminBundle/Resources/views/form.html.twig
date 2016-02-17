@@ -23,7 +23,7 @@
             {% for children in form.children %}
                 <div class="form__collection-item">
                     {{ form_row(children) }}
-                    <button class="button js-collection-remove">Remove</button>
+                    <button class='button js-collection-remove'>Remove</button>
                 </div>
             {% endfor %}
         </div>
@@ -100,6 +100,7 @@
         <div class="panel">
             <div class="panel__content">
                 {{- form_widget(form) -}}
+                <input type="submit" class="button" value="Save changes">
             </div>
         </div>
     {% endif %}

@@ -19,10 +19,11 @@
 
 {% block collection_row -%}
     <div class="form__collection">
-        <div class="form__collection-items" data-prototype="{{ form_widget(form.vars.prototype)|e }}">
+        <div class="form__collection-items" data-prototype="<div class='form__collection-item'>{{ form_widget(form.vars.prototype)|e }}<button class='button js-collection-remove'>Remove</button></div>">
             {% for children in form.children %}
                 <div class="form__collection-item">
                     {{ form_row(children) }}
+                    <button class="button js-collection-remove">Remove</button>
                 </div>
             {% endfor %}
         </div>

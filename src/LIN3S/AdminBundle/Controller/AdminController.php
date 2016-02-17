@@ -1,18 +1,11 @@
 <?php
 
-/*
- * This file is part of the Denbolan project.
- *
- * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace LIN3S\AdminBundle\Controller;
 
 use LIN3S\AdminBundle\Annotation\EntityConfiguration;
 use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
+use LIN3S\AdminBundle\Event\EditEvent;
+use LIN3S\AdminBundle\LIN3SAdminEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -36,20 +29,20 @@ class AdminController extends Controller
         $batchActions = [];
         $entityActions = [];
 
-        foreach($entityConfig->listBatchActions() as $action) {
+        foreach ($entityConfig->listBatchActions() as $action) {
             $batchActions[] = $actionRegistry->get($action);
         }
 
-        foreach($entityConfig->listEntityActions() as $action) {
+        foreach ($entityConfig->listEntityActions() as $action) {
             $entityActions[] = $actionRegistry->get($action);
         }
 
         return [
-            "entities" => $entities,
-            "entityConfig" => $entityConfig,
-            "totalCount" => $totalCount,
-            "batchActions" => $batchActions,
-            "entityActions" => $entityActions
+            "entities"      => $entities,
+            "entityConfig"  => $entityConfig,
+            "totalCount"    => $totalCount,
+            "batchActions"  => $batchActions,
+            "entityActions" => $entityActions,
         ];
     }
 
@@ -58,7 +51,8 @@ class AdminController extends Controller
      * @Template()
      *
      * @param EntityConfigurationInterface $entityConfig
-     * @param Request $request
+     * @param Request                      $request
+     *
      * @return array
      */
     public function newAction($entity, EntityConfigurationInterface $entityConfig, Request $request)
@@ -72,15 +66,16 @@ class AdminController extends Controller
                 'lin3s_admin_success',
                 sprintf('%s created successfully', $entityConfig->name())
             );
+
             return $this->redirect($this->generateUrl('lin3s_admin_edit', [
-                'entity' => $entityConfig->name(), 'id' => $form->getData()->id()
+                'entity' => $entityConfig->name(), 'id' => $form->getData()->id(),
             ]));
         }
 
         return [
-            'entity' => $entity,
+            'entity'       => $entity,
             'entityConfig' => $entityConfig,
-            'form' => $form->createView()
+            'form'         => $form->createView(),
         ];
     }
 
@@ -88,9 +83,9 @@ class AdminController extends Controller
      * @EntityConfiguration()
      * @Template()
      *
-     * @param mixed $id The id of the object to be edited.
+     * @param mixed                        $id The id of the object to be edited.
      * @param EntityConfigurationInterface $entityConfig
-     * @param Request $request
+     * @param Request                      $request
      *
      * @return array Parameters that will be used to render the template
      */
@@ -103,11 +98,16 @@ class AdminController extends Controller
             throw $this->createNotFoundException();
         }
 
+        $this->get('event_dispatcher')->dispatch(
+            LIN3SAdminEvents::EDIT_INITIALIZE,
+            new EditEvent($request, $entity)
+        );
+
         $form = $this->get('lin3s_admin.form.handler')->handleForm(
             $entityConfig->form(), $entity, $request
         );
 
-        if($form->isValid()) {
+        if ($form->isValid()) {
             $this->addFlash(
                 'lin3s_admin_success',
                 sprintf('%s edited successfully', $entityConfig->name())
@@ -115,17 +115,17 @@ class AdminController extends Controller
         }
 
         return [
-            'entity' => $entity,
+            'entity'       => $entity,
             'entityConfig' => $entityConfig,
-            'form' => $form->createView()
+            'form'         => $form->createView(),
         ];
     }
 
     /**
      * @EntityConfiguration()
      *
-     * @param string $id The id of the object to be edited.
-     * @param string $action The action to be executed
+     * @param string                       $id     The id of the object to be edited.
+     * @param string                       $action The action to be executed
      * @param EntityConfigurationInterface $entityConfig
      *
      * @return array Parameters that will be used to render the template
@@ -142,7 +142,7 @@ class AdminController extends Controller
         $actionRegistry = $this->get('lin3s_admin.action.registry');
         $response = $actionRegistry->get($action)->execute($entity, $entityConfig);
 
-        if(!$response instanceof RedirectResponse) {
+        if (!$response instanceof RedirectResponse) {
             throw new \InvalidArgumentException;
         }
 
@@ -153,5 +153,4 @@ class AdminController extends Controller
     {
 
     }
-
 }

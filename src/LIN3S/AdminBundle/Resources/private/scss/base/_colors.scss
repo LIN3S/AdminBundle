@@ -20,29 +20,27 @@ $green: #46B450;
 $red: #B11818;
 
 // Theme colors
-$primary-color: #23282D;
-$secondary-color: #00b9eb;
+$primary-color: #23282D !default;
+$secondary-color: #00b9eb !default;
 
 //Components
-$flash-success: $green;
-$flash-error: $red;
+$flash-success: $green !default;
+$flash-error: $red !default;
 
-$form-required: $red;
+$form-required: $red !default;
 
-$layout-background: #F1F1F1;
+$layout-background: #F1F1F1 !default;
 
-$menu-background: #23282D;
-$menu-link: #eee;
-$menu-background-hover: #191e23;
-$menu-link-hover: $secondary-color;
+$menu-background: #23282D !default;
+$menu-link: #eee !default;
+$menu-background-hover: #191e23 !default;
+$menu-link-hover: $secondary-color !default;
 
-$paginator-separator: $black;
+$paginator-separator: $black !default;
 
-$panel-background: $white;
-$panel-border: #e5e5e5;
+$panel-background: $white !default;
+$panel-border: #e5e5e5 !default;
 
-$table-row-odd-color: #F9F9F9;
-$table-row-even-color: $white;
-$table-border: #E1E1E1;
-
-
+$table-row-odd-color: #F9F9F9 !default;
+$table-row-even-color: $white !default;
+$table-border: #E1E1E1 !default;

@@ -250,8 +250,8 @@ select {
           order: 1;
   padding: 8px 12px;
   position: relative;
-  -webkit-transition: color .3s;
-  transition: color .3s; }
+  -webkit-transition: color .1s;
+  transition: color .1s; }
   .form__label.required:before {
     color: #B11818;
     content: '*';
@@ -270,8 +270,8 @@ select {
           order: 2;
   outline: 0;
   padding: 8px 12px;
-  -webkit-transition: 50ms border-color ease-in-out;
-  transition: 50ms border-color ease-in-out; }
+  -webkit-transition: .1s border-color ease-in-out;
+  transition: .1s border-color ease-in-out; }
   .form__input:focus,
   .form__select:focus, .form__textarea:focus {
     border-color: #00b9eb;
@@ -511,7 +511,7 @@ tr {
   content: '▼'; }
 
 .flash {
-  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 10px 15px; }
 
 .flash--success {

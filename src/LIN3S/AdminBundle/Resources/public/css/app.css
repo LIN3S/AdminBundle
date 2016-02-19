@@ -335,6 +335,20 @@ select {
   .form__collection-item:nth-child(even) {
     background: #f1f1f1; }
 
+.form__collection-item-footer {
+  padding-bottom: 15px; }
+
+.form__collection-footer {
+  border-top: 1px solid #f1f1f1;
+  padding: 15px;
+  text-align: right; }
+
+.fr-box {
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2; }
+
 .header__actions {
   -webkit-box-align: center;
   -webkit-align-items: center;

@@ -6,7 +6,7 @@
     {% for field in entityConfig.listFields %}
         <th>
             <a href="{{ filterPath(field.field, app.request.get('orderBy'), app.request.get('order')) }}"
-               class="admin__sortable
+               class="table__sortable
                 {{ app.request.get('orderBy') == field.field ? ' table__sortable--selected'}}
                 {{ app.request.get('orderBy') == field.field and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">
                 {{ field.name }}</th>
@@ -28,7 +28,8 @@
             {% block lin3s_admin_list_table_row_actions %}
                 <td>
                     {% for action in entityActions %}
-                    <a href="{{ url('lin3s_admin_batch', {'entity': entityConfig.name , 'id': entity.id , 'action': action.alias }) }}">
+                    <a class="table__action"
+                       href="{{ url('lin3s_admin_batch', {'entity': entityConfig.name , 'id': entity.id , 'action': action.alias }) }}">
                         {{ action.name }}
                     </a>
                     {% endfor %}

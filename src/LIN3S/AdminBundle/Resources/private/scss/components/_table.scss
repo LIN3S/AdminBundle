@@ -34,10 +34,6 @@ td {
 }
 
 .table__sortable {
-
-}
-
-.admin__sortable {
   display: block;
   position: relative;
   width: 100%;
@@ -48,7 +44,7 @@ td {
     right: 0;
   }
 
-  &.admin__sortable--selected,
+  &.table__sortable--selected,
   &:hover {
     &:after {
       opacity: 1;
@@ -56,10 +52,14 @@ td {
   }
 }
 
-.admin__sortable--asc:after {
+.table__sortable--asc:after {
   content: '▲';
 }
 
-.admin__sortable--desc:after {
+.table__sortable--desc:after {
   content: '▼';
+}
+
+.table__action {
+  margin-right: 15px;
 }

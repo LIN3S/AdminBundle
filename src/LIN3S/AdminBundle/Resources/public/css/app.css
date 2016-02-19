@@ -507,22 +507,25 @@ tr {
   tr:nth-child(even) {
     background: #fff; }
 
-.admin__sortable {
+.table__sortable {
   display: block;
   position: relative;
   width: 100%; }
-  .admin__sortable:after {
+  .table__sortable:after {
     opacity: 0;
     position: absolute;
     right: 0; }
-  .admin__sortable.admin__sortable--selected:after, .admin__sortable:hover:after {
+  .table__sortable.table__sortable--selected:after, .table__sortable:hover:after {
     opacity: 1; }
 
-.admin__sortable--asc:after {
+.table__sortable--asc:after {
   content: '▲'; }
 
-.admin__sortable--desc:after {
+.table__sortable--desc:after {
   content: '▼'; }
+
+.table__action {
+  margin-right: 15px; }
 
 .flash {
   margin-bottom: 30px;

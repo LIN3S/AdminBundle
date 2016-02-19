@@ -79,17 +79,7 @@
             {% endfor %}
         </div>
         <div class="form__column--right">
-            <div class="panel">
-                <div class="panel__header">
-                    <h2 class="panel__title">Publish</h2>
-                </div>
-                <div class="panel__content">
-                    <div class="form__group">
-                        <label>&nbsp;</label>
-                        <input type="submit" class="button button--secondary" value="Save changes">
-                    </div>
-                </div>
-            </div>
+            {{ block('lin3s_admin_submit') }}
             {% for group in form.vars.groups %}
                 {% if group.position is defined and group.position == 'right' %}
                     {{ block('lin3s_admin_panel') }}
@@ -103,17 +93,7 @@
                 <input type="submit" class="button" value="Save changes">
             </div>
         </div>
-        <div class="panel">
-            <div class="panel__header">
-                <h2 class="panel__title">Publish</h2>
-            </div>
-            <div class="panel__content">
-                <div class="form__group">
-                    <label>&nbsp;</label>
-                    <input type="submit" class="button button--secondary" value="Save changes">
-                </div>
-            </div>
-        </div>
+        {{ block('lin3s_admin_submit') }}
     {% endif %}
     {{ form_end(form) }}
 {%- endblock form -%}
@@ -130,8 +110,27 @@
         </div>
         <div class="panel__content">
             {% for field in group.fields %}
-                {{ form_row(form[field])}}
+                {% set props = field | split('.') %}
+                {% if props | length == 1 %}
+                    {{ form_row(form[props[0]])}}
+                {% elseif props | length == 2 %}
+                    {{ form_row(form[props[0]][props[1]])}}
+                {% endif %}
             {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block lin3s_admin_submit %}
+    <div class="panel">
+        <div class="panel__header">
+            <h2 class="panel__title">Publish</h2>
+        </div>
+        <div class="panel__content">
+            <div class="form__group">
+                <label>&nbsp;</label>
+                <input type="submit" class="button button--secondary" value="Save changes">
+            </div>
         </div>
     </div>
 {% endblock %}

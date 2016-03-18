@@ -28,6 +28,7 @@
 
 .panel__header {
   border-bottom: 1px solid $panel-border;
+  cursor: pointer;
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
 }

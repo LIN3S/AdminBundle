@@ -27,7 +27,7 @@ class AdminRepository
     public function findByRequest(Request $request, EntityConfigurationInterface $config) {
         $postPerPage = $config->listEntitiesPerPage();
         $orderBy = $request->get('orderBy') ? [
-            $request->get('orderBy') => $request->get('order') ? $request->get('order') : "ASC"
+            $request->get('orderBy') => $request->get('order', 'ASC')
         ] : null;
         $offset = ($request->get('page', 1) - 1) * $postPerPage;
         $limit = $postPerPage;

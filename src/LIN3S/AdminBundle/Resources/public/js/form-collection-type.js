@@ -42,4 +42,10 @@
     $collectionHolder.data('index', index + 1);
   }
 
+  /**
+   * Expands / Retracts form collection item content
+   */
+  $('.form__collection-item-toggle').click(function() {
+    $(this).parents('.form__collection-item').toggleClass('form__collection-item--hidden');
+  });
 }(jQuery));

@@ -26,6 +26,11 @@
                     <div class="form__collection-item-footer">
                         <button class='button js-collection-remove'>Remove</button>
                     </div>
+                    <div class="form__collection-item-toggle">
+                        {% include '@LIN3SAdmin/svg/toggle.svg.twig' with {
+                            svgClass: 'form__collection-item-toggle-icon'
+                        }%}
+                    </div>
                 </div>
             {% endfor %}
         </div>

@@ -60,6 +60,14 @@
     </div>
 {%- endblock choice_widget_expanded -%}
 
+{% block checkbox_row %}
+    <div class="form__group form__checkbox">
+        {{- form_widget(form) -}}
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
 {% block form_row -%}
     {% if form.children | length == 0 %}
         <div class="form__group">
@@ -76,6 +84,16 @@
     {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' form__label')|trim}) -%}
     {{- parent() -}}
 {%- endblock form_label %}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="form__errors">
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors %}
 
 {%- block form -%}
     {{ form_start(form) }}

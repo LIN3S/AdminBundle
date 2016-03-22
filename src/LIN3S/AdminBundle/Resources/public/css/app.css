@@ -283,33 +283,6 @@ select {
   .form__select > *, .form__textarea > * {
     width: 100%; }
 
-.form__textarea {
-  min-height: 250px; }
-
-.form__checkbox {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-ordinal-group: 3;
-  -webkit-order: 2;
-      -ms-flex-order: 2;
-          order: 2; }
-  .form__checkbox > input {
-    border: 1px solid #000;
-    cursor: pointer;
-    height: 20px;
-    margin-right: 8px;
-    width: 20px; }
-    .form__checkbox > input:checked {
-      background: #000; }
-  .form__checkbox > label {
-    margin-right: 15px; }
-
 .form__group {
   display: -webkit-box;
   display: -webkit-flex;
@@ -325,6 +298,38 @@ select {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 15px; }
+
+.form__textarea {
+  min-height: 250px; }
+
+.form__checkbox {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2; }
+  .form__checkbox > input {
+    border: 1px solid #000;
+    cursor: pointer;
+    height: 20px;
+    margin-right: 8px;
+    width: 20px; }
+    .form__checkbox > input:checked {
+      background: #000; }
+  .form__checkbox > label {
+    margin-right: 15px; }
 
 .form__collection {
   margin: 0 -15px; }
@@ -368,6 +373,14 @@ select {
   .form__collection-item-toggle rect:nth-child(2) {
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg); }
+
+.form__errors {
+  color: #B11818;
+  margin-top: 5px;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3; }
 
 .fr-box {
   -webkit-box-ordinal-group: 3;

@@ -77,7 +77,7 @@ class FormHandler
         if ($request->isMethod('POST') || $request->isMethod('PUT') || $request->isMethod('PATCH')) {
             $form->handleRequest($request);
             if (!$form->isValid()) {
-                throw new InvalidFormException($this->getFormErrors($form));
+                return $form;
             }
 
             if (!$object) {

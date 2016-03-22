@@ -26,7 +26,9 @@ class ActionRegistry
     public function add(ActionInterface $actionInterface)
     {
         if(isset($this->actions[get_class($actionInterface)])) {
-            throw new \InvalidArgumentException;
+            throw new \InvalidArgumentException(
+                sprintf('Class %s already registered in action list', get_class($actionInterface))
+            );
         }
 
         $this->actions[get_class($actionInterface)] = $actionInterface;

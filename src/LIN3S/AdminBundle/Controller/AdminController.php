@@ -70,6 +70,11 @@ class AdminController extends Controller
             return $this->redirect($this->generateUrl('lin3s_admin_edit', [
                 'entity' => $entityConfig->name(), 'id' => $form->getData()->id(),
             ]));
+        } else if($form->isSubmitted()) {
+            $this->addFlash(
+                'lin3s_admin_error',
+                sprintf('Errors while saving %s. Please check all fields and try again', $entityConfig->name())
+            );
         }
 
         return [
@@ -111,6 +116,11 @@ class AdminController extends Controller
             $this->addFlash(
                 'lin3s_admin_success',
                 sprintf('%s edited successfully', $entityConfig->name())
+            );
+        } else if($form->isSubmitted()) {
+            $this->addFlash(
+                'lin3s_admin_error',
+                sprintf('Errors while saving %s. Please check all fields and try again', $entityConfig->name())
             );
         }
 

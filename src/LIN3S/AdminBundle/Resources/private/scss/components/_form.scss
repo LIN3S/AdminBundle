@@ -76,6 +76,13 @@ select {
   }
 }
 
+.form__group {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
 .form__input,
 .form__select {
   @extend %form__input;
@@ -89,6 +96,7 @@ select {
 .form__checkbox {
   align-items: center;
   display: flex;
+  flex-direction: row;
   order: 2;
 
   > input {
@@ -106,13 +114,6 @@ select {
   > label {
     margin-right: 15px;
   }
-}
-
-.form__group {
-  display: flex;
-  flex: 1 1 100%;
-  flex-direction: column;
-  margin-bottom: 15px;
 }
 
 .form__collection {
@@ -169,6 +170,12 @@ select {
   rect:nth-child(2) {
     transform: rotate(90deg);
   }
+}
+
+.form__errors {
+  color: $red;
+  margin-top: 5px;
+  order: 3;
 }
 
 // Froala

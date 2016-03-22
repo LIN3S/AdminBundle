@@ -72,5 +72,4 @@ class EditAction implements ActionInterface
             'id'     => $id,
         ]));
     }
-
 }

@@ -12,19 +12,56 @@
 namespace LIN3S\AdminBundle\Action;
 
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-interface ActionInterface
+class Action
 {
+    private $name;
+
     /**
-     * Executes logic required to perform the action requested. It's called once for each entity.
-     *
-     * @param mixed                        $entity  Entity in which you can apply changes
-     * @param EntityConfiguration $config  The entity configuration
-     * @param Request                      $request The request
-     *
-     * @return Response Response to the action, can be a page render or a redirect
+     * @var ActionType
      */
-    public function execute($entity, EntityConfiguration $config, Request $request, $options = null);
+    private $type;
+
+    /**
+     * @var null
+     */
+    private $options;
+
+    public function __construct($name, ActionType $type, $options = null)
+    {
+
+        $this->name = $name;
+        $this->type = $type;
+        $this->options = $options;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return ActionType
+     */
+    public function type()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return null
+     */
+    public function options()
+    {
+        return $this->options;
+    }
+
+    public function execute($entity, EntityConfiguration $configuration, Request $request)
+    {
+        return $this->type->execute($entity, $configuration, $request, $this->options);
+    }
 }

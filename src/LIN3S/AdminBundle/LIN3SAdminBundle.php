@@ -13,6 +13,7 @@ namespace LIN3S\AdminBundle;
 
 use LIN3S\AdminBundle\DependencyInjection\CompilerPass\ActionPass;
 use LIN3S\AdminBundle\DependencyInjection\CompilerPass\EntityConfigurationPass;
+use LIN3S\AdminBundle\DependencyInjection\CompilerPass\ListFieldTypePass;
 use LIN3S\AdminBundle\DependencyInjection\LIN3SAdminExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -30,6 +31,7 @@ class LIN3SAdminBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
+        $container->addCompilerPass(new ListFieldTypePass());
         $container->addCompilerPass(new EntityConfigurationPass());
         $container->addCompilerPass(new ActionPass());
     }

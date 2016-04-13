@@ -11,38 +11,34 @@
 
 namespace LIN3S\AdminBundle\Action\Type;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use LIN3S\AdminBundle\Action\ActionInterface;
 use LIN3S\AdminBundle\Action\ActionType;
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use LIN3S\AdminBundle\Form\FormHandler;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 
-class EditActionType implements ActionType
+class NewActionType implements ActionType
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-
     private $formHandler;
-
-    private $manager;
 
     private $twig;
 
     private $session;
 
-    public function __construct(FormHandler $formHandler, ObjectManager $manager, \Twig_Environment $twig, Session $session)
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    public function __construct(FormHandler $formHandler, \Twig_Environment $twig, Session $session, RouterInterface $router)
     {
         $this->formHandler = $formHandler;
-        $this->manager = $manager;
         $this->twig = $twig;
         $this->session = $session;
+        $this->router = $router;
     }
 
     /**
@@ -52,18 +48,8 @@ class EditActionType implements ActionType
     {
         if (!isset($options['form'])) {
             throw new \InvalidArgumentException(
-                sprintf('EditActionType requires a form class as an option')
+                sprintf('NewActionType requires a form class as an option')
             );
-        }
-
-        $id = $this->getEntityId($entity, $config);
-
-        $manager = $this->manager->getRepository($config->className());
-
-        $entity = $manager->find($id);
-
-        if (!$entity) {
-            throw new NotFoundHttpException();
         }
 
         $form = $this->formHandler->handleForm(
@@ -73,17 +59,22 @@ class EditActionType implements ActionType
         if ($form->isValid()) {
             $this->session->getFlashBag()->add(
                 'lin3s_admin_success',
-                sprintf('%s edited successfully', $config->name())
+                sprintf('%s created successfully', $config->name())
+            );
+            return new RedirectResponse(
+                $this->router->generate('lin3s_admin_custom', [
+                    'action' => 'edit', 'entity' => $config->name(), 'id' => $form->getData()->id()
+                ])
             );
         } else if($form->isSubmitted()) {
             $this->session->getFlashBag()->add(
                 'lin3s_admin_error',
-                sprintf('Errors while saving %s. Please check all fields and try again', $config->name())
+                sprintf('Errors while creating %s. Please check all fields and try again', $config->name())
             );
         }
 
         return new Response(
-            $this->twig->render('LIN3SAdminBundle:Admin:edit.html.twig', [
+            $this->twig->render('LIN3SAdminBundle:Admin:new.html.twig', [
                 'entity'       => $entity,
                 'entityConfig' => $config,
                 'form'         => $form->createView(),

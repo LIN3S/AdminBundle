@@ -2,17 +2,23 @@ services:
     lin3s_admin.action.registry:
         class: LIN3S\AdminBundle\Action\Registry\ActionRegistry
 
-    lin3s_admin.action.type.edit:
-        class: LIN3S\AdminBundle\Action\Type\EditAction
-        arguments: ['@router']
+    lin3s_admin.action.type.new:
+        class: LIN3S\AdminBundle\Action\Type\NewActionType
+        arguments: ['@lin3s_admin.form.handler', '@twig', '@session', '@router']
         tags:
             - { name: 'lin3s_admin.action' }
 
-    lin3s_admin.action.type.delete:
-        class: LIN3S\AdminBundle\Action\Type\DeleteAction
-        arguments: ['@router', '@session']
+    lin3s_admin.action.type.edit:
+        class: LIN3S\AdminBundle\Action\Type\EditActionType
+        arguments: ['@lin3s_admin.form.handler', '@doctrine.orm.default_entity_manager', '@twig', '@session']
         tags:
             - { name: 'lin3s_admin.action' }
+
+#    lin3s_admin.action.type.delete:
+#        class: LIN3S\AdminBundle\Action\Type\DeleteAction
+#        arguments: ['@router', '@session']
+#        tags:
+#            - { name: 'lin3s_admin.action' }
 
     lin3s_admin.configuration.entity_configuration_registry:
         class: LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistry
@@ -26,6 +32,14 @@ services:
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler
         arguments: ['@form.factory', '@doctrine.orm.entity_manager']
+
+    lin3s_admin.list_field_type.registry:
+        class: LIN3S\AdminBundle\ListFields\ListFieldTypeRegistry
+
+    lin3s_admin.list_field_type.string:
+        class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
+        tags:
+            - {name: lin3s_admin.list_field_type}
 
     lin3s_admin.repository:
         class: LIN3S\AdminBundle\Repository\AdminRepository

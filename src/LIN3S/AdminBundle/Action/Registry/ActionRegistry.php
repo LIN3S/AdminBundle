@@ -11,19 +11,19 @@
 
 namespace LIN3S\AdminBundle\Action\Registry;
 
-use LIN3S\AdminBundle\Action\ActionInterface;
+use LIN3S\AdminBundle\Action\ActionType;
 
 class ActionRegistry
 {
     /**
-     * @var ActionInterface[]
+     * @var ActionType[]
      */
     protected $actions = [];
 
     /**
      * @inheritdoc
      */
-    public function add(ActionInterface $actionInterface)
+    public function add(ActionType $actionInterface)
     {
         if(isset($this->actions[get_class($actionInterface)])) {
             throw new \InvalidArgumentException(
@@ -35,18 +35,12 @@ class ActionRegistry
     }
 
     /**
-     * @return ActionInterface
+     * @return ActionType
      */
     public function get($className)
     {
         if (isset($this->actions[$className])) {
             return $this->actions[$className];
-        }
-
-        foreach($this->actions as $action) {
-            if($action->alias() == $className) {
-                return $action;
-            }
         }
 
         throw new \InvalidArgumentException;

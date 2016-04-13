@@ -15,19 +15,19 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-class ActionPass implements CompilerPassInterface
+class ListFieldTypePass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('lin3s_admin.action.registry')) {
+        if (!$container->hasDefinition('lin3s_admin.list_field_type.registry')) {
             return;
         }
 
-        $registry = $container->getDefinition('lin3s_admin.action.registry');
-        foreach ($container->findTaggedServiceIds('lin3s_admin.action') as $id => $attributes) {
+        $registry = $container->getDefinition('lin3s_admin.list_field_type.registry');
+        foreach ($container->findTaggedServiceIds('lin3s_admin.list_field_type') as $id => $attributes) {
             $registry->addMethodCall('add', [new Reference($id)]);
         }
     }

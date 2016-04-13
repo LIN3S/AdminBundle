@@ -11,7 +11,7 @@
 
 namespace LIN3S\AdminBundle\Configuration\Registry;
 
-use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
+use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigAlreadyRegistedException;
 
 interface EntityConfigurationRegistryInterface
@@ -19,18 +19,18 @@ interface EntityConfigurationRegistryInterface
     /**
      * Adds new entity configuration to the registry
      *
-     * @param EntityConfigurationInterface $entityConfiguration
+     * @param EntityConfiguration $entityConfiguration
      *
      * @throws EntityConfigAlreadyRegistedException if config already registered
      */
-    public function add(EntityConfigurationInterface $entityConfiguration);
+    public function add(EntityConfiguration $entityConfiguration);
 
     /**
      * Returns entity configuration for the given entity name
      *
      * @param string $entityName
      *
-     * @return \LIN3S\AdminBundle\Configuration\EntityConfigurationInterface
+     * @return \LIN3S\AdminBundle\Configuration\EntityConfiguration
      */
     public function get($entityName);
 }

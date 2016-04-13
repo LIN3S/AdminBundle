@@ -12,7 +12,7 @@
 namespace LIN3S\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
-use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
+use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminRepository
@@ -24,7 +24,7 @@ class AdminRepository
         $this->manager = $manager;
     }
 
-    public function findByRequest(Request $request, EntityConfigurationInterface $config) {
+    public function findByRequest(Request $request, EntityConfiguration $config) {
         $postPerPage = $config->listEntitiesPerPage();
         $orderBy = $request->get('orderBy') ? [
             $request->get('orderBy') => $request->get('order', 'ASC')
@@ -36,7 +36,7 @@ class AdminRepository
             ->findBy([], $orderBy, $limit, $offset);
     }
 
-    public function countAll(EntityConfigurationInterface $config) {
+    public function countAll(EntityConfiguration $config) {
         $qb = $this->manager->createQueryBuilder();
 
         $qb->select($qb->expr()->count('e'))

@@ -12,7 +12,6 @@
 namespace LIN3S\AdminBundle\Configuration\Registry;
 
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\Configuration\EntityConfigurationInterface;
 use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigAlreadyRegistedException;
 use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigNotFoundException;
 
@@ -23,7 +22,7 @@ class EntityConfigurationRegistry implements EntityConfigurationRegistryInterfac
     /**
      * @inheritdoc
      */
-    public function add(EntityConfigurationInterface $entityConfiguration)
+    public function add(EntityConfiguration $entityConfiguration)
     {
         if(isset($this->configs[$entityConfiguration->name()])) {
             throw new EntityConfigAlreadyRegistedException();

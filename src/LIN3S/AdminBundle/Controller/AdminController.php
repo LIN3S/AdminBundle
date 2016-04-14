@@ -58,12 +58,12 @@ class AdminController extends Controller
             );
         }
 
-        $callableAction = $entityConfig->getAction($action);
-
-        if(!$callableAction) {
+        try {
+            $callableAction = $entityConfig->getAction($action);
+        } catch(\Exception $e) {
             throw $this->createNotFoundException(
                 sprintf(
-                    'Action %s for entity %s not found, did you registered it in the config?',
+                    'Action "%s" for entity "%s" not found, did you registered it in the config?',
                     $action,
                     $entity
                 )

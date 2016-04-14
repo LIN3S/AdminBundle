@@ -2,9 +2,12 @@
 
 {% block lin3s_admin_actions %}
     <h1>{{ entityConfig.name | capitalize }}</h1>
-    {#<a href="{{ url('lin3s_admin_new', {'entity': entityConfig.name }) }}" class="button small">#}
-        {#New#}
-    {#</a>#}
+    {% for listGlobalAction in entityConfig.listGlobalActions %}
+        <a class="button small"
+           href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name }) }}">
+            {{ listGlobalAction.name }}
+        </a>
+    {% endfor %}
 {% endblock %}
 
 {% block lin3s_admin_breadcrumb %}

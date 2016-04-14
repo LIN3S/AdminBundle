@@ -30,7 +30,6 @@ class Action
 
     public function __construct($name, ActionType $type, $options = null)
     {
-
         $this->name = $name;
         $this->type = $type;
         $this->options = $options;

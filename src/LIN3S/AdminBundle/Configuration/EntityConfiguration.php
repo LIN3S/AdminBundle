@@ -21,9 +21,10 @@ class EntityConfiguration
     protected $listActions = [];
     protected $listFields = [];
     protected $listEntitiesPerPage = 10;
+    protected $listGlobalActions = [];
     protected $listOrderByDefault = [];
 
-    public function __construct($name, $className, $actions, $listActions, $listFields)
+    public function __construct($name, $className, $actions, $listActions, $listFields, $listGlobalActions)
     {
         $this->name = $name;
         $this->className = $className;
@@ -61,6 +62,23 @@ class EntityConfiguration
         }
 
         $this->listActions = $listActions;
+
+        foreach ($listGlobalActions as $listGlobalAction) {
+            try {
+                $this->getAction($listGlobalAction);
+            } catch (\InvalidArgumentException $e) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'List global action "%s is not registered for entity "%s". Make sure you add it in the actions
+                        array before adding it to the list field array',
+                        $listGlobalAction,
+                        $name
+                    )
+                );
+            }
+        }
+
+        $this->listGlobalActions = $listGlobalActions;
     }
 
     /**
@@ -146,5 +164,16 @@ class EntityConfiguration
     public function listBatchActions()
     {
         return [];
+    }
+
+    public function listGlobalActions()
+    {
+        $listGlobalActions = [];
+
+        foreach($this->listGlobalActions as $listGlobalAction) {
+            $listGlobalActions[] = $this->getAction($listGlobalAction);
+        }
+
+        return $listGlobalActions;
     }
 }

@@ -77,6 +77,7 @@ class EntityConfigurationPass implements CompilerPassInterface
                         $actions,
                         $entityConfig['list']['actions'],
                         $listFields,
+                        $entityConfig['list']['globalActions']
                     ]
                 )
             )->setPublic(false);

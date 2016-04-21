@@ -12,6 +12,7 @@ namespace LIN3S\AdminBundle\Configuration;
 
 use LIN3S\AdminBundle\Action\Action;
 use LIN3S\AdminBundle\ListFields\ListField;
+use LIN3S\AdminBundle\Repository\QueryBuilder;
 
 class EntityConfiguration
 {
@@ -23,8 +24,15 @@ class EntityConfiguration
     protected $listEntitiesPerPage = 10;
     protected $listGlobalActions = [];
     protected $listOrderByDefault = [];
+    protected $queryBuilder;
 
-    public function __construct($name, $className, $actions, $listActions, $listFields, $listGlobalActions)
+    public function __construct($name,
+                                $className,
+                                $actions,
+                                $listActions,
+                                $listFields,
+                                $listGlobalActions,
+                                QueryBuilder $queryBuilder)
     {
         $this->name = $name;
         $this->className = $className;
@@ -79,6 +87,8 @@ class EntityConfiguration
         }
 
         $this->listGlobalActions = $listGlobalActions;
+
+        $this->queryBuilder = $queryBuilder;
     }
 
     /**
@@ -175,5 +185,10 @@ class EntityConfiguration
         }
 
         return $listGlobalActions;
+    }
+
+    public function queryBuilder()
+    {
+        return $this->queryBuilder;
     }
 }

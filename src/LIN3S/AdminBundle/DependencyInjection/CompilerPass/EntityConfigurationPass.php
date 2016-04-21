@@ -26,7 +26,8 @@ class EntityConfigurationPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('lin3s_admin.configuration.entity_configuration_registry')) {
+        if (!$container->hasDefinition('lin3s_admin.configuration.entity_configuration_registry') &&
+            !$container->hasDefinition('lin3s.admin.repository.default_query_builder')) {
             return;
         }
 
@@ -77,7 +78,8 @@ class EntityConfigurationPass implements CompilerPassInterface
                         $actions,
                         $entityConfig['list']['actions'],
                         $listFields,
-                        $entityConfig['list']['globalActions']
+                        $entityConfig['list']['globalActions'],
+                        $container->getDefinition('lin3s.admin.repository.default_query_builder')
                     ]
                 )
             )->setPublic(false);

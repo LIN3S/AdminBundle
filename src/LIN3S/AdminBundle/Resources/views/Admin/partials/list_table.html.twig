@@ -5,7 +5,7 @@
     {% endif %}
     {% for field in entityConfig.listFields %}
         <th>
-            <a href="{{ filterPath(field.name, app.request.get('orderBy'), app.request.get('order')) }}"
+            <a href="{{ filterPath(field.options.field, app.request.get('orderBy'), app.request.get('order')) }}"
                class="table__sortable
                 {{ app.request.get('orderBy') == field.name ? ' table__sortable--selected'}}
                 {{ app.request.get('orderBy') == field.name and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">

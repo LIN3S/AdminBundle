@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function listAction($entity, EntityConfiguration $entityConfig, Request $request)
     {
         $entities = $this->get('lin3s_admin.repository')->findByRequest($request, $entityConfig);
-        $totalCount = $this->get('lin3s_admin.repository')->countAll($entityConfig);
+        $totalCount = $this->get('lin3s_admin.repository')->countAll($request, $entityConfig);
 
 
         return [

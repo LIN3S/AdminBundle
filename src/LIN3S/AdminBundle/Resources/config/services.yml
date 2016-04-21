@@ -43,6 +43,9 @@ services:
 
     lin3s_admin.repository:
         class: LIN3S\AdminBundle\Repository\AdminRepository
+
+    lin3s.admin.repository.default_query_builder:
+        class: LIN3S\AdminBundle\Repository\DefaultQueryBuilder
         arguments: ['@doctrine.orm.default_entity_manager']
 
     lin3s_admin.twig.filter_path:

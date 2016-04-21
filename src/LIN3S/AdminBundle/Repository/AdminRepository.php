@@ -17,31 +17,29 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminRepository
 {
-    protected $manager;
-
-    public function __construct(EntityManager $manager)
+    public function findByRequest(Request $request, EntityConfiguration $config)
     {
-        $this->manager = $manager;
-    }
+        $queryBuilder = $config->queryBuilder()->generate($request, $config);
 
-    public function findByRequest(Request $request, EntityConfiguration $config) {
         $postPerPage = $config->listEntitiesPerPage();
-        $orderBy = $request->get('orderBy') ? [
-            $request->get('orderBy') => $request->get('order', 'ASC')
-        ] : null;
+
         $offset = ($request->get('page', 1) - 1) * $postPerPage;
         $limit = $postPerPage;
 
-        return $this->manager->getRepository($config->className())
-            ->findBy([], $orderBy, $limit, $offset);
+        $queryBuilder->setFirstResult($offset);
+        $queryBuilder->setMaxResults($limit);
+
+        return $queryBuilder->getQuery()->getResult();
     }
 
-    public function countAll(EntityConfiguration $config) {
-        $qb = $this->manager->createQueryBuilder();
+    public function countAll(Request $request, EntityConfiguration $config)
+    {
+        $queryBuilder = $config->queryBuilder()->generate($request, $config);
 
-        $qb->select($qb->expr()->count('e'))
-            ->from($config->className(), 'e');
+        $queryBuilder->select($queryBuilder->expr()->count('a'));
 
-        return $qb->getQuery()->getSingleScalarResult();
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
+
+
 }

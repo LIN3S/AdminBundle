@@ -12,7 +12,7 @@
 
 {% macro button(text, page, variant) %}
     {% block lin3s_admin_paginator_button %}
-        <a class="button button--small button--light paginator-button"
+        <a class="button button--small button--light paginator-button{{ variant == 'current' ? ' button--secondary' }}"
            href="{{ paginatorPath(page) }}">
             {{ text | raw }}
         </a>

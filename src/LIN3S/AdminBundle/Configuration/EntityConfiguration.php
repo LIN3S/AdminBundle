@@ -12,6 +12,7 @@ namespace LIN3S\AdminBundle\Configuration;
 
 use LIN3S\AdminBundle\Action\Action;
 use LIN3S\AdminBundle\ListFields\ListField;
+use LIN3S\AdminBundle\ListFilters\ListFilter;
 use LIN3S\AdminBundle\Repository\QueryBuilder;
 
 class EntityConfiguration
@@ -21,6 +22,7 @@ class EntityConfiguration
     protected $className;
     protected $listActions = [];
     protected $listFields = [];
+    protected $listFilters = [];
     protected $listEntitiesPerPage = 10;
     protected $listGlobalActions = [];
     protected $listOrderByDefault = [];
@@ -31,6 +33,7 @@ class EntityConfiguration
                                 $actions,
                                 $listActions,
                                 $listFields,
+                                $listFilters,
                                 $listGlobalActions,
                                 QueryBuilder $queryBuilder)
     {
@@ -40,15 +43,23 @@ class EntityConfiguration
 
         foreach ($listFields as $field) {
             if (!$field instanceof ListField) {
-                throw new \InvalidArgumentException('List fields must extend ListField interface');
+                throw new \InvalidArgumentException('List fields must implement ListField interface');
             }
         }
 
         $this->listFields = $listFields;
 
+        foreach ($listFilters as $filter) {
+            if (!$filter instanceof ListFilter) {
+                throw new \InvalidArgumentException('List filters must implement ListFilter interface');
+            }
+        }
+
+        $this->listFilters = $listFilters;
+
         foreach ($actions as $action) {
             if (!$action instanceof Action) {
-                throw new \InvalidArgumentException('Actions must extend Action interface');
+                throw new \InvalidArgumentException('Actions must implement Action interface');
             }
         }
 
@@ -169,6 +180,11 @@ class EntityConfiguration
         }
 
         return $listActions;
+    }
+
+    public function listFilters()
+    {
+        return $this->listFilters;
     }
 
     public function listBatchActions()

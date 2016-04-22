@@ -16,7 +16,7 @@ class ListFieldTypeRegistry
     {
         if(isset($this->actions[get_class($listFieldType)])) {
             throw new \InvalidArgumentException(
-                sprintf('Class %s already registered in action list', get_class($listFieldType))
+                sprintf('Class %s already registered in field type list', get_class($listFieldType))
             );
         }
 

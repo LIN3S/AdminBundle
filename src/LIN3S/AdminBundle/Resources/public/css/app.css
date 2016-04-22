@@ -388,6 +388,40 @@ select {
       -ms-flex-order: 2;
           order: 2; }
 
+.filter {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 15px;
+  margin-bottom: 30px; }
+
+.filter__filter-by {
+  -webkit-box-ordinal-group: 1;
+  -webkit-order: 0;
+      -ms-flex-order: 0;
+          order: 0; }
+
+.filter__option--hidden {
+  display: none; }
+
+.filter__button.button {
+  -webkit-align-self: stretch;
+      -ms-flex-item-align: stretch;
+          align-self: stretch;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: none; }
+
 .header__actions {
   -webkit-box-align: center;
   -webkit-align-items: center;

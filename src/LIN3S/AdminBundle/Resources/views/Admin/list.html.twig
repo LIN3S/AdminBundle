@@ -15,6 +15,10 @@
     {#<span class="admin__breadcrumb">{{ entityConfig.name | capitalize }}</span>#}
 {% endblock %}
 
+{% block lin3s_admin_content_top %}
+    {% include 'LIN3SAdminBundle:Admin/partials:list_filters.html.twig' %}
+{% endblock %}
+
 {% block lin3s_admin_content %}
     <div class="admin__batch-actions">
     </div>
@@ -26,4 +30,9 @@
             } %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/lin3sadmin/js/filter.js') }}"></script>
 {% endblock %}

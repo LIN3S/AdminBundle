@@ -1,4 +1,5 @@
 services:
+    ## ACTIONS ##
     lin3s_admin.action.registry:
         class: LIN3S\AdminBundle\Action\Registry\ActionRegistry
 
@@ -14,25 +15,27 @@ services:
         tags:
             - { name: 'lin3s_admin.action' }
 
-#    lin3s_admin.action.type.delete:
-#        class: LIN3S\AdminBundle\Action\Type\DeleteAction
-#        arguments: ['@router', '@session']
-#        tags:
-#            - { name: 'lin3s_admin.action' }
 
+    ## CONFIGURATION ##
     lin3s_admin.configuration.entity_configuration_registry:
         class: LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistry
 
+
+    ## EVENT LISTENERS ##
     lin3s_admin.event_listener.entity_configuration_annotation:
         class: LIN3S\AdminBundle\EventListener\EntityConfigurationAnnotationListener
         arguments: ['@annotation_reader', '@lin3s_admin.configuration.entity_configuration_registry']
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 
+
+    ## FORM ##
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler
         arguments: ['@form.factory', '@doctrine.orm.entity_manager']
 
+
+    ## LIST FIELDS ##
     lin3s_admin.list_field_type.registry:
         class: LIN3S\AdminBundle\ListFields\ListFieldTypeRegistry
 
@@ -41,6 +44,18 @@ services:
         tags:
             - {name: lin3s_admin.list_field_type}
 
+
+    ## LIST FILTERS ##
+    lin3s_admin.list_filter_type.registry:
+        class: LIN3S\AdminBundle\ListFilters\ListFilterTypeRegistry
+
+    lin3s_admin.list_filter_type.text:
+        class: LIN3S\AdminBundle\ListFilters\Types\TextListFilterType
+        tags:
+            - {name: lin3s_admin.list_filter_type}
+
+
+    ## REPOSITORY ##
     lin3s_admin.repository:
         class: LIN3S\AdminBundle\Repository\AdminRepository
 
@@ -48,6 +63,8 @@ services:
         class: LIN3S\AdminBundle\Repository\DefaultQueryBuilder
         arguments: ['@doctrine.orm.default_entity_manager']
 
+
+    ## TWIG ##
     lin3s_admin.twig.filter_path:
         class: LIN3S\AdminBundle\Twig\TwigFilterPathFunction
         arguments: ['@router', '@request_stack']

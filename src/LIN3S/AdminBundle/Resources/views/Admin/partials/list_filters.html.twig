@@ -1,0 +1,26 @@
+<form class="filter" method="get">
+    <select class="form__input filter__filter-by" name="filterBy">
+        {% for filter in entityConfig.listFilters %}
+            <option {{ app.request.get('filterBy') == filter.field ? 'selected' }}
+                    value="{{ filter.field }}">
+                {{ filter.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <div class="filter__options">
+        {% for filter in entityConfig.listFilters %}
+            {% set isCurrent = (app.request.get('filterBy') == filter.field) or
+                               (app.request.get('filterBy') == '' and loop.index0 == 0) %}
+
+            {% set currentValue = filter.field == app.request.get('filterBy') ? app.request.get('filter') : '' %}
+            {{  filter.type().render(filter, currentValue, {
+                    'attrs' : {
+                        'class': 'form__input ' ~ (not isCurrent ? ' filter__option--hidden'),
+                        'name': isCurrent ? 'filter' : ''
+                    }
+                }) | raw
+            }}
+        {% endfor %}
+    </div>
+    <button class="button button--secondary filter__button" type="submit">Buscar</button>
+</form>

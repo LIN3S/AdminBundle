@@ -26,7 +26,8 @@
             {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
             {% include '@LIN3SAdmin/Admin/partials/paginator.html.twig' with {
                 currentPage: app.request.get('page') ?: 1,
-                lastPage: (totalCount / entityConfig.listEntitiesPerPage) | round(0, 'ceil')
+                totalCount: totalCount,
+                perPage: entityConfig.listEntitiesPerPage
             } %}
         </div>
     </div>

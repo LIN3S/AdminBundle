@@ -662,8 +662,30 @@ select {
     right: -10px;
     top: -10px; }
 
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto; }
+
+.row {
+  max-width: 1320px; }
+
+.row__column {
+  padding-left: 15px;
+  padding-right: 15px; }
+
 .paginator {
   margin-top: 30px; }
+
+.paginator__total {
+  display: block;
+  margin-bottom: 15px; }
 
 .paginator-button {
   display: inline-block;
@@ -675,6 +697,12 @@ select {
 .paginator-separator {
   color: #000;
   margin-right: 10px; }
+
+@media only screen and (min-width: 1025px) {
+  .paginator__total {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 15px; } }
 
 .row {
   display: -webkit-box;

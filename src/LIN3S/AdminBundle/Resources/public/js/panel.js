@@ -14,6 +14,6 @@
 
 (function ($) {
   $('.panel__header').click(function() {
-    $(this).parent().find('.panel__content').toggleClass('panel__content--hidden');
+    $(this).parent().toggleClass('panel--closed');
   });
 }(jQuery));

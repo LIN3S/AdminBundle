@@ -568,10 +568,17 @@ select {
   margin-bottom: 30px;
   width: 100%; }
 
+.panel--closed .panel__content {
+  display: none; }
+
 .panel--padding {
   padding: 23px 10px 0; }
 
 .panel__header {
+  background-image: url("../svg/down.svg");
+  background-position: calc(100% - 15px) 3px;
+  background-repeat: no-repeat;
+  background-size: 15px;
   border-bottom: 1px solid #e5e5e5;
   cursor: pointer;
   padding-left: 15px;

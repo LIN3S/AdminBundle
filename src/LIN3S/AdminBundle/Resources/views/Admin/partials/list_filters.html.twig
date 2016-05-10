@@ -1,5 +1,5 @@
 <form class="filter" method="get">
-    <select class="form__input filter__filter-by" name="filterBy">
+    <select class="form__select filter__filter-by" name="filterBy">
         {% for filter in entityConfig.listFilters %}
             <option {{ app.request.get('filterBy') == filter.field ? 'selected' }}
                     value="{{ filter.field }}">

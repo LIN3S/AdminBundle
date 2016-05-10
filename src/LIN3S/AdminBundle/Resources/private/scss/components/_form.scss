@@ -88,6 +88,14 @@ select {
   @extend %form__input;
 }
 
+.form__select {
+  background-image: url("../svg/down.svg");
+  background-position: calc(100% - 8px);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  padding-right: 35px;
+}
+
 .form__textarea {
   @extend %form__input;
   min-height: 250px;

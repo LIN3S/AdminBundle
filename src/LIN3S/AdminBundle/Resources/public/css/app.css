@@ -299,6 +299,13 @@ select {
           flex-direction: column;
   margin-bottom: 15px; }
 
+.form__select {
+  background-image: url("../svg/down.svg");
+  background-position: calc(100% - 8px);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  padding-right: 35px; }
+
 .form__textarea {
   min-height: 250px; }
 

@@ -1,3 +1,4 @@
+{% if entityConfig.listFilters | length > 0 %}
 <form class="filter" method="get">
     <select class="form__select filter__filter-by" name="filterBy">
         {% for filter in entityConfig.listFilters %}
@@ -24,3 +25,4 @@
     </div>
     <button class="button button--secondary filter__button" type="submit">Buscar</button>
 </form>
+{% endif %}

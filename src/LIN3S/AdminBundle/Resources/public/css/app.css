@@ -306,17 +306,15 @@ select {
           flex-direction: column;
   margin-bottom: 15px; }
 
-<<<<<<< HEAD
 .form__group--hidden {
   display: none; }
-=======
+
 .form__select {
   background-image: url("../svg/down.svg");
   background-position: calc(100% - 8px);
   background-repeat: no-repeat;
   background-size: 15px;
   padding-right: 35px; }
->>>>>>> ee0d0d3effe14329aeddb1f2e7b228ab8583dbee
 
 .form__textarea {
   min-height: 250px; }

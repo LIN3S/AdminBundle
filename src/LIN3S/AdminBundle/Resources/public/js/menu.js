@@ -13,7 +13,16 @@
 'use strict';
 
 (function ($) {
-  $('.panel__header').click(function() {
-    $(this).parent().toggleClass('panel--closed');
+  $('.menu-toggle').click(function() {
+    $(this).toggleClass('menu-toggle--visible');
+
+    var $menu = $(this).parents('.menu');
+
+    if($menu.hasClass('menu--open')) {
+      $menu.attr('style', '');
+    } else {
+      $menu.height($menu.get(0).scrollHeight);
+    }
+    $menu.toggleClass('menu--open');
   });
 }(jQuery));

@@ -1,5 +1,6 @@
+{% if entityConfig.listFilters | length > 0 %}
 <form class="filter" method="get">
-    <select class="form__input filter__filter-by" name="filterBy">
+    <select class="form__select filter__filter-by" name="filterBy">
         {% for filter in entityConfig.listFilters %}
             <option {{ app.request.get('filterBy') == filter.field ? 'selected' }}
                     value="{{ filter.field }}">
@@ -24,3 +25,4 @@
     </div>
     <button class="button button--secondary filter__button" type="submit">Buscar</button>
 </form>
+{% endif %}

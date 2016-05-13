@@ -9,6 +9,7 @@
 // @author Beñat Espiña <bespina@lin3s.com>
 
 @import '../base/colors';
+@import '../base/grid';
 
 input,
 textarea,
@@ -27,14 +28,8 @@ select {
   flex-wrap: wrap;
 }
 
-.form__column--left {
-  flex: 1 1 66.666%;
-  padding-right: 15px;
-}
-
-.form__column--right {
-  flex: 1 1 33.333%;
-  padding-left: 15px;
+.form__column {
+  width: 100%;
 }
 
 .form__label {
@@ -90,6 +85,14 @@ select {
 .form__input,
 .form__select {
   @extend %form__input;
+}
+
+.form__select {
+  background-image: url("../svg/down.svg");
+  background-position: calc(100% - 8px);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  padding-right: 35px;
 }
 
 .form__textarea {
@@ -185,4 +188,16 @@ select {
 // Froala
 .fr-box {
   order: 2;
+}
+
+@media #{$large-up} {
+  .form__column--left {
+    flex: 1 1 66.666%;
+    padding-right: 15px;
+  }
+
+  .form__column--right {
+    flex: 1 1 33.333%;
+    padding-left: 15px;
+  }
 }

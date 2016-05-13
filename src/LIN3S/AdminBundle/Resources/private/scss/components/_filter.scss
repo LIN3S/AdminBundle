@@ -8,11 +8,11 @@
 // @author Gorka Laucirica <gorka@lin3s.com>
 
 @import '../base/colors';
+@import '../base/grid';
 
 .filter {
   align-items: center;
   background: $white;
-  display: flex;
   justify-content: flex-end;
   padding: 15px;
   margin-bottom: 30px;
@@ -22,13 +22,36 @@
   order: 0;
 }
 
+.filter__filter-by,
+.filter__options .form__input {
+  width: 100%;
+}
+
 .filter__option--hidden {
   display: none;
 }
 
-.filter__button.button {
-  align-self: stretch;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  box-shadow: none;
+.filter__button {
+  margin-top: 15px;
+  width: 100%;
+}
+
+@media #{$medium-up} {
+  .filter {
+    display: flex;
+  }
+
+  .filter__button.button {
+    align-self: stretch;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+    width: auto;
+  }
+
+  .filter__filter-by,
+  .filter__options .form__input {
+    width: auto;
+  }
 }

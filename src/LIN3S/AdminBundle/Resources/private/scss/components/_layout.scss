@@ -10,15 +10,11 @@
 @import '../base/colors';
 @import '../base/grid';
 
+$layout-menu-height: 50px;
+
 .layout {
   background: $layout-background;
-  display: flex;
-  height: auto;
-  min-height: 100vh;
-}
-
-.layout__menu {
-  width: 160px;
+  margin-top: $layout-menu-height;
 }
 
 .layout__content {
@@ -26,3 +22,32 @@
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
 }
+
+.layout__menu {
+  height: $layout-menu-height;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  transition: height .3s;
+  width: 100%;
+}
+
+@media #{$medium-up} {
+  .layout {
+    display: flex;
+    height: auto;
+    margin-top: 0;
+    min-height: 100vh;
+  }
+
+  .layout__menu {
+    height: auto;
+    position: initial;
+    width: 160px;
+
+    .menu-toggle {
+      display: none;
+    }
+  }
+}
+

@@ -22,6 +22,8 @@
 {% import _self as pagination %}
 
 {% spaceless %}
+    {% set lastPage = (totalCount / perPage) | round(0, 'ceil') %}
+
     {% if lastPage > 1 %}
 
         {# the number of first and last pages to be displayed #}
@@ -31,6 +33,7 @@
         {% set nearbyPagesLimit = 2 %}
 
         <div class="paginator">
+            <span class="paginator__total">{{ totalCount }} elements</span>
             {% if currentPage > 1 %}
                 {{ pagination.button('&lt;&lt;', currentPage - 1) }}
 

@@ -1,0 +1,51 @@
+// This file is part of the LIN3S Admin project.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka@lin3s.com>
+
+@import '../base/colors';
+
+$menu-toggle-size: 24px !default;
+
+.menu-toggle {
+  fill: $white;
+  height: $menu-toggle-size;
+  width: $menu-toggle-size;
+}
+
+.menu-toggle__top,
+.menu-toggle__bottom {
+  transform: rotate(0deg);
+  transform-origin: center;
+  transition: transform .2s, y .2s .2s;
+}
+
+.menu-toggle__middle {
+  transition: opacity .2s .2s;
+}
+
+.menu-toggle--visible {
+  // scss-lint:disable PropertySpelling
+  .menu-toggle__top,
+  .menu-toggle__bottom {
+    transition: transform .2s .2s, y .2s;
+    y: 156px;
+  }
+
+  .menu-toggle__top {
+    transform: rotate(-45deg);
+  }
+
+  .menu-toggle__middle {
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  .menu-toggle__bottom {
+    transform: rotate(45deg);
+  }
+}

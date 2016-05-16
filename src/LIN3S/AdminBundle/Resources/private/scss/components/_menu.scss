@@ -8,9 +8,14 @@
 // @author Gorka Laucirica <gorka@lin3s.com>
 
 @import '../base/colors';
+@import '../base/grid';
 
 .menu {
   background: $menu-background;
+
+  .menu-toggle {
+    margin: 10px;
+  }
 }
 
 .menu__item {

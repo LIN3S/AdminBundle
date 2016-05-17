@@ -61,12 +61,15 @@ class NewActionType implements ActionType
                 'lin3s_admin_success',
                 sprintf('%s created successfully', $config->name())
             );
+
             return new RedirectResponse(
                 $this->router->generate('lin3s_admin_custom', [
-                    'action' => 'edit', 'entity' => $config->name(), 'id' => $form->getData()->id()
+                    'action' => isset($options['redirectAction']) ? $options['redirectAction'] : 'edit',
+                    'entity' => $config->name(),
+                    'id'     => $form->getData()->id(),
                 ])
             );
-        } else if($form->isSubmitted()) {
+        } else if ($form->isSubmitted()) {
             $this->session->getFlashBag()->add(
                 'lin3s_admin_error',
                 sprintf('Errors while creating %s. Please check all fields and try again', $config->name())

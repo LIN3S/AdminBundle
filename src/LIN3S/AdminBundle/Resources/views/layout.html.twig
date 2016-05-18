@@ -18,6 +18,7 @@
 
 <body class="layout">
     <nav class="layout__menu menu">
+        {% include '@LIN3SAdmin/partial/menu_toggle.html.twig' %}
         {% block lin3s_admin_aside_links %}
             {% include '@LIN3SAdmin/partial/menu.html.twig' %}
         {% endblock %}
@@ -43,6 +44,7 @@
         <script src="{{ asset('bundles/lin3sadmin/js/vendor.js') }}"></script>
         <script src="{{ asset('bundles/lin3sadmin/js/form-collection-type.js') }}"></script>
         <script src="{{ asset('bundles/lin3sadmin/js/panel.js') }}"></script>
+        <script src="{{ asset('bundles/lin3sadmin/js/menu.js') }}"></script>
         {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
     {% endblock %}
 </body>

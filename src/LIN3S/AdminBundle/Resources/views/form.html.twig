@@ -98,14 +98,14 @@
 {%- block form -%}
     {{ form_start(form) }}
     {% if(form.vars.groups is defined) %}
-        <div class="form__column--left">
+        <div class="form__column form__column--left">
             {% for group in form.vars.groups %}
                 {% if group.position is not defined or group.position == 'left' %}
                     {{ block('lin3s_admin_panel') }}
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="form__column--right">
+        <div class="form__column form__column--right">
             {{ block('lin3s_admin_submit') }}
             {% for group in form.vars.groups %}
                 {% if group.position is defined and group.position == 'right' %}

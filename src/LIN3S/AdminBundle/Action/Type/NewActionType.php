@@ -18,31 +18,68 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * New action type class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class NewActionType implements ActionType
 {
+    use EntityId;
+
+    /**
+     * The form handler.
+     *
+     * @var FormHandler
+     */
     private $formHandler;
 
-    private $twig;
-
+    /**
+     * The session.
+     *
+     * @var Session
+     */
     private $session;
 
     /**
-     * @var RouterInterface
+     * The Twig instance.
+     *
+     * @var \Twig_Environment
      */
-    private $router;
+    private $twig;
 
-    public function __construct(FormHandler $formHandler, \Twig_Environment $twig, Session $session, RouterInterface $router)
-    {
+    /**
+     * The URL generator.
+     *
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
+     * Constructor.
+     *
+     * @param FormHandler           $formHandler  The form handler
+     * @param \Twig_Environment     $twig         The twig instance
+     * @param Session               $session      The session
+     * @param UrlGeneratorInterface $urlGenerator The URL generator
+     */
+    public function __construct(
+        FormHandler $formHandler,
+        \Twig_Environment $twig,
+        Session $session,
+        UrlGeneratorInterface $urlGenerator
+    ) {
         $this->formHandler = $formHandler;
         $this->twig = $twig;
         $this->session = $session;
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function execute($entity, EntityConfiguration $config, Request $request, $options = null)
     {
@@ -63,13 +100,13 @@ class NewActionType implements ActionType
             );
 
             return new RedirectResponse(
-                $this->router->generate('lin3s_admin_custom', [
+                $this->urlGenerator->generate('lin3s_admin_custom', [
                     'action' => isset($options['redirectAction']) ? $options['redirectAction'] : 'edit',
                     'entity' => $config->name(),
                     'id'     => $form->getData()->id(),
                 ])
             );
-        } else if ($form->isSubmitted()) {
+        } elseif ($form->isSubmitted()) {
             $this->session->getFlashBag()->add(
                 'lin3s_admin_error',
                 sprintf('Errors while creating %s. Please check all fields and try again', $config->name())
@@ -83,24 +120,5 @@ class NewActionType implements ActionType
                 'form'         => $form->createView(),
             ])
         );
-    }
-
-    private function getEntityId($entity, EntityConfiguration $config)
-    {
-        if (method_exists($entity, $config->idField())) {
-            return call_user_func([$entity, $config->idField()]);
-        } elseif (method_exists($entity, 'get' . ucfirst($config->idField()))) {
-            return call_user_func([$entity, 'get' . ucfirst($config->idField())]);
-        } else {
-            throw new \Exception(
-                sprintf(
-                    'You have configured "%s" as id field, not %s public property found nor %s() nor, get%s() methods found',
-                    $config->idField(),
-                    $config->idField(),
-                    $config->idField(),
-                    ucfirst($config->idField())
-                )
-            );
-        }
     }
 }

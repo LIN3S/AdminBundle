@@ -28,6 +28,8 @@ use Symfony\Component\Routing\RouterInterface;
  */
 class DeleteActionType implements ActionType
 {
+    use EntityId;
+
     /**
      * The manager.
      *
@@ -102,24 +104,5 @@ class DeleteActionType implements ActionType
                 'entity' => $config->name(),
             ])
         );
-    }
-
-    private function getEntityId($entity, EntityConfiguration $config)
-    {
-        if (method_exists($entity, $config->idField())) {
-            return call_user_func([$entity, $config->idField()]);
-        } elseif (method_exists($entity, 'get' . ucfirst($config->idField()))) {
-            return call_user_func([$entity, 'get' . ucfirst($config->idField())]);
-        } else {
-            throw new \Exception(
-                sprintf(
-                    'You have configured "%s" as id field, not %s public property found nor %s() nor, get%s() methods found',
-                    $config->idField(),
-                    $config->idField(),
-                    $config->idField(),
-                    ucfirst($config->idField())
-                )
-            );
-        }
     }
 }

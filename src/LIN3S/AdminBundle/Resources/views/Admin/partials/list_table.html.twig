@@ -31,7 +31,7 @@
                 <td>
                     {% for action in entityConfig.listActions %}
                         {% block lin3s_admin_list_table_row_action %}
-                            <a class="table__action"
+                            <a class="table__action table__action--{{ action.name }}"
                                href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name , 'id': entity.id , 'action': action.name }) }}">
                                 {% block lin3s_admin_list_table_row_action_name %}
                                     {{ action.name }}

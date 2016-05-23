@@ -15,6 +15,12 @@ services:
         tags:
             - { name: 'lin3s_admin.action' }
 
+    lin3s_admin.action.type.delete:
+        class: LIN3S\AdminBundle\Action\Type\DeleteActionType
+        arguments: ['@router', '@doctrine.orm.default_entity_manager', '@twig', '@session']
+        tags:
+            - { name: 'lin3s_admin.action' }
+
 
     ## CONFIGURATION ##
     lin3s_admin.configuration.entity_configuration_registry:

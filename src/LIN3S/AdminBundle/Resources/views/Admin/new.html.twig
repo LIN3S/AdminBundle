@@ -3,7 +3,11 @@
 {% form_theme form '@LIN3SAdmin/form.html.twig' %}
 
 {% block lin3s_admin_actions %}
-    <h1>New {{ entityConfig.name }}</h1>
+    <h1>
+        {% trans with {'%entity%': entityConfig.name} %}
+            lin3s_admin.new.title
+        {% endtrans %}
+    </h1>
 {% endblock %}
 
 {% block lin3s_admin_content %}

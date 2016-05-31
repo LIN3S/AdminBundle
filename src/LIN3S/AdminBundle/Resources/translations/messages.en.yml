@@ -1,0 +1,14 @@
+lin3s_admin:
+    list:
+        table:
+            actions: Actions
+        filters:
+            search: Search
+    paginator:
+        total_elements: %totalCount% elements
+    new:
+        title: New %entity%
+    edit:
+        title: Edit %entity%
+    form:
+        save_changes: Save changes

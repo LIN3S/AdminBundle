@@ -33,7 +33,9 @@
         {% set nearbyPagesLimit = 2 %}
 
         <div class="paginator">
-            <span class="paginator__total">{{ totalCount }} elements</span>
+            <span class="paginator__total">
+                {% trans with {'%totalCount%': totalCount} %}lin3s_admin.paginator.total_elements{% endtrans %}
+            </span>
             {% if currentPage > 1 %}
                 {{ pagination.button('&lt;&lt;', currentPage - 1) }}
 

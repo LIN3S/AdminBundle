@@ -1,5 +1,9 @@
 {% extends 'LIN3SAdminBundle:Admin:new.html.twig' %}
 
 {% block lin3s_admin_actions %}
-    <h1>Edit {{ entityConfig.name }}</h1>
+    <h1>
+        {% trans with {'%entity%': entityConfig.name} %}
+            lin3s_admin.edit.title
+        {% endtrans %}
+    </h1>
 {% endblock %}

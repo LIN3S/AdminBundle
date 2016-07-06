@@ -622,6 +622,9 @@ select {
   width: 100%;
   z-index: 101; }
 
+.modal__text {
+  margin-bottom: 10px; }
+
 .modal__close {
   background: #23282D;
   border-radius: 50%;

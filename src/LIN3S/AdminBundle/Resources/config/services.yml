@@ -49,6 +49,10 @@ services:
         class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
         tags:
             - {name: lin3s_admin.list_field_type}
+    lin3s_admin.list_field_type.date:
+        class: LIN3S\AdminBundle\ListFields\Types\DateListFieldType
+        tags:
+            - {name: lin3s_admin.list_filter_date}
 
 
     ## LIST FILTERS ##

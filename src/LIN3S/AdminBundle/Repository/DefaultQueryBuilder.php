@@ -30,7 +30,6 @@ class DefaultQueryBuilder implements QueryBuilder
             $queryBuilder->join('a.' . $association, 'join_' . $association);
         }
 
-
         if ($request->get('orderBy')) {
             $possibleAssociation = explode(".", $request->get('orderBy'))[0];
 
@@ -52,19 +51,51 @@ class DefaultQueryBuilder implements QueryBuilder
         }
 
         if ($request->get('filterBy') && $request->get('filter')) {
-            $association = explode(".", $request->get('filterBy'))[0];
-            if (in_array($association, $associations)) {
-                $queryBuilder->where($queryBuilder->expr()->like(
-                    'join_' . $request->get('filterBy'), "'%" . $request->get('filter') . "%'"
-                ));
-            } else {
+            $previousId = 97;
+            $associations = explode('.', $request->get('filterBy'));
+
+            for ($i = 0; $i < count($associations) - 1; $i++) {
+                if ($this->isTableRelation($metadata, $associations[$i] . "." . $associations[$i + 1])) {
+                    $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
+                    $previousId++;
+
+                    foreach ($metadata->associationMappings as $associationMapping) {
+                        if ($associationMapping['fieldName'] == $associations[$i]) {
+                            dump($metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']));
+                        }
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            if ($i == 0) {
                 $queryBuilder->where($queryBuilder->expr()->like(
                     'a.' . $request->get('filterBy'), "'%" . $request->get('filter') . "%'"
                 ));
+            } else {
+                $queryBuilder->where(chr($previousId) . '.' . $associations[count($associations) - 1] . ' like :param')
+                    ->setParameter('param', '%' . $request->get('filter') . '%');
             }
         }
 
         return $queryBuilder;
+    }
+
+    /**
+     * @param $metadata
+     * @param $association
+     *
+     * @return bool true if the association is between two tables, false if associations is based on inheritance
+     */
+    private function isTableRelation($metadata, $association) {
+        foreach ($metadata->fieldMappings as $fieldMapping) {
+            if ($fieldMapping['fieldName'] == $association) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function resolveAssociations(EntityConfiguration $config, $metadata)
@@ -78,7 +109,6 @@ class DefaultQueryBuilder implements QueryBuilder
 
             if (count($fieldClass) > 0) {
                 $associations[] = $fieldName;
-
             }
         }
 

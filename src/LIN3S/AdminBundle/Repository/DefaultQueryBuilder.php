@@ -8,8 +8,18 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultQueryBuilder implements QueryBuilder
 {
+    /**
+     * The entity manager.
+     *
+     * @var EntityManager
+     */
     protected $manager;
 
+    /**
+     * DefaultQueryBuilder constructor.
+     *
+     * @param EntityManager $manager The entity manager
+     */
     public function __construct(EntityManager $manager)
     {
         $this->manager = $manager;
@@ -21,9 +31,7 @@ class DefaultQueryBuilder implements QueryBuilder
     public function generate(Request $request, EntityConfiguration $config)
     {
         $queryBuilder = $this->manager->getRepository($config->className())->createQueryBuilder('a');
-
         $metadata = $this->manager->getClassMetadata($config->className());
-
         $associations = $this->resolveAssociations($config, $metadata);
 
         foreach ($associations as $association) {
@@ -44,7 +52,6 @@ class DefaultQueryBuilder implements QueryBuilder
                     continue;
                 }
             }
-
             if (!$found) {
                 $queryBuilder->addOrderBy('a.' . $request->get('orderBy'), $request->get('order', 'ASC'));
             }
@@ -55,42 +62,40 @@ class DefaultQueryBuilder implements QueryBuilder
             $associations = explode('.', $request->get('filterBy'));
 
             for ($i = 0; $i < count($associations) - 1; $i++) {
-                if ($this->isTableRelation($metadata, $associations[$i] . "." . $associations[$i + 1])) {
-                    $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
-                    $previousId++;
-
-                    foreach ($metadata->associationMappings as $associationMapping) {
-                        if ($associationMapping['fieldName'] == $associations[$i]) {
-                            dump($metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']));
-                        }
-                    }
-                } else {
+                if (false === $this->isTableRelation($metadata, $associations[$i] . '.' . $associations[$i + 1])) {
                     break;
                 }
-            }
+                $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
+                $previousId++;
 
-            if ($i == 0) {
-                $queryBuilder->where($queryBuilder->expr()->like(
-                    'a.' . $request->get('filterBy'), "'%" . $request->get('filter') . "%'"
-                ));
-            } else {
-                $queryBuilder->where(chr($previousId) . '.' . $associations[count($associations) - 1] . ' like :param')
-                    ->setParameter('param', '%' . $request->get('filter') . '%');
+                foreach ($metadata->associationMappings as $associationMapping) {
+                    if ($associationMapping['fieldName'] === $associations[$i]) {
+                        $metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']);
+                    }
+                }
             }
+            $queryBuilder->where($queryBuilder->expr()->like(
+                chr($previousId) . '.' . $associations[count($associations) - 1],
+                "'%" . $request->get('filter') . "%'"
+            ));
         }
 
         return $queryBuilder;
     }
 
     /**
-     * @param $metadata
-     * @param $association
+     * Checks if the association is between two tables returning true,
+     * otherwise, returns false if associations is based on inheritance.
      *
-     * @return bool true if the association is between two tables, false if associations is based on inheritance
+     * @param \Doctrine\ORM\Mapping\ClassMetadata $metadata    The class metadata
+     * @param string                              $association The association field name
+     *
+     * @return bool
      */
-    private function isTableRelation($metadata, $association) {
+    private function isTableRelation($metadata, $association)
+    {
         foreach ($metadata->fieldMappings as $fieldMapping) {
-            if ($fieldMapping['fieldName'] == $association) {
+            if ($fieldMapping['fieldName'] === $association) {
                 return false;
             }
         }
@@ -104,7 +109,7 @@ class DefaultQueryBuilder implements QueryBuilder
         foreach ($metadata->associationMappings as $associationMapping) {
             $fieldName = $associationMapping['fieldName'];
             $fieldClass = array_filter($config->listFields(), function ($field) use ($fieldName) {
-                return $fieldName === explode(".", $field->options()['field'])[0];
+                return $fieldName === explode('.', $field->options()['field'])[0];
             });
 
             if (count($fieldClass) > 0) {

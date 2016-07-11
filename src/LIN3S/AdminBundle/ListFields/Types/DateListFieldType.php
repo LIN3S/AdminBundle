@@ -14,7 +14,7 @@ class DateListFieldType implements ListFieldType
         $properties = explode('.', $options['field']);
 
         $value = $entity;
-        foreach($properties as $property) {
+        foreach ($properties as $property) {
             $value = $value->$property();
         }
 

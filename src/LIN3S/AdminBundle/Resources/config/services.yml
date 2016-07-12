@@ -21,7 +21,6 @@ services:
         tags:
             - { name: 'lin3s_admin.action' }
 
-
     ## CONFIGURATION ##
     lin3s_admin.configuration.entity_configuration_registry:
         class: LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistry
@@ -63,6 +62,10 @@ services:
         class: LIN3S\AdminBundle\ListFilters\Types\TextListFilterType
         tags:
             - {name: lin3s_admin.list_filter_type}
+    lin3s_admin.list_field_type.date:
+             class: LIN3S\AdminBundle\ListFields\Types\DateListFieldType
+             tags:
+                - {name: lin3s_admin.list_filter_date}
 
 
     ## REPOSITORY ##

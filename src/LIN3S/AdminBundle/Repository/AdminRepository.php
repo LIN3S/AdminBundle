@@ -35,10 +35,9 @@ class AdminRepository
     public function countAll(Request $request, EntityConfiguration $config)
     {
         $queryBuilder = $config->queryBuilder()->generate($request, $config);
+        $queryBuilder->select($queryBuilder->expr()->count('a.id'));
 
-        $queryBuilder->select($queryBuilder->expr()->count('a'));
-
-        return $queryBuilder->getQuery()->getSingleScalarResult();
+        return count($queryBuilder->getQuery()->getScalarResult());
     }
 
 

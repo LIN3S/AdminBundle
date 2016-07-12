@@ -34,6 +34,8 @@ class DefaultQueryBuilder implements QueryBuilder
         $metadata = $this->manager->getClassMetadata($config->className());
         $associations = $this->resolveAssociations($config, $metadata);
 
+        $queryBuilder->groupBy('a.' . $metadata->identifier[0]);
+
         foreach ($associations as $association) {
             $queryBuilder->join('a.' . $association, 'join_' . $association);
         }

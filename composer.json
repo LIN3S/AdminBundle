@@ -11,15 +11,28 @@
         }
     ],
     "require": {
-        "php":                      "^5.5|^7.0",
-        "symfony/framework-bundle": "^2.8|^3.0"
+        "php": "^5.5 || ^7.0",
+        "doctrine/doctrine-bundle": "^1.6",
+        "symfony/form": "^2.8 || ^3.0",
+        "symfony/framework-bundle": "^2.8 || ^3.0",
+        "symfony/twig-bundle": "^2.8 || ^3.0"
     },
     "require-dev": {
-        "phpspec/phpspec":          "^2.4"
+        "friendsofphp/php-cs-fixer": "^1.11",
+        "phpspec/phpspec": "^2.5",
+        "symfony/var-dumper": "^2.8 || ^3.0"
+    },
+    "scripts": {
+        "cs": [
+            "php-cs-fixer fix --config-file=.php_cs",
+            "php-cs-fixer fix --config-file=.phpspec_cs"
+        ],
+        "test": "phpspec run"
     },
     "autoload": {
         "psr-4": {
             "LIN3S\\AdminBundle\\": "src/LIN3S/AdminBundle/"
-        }
+        },
+        "exclude-from-classmap": ["/spec/"]
     }
 }

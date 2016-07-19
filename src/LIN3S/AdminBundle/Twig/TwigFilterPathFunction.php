@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -11,7 +11,6 @@
 
 namespace LIN3S\AdminBundle\Twig;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -23,45 +22,45 @@ class TwigFilterPathFunction extends \Twig_Extension
      */
     private $requestStack;
 
-    function __construct(RouterInterface $router, RequestStack $requestStack)
+    public function __construct(RouterInterface $router, RequestStack $requestStack)
     {
         $this->router = $router;
         $this->requestStack = $requestStack;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('filterPath', [$this, 'filterPath'])
+            new \Twig_SimpleFunction('filterPath', [$this, 'filterPath']),
         ];
     }
 
-    public function filterPath($field, $currentOrderBy, $currentOrder = "ASC")
+    public function filterPath($field, $currentOrderBy, $currentOrder = 'ASC')
     {
         $request = $this->requestStack->getMasterRequest();
 
-        if($currentOrderBy == $field) {
-            $currentOrder = $currentOrder === "DESC" ? "ASC" : "DESC";
+        if ($currentOrderBy === $field) {
+            $currentOrder = $currentOrder === 'DESC' ? 'ASC' : 'DESC';
         } else {
-            $currentOrder = "ASC";
+            $currentOrder = 'ASC';
         }
 
         return $this->router->generate(
             $request->attributes->get('_route'),
             array_merge($request->query->all(), [
-                'entity' => $request->get('entity'),
+                'entity'  => $request->get('entity'),
                 'orderBy' => $field,
-                'order' => $currentOrder,
-                'page' => 1
+                'order'   => $currentOrder,
+                'page'    => 1,
             ])
         );
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName()
     {

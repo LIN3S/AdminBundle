@@ -1,8 +1,9 @@
 <?php
+
 /*
- * This file is part of the extranet project.
+ * This file is part of the Admin Bundle.
  *
- * (c) gorka
+ * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -133,11 +134,11 @@ class EntityConfiguration
 
     public function getAction($name)
     {
-        /**
-         * @var Action $action
+        /*
+         * @var Action
          */
         foreach ($this->actions as $action) {
-            if ($action->name() == $name) {
+            if ($action->name() === $name) {
                 return $action;
             }
         }
@@ -175,7 +176,7 @@ class EntityConfiguration
     {
         $listActions = [];
 
-        foreach($this->listActions as $listAction) {
+        foreach ($this->listActions as $listAction) {
             $listActions[] = $this->getAction($listAction);
         }
 
@@ -196,7 +197,7 @@ class EntityConfiguration
     {
         $listGlobalActions = [];
 
-        foreach($this->listGlobalActions as $listGlobalAction) {
+        foreach ($this->listGlobalActions as $listGlobalAction) {
             $listGlobalActions[] = $this->getAction($listGlobalAction);
         }
 

@@ -1,3 +1,12 @@
+# This file is part of the Admin Bundle.
+#
+# Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+# @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+
 services:
     ## ACTIONS ##
     lin3s_admin.action.registry:
@@ -37,7 +46,7 @@ services:
     ## FORM ##
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler
-        arguments: ['@form.factory', '@doctrine.orm.entity_manager']
+        arguments: ['@form.factory', '@doctrine.orm.default_entity_manager']
 
 
     ## LIST FIELDS ##
@@ -48,10 +57,6 @@ services:
         class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
         tags:
             - {name: lin3s_admin.list_field_type}
-    lin3s_admin.list_field_type.date:
-        class: LIN3S\AdminBundle\ListFields\Types\DateListFieldType
-        tags:
-            - {name: lin3s_admin.list_filter_date}
 
 
     ## LIST FILTERS ##

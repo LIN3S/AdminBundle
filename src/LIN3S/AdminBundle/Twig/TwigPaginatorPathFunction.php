@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -11,7 +11,6 @@
 
 namespace LIN3S\AdminBundle\Twig;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -23,19 +22,19 @@ class TwigPaginatorPathFunction extends \Twig_Extension
      */
     private $requestStack;
 
-    function __construct(RouterInterface $router, RequestStack $requestStack)
+    public function __construct(RouterInterface $router, RequestStack $requestStack)
     {
         $this->router = $router;
         $this->requestStack = $requestStack;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('paginatorPath', [$this, 'paginatorPath'])
+            new \Twig_SimpleFunction('paginatorPath', [$this, 'paginatorPath']),
         ];
     }
 
@@ -47,13 +46,13 @@ class TwigPaginatorPathFunction extends \Twig_Extension
             $request->attributes->get('_route'),
             array_merge($request->query->all(), [
                 'entity' => $request->get('entity'),
-                'page' => $page
+                'page'   => $page,
             ])
         );
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName()
     {

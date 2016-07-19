@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Admin bundle.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *

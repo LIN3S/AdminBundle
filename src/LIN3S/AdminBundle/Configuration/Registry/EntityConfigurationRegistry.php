@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -20,11 +20,11 @@ class EntityConfigurationRegistry implements EntityConfigurationRegistryInterfac
     protected $configs = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function add(EntityConfiguration $entityConfiguration)
     {
-        if(isset($this->configs[$entityConfiguration->name()])) {
+        if (isset($this->configs[$entityConfiguration->name()])) {
             throw new EntityConfigAlreadyRegistedException();
         }
 
@@ -32,7 +32,7 @@ class EntityConfigurationRegistry implements EntityConfigurationRegistryInterfac
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function get($entityName)
     {

@@ -1,5 +1,5 @@
 {
-  "name": "guggenheim-microsites",
+  "name": "admin-bundle",
   "main": "gulpfile.js",
   "author": "LIN3S",
   "dependencies": {

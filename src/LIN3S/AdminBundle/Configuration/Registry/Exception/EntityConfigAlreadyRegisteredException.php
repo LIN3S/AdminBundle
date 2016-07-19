@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -11,6 +11,6 @@
 
 namespace LIN3S\AdminBundle\Configuration\Registry\Exception;
 
-class EntityConfigAlreadyRegistedException extends \Exception
+class EntityConfigAlreadyRegisteredException extends \Exception
 {
 }

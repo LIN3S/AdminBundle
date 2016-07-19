@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -39,7 +39,7 @@ class EntityConfigurationAnnotationListener
         $reflectionClass = new \ReflectionClass($className);
         $reflectionMethod = $reflectionClass->getMethod($method);
 
-        if($this->annotationReader->getMethodAnnotation(
+        if ($this->annotationReader->getMethodAnnotation(
             $reflectionMethod, 'LIN3S\AdminBundle\Annotation\EntityConfiguration')
         ) {
             $entity = $this->entityConfiguration->get($event->getRequest()->attributes->get('entity'));

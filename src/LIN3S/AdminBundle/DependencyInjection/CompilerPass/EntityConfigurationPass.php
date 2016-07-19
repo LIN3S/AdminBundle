@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -71,13 +71,13 @@ class EntityConfigurationPass implements CompilerPassInterface
             // Define filters
             $listFilters = [];
             foreach ($entityConfig['list']['filters'] as $filterName => $filter) {
-                 $container->setDefinition(
+                $container->setDefinition(
                     sprintf('lin3s_admin.config.%s.filter.%s', $entityName, $filterName),
                     new Definition(
                         ListFilter::class, [
                             $filterName,
                             $container->getDefinition($filter['class']),
-                            $filter['field']
+                            $filter['field'],
                         ]
                     )
                 )->setPublic(false);
@@ -97,7 +97,7 @@ class EntityConfigurationPass implements CompilerPassInterface
                         $listFields,
                         $listFilters,
                         $entityConfig['list']['globalActions'],
-                        $container->getDefinition('lin3s.admin.repository.default_query_builder')
+                        $container->getDefinition('lin3s.admin.repository.default_query_builder'),
                     ]
                 )
             )->setPublic(false);

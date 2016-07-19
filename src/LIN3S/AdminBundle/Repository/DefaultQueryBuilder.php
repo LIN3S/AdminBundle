@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Admin Bundle.
+ *
+ * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace LIN3S\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
@@ -41,13 +50,13 @@ class DefaultQueryBuilder implements QueryBuilder
         }
 
         if ($request->get('orderBy')) {
-            $possibleAssociation = explode(".", $request->get('orderBy'))[0];
+            $possibleAssociation = explode('.', $request->get('orderBy'))[0];
 
             $found = false;
             foreach ($metadata->associationMappings as $associationMapping) {
                 if ($possibleAssociation === $associationMapping['fieldName']) {
                     $queryBuilder->addOrderBy(
-                        'join_' . $associationMapping['fieldName'] . '.' . explode(".", $request->get('orderBy'))[1],
+                        'join_' . $associationMapping['fieldName'] . '.' . explode('.', $request->get('orderBy'))[1],
                         $request->get('order', 'ASC')
                     );
                     $found = true;
@@ -63,12 +72,12 @@ class DefaultQueryBuilder implements QueryBuilder
             $previousId = 97;
             $associations = explode('.', $request->get('filterBy'));
 
-            for ($i = 0; $i < count($associations) - 1; $i++) {
+            for ($i = 0; $i < count($associations) - 1; ++$i) {
                 if (false === $this->isTableRelation($metadata, $associations[$i] . '.' . $associations[$i + 1])) {
                     break;
                 }
                 $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
-                $previousId++;
+                ++$previousId;
 
                 foreach ($metadata->associationMappings as $associationMapping) {
                     if ($associationMapping['fieldName'] === $associations[$i]) {
@@ -121,5 +130,4 @@ class DefaultQueryBuilder implements QueryBuilder
 
         return $associations;
     }
-
 }

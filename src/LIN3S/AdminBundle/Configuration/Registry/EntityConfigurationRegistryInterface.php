@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -17,7 +17,7 @@ use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigAlreadyRegist
 interface EntityConfigurationRegistryInterface
 {
     /**
-     * Adds new entity configuration to the registry
+     * Adds new entity configuration to the registry.
      *
      * @param EntityConfiguration $entityConfiguration
      *
@@ -26,7 +26,7 @@ interface EntityConfigurationRegistryInterface
     public function add(EntityConfiguration $entityConfiguration);
 
     /**
-     * Returns entity configuration for the given entity name
+     * Returns entity configuration for the given entity name.
      *
      * @param string $entityName
      *

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -21,11 +21,11 @@ class ActionRegistry
     protected $actions = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function add(ActionType $actionInterface)
     {
-        if(isset($this->actions[get_class($actionInterface)])) {
+        if (isset($this->actions[get_class($actionInterface)])) {
             throw new \InvalidArgumentException(
                 sprintf('Class %s already registered in action list', get_class($actionInterface))
             );
@@ -43,6 +43,6 @@ class ActionRegistry
             return $this->actions[$className];
         }
 
-        throw new \InvalidArgumentException;
+        throw new \InvalidArgumentException();
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Denbolan project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -12,7 +12,6 @@
 namespace LIN3S\AdminBundle\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use LIN3S\AdminBundle\Form\Exception\InvalidFormException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\FileBag;
@@ -20,8 +19,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class Handler.
- *
- * @package Kreta\Component\Core\Form\Handler
  */
 class FormHandler
 {
@@ -94,7 +91,7 @@ class FormHandler
     /**
      * {@inheritdoc}
      */
-    public function createForm($formClass,$object = null, array $formOptions = [])
+    public function createForm($formClass, $object = null, array $formOptions = [])
     {
         return $this->formFactory->createNamedBuilder('', $formClass, $object, $formOptions)->getForm();
     }
@@ -103,9 +100,7 @@ class FormHandler
      * Handles file upload.
      *
      * @param \Symfony\Component\HttpFoundation\FileBag $files  Files found in current request
-     * @param Object                                    $object Object been handled in the request
-     *
-     * @return void
+     * @param object                                    $object Object been handled in the request
      */
     protected function handleFiles(FileBag $files, $object)
     {
@@ -114,9 +109,7 @@ class FormHandler
     /**
      * Edits (if needed), persists and flushes the object.
      *
-     * @param Object $object The object to be handled
-     *
-     * @return void
+     * @param object $object The object to be handled
      */
     protected function handleObject($object)
     {

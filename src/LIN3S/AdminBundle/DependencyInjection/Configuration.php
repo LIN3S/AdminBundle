@@ -14,8 +14,16 @@ namespace LIN3S\AdminBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/**
+ * AdminBundle's configuration class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class Configuration implements ConfigurationInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();

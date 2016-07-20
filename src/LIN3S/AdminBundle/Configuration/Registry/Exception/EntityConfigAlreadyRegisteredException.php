@@ -11,6 +11,11 @@
 
 namespace LIN3S\AdminBundle\Configuration\Registry\Exception;
 
+/**
+ * Entity configuration already registered exception.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class EntityConfigAlreadyRegisteredException extends \Exception
 {
 }

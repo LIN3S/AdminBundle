@@ -11,36 +11,75 @@
 
 namespace LIN3S\AdminBundle\ListFields;
 
+/**
+ * List field.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class ListField
 {
+    /**
+     * The field name.
+     *
+     * @var string
+     */
     private $name;
 
     /**
+     * Array which contains options.
+     *
+     * @var array
+     */
+    private $options;
+
+    /**
+     * The field type.
+     *
      * @var ListFieldType
      */
     private $type;
 
-    private $options;
-
-    public function __construct($name, ListFieldType $type, $options)
+    /**
+     * ListField constructor.
+     *
+     * @param string        $name    The field name
+     * @param ListFieldType $type    The field type
+     * @param array         $options Array which contains options
+     */
+    public function __construct($name, ListFieldType $type, array $options = [])
     {
         $this->name = $name;
         $this->type = $type;
         $this->options = $options;
     }
 
+    /**
+     * Gets the field name.
+     *
+     * @return string
+     */
     public function name()
     {
         return $this->name;
     }
 
-    public function type()
-    {
-        return $this->type;
-    }
-
+    /**
+     * Gets the options.
+     *
+     * @return array
+     */
     public function options()
     {
         return $this->options;
+    }
+
+    /**
+     * Gets the field type.
+     *
+     * @return ListFieldType
+     */
+    public function type()
+    {
+        return $this->type;
     }
 }

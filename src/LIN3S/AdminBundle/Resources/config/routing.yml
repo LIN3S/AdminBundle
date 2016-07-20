@@ -8,17 +8,20 @@
 # @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
 lin3s_admin_list:
-    path: /{entity}
+    path: /{entity}/
     defaults:
         _controller: LIN3SAdminBundle:Admin:list
-    methods:  [GET]
+    methods:
+        - GET
 
 lin3s_admin_custom:
-    path: /{entity}/{action}/{id}
+    path: /{entity}/{action}/{id}/
     defaults:
         _controller: LIN3SAdminBundle:Admin:custom
         id: null
-    methods:  [GET,POST]
+    methods:
+        - GET
+        - POST
 
 lin3s_admin_dashboard:
     path: /

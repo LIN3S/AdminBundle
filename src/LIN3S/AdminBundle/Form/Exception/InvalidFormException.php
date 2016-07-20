@@ -12,7 +12,10 @@
 namespace LIN3S\AdminBundle\Form\Exception;
 
 /**
- * Class InvalidFormException.
+ * Invalid form exception.
+ *
+ * @author Beñat Espiña <benatespina@gmail.com>
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
 class InvalidFormException extends \Exception
 {

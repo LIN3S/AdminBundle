@@ -15,6 +15,11 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * List filters type compiler class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class ListFiltersTypePass implements CompilerPassInterface
 {
     /**

@@ -11,17 +11,41 @@
 
 namespace LIN3S\AdminBundle\ListFilters;
 
+/**
+ * List filter.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class ListFilter
 {
+    /**
+     * The name.
+     *
+     * @var string
+     */
     private $name;
 
     /**
+     * The type.
+     *
      * @var ListFilterType
      */
     private $type;
 
+    /**
+     * The field name.
+     *
+     * @var string
+     */
     private $field;
 
+    /**
+     * ListFilter constructor.
+     *
+     * @param string         $name  The name
+     * @param ListFilterType $type  The type
+     * @param string         $field The field name
+     */
     public function __construct($name, ListFilterType $type, $field)
     {
         $this->name = $name;
@@ -29,16 +53,31 @@ class ListFilter
         $this->field = $field;
     }
 
+    /**
+     * Gets the name.
+     *
+     * @return string
+     */
     public function name()
     {
         return $this->name;
     }
 
+    /**
+     * Gets the field.
+     *
+     * @return string
+     */
     public function field()
     {
         return $this->field;
     }
 
+    /**
+     * Gets the type.
+     *
+     * @return ListFilterType
+     */
     public function type()
     {
         return $this->type;

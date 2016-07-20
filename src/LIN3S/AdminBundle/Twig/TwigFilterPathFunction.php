@@ -12,19 +12,38 @@
 namespace LIN3S\AdminBundle\Twig;
 
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * Twig filter path function.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class TwigFilterPathFunction extends \Twig_Extension
 {
-    protected $router;
     /**
+     * The request stack.
+     *
      * @var RequestStack
      */
     private $requestStack;
 
-    public function __construct(RouterInterface $router, RequestStack $requestStack)
+    /**
+     * The URL generator.
+     *
+     * @var UrlGeneratorInterface
+     */
+    protected $urlGenerator;
+
+    /**
+     * Constructor.
+     *
+     * @param UrlGeneratorInterface $urlGenerator The URL generator
+     * @param RequestStack          $requestStack The request stack
+     */
+    public function __construct(UrlGeneratorInterface $urlGenerator, RequestStack $requestStack)
     {
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
         $this->requestStack = $requestStack;
     }
 
@@ -38,17 +57,33 @@ class TwigFilterPathFunction extends \Twig_Extension
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'lin3s_admin_twig_filter_path';
+    }
+
+    /**
+     * Callback of paginator path Twig function that returns the generated url.
+     *
+     * @param string $field          The field
+     * @param string $currentOrderBy The current order by
+     * @param string $currentOrder   The current order, by default "ASC"
+     *
+     * @return string
+     */
     public function filterPath($field, $currentOrderBy, $currentOrder = 'ASC')
     {
         $request = $this->requestStack->getMasterRequest();
-
         if ($currentOrderBy === $field) {
             $currentOrder = $currentOrder === 'DESC' ? 'ASC' : 'DESC';
         } else {
             $currentOrder = 'ASC';
         }
 
-        return $this->router->generate(
+        return $this->urlGenerator->generate(
             $request->attributes->get('_route'),
             array_merge($request->query->all(), [
                 'entity'  => $request->get('entity'),
@@ -57,13 +92,5 @@ class TwigFilterPathFunction extends \Twig_Extension
                 'page'    => 1,
             ])
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'lin3s_admin_twig_filter_path';
     }
 }

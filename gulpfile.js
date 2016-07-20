@@ -1,5 +1,5 @@
 /*
- * This file is part of the Guggenheim microsites project.
+ * This file is part of the Admin Bundle.
  *
  * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
  *
@@ -7,21 +7,23 @@
  * file that was distributed with this source code.
  *
  * @author Jon Torrado <jtorrado@lin3s.com>
- * @author Beñat Espiña <bespina@lin3s.com>
+ * @author Beñat Espiña <benatespina@gmail.com>
  */
 
 'use strict';
 
-var gulp = require('gulp'),
+var
+  gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   concat = require('gulp-concat'),
+  cssNano = require('gulp-cssnano'),
   eslint = require('gulp-eslint'),
   livereload = require('gulp-livereload'),
-  cssNano = require('gulp-cssnano'),
   modernizr = require('gulp-modernizr'),
   rename = require('gulp-rename'),
   sass = require('gulp-sass'),
   scsslint = require('gulp-scss-lint'),
+  sourcemaps = require('gulp-sourcemaps'),
   svgSprite = require('gulp-svg-sprite'),
   uglify = require('gulp-uglify');
 
@@ -58,10 +60,10 @@ gulp.task('sass', [], function () {
 
 gulp.task('scss-lint', function () {
   return gulp.src([
-      watch.sass,
-      '!' + paths.sass + '/base/_reset.scss',
-      '!' + paths.sass + '/base/_grid.scss'
-    ])
+    watch.sass,
+    '!' + paths.sass + '/base/_reset.scss',
+    '!' + paths.sass + '/base/_grid.scss'
+  ])
     .pipe(scsslint({
       'config': './.scss_lint.yml'
     }));
@@ -117,25 +119,30 @@ gulp.task('modernizr', function () {
       ],
       'tests': ['objectfit', 'flexbox', 'touchevents']
     }))
+    .pipe(uglify())
     .pipe(gulp.dest(paths.buildJs))
 });
 
-gulp.task('vendor-css', function () {});
+gulp.task('vendor-css', function () {
+});
 
 gulp.task('vendor-js', function () {
   return gulp.src([
-      paths.npm + '/jquery/dist/jquery.min.js',
-      paths.npm + '/fastclick/lib/fastclick.js',
-      paths.npm + '/svg4everybody/dist/svg4everybody.min.js'
-    ])
+    paths.npm + '/jquery/dist/jquery.js',
+    paths.npm + '/fastclick/lib/fastclick.js',
+    paths.npm + '/svg4everybody/dist/svg4everybody.js'
+  ])
     .pipe(concat('vendor.js'))
+    .pipe(uglify())
     .pipe(gulp.dest(paths.buildJs));
 });
 
 gulp.task('js:prod', function () {
   return gulp.src([paths.js + '/*.js'])
+    .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.buildJs));
 });
 

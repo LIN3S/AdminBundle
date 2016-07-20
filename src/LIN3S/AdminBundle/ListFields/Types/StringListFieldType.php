@@ -13,8 +13,16 @@ namespace LIN3S\AdminBundle\ListFields\Types;
 
 use LIN3S\AdminBundle\ListFields\ListFieldType;
 
+/**
+ * String list field type.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class StringListFieldType implements ListFieldType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function render($entity, $options)
     {
         if (!isset($options['field'])) {

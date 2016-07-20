@@ -14,21 +14,21 @@ namespace LIN3S\AdminBundle\ListFilters\Types;
 use LIN3S\AdminBundle\ListFilters\ListFilter;
 use LIN3S\AdminBundle\ListFilters\ListFilterType;
 
+/**
+ * Text list filter field type.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class TextListFilterType implements ListFilterType
 {
     public function render(ListFilter $filter, $currentValue, $options)
     {
-        $attrs = $currentValue !== null ? ' value="' . $currentValue . '"' : '';
+        $attributes = $currentValue !== null ? ' value="' . $currentValue . '"' : '';
 
         foreach ($options['attrs'] as $attrName => $attr) {
-            $attrs .= ' ' . $attrName . '="' . $attr . '"';
+            $attributes .= ' ' . $attrName . '="' . $attr . '"';
         }
 
-        return
-            sprintf(
-                '<input %s type="text" data-filter-field="%s">',
-                $attrs,
-                $filter->field()
-            );
+        return sprintf('<input %s type="text" data-filter-field="%s">', $attributes, $filter->field());
     }
 }

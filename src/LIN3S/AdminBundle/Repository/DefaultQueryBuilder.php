@@ -12,9 +12,17 @@
 namespace LIN3S\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+use LIN3S\AdminBundle\ListFields\ListField;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Default implementation of QueryBuilder.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ * @author Jagoba Perez <jagoba@lin3s.com>
+ */
 class DefaultQueryBuilder implements QueryBuilder
 {
     /**
@@ -53,7 +61,7 @@ class DefaultQueryBuilder implements QueryBuilder
             $possibleAssociation = explode('.', $request->get('orderBy'))[0];
 
             $found = false;
-            foreach ($metadata->associationMappings as $associationMapping) {
+            foreach ($metadata->getAssociationMappings() as $associationMapping) {
                 if ($possibleAssociation === $associationMapping['fieldName']) {
                     $queryBuilder->addOrderBy(
                         'join_' . $associationMapping['fieldName'] . '.' . explode('.', $request->get('orderBy'))[1],
@@ -79,7 +87,7 @@ class DefaultQueryBuilder implements QueryBuilder
                 $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
                 ++$previousId;
 
-                foreach ($metadata->associationMappings as $associationMapping) {
+                foreach ($metadata->getAssociationMappings() as $associationMapping) {
                     if ($associationMapping['fieldName'] === $associations[$i]) {
                         $metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']);
                     }
@@ -98,8 +106,8 @@ class DefaultQueryBuilder implements QueryBuilder
      * Checks if the association is between two tables returning true,
      * otherwise, returns false if associations is based on inheritance.
      *
-     * @param \Doctrine\ORM\Mapping\ClassMetadata $metadata    The class metadata
-     * @param string                              $association The association field name
+     * @param ClassMetadata $metadata    The class metadata
+     * @param string        $association The association field name
      *
      * @return bool
      */
@@ -114,12 +122,20 @@ class DefaultQueryBuilder implements QueryBuilder
         return true;
     }
 
-    private function resolveAssociations(EntityConfiguration $config, $metadata)
+    /**
+     * Resolves associations.
+     *
+     * @param EntityConfiguration $config   The entity configuration
+     * @param ClassMetadata       $metadata The class metadata
+     *
+     * @return array
+     */
+    private function resolveAssociations(EntityConfiguration $config, ClassMetadata $metadata)
     {
         $associations = [];
-        foreach ($metadata->associationMappings as $associationMapping) {
+        foreach ($metadata->getAssociationMappings() as $associationMapping) {
             $fieldName = $associationMapping['fieldName'];
-            $fieldClass = array_filter($config->listFields(), function ($field) use ($fieldName) {
+            $fieldClass = array_filter($config->listFields(), function (ListField $field) use ($fieldName) {
                 return $fieldName === explode('.', $field->options()['field'])[0];
             });
 

@@ -15,6 +15,11 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * List field type compiler class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class ListFieldTypePass implements CompilerPassInterface
 {
     /**

@@ -11,7 +11,20 @@
 
 namespace LIN3S\AdminBundle\ListFields;
 
+/**
+ * List field type.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 interface ListFieldType
 {
+    /**
+     * Methods that renders the field type with the given params.
+     *
+     * @param mixed $entity  The related entity
+     * @param array $options Array which contains options
+     *
+     * @return mixed
+     */
     public function render($entity, $options);
 }

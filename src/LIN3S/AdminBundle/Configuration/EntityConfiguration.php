@@ -16,56 +16,124 @@ use LIN3S\AdminBundle\ListFields\ListField;
 use LIN3S\AdminBundle\ListFilters\ListFilter;
 use LIN3S\AdminBundle\Repository\QueryBuilder;
 
+/**
+ * Entity configuration.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class EntityConfiguration
 {
+    /**
+     * Collection of actions.
+     *
+     * @var array
+     */
     protected $actions;
+
+    /**
+     * The entity name.
+     *
+     * @var string
+     */
     protected $name;
+
+    /**
+     * The class name.
+     *
+     * @var string
+     */
     protected $className;
-    protected $listActions = [];
-    protected $listFields = [];
-    protected $listFilters = [];
-    protected $listEntitiesPerPage = 10;
-    protected $listGlobalActions = [];
-    protected $listOrderByDefault = [];
+
+    /**
+     * The list actions.
+     *
+     * @var array
+     */
+    protected $listActions;
+
+    /**
+     * The list fields.
+     *
+     * @var array
+     */
+    protected $listFields;
+
+    /**
+     * The list filters.
+     *
+     * @var array
+     */
+    protected $listFilters;
+
+    /**
+     * The entities per page.
+     *
+     * @var int
+     */
+    protected $listEntitiesPerPage;
+
+    /**
+     * The list global actions.
+     *
+     * @var array
+     */
+    protected $listGlobalActions;
+
+    /**
+     * The list order by default.
+     *
+     * @var array
+     */
+    protected $listOrderByDefault;
+
+    /**
+     * The query builder.
+     *
+     * @var QueryBuilder
+     */
     protected $queryBuilder;
 
-    public function __construct($name,
-                                $className,
-                                $actions,
-                                $listActions,
-                                $listFields,
-                                $listFilters,
-                                $listGlobalActions,
-                                QueryBuilder $queryBuilder)
-    {
-        $this->name = $name;
-        $this->className = $className;
-        $this->actions = $actions;
-
+    /**
+     * EntityConfiguration constructor.
+     *
+     * @param string       $name                The entity name
+     * @param string       $className           The class name
+     * @param array        $actions             Collection of actions
+     * @param array        $listActions         List actions
+     * @param array        $listFields          List fields
+     * @param array        $listFilters         List filters
+     * @param array        $listGlobalActions   List global actions
+     * @param QueryBuilder $queryBuilder        The query builder
+     * @param int          $listEntitiesPerPage The number of entities per page
+     * @param array        $listOrderByDefault  The order by default
+     */
+    public function __construct(
+        $name,
+        $className,
+        array $actions,
+        array $listActions = [],
+        array $listFields = [],
+        array $listFilters = [],
+        array $listGlobalActions = [],
+        QueryBuilder $queryBuilder,
+        $listEntitiesPerPage = 10,
+        array $listOrderByDefault = []
+    ) {
         foreach ($listFields as $field) {
             if (!$field instanceof ListField) {
                 throw new \InvalidArgumentException('List fields must implement ListField interface');
             }
         }
-
-        $this->listFields = $listFields;
-
         foreach ($listFilters as $filter) {
             if (!$filter instanceof ListFilter) {
                 throw new \InvalidArgumentException('List filters must implement ListFilter interface');
             }
         }
-
-        $this->listFilters = $listFilters;
-
         foreach ($actions as $action) {
             if (!$action instanceof Action) {
                 throw new \InvalidArgumentException('Actions must implement Action interface');
             }
         }
-
-        $this->actions = $actions;
-
         foreach ($listActions as $listAction) {
             try {
                 $this->getAction($listAction);
@@ -80,9 +148,6 @@ class EntityConfiguration
                 );
             }
         }
-
-        $this->listActions = $listActions;
-
         foreach ($listGlobalActions as $listGlobalAction) {
             try {
                 $this->getAction($listGlobalAction);
@@ -98,13 +163,23 @@ class EntityConfiguration
             }
         }
 
+        $this->name = $name;
+        $this->className = $className;
+        $this->actions = $actions;
+        $this->listFields = $listFields;
+        $this->listFilters = $listFilters;
+        $this->actions = $actions;
+        $this->listActions = $listActions;
         $this->listGlobalActions = $listGlobalActions;
-
         $this->queryBuilder = $queryBuilder;
+        $this->listEntitiesPerPage = $listEntitiesPerPage;
+        $this->listOrderByDefault = $listOrderByDefault;
     }
 
     /**
-     * @return mixed
+     * Gets the entity name.
+     *
+     * @return string
      */
     public function name()
     {
@@ -112,31 +187,46 @@ class EntityConfiguration
     }
 
     /**
-     * @return mixed
+     * Gets the class name.
+     *
+     * @return string
      */
     public function className()
     {
         return $this->className;
     }
 
+    /**
+     * Gets the id field of the entity.
+     *
+     * @return string
+     */
     public function idField()
     {
         return 'id';
     }
 
     /**
-     * @return mixed
+     * Gets the actions.
+     *
+     * @return array
      */
     public function actions()
     {
         return $this->actions;
     }
 
+    /**
+     * Gets the action of the name given.
+     *
+     * @param string $name The action name
+     *
+     * @throws \InvalidArgumentException when the given action not found in the entity
+     *
+     * @return Action
+     */
     public function getAction($name)
     {
-        /*
-         * @var Action
-         */
         foreach ($this->actions as $action) {
             if ($action->name() === $name) {
                 return $action;
@@ -149,6 +239,8 @@ class EntityConfiguration
     }
 
     /**
+     * Gets the number of entities per page.
+     *
      * @return int
      */
     public function listEntitiesPerPage()
@@ -157,6 +249,8 @@ class EntityConfiguration
     }
 
     /**
+     * Gets the order by default.
+     *
      * @return array
      */
     public function listOrderByDefault()
@@ -165,6 +259,8 @@ class EntityConfiguration
     }
 
     /**
+     * Gets the fields.
+     *
      * @return array
      */
     public function listFields()
@@ -172,6 +268,11 @@ class EntityConfiguration
         return $this->listFields;
     }
 
+    /**
+     * Gets the actions.
+     *
+     * @return array
+     */
     public function listActions()
     {
         $listActions = [];
@@ -183,16 +284,31 @@ class EntityConfiguration
         return $listActions;
     }
 
+    /**
+     * Gets the filters.
+     *
+     * @return array
+     */
     public function listFilters()
     {
         return $this->listFilters;
     }
 
+    /**
+     * Gets the batch actions.
+     *
+     * @return array
+     */
     public function listBatchActions()
     {
         return [];
     }
 
+    /**
+     * Gets the global actions.
+     *
+     * @return array
+     */
     public function listGlobalActions()
     {
         $listGlobalActions = [];
@@ -204,6 +320,11 @@ class EntityConfiguration
         return $listGlobalActions;
     }
 
+    /**
+     * Gets the query builder.
+     *
+     * @return QueryBuilder
+     */
     public function queryBuilder()
     {
         return $this->queryBuilder;

@@ -16,8 +16,16 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
+/**
+ * AdminBundle's extension class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class LIN3SAdminExtension extends Extension
 {
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();

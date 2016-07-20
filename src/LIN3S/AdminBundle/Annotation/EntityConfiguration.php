@@ -15,6 +15,10 @@ use Doctrine\Common\Annotations\Annotation;
 
 /**
  * @Annotation
+ *
+ * Entity configuration doctrine annotation
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 class EntityConfiguration extends Annotation
 {

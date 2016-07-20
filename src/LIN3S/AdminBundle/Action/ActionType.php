@@ -15,6 +15,11 @@ use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Action type interface.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 interface ActionType
 {
     /**

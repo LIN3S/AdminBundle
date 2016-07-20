@@ -14,8 +14,21 @@ namespace LIN3S\AdminBundle\Repository;
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Admin repository.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class AdminRepository
 {
+    /**
+     * Finds the result about request criteria and given entity configuration.
+     *
+     * @param Request             $request The request
+     * @param EntityConfiguration $config  The entity configuration
+     *
+     * @return array
+     */
     public function findByRequest(Request $request, EntityConfiguration $config)
     {
         $queryBuilder = $config->queryBuilder()->generate($request, $config);
@@ -31,6 +44,14 @@ class AdminRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * Counts all the result about request criteria and given entity configuration.
+     *
+     * @param Request             $request The request
+     * @param EntityConfiguration $config  The entity configuration
+     *
+     * @return int
+     */
     public function countAll(Request $request, EntityConfiguration $config)
     {
         $queryBuilder = $config->queryBuilder()->generate($request, $config);

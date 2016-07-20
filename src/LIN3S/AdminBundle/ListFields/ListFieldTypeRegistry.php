@@ -11,34 +11,57 @@
 
 namespace LIN3S\AdminBundle\ListFields;
 
+/**
+ * List field type registry.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class ListFieldTypeRegistry
 {
     /**
+     * Array which contains list fields.
+     *
      * @var ListFieldType[]
      */
-    protected $actions = [];
+    protected $listFields;
 
     /**
-     * {@inheritdoc}
+     * Constructor.
+     *
+     * @param array $listFields Array which contains list fields
+     */
+    public function __construct(array $listFields = [])
+    {
+        $this->listFields = $listFields;
+    }
+
+    /**
+     * Adds the given action inside collection of list field types.
+     *
+     * @param ListFieldType $listFieldType The list field type
      */
     public function add(ListFieldType $listFieldType)
     {
-        if (isset($this->actions[get_class($listFieldType)])) {
+        if (isset($this->listFields[get_class($listFieldType)])) {
             throw new \InvalidArgumentException(
                 sprintf('Class %s already registered in field type list', get_class($listFieldType))
             );
         }
 
-        $this->actions[get_class($listFieldType)] = $listFieldType;
+        $this->listFields[get_class($listFieldType)] = $listFieldType;
     }
 
     /**
+     * Gets the list field of class name given.
+     *
+     * @param string $className The class name
+     *
      * @return ListFieldType
      */
     public function get($className)
     {
-        if (isset($this->actions[$className])) {
-            return $this->actions[$className];
+        if (isset($this->listFields[$className])) {
+            return $this->listFields[$className];
         }
 
         throw new \InvalidArgumentException(

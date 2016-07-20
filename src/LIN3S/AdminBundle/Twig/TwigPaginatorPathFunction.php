@@ -12,19 +12,38 @@
 namespace LIN3S\AdminBundle\Twig;
 
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+/**
+ * Twig filter path function.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class TwigPaginatorPathFunction extends \Twig_Extension
 {
-    protected $router;
     /**
+     * The request stack.
+     *
      * @var RequestStack
      */
     private $requestStack;
 
-    public function __construct(RouterInterface $router, RequestStack $requestStack)
+    /**
+     * The URL generator.
+     *
+     * @var UrlGeneratorInterface
+     */
+    protected $urlGenerator;
+
+    /**
+     * Constructor.
+     *
+     * @param UrlGeneratorInterface $urlGenerator The URL generator
+     * @param RequestStack          $requestStack The request stack
+     */
+    public function __construct(UrlGeneratorInterface $urlGenerator, RequestStack $requestStack)
     {
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
         $this->requestStack = $requestStack;
     }
 
@@ -38,24 +57,31 @@ class TwigPaginatorPathFunction extends \Twig_Extension
         ];
     }
 
-    public function paginatorPath($page)
-    {
-        $request = $this->requestStack->getMasterRequest();
-
-        return $this->router->generate(
-            $request->attributes->get('_route'),
-            array_merge($request->query->all(), [
-                'entity' => $request->get('entity'),
-                'page'   => $page,
-            ])
-        );
-    }
-
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
         return 'lin3s_admin_twig_paginator_path';
+    }
+
+    /**
+     * Callback of paginator path Twig function that returns the generated url.
+     *
+     * @param int $page The number of page
+     *
+     * @return string
+     */
+    public function paginatorPath($page)
+    {
+        $request = $this->requestStack->getMasterRequest();
+
+        return $this->urlGenerator->generate(
+            $request->attributes->get('_route'),
+            array_merge($request->query->all(), [
+                'entity' => $request->get('entity'),
+                'page'   => $page,
+            ])
+        );
     }
 }

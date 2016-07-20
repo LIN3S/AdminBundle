@@ -16,18 +16,44 @@ use Doctrine\Common\Util\ClassUtils;
 use LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistryInterface;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
+/**
+ * Entity configuration annotation listener.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class EntityConfigurationAnnotationListener
 {
+    /**
+     * The annotation reader.
+     *
+     * @var Reader
+     */
     protected $annotationReader;
 
+    /**
+     * The entity configuration.
+     *
+     * @var EntityConfigurationRegistryInterface
+     */
     protected $entityConfiguration;
 
+    /**
+     * Constructor.
+     *
+     * @param Reader                               $annotationReader    The annotation reader
+     * @param EntityConfigurationRegistryInterface $entityConfiguration The entity configuration
+     */
     public function __construct(Reader $annotationReader, EntityConfigurationRegistryInterface $entityConfiguration)
     {
         $this->annotationReader = $annotationReader;
         $this->entityConfiguration = $entityConfiguration;
     }
 
+    /**
+     * Callback that subscribes the event on kernel controller.
+     *
+     * @param FilterControllerEvent $event The event
+     */
     public function onKernelController(FilterControllerEvent $event)
     {
         $controller = $event->getController();

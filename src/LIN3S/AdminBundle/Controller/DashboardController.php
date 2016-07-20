@@ -13,8 +13,18 @@ namespace LIN3S\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Dashboard controller.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class DashboardController extends Controller
 {
+    /**
+     * Index action.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         return $this->render('@LIN3SAdmin/Dashboard/index.html.twig');

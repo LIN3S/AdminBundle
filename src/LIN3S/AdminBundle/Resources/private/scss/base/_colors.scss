@@ -1,12 +1,11 @@
-// This file is part of the LIN3S Admin project.
+// This file is part of the Admin Bundle.
 //
 // Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
 //
-// @author Gorka Laucirica <gorka@lin3s.com>
-
+// @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
 // Named colors
 $black: #000;
@@ -17,19 +16,25 @@ $darkblue: #2390bd;
 $blue: #2aabe2;
 $lightgrey: #f1f1f1;
 $green: #46B450;
-$red: #B11818;
+$red: #b11818;
 
 // Theme colors
-$primary-color: #23282D !default;
+$primary-color: #23282d !default;
 $secondary-color: #00b9eb !default;
 
-//Components
+// Components
+$button-blue-background: #0085ba !default;
+$button-blue-border-top: #0085ba !default;
+$button-blue-border-lateral: #006799 !default;
+$button-blue-border-bottom: $button-blue-border-lateral !default;
+$button-blue-border-box-shadow: $button-blue-border-lateral !default;
+
 $flash-success: $green !default;
 $flash-error: $red !default;
 
 $form-required: $red !default;
 
-$layout-background: #F1F1F1 !default;
+$layout-background: $lightgrey !default;
 
 $menu-background: #23282D !default;
 $menu-link: #eee !default;
@@ -41,6 +46,6 @@ $paginator-separator: $black !default;
 $panel-background: $white !default;
 $panel-border: #e5e5e5 !default;
 
-$table-row-odd-color: #F9F9F9 !default;
+$table-row-odd-color: #f9f9f9 !default;
 $table-row-even-color: $white !default;
-$table-border: #E1E1E1 !default;
+$table-border: #e1e1e1 !default;

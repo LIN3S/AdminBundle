@@ -11,7 +11,21 @@
 
 namespace LIN3S\AdminBundle\ListFilters;
 
+/**
+ * List filter type.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 interface ListFilterType
 {
+    /**
+     * Methods that renders the field type with the given params.
+     *
+     * @param ListFilter $filter       The filter
+     * @param string     $currentValue The value
+     * @param array      $options      Array which contains options
+     *
+     * @return mixed
+     */
     public function render(ListFilter $filter, $currentValue, $options);
 }

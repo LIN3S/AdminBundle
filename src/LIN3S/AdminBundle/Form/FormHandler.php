@@ -12,20 +12,25 @@
 namespace LIN3S\AdminBundle\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use LIN3S\AdminBundle\Form\Exception\InvalidFormException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\FileBag;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 /**
- * Class Handler.
+ * Form type handler.
+ *
+ * @author Beñat Espiña <benatespina@gmail.com>
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
 class FormHandler
 {
     /**
      * The factory used to create a new Form instance.
      *
-     * @var \Symfony\Component\Form\FormFactoryInterface
+     * @var FormFactoryInterface
      */
     protected $formFactory;
 
@@ -39,15 +44,15 @@ class FormHandler
     /**
      * Manager used to persist and flush the object.
      *
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var ObjectManager
      */
     protected $manager;
 
     /**
      * Constructor.
      *
-     * @param \Symfony\Component\Form\FormFactoryInterface $formFactory Creates a new Form instance
-     * @param \Doctrine\Common\Persistence\ObjectManager   $manager     Persists and flush the object
+     * @param FormFactoryInterface $formFactory Creates a new Form instance
+     * @param ObjectManager        $manager     Persists and flush the object
      */
     public function __construct(FormFactoryInterface $formFactory, ObjectManager $manager)
     {
@@ -56,17 +61,18 @@ class FormHandler
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function processForm(Request $request, $object = null, array $formOptions = [])
-    {
-        $form = $this->handleForm($request, $object, $formOptions);
-
-        return !$object ? $form->getData() : $object;
-    }
-
-    /**
-     * {@inheritdoc}
+     * Handles the form and saves the object to the DB. All process can be changed extending
+     * handleFiles and handleObject methods. See each methods doc for more info.
+     *
+     * @param string      $formClass   The FQCN of form type
+     * @param object|null $object      The object to be edited with form content
+     * @param Request     $request     Contains values sent by the user
+     * @param array       $formOptions Array which contains the options that will be passed in the form create method
+     *
+     * @throws InvalidFormException    when the form is invalid
+     * @throws InvalidOptionsException when the given options are invalid
+     *
+     * @return FormInterface
      */
     public function handleForm($formClass, $object = null, Request $request, array $formOptions = [])
     {
@@ -89,7 +95,18 @@ class FormHandler
     }
 
     /**
-     * {@inheritdoc}
+     * Creates a form with the given parameters.
+     *
+     * To simplify the request body parameters, the form name
+     * is setting to '' when the form is going to be create.
+     *
+     * @param string      $formClass   The FQCN of form type
+     * @param object|null $object      Model related to the form
+     * @param array       $formOptions Array which contains the options that will be passed
+     *
+     * @throws InvalidOptionsException when the given options are invalid
+     *
+     * @return FormInterface
      */
     public function createForm($formClass, $object = null, array $formOptions = [])
     {
@@ -99,8 +116,8 @@ class FormHandler
     /**
      * Handles file upload.
      *
-     * @param \Symfony\Component\HttpFoundation\FileBag $files  Files found in current request
-     * @param object                                    $object Object been handled in the request
+     * @param FileBag $files  Files found in current request
+     * @param object  $object Object been handled in the request
      */
     protected function handleFiles(FileBag $files, $object)
     {
@@ -120,7 +137,7 @@ class FormHandler
     /**
      * Returns all the errors from form into array.
      *
-     * @param \Symfony\Component\Form\FormInterface $form The form
+     * @param FormInterface $form The form
      *
      * @return array
      */

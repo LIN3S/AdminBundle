@@ -14,20 +14,41 @@ namespace LIN3S\AdminBundle\Action;
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Action.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class Action
 {
+    /**
+     * The name.
+     *
+     * @var string
+     */
     private $name;
 
     /**
+     * The action type.
+     *
      * @var ActionType
      */
     private $type;
 
     /**
-     * @var null
+     * Array which contains the options.
+     *
+     * @var array|null
      */
     private $options;
 
+    /**
+     * Constructor.
+     *
+     * @param string     $name    The name
+     * @param ActionType $type    The action type
+     * @param array|null $options Array which contains the options
+     */
     public function __construct($name, ActionType $type, $options = null)
     {
         $this->name = $name;
@@ -36,7 +57,9 @@ class Action
     }
 
     /**
-     * @return mixed
+     * Gets the name.
+     *
+     * @return string
      */
     public function name()
     {
@@ -44,6 +67,8 @@ class Action
     }
 
     /**
+     * Gets the action type.
+     *
      * @return ActionType
      */
     public function type()
@@ -52,12 +77,24 @@ class Action
     }
 
     /**
+     * Gets the options.
+     *
+     * @return array|null
      */
     public function options()
     {
         return $this->options;
     }
 
+    /**
+     * Executes the action type "execute" method with the given params.
+     *
+     * @param mixed               $entity        Entity in which you can apply changes
+     * @param EntityConfiguration $configuration The entity configuration
+     * @param Request             $request       The request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function execute($entity, EntityConfiguration $configuration, Request $request)
     {
         return $this->type->execute($entity, $configuration, $request, $this->options);

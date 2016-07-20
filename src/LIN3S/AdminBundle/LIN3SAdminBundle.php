@@ -20,9 +20,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Bundle's kernel class.
+ * AdminBundle's kernel class.
  *
- * @author Gorka Laucirica <gorka@lin3s.com>
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
 class LIN3SAdminBundle extends Bundle
 {
@@ -31,13 +31,15 @@ class LIN3SAdminBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        parent::build($container);
         $container->addCompilerPass(new ListFieldTypePass());
         $container->addCompilerPass(new ListFiltersTypePass());
         $container->addCompilerPass(new EntityConfigurationPass());
         $container->addCompilerPass(new ActionPass());
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getContainerExtension()
     {
         return new LIN3SAdminExtension();

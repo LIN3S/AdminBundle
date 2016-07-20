@@ -20,6 +20,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * Entity configuration compiler class.
+ *
+ * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
+ */
 class EntityConfigurationPass implements CompilerPassInterface
 {
     /**
@@ -28,7 +33,8 @@ class EntityConfigurationPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('lin3s_admin.configuration.entity_configuration_registry') &&
-            !$container->hasDefinition('lin3s.admin.repository.default_query_builder')) {
+            !$container->hasDefinition('lin3s.admin.repository.default_query_builder')
+        ) {
             return;
         }
 

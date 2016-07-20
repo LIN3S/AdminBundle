@@ -13,8 +13,16 @@ namespace LIN3S\AdminBundle\ListFields\Types;
 
 use LIN3S\AdminBundle\ListFields\ListFieldType;
 
+/**
+ * Date list field type.
+ *
+ * @author Jagoba Perez <jagoba@lin3s.com>
+ */
 class DateListFieldType implements ListFieldType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function render($entity, $options)
     {
         if (!isset($options['field'])) {
@@ -25,6 +33,9 @@ class DateListFieldType implements ListFieldType
         $value = $entity;
         foreach ($properties as $property) {
             $value = $value->$property();
+        }
+        if (!$value instanceof \DateTimeInterface) {
+            throw new \Exception(sprintf('%s must implement the \DateTimeInterface', $value));
         }
 
         return $value->format('d M Y');

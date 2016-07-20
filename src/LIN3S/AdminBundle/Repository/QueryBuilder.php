@@ -14,6 +14,11 @@ namespace LIN3S\AdminBundle\Repository;
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * QueryBuilder interface.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 interface QueryBuilder
 {
     /**

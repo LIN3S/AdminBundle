@@ -12,12 +12,30 @@
 namespace LIN3S\AdminBundle\Configuration\Registry;
 
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigAlreadyRegistedException;
+use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigAlreadyRegisteredException;
 use LIN3S\AdminBundle\Configuration\Registry\Exception\EntityConfigNotFoundException;
 
+/**
+ * Entity configuration not found exception.
+ *
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+ */
 class EntityConfigurationRegistry implements EntityConfigurationRegistryInterface
 {
-    protected $configs = [];
+    /**
+     * Array which contains the configurations.
+     *
+     * @var array
+     */
+    protected $configs;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->configs = [];
+    }
 
     /**
      * {@inheritdoc}
@@ -25,7 +43,7 @@ class EntityConfigurationRegistry implements EntityConfigurationRegistryInterfac
     public function add(EntityConfiguration $entityConfiguration)
     {
         if (isset($this->configs[$entityConfiguration->name()])) {
-            throw new EntityConfigAlreadyRegistedException();
+            throw new EntityConfigAlreadyRegisteredException();
         }
 
         $this->configs[$entityConfiguration->name()] = $entityConfiguration;

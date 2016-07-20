@@ -1,5 +1,3 @@
-<?php
-
 /*
  * This file is part of the Admin Bundle.
  *
@@ -7,15 +5,19 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- */
-
-namespace LIN3S\AdminBundle\Configuration\Registry\Exception;
-
-/**
- * Entity configuration not found exception.
  *
+ * @author Beñat Espiña <benatespina@gmail.com>
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class EntityConfigNotFoundException extends \Exception
-{
-}
+
+'use strict';
+
+(function ($) {
+
+  $(document).ready(function () {
+    $('.panel__header').click(function () {
+      $(this).parent().toggleClass('panel--closed');
+    });
+  });
+
+}(jQuery));

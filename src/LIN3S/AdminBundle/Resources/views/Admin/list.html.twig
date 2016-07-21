@@ -1,4 +1,4 @@
-{% extends 'LIN3SAdminBundle::layout.html.twig' %}
+{% extends '@LIN3SAdmin/layout.html.twig' %}
 
 {% block lin3s_admin_actions %}
     <h1>{{ entityConfig.name | capitalize }}</h1>
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block lin3s_admin_content_top %}
-    {% include 'LIN3SAdminBundle:Admin/partials:list_filters.html.twig' %}
+    {% include '@LIN3SAdmin/Admin/partials/list_filters.html.twig' %}
 {% endblock %}
 
 {% block lin3s_admin_content %}
@@ -31,10 +31,4 @@
             } %}
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/lin3sadmin/js/filter.js') }}"></script>
-    <script src="{{ asset('bundles/lin3sadmin/js/table-list-action.js') }}"></script>
 {% endblock %}

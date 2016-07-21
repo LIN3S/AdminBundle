@@ -21,6 +21,6 @@ All the documentation is stored in the `docs` folder.
 [Show me the docs!](docs/index.md)
 
 ##Licensing Options
-[![License](https://poser.pugx.org/bengor/user-bundle/license.svg)](https://github.com/BenGor/UserBundle/blob/master/LICENSE)
+[![License](https://poser.pugx.org/lin3s/admin-bundle/license.svg)](https://github.com/LIN3S/AdminBundle/blob/master/LICENSE)
 
 [1]: http://getcomposer.org

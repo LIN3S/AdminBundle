@@ -119,6 +119,18 @@ class EntityConfiguration
         $listEntitiesPerPage = 10,
         array $listOrderByDefault = []
     ) {
+        $this->name = $name;
+        $this->className = $className;
+        $this->actions = $actions;
+        $this->listFields = $listFields;
+        $this->listFilters = $listFilters;
+        $this->actions = $actions;
+        $this->listActions = $listActions;
+        $this->listGlobalActions = $listGlobalActions;
+        $this->queryBuilder = $queryBuilder;
+        $this->listEntitiesPerPage = $listEntitiesPerPage;
+        $this->listOrderByDefault = $listOrderByDefault;
+
         foreach ($listFields as $field) {
             if (!$field instanceof ListField) {
                 throw new \InvalidArgumentException('List fields must implement ListField interface');
@@ -162,18 +174,6 @@ class EntityConfiguration
                 );
             }
         }
-
-        $this->name = $name;
-        $this->className = $className;
-        $this->actions = $actions;
-        $this->listFields = $listFields;
-        $this->listFilters = $listFilters;
-        $this->actions = $actions;
-        $this->listActions = $listActions;
-        $this->listGlobalActions = $listGlobalActions;
-        $this->queryBuilder = $queryBuilder;
-        $this->listEntitiesPerPage = $listEntitiesPerPage;
-        $this->listOrderByDefault = $listOrderByDefault;
     }
 
     /**

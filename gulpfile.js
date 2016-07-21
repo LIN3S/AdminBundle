@@ -153,6 +153,6 @@ gulp.task('watch', function () {
   gulp.watch(watch.svg, ['sprites']);
 });
 
-gulp.task('default', ['sass', 'sprites', 'js', 'vendor-js', 'vendor-css', 'modernizr']);
+gulp.task('default', ['sass', 'sprites', 'js', 'vendor-js', 'vendor-css', 'modernizr', 'prod']);
 
 gulp.task('prod', ['sass:prod', 'js:prod', 'sprites', 'vendor-js', 'vendor-css', 'modernizr']);

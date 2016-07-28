@@ -148,8 +148,8 @@ gulp.task('js:prod', function () {
 
 gulp.task('watch', function () {
   livereload.listen();
-  gulp.watch(watch.js, ['js']);
-  gulp.watch(watch.sass, ['sass']);
+  gulp.watch(watch.js, ['js', 'js:prod']);
+  gulp.watch(watch.sass, ['sass', 'sass:prod']);
   gulp.watch(watch.svg, ['sprites']);
 });
 

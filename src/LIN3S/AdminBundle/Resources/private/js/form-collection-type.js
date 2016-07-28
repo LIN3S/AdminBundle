@@ -14,10 +14,12 @@
 
 (function ($) {
 
-  function addItemFormType($collectionHolder) {
+  var $form, $collectionHolder;
+
+  function addFormType($collectionHolder) {
     var
       prototype = $collectionHolder.attr('data-prototype'),
-      index = $collectionHolder.data('index'),
+      index = $collectionHolder.find(':input').length,
       newForm = prototype.replace(/__name__/g, index);
 
     $(newForm).appendTo($collectionHolder);
@@ -25,23 +27,23 @@
   }
 
   $(document).ready(function () {
-    var $collectionHolder = $('.form__collection-items');
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+    $form = $('form');
 
     $('.form__collection-item-toggle').click(function () {
       $(this).parents('.form__collection-item').toggleClass('form__collection-item--hidden')
     });
 
-    $('.js-collection-add').on('click', function (e) {
+    $form.on('click', '.js-collection-add', function (e) {
       e.preventDefault();
 
-      addItemFormType($collectionHolder);
+      $collectionHolder = $(this).closest('.form__collection').find('.form__collection-items').first();
+      addFormType($collectionHolder);
     });
 
-    $('form').on('click', '.js-collection-remove', function (e) {
+    $form.on('click', '.js-collection-remove', function (e) {
       e.preventDefault();
 
-      $(this).parents('.form__collection-item').remove();
+      $(this).closest('.form__collection-item').remove();
     });
   });
 

@@ -8,11 +8,13 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .header__actions {
   align-items: center;
   display: flex;
-
-  .button {
-    margin-left: 15px;
-  }
 }
+

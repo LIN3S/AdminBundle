@@ -32,6 +32,9 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('entities')->requiresAtLeastOneElement()
                 ->prototype('array')
                     ->children()
+                        ->scalarNode('print_name')
+                            ->defaultValue(null)
+                        ->end()
                         ->scalarNode('class')
                             ->isRequired(true)
                         ->end()
@@ -40,6 +43,18 @@ class Configuration implements ConfigurationInterface
                                 ->children()
                                     ->scalarNode('class')->end()
                                     ->arrayNode('options')
+                                        ->beforeNormalization()
+                                            ->ifArray()
+                                            ->then(function ($options) {
+                                                foreach ($options as $key => $option) {
+                                                    if (is_array($option)) {
+                                                        $options[$key] = json_encode($option);
+                                                    }
+                                                }
+
+                                                return $options;
+                                            })
+                                        ->end()
                                         ->prototype('scalar')->end()
                                     ->end()
                                 ->end()

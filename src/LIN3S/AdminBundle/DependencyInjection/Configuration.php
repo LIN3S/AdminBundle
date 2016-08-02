@@ -65,7 +65,7 @@ class Configuration implements ConfigurationInterface
                                 ->arrayNode('actions')
                                     ->prototype('scalar')->end()
                                 ->end()
-                                ->integerNode('amountPerPage')
+                                ->integerNode('amount_per_page')
                                     ->defaultValue(10)
                                 ->end()
                                 ->arrayNode('fields')

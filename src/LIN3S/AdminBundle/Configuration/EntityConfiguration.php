@@ -125,7 +125,7 @@ class EntityConfiguration
         array $listGlobalActions = [],
         QueryBuilder $queryBuilder,
         $printName,
-        $listEntitiesPerPage = 10,
+        $listEntitiesPerPage,
         array $listOrderByDefault = []
     ) {
         $this->name = $name;

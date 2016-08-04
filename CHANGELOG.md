@@ -6,6 +6,8 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
 
 * 0.3.0
+    * Relocated `app.min.js` and `app.min.css` to inside `javascripts.html.twig` and `stylesheets.html.twig` Twig includes.
+        * Be careful overriding this twig components if you are not using ES2015.
     * Added `fonts` Twig block and remove fonts from `stylesheets` block.
     * Actions configuration tree supports nested arrays. There are encoding in json objects.
     * Added `print_name` configuration option.

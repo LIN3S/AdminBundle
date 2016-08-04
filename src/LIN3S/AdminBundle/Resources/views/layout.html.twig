@@ -13,7 +13,6 @@
     {% endblock %}
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/lin3sadmin/css/app.min.css') }}" type="text/css">
         {% include '@LIN3SAdmin/partial/stylesheets.html.twig' %}
     {% endblock %}
 
@@ -47,8 +46,6 @@
         </div>
     </main>
     {% block javascripts %}
-        <script src="{{ asset('bundles/lin3sadmin/js/vendor.js') }}"></script>
-        <script src="{{ asset('bundles/lin3sadmin/js/app.min.js') }}"></script>
         {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
     {% endblock %}
 </body>

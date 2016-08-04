@@ -12,12 +12,22 @@
 
 'use strict';
 
-(function ($) {
+import {EventPublisher, DOMReadyEventSubscriber} from 'lin3s-event-bus';
 
-  $(document).ready(function () {
-    $('.panel__header').click(function () {
-      $(this).parent().toggleClass('panel--closed');
-    });
+import $ from 'jquery';
+
+function onReady() {
+  $('.panel__header').click(function () {
+    $(this).parent().toggleClass('panel--closed');
   });
+}
 
-}(jQuery));
+const init = () => {
+  EventPublisher.subscribe(
+    new DOMReadyEventSubscriber(
+      onReady
+    )
+  );
+};
+
+export default init();

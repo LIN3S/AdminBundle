@@ -12,7 +12,13 @@
 
 @include grid__row('.row');
 
-.row__column {
-  @extend %grid__column;
-  width: 100%;
+.row .row {
+  margin-left: -#{$column-gutter / 2};
+  margin-right: -#{$column-gutter / 2};
 }
+
+@include grid__columns;
+
+
+
+

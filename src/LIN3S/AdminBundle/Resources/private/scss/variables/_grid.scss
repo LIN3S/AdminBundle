@@ -7,6 +7,11 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
+$small-cols: 6, 12 !default;
+$medium-cols: 4, 6, 12 !default;
+$large-cols: 3, 4, 6, 8, 10, 12 !default;
+$xlarge-cols: 12 !default;
+
 $small-breakpoint: 640 !default;
 $medium-breakpoint: 1024 !default;
 $large-breakpoint: 1279 !default;

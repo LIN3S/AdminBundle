@@ -8,7 +8,21 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../helpers/form';
+@import '../helpers/grid';
+
+$form-input-default-color: $color-black !default;
+$form-main-color: $color-cerulean !default;
+$form-input-font-color: $color-shark !default;
+$form-input-checkbox-border-color: $color-black !default;
+$form-input-checkbox-checked-background-color: $color-black !default;
+$form-label-required-color: $color-thunderbird !default;
+$form-error-font-color: $color-thunderbird !default;
+$form-collection-item-even-background-color: $color-seashell !default;
+$form-collection-footer-border-color: $color-seashell !default;
+$form-collection-item-toggle-background-color: $color-white !default;
+$form-collection-item-toggle-border-color: $color-mercury !default;
 
 input,
 textarea,
@@ -16,7 +30,7 @@ select {
   appearance: none;
   border: 0;
   border-radius: 0;
-  color: $black;
+  color: $form-input-default-color;
   font-family: inherit;
   font-size: inherit;
   outline: 0;
@@ -37,36 +51,11 @@ select {
   position: relative;
   transition: color .1s;
 
-  &.required:before {
-    color: $red;
+  &.required::before {
+    color: $form-label-required-color;
     content: '*';
     left: 0;
     position: absolute;
-  }
-}
-
-%form__input {
-  background: $white;
-  border: 1px solid #ddd;
-  box-shadow: inset 0 1px 2px rgba($black, .07);
-  color: $primary-color;
-  order: 2;
-  outline: 0;
-  padding: 8px 12px;
-  transition: .1s border-color ease-in-out;
-
-  &:focus {
-    border-color: $secondary-color;
-    box-shadow: 0 0 2px rgba($secondary-color, .8);
-
-    ~ .form__label {
-      color: $secondary-color;
-    }
-  }
-
-  // In case is nested
-  > * {
-    width: 100%;
   }
 }
 
@@ -87,7 +76,7 @@ select {
 }
 
 .form__select {
-  background-image: url('../svg/down.svg');
+  background-image: url('/svg/down.svg');
   background-position: calc(100% - 8px);
   background-repeat: no-repeat;
   background-size: 15px;
@@ -106,14 +95,14 @@ select {
   order: 2;
 
   > input {
-    border: 1px solid $black;
+    border: 1px solid $form-input-checkbox-border-color;
     cursor: pointer;
     height: 20px;
     margin-right: 8px;
     width: 20px;
 
     &:checked {
-      background: $black;
+      background: $form-input-checkbox-checked-background-color;
     }
   }
 
@@ -132,7 +121,7 @@ select {
   position: relative;
 
   &:nth-child(even) {
-    background: #f1f1f1;
+    background: $form-collection-item-even-background-color;
   }
 }
 
@@ -155,23 +144,23 @@ select {
 }
 
 .form__collection-footer {
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid $form-collection-footer-border-color;
   padding: 15px;
   text-align: right;
 }
 
 .form__collection-item-toggle {
-  cursor: pointer;
-  position: absolute;
-  top: 25px;
-  right: -15px;
-  width: 30px;
-  height: 30px;
-  background: white;
+  background: $form-collection-item-toggle-background-color;
+  border: 1px solid $form-collection-item-toggle-border-color;
   border-radius: 50%;
+  cursor: pointer;
+  height: 30px;
   padding: 5px;
-  border: 1px solid $panel-border;
+  position: absolute;
+  right: -15px;
+  top: 25px;
   transform: translateY(-50%);
+  width: 30px;
 
   rect:nth-child(2) {
     transform: rotate(90deg);
@@ -179,7 +168,7 @@ select {
 }
 
 .form__errors {
-  color: $red;
+  color: $form-error-font-color;
   margin-top: 5px;
   order: 3;
 }

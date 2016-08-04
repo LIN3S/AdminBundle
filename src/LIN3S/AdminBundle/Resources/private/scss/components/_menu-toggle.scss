@@ -7,12 +7,13 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
 
 $menu-toggle-size: 24px !default;
+$menu-toggle-color: $color-white !default;
 
 .menu-toggle {
-  fill: $white;
+  fill: $menu-toggle-color;
   height: $menu-toggle-size;
   width: $menu-toggle-size;
 }

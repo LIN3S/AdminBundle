@@ -8,7 +8,7 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../base/grid';
+@import '../helpers/grid';
 
 @include grid__row('.row');
 

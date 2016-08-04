@@ -7,7 +7,11 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+
+$table-border-color: $color-dark-mercury !default;
+$table-row-odd-color: $color-alabaster !default;
+$table-row-even-color: $color-white !default;
 
 table {
   text-align: left;
@@ -15,7 +19,7 @@ table {
 }
 
 thead {
-  border-bottom: 1px solid $table-border;
+  border-bottom: 1px solid $table-border-color;
 }
 
 th,
@@ -36,7 +40,7 @@ tr {
   position: relative;
   width: 100%;
 
-  &:after {
+  &::after {
     opacity: 0;
     position: absolute;
     right: 0;
@@ -44,17 +48,17 @@ tr {
 
   &.table__sortable--selected,
   &:hover {
-    &:after {
+    &::after {
       opacity: 1;
     }
   }
 }
 
-.table__sortable--asc:after {
+.table__sortable--asc::after {
   content: '▲';
 }
 
-.table__sortable--desc:after {
+.table__sortable--desc::after {
   content: '▼';
 }
 
@@ -64,12 +68,12 @@ tr {
 
   &:not(:last-child) {
     &::after {
-      background-color: $table-border;
+      background-color: $table-border-color;
       content: '';
       height: 100%;
       position: absolute;
-      width: 1px;
       right: -5px;
+      width: 1px;
     }
   }
 }

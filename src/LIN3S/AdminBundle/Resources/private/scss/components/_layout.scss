@@ -7,12 +7,14 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../helpers/grid';
 
+$layout-background-color: $color-seashell !default;
 $layout-menu-height: 50px;
 
 .layout {
-  background: $layout-background;
+  background: $layout-background-color;
   margin-top: $layout-menu-height;
 }
 
@@ -24,9 +26,9 @@ $layout-menu-height: 50px;
 
 .layout__menu {
   height: $layout-menu-height;
-  top: 0;
   overflow: hidden;
   position: fixed;
+  top: 0;
   transition: height .3s;
   width: 100%;
 }

@@ -8,7 +8,10 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../helpers/grid';
+
+$paginator-separator-color: $color-black !default;
 
 .paginator {
   margin-top: 30px;
@@ -28,7 +31,7 @@
 }
 
 .paginator-separator {
-  color: $paginator-separator;
+  color: $paginator-separator-color;
   margin-right: 10px;
 }
 

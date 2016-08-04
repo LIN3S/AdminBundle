@@ -7,13 +7,11 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors.scss';
+@import '../variables/colors';
+@import '../variables/grid';
+@import '../helpers/panel';
 
-%panel {
-  background: $panel-background;
-  border: 1px solid $panel-border;
-  box-shadow: 0 1px 1px rgba($black, .04);
-}
+$panel-header-border-color: $color-mercury !default;
 
 .panel {
   @extend %panel;
@@ -36,7 +34,7 @@
   background-position: calc(100% - 15px) 3px;
   background-repeat: no-repeat;
   background-size: 15px;
-  border-bottom: 1px solid $panel-border;
+  border-bottom: 1px solid $panel-header-border-color;
   cursor: pointer;
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;

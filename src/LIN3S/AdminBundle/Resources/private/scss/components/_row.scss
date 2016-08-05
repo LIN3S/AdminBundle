@@ -17,8 +17,9 @@
   margin-right: -#{$column-gutter / 2};
 }
 
+.row--centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @include grid__columns;
-
-
-
-

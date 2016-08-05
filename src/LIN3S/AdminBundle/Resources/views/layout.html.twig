@@ -29,20 +29,22 @@
         {% endblock %}
     </nav>
     <main class="row layout__content">
-        <div class="row__column">
-            <header class="header">
-                <div class="header__title">
-                    <h1>{% block lin3s_admin_title %}{% endblock %}</h1>
-                </div>
-                <div class="header__actions">
-                    {% block lin3s_admin_actions %}{% endblock %}
-                </div>
-            </header>
-            {% block lin3s_admin_flash_messages %}
-                {% include '@LIN3SAdmin/partial/flash.html.twig' %}
-            {% endblock %}
-            {% block lin3s_admin_content_top %}{% endblock %}
-            {% block lin3s_admin_content %}{% endblock %}
+        <div class="row row--centered ">
+            <div class="row__column">
+                <header class="header">
+                    <div class="header__title">
+                        <h1>{% block lin3s_admin_title %}{% endblock %}</h1>
+                    </div>
+                    <div class="header__actions">
+                        {% block lin3s_admin_actions %}{% endblock %}
+                    </div>
+                </header>
+                {% block lin3s_admin_flash_messages %}
+                    {% include '@LIN3SAdmin/partial/flash.html.twig' %}
+                {% endblock %}
+                {% block lin3s_admin_content_top %}{% endblock %}
+                {% block lin3s_admin_content %}{% endblock %}
+            </div>
         </div>
     </main>
     {% block javascripts %}

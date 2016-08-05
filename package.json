@@ -5,6 +5,7 @@
     "fastclick": "^1.0.6",
     "jquery": "^3.0.0",
     "lin3s-event-bus": "^0.2.2",
+    "picturefill": "^3.0.2",
     "svg4everybody": "^2.0.3"
   },
   "devDependencies": {

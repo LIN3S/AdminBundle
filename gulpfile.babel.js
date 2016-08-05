@@ -101,6 +101,7 @@ gulp.task('modernizr', () => {
       ],
       'tests': ['objectfit', 'flexbox', 'touchevents']
     }))
+    .pipe(uglify())
     .pipe(gulp.dest(paths.distJs))
 });
 

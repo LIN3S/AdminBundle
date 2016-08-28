@@ -19,6 +19,7 @@
 
     {% block head_javascripts %}
         <script src="{{ asset('bundles/lin3sadmin/js/modernizr.js') }}"></script>
+        {% include '@LIN3SAdmin/partial/head_javascripts.html.twig' %}
     {% endblock %}
 </head>
 
@@ -47,9 +48,9 @@
         </div>
     </main>
     {% block javascripts %}
-        <script src="{{ asset('bundles/lin3sadmin/js/vendor.js') }}"></script>
-        <script src="{{ asset('bundles/lin3sadmin/js/app.min.js') }}"></script>
         {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
     {% endblock %}
 </body>
 </html>
+
+{# HAY QUE ARREGLAR EL DIFF ENTRE ESTE LAYOUT Y EL DE LA 0.3-dev #}

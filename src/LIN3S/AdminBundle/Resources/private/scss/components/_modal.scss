@@ -6,6 +6,7 @@
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+// @author Beñat Espiña <benatespina@gmail.com>
 
 @import '../base/colors';
 
@@ -24,6 +25,10 @@
   display: block;
 }
 
+.modal--body-scroll-disable {
+  overflow: hidden;
+}
+
 .modal__content {
   background: $panel-background;
   border: 1px solid $panel-border;
@@ -36,6 +41,10 @@
   transform: translate(-50%, -50%);
   width: 100%;
   z-index: 101;
+}
+
+.modal__image {
+  width: 100%;
 }
 
 .modal__text {
@@ -58,9 +67,10 @@
     background-color: lighten($menu-background, 20%);
     cursor: pointer;
   }
-}
 
-.modal__close-cross {
-  margin-left: 7px;
-  margin-top: -1px;
+  &:after {
+    content: 'X';
+    left: 5px;
+    position: absolute;
+  }
 }

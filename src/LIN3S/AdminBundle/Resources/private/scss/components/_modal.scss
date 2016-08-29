@@ -32,6 +32,10 @@ $modal-content-box-shadow-color: rgba($color-black, .04) !default;
   display: block;
 }
 
+.modal--body-scroll-disable {
+  overflow: hidden;
+}
+
 .modal__content {
   background: $modal-content-background-color;
   border: 1px solid $modal-content-border-color;
@@ -44,6 +48,10 @@ $modal-content-box-shadow-color: rgba($color-black, .04) !default;
   transform: translate(-50%, -50%);
   width: 100%;
   z-index: 101;
+}
+
+.modal__image {
+  width: 100%;
 }
 
 .modal__text {
@@ -66,9 +74,10 @@ $modal-content-box-shadow-color: rgba($color-black, .04) !default;
     background-color: lighten($modal-background-color, 20%);
     cursor: pointer;
   }
-}
 
-.modal__close-cross {
-  margin-left: 7px;
-  margin-top: -1px;
+  &:after {
+    content: 'X';
+    left: 5px;
+    position: absolute;
+  }
 }

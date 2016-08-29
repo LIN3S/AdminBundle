@@ -8,6 +8,7 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
 @import '../variables/colors';
+@import '../helpers/grid';
 @import '../variables/typography';
 
 $menu-background-color: $color-shark !default;
@@ -34,5 +35,17 @@ $menu-link-hover-color: $color-cerulean !default;
   &:hover {
     background-color: $menu-background-hover-color;
     color: $menu-link-hover-color;
+  }
+}
+
+@media #{$medium-up}  {
+  .menu {
+    &:first-child {
+      padding-top: 20px;
+    }
+  }
+
+  .menu__item {
+    padding-left: 20px;
   }
 }

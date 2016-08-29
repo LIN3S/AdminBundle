@@ -78,25 +78,31 @@ class DefaultQueryBuilder implements QueryBuilder
 
         if ($request->get('filterBy') && $request->get('filter')) {
             $previousId = 97;
-            $associations = explode('.', $request->get('filterBy'));
 
-            for ($i = 0; $i < count($associations) - 1; ++$i) {
-                if (false === $this->isTableRelation($metadata, $associations[$i] . '.' . $associations[$i + 1])) {
-                    break;
-                }
-                $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
-                ++$previousId;
-
-                foreach ($metadata->getAssociationMappings() as $associationMapping) {
-                    if ($associationMapping['fieldName'] === $associations[$i]) {
-                        $metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']);
+            if ($this->isTableRelation($metadata, $request->get('filterBy'))) {
+                $associations = explode('.', $request->get('filterBy'));
+                for ($i = 0; $i < count($associations) - 1; ++$i) {
+                    if (false === $this->isTableRelation($metadata, $associations[$i] . '.' . $associations[$i + 1])) {
+                        break;
+                    }
+                    $queryBuilder->innerJoin(chr($previousId) . '.' . $associations[$i], chr($previousId + 1));
+                    ++$previousId;
+                    foreach ($metadata->getAssociationMappings() as $associationMapping) {
+                        if ($associationMapping['fieldName'] === $associations[$i]) {
+                            $metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']);
+                        }
                     }
                 }
+                $queryBuilder->where($queryBuilder->expr()->like(
+                    chr($previousId) . '.' . $associations[count($associations) - 1],
+                    "'%" . $request->get('filter') . "%'"
+                ));
+            } else {
+                $queryBuilder->where($queryBuilder->expr()->like(
+                    chr($previousId) . '.' . $request->get('filterBy'),
+                    "'%" . $request->get('filter') . "%'"
+                ));
             }
-            $queryBuilder->where($queryBuilder->expr()->like(
-                chr($previousId) . '.' . $associations[count($associations) - 1],
-                "'%" . $request->get('filter') . "%'"
-            ));
         }
 
         return $queryBuilder;
@@ -127,6 +133,7 @@ class DefaultQueryBuilder implements QueryBuilder
      *
      * @param EntityConfiguration $config   The entity configuration
      * @param ClassMetadata       $metadata The class metadata
+     * @param Request             $request
      *
      * @return array
      */

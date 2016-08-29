@@ -12,8 +12,10 @@
 
 'use strict';
 
+import ConfirmDialog from './confirm-dialog';
 import filter from './filter';
 import formCollectionType from './form-collection-type';
+import ImagePopup from './image-popup';
 import menu from './menu';
 import panel from './panel';
 import tableListAction from './table-list-action';
@@ -21,9 +23,11 @@ import tableListAction from './table-list-action';
 import {EventPublisher} from 'lin3s-event-bus';
 
 export {
+  ConfirmDialog,
   filter,
   formCollectionType,
   menu,
+  ImagePopup,
   panel,
   tableListAction,
   EventPublisher

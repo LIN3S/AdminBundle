@@ -1,0 +1,35 @@
+// This file is part of the Admin Bundle.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Beñat Espiña <benatespina@gmail.com>
+
+@import '../variables/colors';
+
+$confirm-dialog-background-color: $color-white !default;
+$confirm-dialog-width: 400px !default;
+
+.confirm-dialog {
+  background-color: $confirm-dialog-background-color;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $confirm-dialog-width;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.confirm-dialog__actions,
+.confirm-dialog__content {
+  margin-bottom: 15px;
+}

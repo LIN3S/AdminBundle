@@ -12,13 +12,15 @@
 
 'use strict';
 
-import gulp from 'gulp';
 import babel from 'gulp-babel';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'gulp-cssnano';
+import gulp from 'gulp';
+import file from 'gulp-file';
+import fs from 'fs';
 import livereload from 'gulp-livereload';
 import modernizr from 'gulp-modernizr';
 import plumber from 'gulp-plumber';
@@ -50,32 +52,54 @@ const
     js: paths.js + '/**/*.js',
     sass: paths.sass + '/**/*.scss',
     svg: paths.svg + '/**/*.svg'
+  },
+  plumberOnError = function (err) {
+    console.log(err);
+    this.emit('end');
   };
-
-// Plumber error function
-function onError(err) {
-  console.log(err);
-  this.emit('end');
-}
 
 gulp.task('scss-lint', () => {
   gulp.src([
     `${paths.sass}/**/*.scss`,
     `!${paths.sass}/base/_reset.scss`,
-    `!${paths.sass}/helpers/_grid.scss`
+    `!${paths.sass}/helpers/_grid.scss`,
+    `!${paths.sass}/components/_popup.scss`
   ])
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(scsslint({
       'config': '.scss_lint.yml'
     }));
 });
 
+gulp.task('magnificPopup', () => {
+  const
+    header = '// This file is part of the Admin Bundle.\n' +
+      '//\n' +
+      '// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>\n' +
+      '//\n' +
+      '// For the full copyright and license information, please view the LICENSE\n' +
+      '// file that was distributed with this source code.\n' +
+      '//\n' +
+      '// @author Beñat Espiña <benatespina@gmail.com>\n' +
+      '\n',
+    settingsContent = fs.readFileSync('./node_modules/magnific-popup/src/css/_settings.scss', 'utf8'),
+    mainContent = fs.readFileSync('./node_modules/magnific-popup/src/css/main.scss', 'utf8'),
+    content = settingsContent.concat(mainContent),
+    finalContent = header.concat(content);
+
+  return file(
+    '_popup.scss',
+    finalContent.replace('@import "settings";', ''),
+    {src: true}).pipe(gulp.dest(`${paths.sass}/components`)
+  );
+});
+
 gulp.task('sass', ['scss-lint'], () => {
   gulp.src(`${paths.sass}/app.scss`)
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(sass({
       errLogToConsole: true
@@ -93,7 +117,7 @@ gulp.task('sass', ['scss-lint'], () => {
 gulp.task('modernizr', () => {
   return gulp.src([`${paths.js}/*.js`])
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(modernizr({
       'options': [
@@ -108,7 +132,7 @@ gulp.task('modernizr', () => {
 gulp.task('sprites', () => {
   return gulp.src(`${paths.svg}/*.svg`)
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(svgSprite({
       mode: {
@@ -128,7 +152,7 @@ gulp.task('js:lib', () => {
       presets: ['es2015']
     }))
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(gulp.dest(paths.libJs));
 });
@@ -139,7 +163,7 @@ gulp.task('js:dist', () => {
     .bundle()
     .pipe(source('app.min.js'))
     .pipe(plumber({
-      errorHandler: onError
+      errorHandler: plumberOnError
     }))
     .pipe(buffer())
     .pipe(uglify())

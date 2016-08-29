@@ -12,3 +12,4 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * Actions configuration tree supports nested arrays. There are encoding in json objects.
     * Added `print_name` configuration option.
     * Added `lin3s_admin_title` Twig block and remove the title itself from `lin3s_admin_actions`.
+    * Replaced custom modal with Magnific Popup and created image-popup and confirm-dialog JS components.  

@@ -16,7 +16,12 @@ import 'magnific-popup';
 
 class ImagePopup {
   constructor(el) {
-    $(el).magnificPopup({
+    let $el = $(el);
+    if ($el.length === 0) {
+      return;
+    }
+
+    $el.magnificPopup({
       type: 'image'
     });
   }

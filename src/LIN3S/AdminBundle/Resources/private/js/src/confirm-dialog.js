@@ -32,7 +32,12 @@ const dialog = (title, message) => {
 
 class ConfirmDialog {
   constructor(el, content, callback) {
-    $(el).magnificPopup({
+    let $el = $(el);
+    if ($el.length === 0) {
+      return;
+    }
+
+    $el.magnificPopup({
       modal: true,
       items: {
         src: dialog(content.title, content.message),

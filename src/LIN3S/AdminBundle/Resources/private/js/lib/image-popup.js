@@ -28,7 +28,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var ImagePopup = function ImagePopup(el) {
   _classCallCheck(this, ImagePopup);
 
-  (0, _jquery2.default)(el).magnificPopup({
+  var $el = (0, _jquery2.default)(el);
+  if ($el.length === 0) {
+    return;
+  }
+
+  $el.magnificPopup({
     type: 'image'
   });
 };

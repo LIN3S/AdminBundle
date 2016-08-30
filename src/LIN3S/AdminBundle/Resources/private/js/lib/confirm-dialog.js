@@ -38,7 +38,12 @@ var dialog = function dialog(title, message) {
 var ConfirmDialog = function ConfirmDialog(el, content, callback) {
   _classCallCheck(this, ConfirmDialog);
 
-  (0, _jquery2.default)(el).magnificPopup({
+  var $el = (0, _jquery2.default)(el);
+  if ($el.length === 0) {
+    return;
+  }
+
+  $el.magnificPopup({
     modal: true,
     items: {
       src: dialog(content.title, content.message),

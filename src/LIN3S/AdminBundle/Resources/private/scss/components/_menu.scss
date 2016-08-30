@@ -40,9 +40,7 @@ $menu-link-hover-color: $color-cerulean !default;
 
 @media #{$medium-up}  {
   .menu {
-    &:first-child {
-      padding-top: 20px;
-    }
+    padding-top: 20px;
   }
 
   .menu__item {

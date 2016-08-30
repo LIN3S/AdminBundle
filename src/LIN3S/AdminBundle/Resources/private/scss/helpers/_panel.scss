@@ -10,11 +10,9 @@
 @import '../variables/colors';
 
 $panel-background-color: $color-white !default;
-$panel-border-color: $color-mercury !default;
 $panel-box-shadow-color: rgba($color-black, .04) !default;
 
 %panel {
   background: $panel-background-color;
-  border: 1px solid $panel-border-color;
   box-shadow: 0 1px 1px $panel-box-shadow-color;
 }

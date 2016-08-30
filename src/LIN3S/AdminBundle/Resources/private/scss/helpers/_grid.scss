@@ -105,8 +105,6 @@ $xxlarge-only: media-query-by-range($xxlarge-range, 'only');
 @mixin grid__columns() {
   .row__column {
     @include grid__column($column-count);
-    margin-left: auto;
-    margin-right: auto;
   }
 
   @each $col in $small-cols {

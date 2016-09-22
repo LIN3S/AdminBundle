@@ -10,10 +10,5 @@
 /composer.lock
 /node_modules
 /src/LIN3S/AdminBundle/Resources/public/css
-!/src/LIN3S/AdminBundle/Resources/public/css/app.min.css
 /src/LIN3S/AdminBundle/Resources/public/js
-!/src/LIN3S/AdminBundle/Resources/public/js/app.min.js
-!/src/LIN3S/AdminBundle/Resources/public/js/app.min.js.map
-!/src/LIN3S/AdminBundle/Resources/public/js/modernizr.js
-!/src/LIN3S/AdminBundle/Resources/public/js/vendor.js
 /vendor

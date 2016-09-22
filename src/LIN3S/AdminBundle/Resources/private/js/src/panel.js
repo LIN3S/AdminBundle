@@ -12,22 +12,22 @@
 
 'use strict';
 
-(function ($) {
+import {EventPublisher, DOMReadyEventSubscriber} from 'lin3s-event-bus';
 
-  $(document).ready(function () {
-    var $removeAction = $('.table__action--remove, .table__action--eliminar');
+import $ from 'jquery';
 
-    if ($removeAction.length === 0) {
-      return;
-    }
-
-    $removeAction.click(function () {
-      if (confirm('Are you sure that you want to remove?')) {
-        return true;
-      }
-
-      return false;
-    });
+function onReady() {
+  $('.panel__header').click(function () {
+    $(this).parent().toggleClass('panel--closed');
   });
+}
 
-}(jQuery));
+const init = () => {
+  EventPublisher.subscribe(
+    new DOMReadyEventSubscriber(
+      onReady
+    )
+  );
+};
+
+export default init();

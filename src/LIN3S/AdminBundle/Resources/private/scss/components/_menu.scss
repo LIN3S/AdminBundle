@@ -7,10 +7,18 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../helpers/grid';
+@import '../variables/typography';
+
+$menu-background-color: $color-shark !default;
+$menu-background-hover-color: $color-dark-shark !default;
+$menu-link-color: $color-gallery !default;
+$menu-link-hover-color: $color-cerulean !default;
 
 .menu {
-  background: $menu-background;
+  background-color: $menu-background-color;
+  z-index: 1;
 
   .menu-toggle {
     margin: 10px;
@@ -18,14 +26,24 @@
 }
 
 .menu__item {
+  color: $menu-link-color;
   display: block;
-  color: $menu-link;
   font-size: 14px;
   font-weight: $font-weight-bold;
   padding: 8px 15px;
 
   &:hover {
-    background: $menu-background-hover;
-    color: $menu-link-hover;
+    background-color: $menu-background-hover-color;
+    color: $menu-link-hover-color;
+  }
+}
+
+@media #{$medium-up}  {
+  .menu {
+    padding-top: 20px;
+  }
+
+  .menu__item {
+    padding-left: 20px;
   }
 }

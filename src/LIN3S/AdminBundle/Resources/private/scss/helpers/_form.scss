@@ -1,0 +1,44 @@
+// This file is part of the Admin Bundle.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+// @author Beñat Espiña <benatespina@gmail.com>
+
+@import '../variables/colors';
+
+$form-input-background-color: $color-white !default;
+$form-input-font-color: $color-black !default;
+$form-input-border-color: $color-alto !default;
+$form-input-box-shadow-color: $form-input-font-color !default;
+$form-input-font-color: $color-shark !default;
+$form-input-focused-border-color: $color-cerulean !default;
+$form-input-focused-box-shadow-color: rgba($color-cerulean, .8) !default;
+$form-label-focused-color: $color-cerulean !default;
+
+%form__input {
+  background: $form-input-background-color;
+  border: 1px solid $form-input-border-color;
+  color: $form-input-font-color;
+  order: 2;
+  outline: 0;
+  padding: 8px 12px;
+  transition: .1s border-color ease-in-out;
+
+  &:focus {
+    border-color: $form-input-focused-border-color;
+    box-shadow: 0 0 2px $form-input-focused-box-shadow-color;
+
+    ~ .form__label {
+      color: $form-label-focused-color;
+    }
+  }
+
+  // In case is nested
+  > * {
+    width: 100%;
+  }
+}

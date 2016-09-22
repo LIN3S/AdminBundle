@@ -7,17 +7,24 @@
  * file that was distributed with this source code.
  *
  * @author Beñat Espiña <benatespina@gmail.com>
- * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
 'use strict';
 
-(function ($) {
+import $ from 'jquery';
+import 'magnific-popup';
 
-  $(document).ready(function () {
-    $('.panel__header').click(function () {
-      $(this).parent().toggleClass('panel--closed');
+class ImagePopup {
+  constructor(el) {
+    let $el = $(el);
+    if ($el.length === 0) {
+      return;
+    }
+
+    $el.magnificPopup({
+      type: 'image'
     });
-  });
+  }
+}
 
-}(jQuery));
+export default ImagePopup;

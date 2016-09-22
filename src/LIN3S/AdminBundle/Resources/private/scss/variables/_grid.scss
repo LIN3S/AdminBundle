@@ -1,0 +1,51 @@
+// This file is part of the Admin Bundle.
+//
+// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+
+$small-cols: 6, 12 !default;
+$medium-cols: 4, 6, 12 !default;
+$large-cols: 3, 4, 6, 8, 10, 12 !default;
+$xlarge-cols: 12 !default;
+
+$small-breakpoint: 640 !default;
+$medium-breakpoint: 1024 !default;
+$large-breakpoint: 1279 !default;
+$xlarge-breakpoint: 1440 !default;
+
+$small-range: (0, $small-breakpoint) !default;
+$medium-range: ($small-breakpoint + 1, $medium-breakpoint) !default;
+$large-range: ($medium-breakpoint + 1, $large-breakpoint) !default;
+$xlarge-range: ($large-breakpoint + 1, $xlarge-breakpoint) !default;
+$xxlarge-range: ($xlarge-breakpoint + 1, 99999999) !default;
+
+$screen: 'only screen';
+
+$landscape: '#{$screen} and (orientation: landscape)' !default;
+$portrait: '#{$screen} and (orientation: portrait)' !default;
+
+$small-up: $screen;
+
+$column-count: 12 !default;
+$column-gutter: 30px !default;
+$row-padding: 15px !default;
+
+$fluid-row-width: 1290 !default;
+
+$adaptive-row-small-width: 666 !default;
+$adaptive-row-medium-width: 666 !default;
+$adaptive-row-large-width: 930 !default;
+$adaptive-row-xlarge-width: 1170 !default;
+$adaptive-row-xxlarge-width: $fluid-row-width;
+
+$grid: ('adaptive': (
+  ($small-range, $adaptive-row-small-width),
+  ($medium-range, $adaptive-row-medium-width),
+  ($large-range, $adaptive-row-large-width),
+  ($xlarge-range, $adaptive-row-xlarge-width),
+  ($xxlarge-range, $adaptive-row-xxlarge-width)
+)) !default;

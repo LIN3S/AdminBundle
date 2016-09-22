@@ -87,6 +87,13 @@ class EntityConfiguration
     protected $listOrderByDefault;
 
     /**
+     * The entity name, for visualization purposes.
+     *
+     * @var string
+     */
+    private $printName;
+
+    /**
      * The query builder.
      *
      * @var QueryBuilder
@@ -104,6 +111,7 @@ class EntityConfiguration
      * @param array        $listFilters         List filters
      * @param array        $listGlobalActions   List global actions
      * @param QueryBuilder $queryBuilder        The query builder
+     * @param string       $printName           The entity name, for visualization purposes
      * @param int          $listEntitiesPerPage The number of entities per page
      * @param array        $listOrderByDefault  The order by default
      */
@@ -116,7 +124,8 @@ class EntityConfiguration
         array $listFilters = [],
         array $listGlobalActions = [],
         QueryBuilder $queryBuilder,
-        $listEntitiesPerPage = 10,
+        $printName,
+        $listEntitiesPerPage,
         array $listOrderByDefault = []
     ) {
         $this->name = $name;
@@ -128,6 +137,7 @@ class EntityConfiguration
         $this->listActions = $listActions;
         $this->listGlobalActions = $listGlobalActions;
         $this->queryBuilder = $queryBuilder;
+        $this->printName = $printName;
         $this->listEntitiesPerPage = $listEntitiesPerPage;
         $this->listOrderByDefault = $listOrderByDefault;
 
@@ -318,6 +328,16 @@ class EntityConfiguration
         }
 
         return $listGlobalActions;
+    }
+
+    /**
+     * Gets the print name.
+     *
+     * @return string
+     */
+    public function printName()
+    {
+        return $this->printName;
     }
 
     /**

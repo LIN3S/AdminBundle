@@ -8,46 +8,46 @@
 
     <title>{% block title %}{% include '@LIN3SAdmin/partial/title.html.twig' %}{% endblock %}</title>
 
+    {% block fonts %}
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300" type="text/css">
+    {% endblock %}
+
     {% block stylesheets %}
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ asset('bundles/lin3sadmin/css/app.min.css') }}" type="text/css">
         {% include '@LIN3SAdmin/partial/stylesheets.html.twig' %}
     {% endblock %}
 
     {% block head_javascripts %}
         <script src="{{ asset('bundles/lin3sadmin/js/modernizr.js') }}"></script>
+        {% include '@LIN3SAdmin/partial/head_javascripts.html.twig' %}
     {% endblock %}
 </head>
 
 <body class="layout">
-    <nav class="layout__menu menu">
-        {% include '@LIN3SAdmin/partial/menu_toggle.html.twig' %}
-        {% block lin3s_admin_aside_links %}
-            {% include '@LIN3SAdmin/partial/menu.html.twig' %}
-        {% endblock %}
-    </nav>
-    <main class="row layout__content">
-        <div class="row__column">
-            <header class="header">
-                <nav class="breadcrumbs">
-                    {% block lin3s_admin_breadcrumb %}{% endblock %}
-                </nav>
-                <div class="header__actions">
-                    {% block lin3s_admin_actions %}{% endblock %}
-                </div>
-            </header>
-            {% block lin3s_admin_flash_messages %}
-                {% include '@LIN3SAdmin/partial/flash.html.twig' %}
-            {% endblock %}
-            {% block lin3s_admin_content_top %}{% endblock %}
-            {% block lin3s_admin_content %}{% endblock %}
-        </div>
-    </main>
-    {% block javascripts %}
-        <script src="{{ asset('bundles/lin3sadmin/js/vendor.js') }}"></script>
-        <script src="{{ asset('bundles/lin3sadmin/js/app.min.js') }}"></script>
-        {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
+<nav class="layout__menu menu">
+    {% include '@LIN3SAdmin/partial/menu_toggle.html.twig' %}
+    {% block lin3s_admin_aside_links %}
+        {% include '@LIN3SAdmin/partial/menu.html.twig' %}
     {% endblock %}
+</nav>
+<main class="row row--centered layout__content">
+    <div class="row__column">
+        <header class="header">
+            <div class="header__title">
+                <h1>{% block lin3s_admin_title %}{% endblock %}</h1>
+            </div>
+            <div class="header__actions">
+                {% block lin3s_admin_actions %}{% endblock %}
+            </div>
+        </header>
+        {% block lin3s_admin_flash_messages %}
+            {% include '@LIN3SAdmin/partial/flash.html.twig' %}
+        {% endblock %}
+        {% block lin3s_admin_content_top %}{% endblock %}
+        {% block lin3s_admin_content %}{% endblock %}
+    </div>
+</main>
+{% block javascripts %}
+    {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
+{% endblock %}
 </body>
 </html>

@@ -8,24 +8,38 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../variables/typography';
+
+$button-background-color: $color-seashell !default;
+$button-border-color: $color-dusty-grey !default;
+$button-box-shadow-color: $color-dusty-grey !default;
+$button-font-color: $color-dove-grey !default;
+
+$button-secondary-background-color: $color-bondi-blue !default;
+$button-secondary-border-top-color: $button-secondary-background-color !default;
+$button-secondary-border-lateral-color: $color-bahama-blue !default;
+$button-secondary-border-bottom-color: $button-secondary-border-lateral-color !default;
+$button-secondary-font-color: $color-white !default;
+$button-secondary-box-shadow-color: $button-secondary-border-lateral-color !default;
 
 .button {
   appearance: none;
-  background: $lightgrey;
-  border: $grey 1px solid;
+  background: $button-background-color;
+  border: $button-border-color 1px solid;
   border-radius: 3px;
-  box-shadow: 0 1px 0 $grey;
-  color: $darkgrey;
+  box-shadow: 0 1px 0 $button-box-shadow-color;
+  color: $button-font-color;
   cursor: pointer;
   font-size: 13px;
   padding: 6px 10px;
 }
 
 .button--secondary {
-  background: $button-blue-background;
-  border-color: $button-blue-border-top $button-blue-border-lateral $button-blue-border-bottom;
-  box-shadow: 0 1px 0 $button-blue-border-box-shadow;
-  color: $white;
+  background: $button-secondary-background-color;
+  border-color: $button-secondary-border-top-color $button-secondary-border-lateral-color $button-secondary-border-bottom-color;
+  box-shadow: 0 1px 0 $button-secondary-box-shadow-color;
+  color: $button-secondary-font-color;
+  font-weight: $font-weight-bold;
   text-decoration: none;
 }

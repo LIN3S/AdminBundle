@@ -7,14 +7,17 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../helpers/grid';
+
+$filter-background-color: $color-white !default;
 
 .filter {
   align-items: center;
-  background: $white;
+  background: $filter-background-color;
   justify-content: flex-end;
-  padding: 15px;
   margin-bottom: 30px;
+  padding: 15px;
 }
 
 .filter__filter-by {
@@ -42,8 +45,8 @@
 
   .filter__button.button {
     align-self: stretch;
-    border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     box-shadow: none;
     margin-top: 0;
     width: auto;

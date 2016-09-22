@@ -7,7 +7,12 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
-@import '../base/colors';
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../helpers/panel';
+
+$flash-success-color: $color-chateau-green !default;
+$flash-error-color: $color-thunderbird !default;
 
 .flash {
   @extend %panel;
@@ -16,9 +21,9 @@
 }
 
 .flash--success {
-  border-left: 3px solid $flash-success;
+  border-left: 3px solid $flash-success-color;
 }
 
 .flash--error {
-  border-left: 3px solid $flash-error;
+  border-left: 3px solid $flash-error-color;
 }

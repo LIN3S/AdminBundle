@@ -133,6 +133,7 @@ class DefaultQueryBuilder implements QueryBuilder
      *
      * @param EntityConfiguration $config   The entity configuration
      * @param ClassMetadata       $metadata The class metadata
+     * @param Request             $request
      *
      * @return array
      */

@@ -6,20 +6,13 @@
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
-// @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../helpers/grid';
+@import '../variables/colors';
 
-@include grid__row('.row');
+$panel-background-color: $color-white !default;
+$panel-box-shadow-color: rgba($color-black, .04) !default;
 
-.row .row {
-  margin-left: -#{$column-gutter / 2};
-  margin-right: -#{$column-gutter / 2};
+%panel {
+  background: $panel-background-color;
+  box-shadow: 0 1px 1px $panel-box-shadow-color;
 }
-
-.row--centered {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@include grid__columns;

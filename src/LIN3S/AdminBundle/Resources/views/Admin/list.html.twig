@@ -1,18 +1,16 @@
 {% extends '@LIN3SAdmin/layout.html.twig' %}
 
-{% block lin3s_admin_actions %}
-    <h1>{{ entityConfig.name | capitalize }}</h1>
-    {% for listGlobalAction in entityConfig.listGlobalActions %}
-        <a class="button small"
-           href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name }) }}">
-            {{ listGlobalAction.name }}
-        </a>
-    {% endfor %}
+{% block lin3s_admin_title %}
+    {{ entityConfig.printName | trans }}
 {% endblock %}
 
-{% block lin3s_admin_breadcrumb %}
-    {#<a class="admin__breadcrumb link" href="{{ path('lin3s_admin_dashboard') }}">Admin</a>#}
-    {#<span class="admin__breadcrumb">{{ entityConfig.name | capitalize }}</span>#}
+{% block lin3s_admin_actions %}
+    {% for listGlobalAction in entityConfig.listGlobalActions %}
+        <a href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name }) }}"
+           class="button button--secondary">
+            {{ listGlobalAction.name | capitalize }}
+        </a>
+    {% endfor %}
 {% endblock %}
 
 {% block lin3s_admin_content_top %}
@@ -20,8 +18,7 @@
 {% endblock %}
 
 {% block lin3s_admin_content %}
-    <div class="admin__batch-actions">
-    </div>
+    <div class="admin__batch-actions"></div>
     <div class="admin__list">
             {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
             {% include '@LIN3SAdmin/Admin/partials/paginator.html.twig' with {

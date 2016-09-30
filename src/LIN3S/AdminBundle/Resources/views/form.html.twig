@@ -25,7 +25,7 @@
                 <div class="form__collection-item">
                     {{ form_row(children) }}
                     <div class="form__collection-item-footer">
-                        <button class='button js-collection-remove'>Remove</button>
+                        <button class='button js-collection-remove'>{% trans %}lin3s_admin.form.remove{% endtrans %}</button>
                     </div>
                     <div class="form__collection-item-toggle">
                         {% include '@LIN3SAdmin/svg/toggle.svg.twig' with {
@@ -36,7 +36,7 @@
             {% endfor %}
         </div>
         <div class="form__collection-footer">
-            <button class="button js-collection-add">Add</button>
+            <button class="button js-collection-add">{% trans %}lin3s_admin.form.add{% endtrans %}</button>
         </div>
     </div>
 {% endblock %}
@@ -169,7 +169,7 @@
 {% block lin3s_admin_submit %}
     <div class="panel">
         <div class="panel__header">
-            <h2 class="panel__title">Publish</h2>
+            <h2 class="panel__title">{% trans %}lin3s_admin.form.publish{% endtrans %}</h2>
         </div>
         <div class="panel__content">
             <div class="form__group">

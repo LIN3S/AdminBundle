@@ -21,4 +21,6 @@ lin3s_admin:
         title: Editar %entity%
     form:
         save_changes: Guardar cambios
-
+        publish: Publicar
+        add: Añadir
+        remove: Eliminar

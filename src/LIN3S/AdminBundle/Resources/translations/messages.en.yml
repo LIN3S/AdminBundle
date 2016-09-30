@@ -21,3 +21,6 @@ lin3s_admin:
         title: Edit %entity%
     form:
         save_changes: Save changes
+        publish: Publish
+        add: Add
+        remove: Remove

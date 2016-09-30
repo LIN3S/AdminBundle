@@ -51,11 +51,18 @@
 {%- block choice_widget_expanded -%}
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
-            <div class="form__group">
-                <div class="form__checkbox">
-                    {{- form_widget(child) -}}
-                    {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
-                </div>
+            <div class="form__group form__group--inline">
+                {{- form_widget(child, {
+                    attr: {
+                        class: 'form__checkbox-input'
+                    }
+                }) -}}
+                {{- form_label(child, null, {
+                    label_attr: {
+                        class: 'form__checkbox-label'
+                    },
+                    translation_domain: choice_translation_domain
+                }) -}}
             </div>
         {% endfor -%}
     </div>
@@ -64,13 +71,13 @@
 {% block checkbox_row %}
     <div class="form__group form__group--inline">
         {{- form_widget(form, {
-            'attr': {
-                'class': 'form__checkbox-input'
+            attr: {
+                class: 'form__checkbox-input'
             }
         }) -}}
         {{- form_label(form, null, {
-            'label_attr': {
-                'class': 'form__checkbox-label'
+            label_attr: {
+                class: 'form__checkbox-label'
             }
         }) -}}
         {{- form_errors(form) -}}

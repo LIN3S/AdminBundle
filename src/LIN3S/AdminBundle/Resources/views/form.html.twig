@@ -19,7 +19,8 @@
 
 {% block collection_row -%}
     <div class="form__collection">
-        <div class="form__collection-items" data-prototype="<div class='form__collection-item'>{{ form_widget(form.vars.prototype)|e }}<div class='form__collection-item-footer'><button class='button js-collection-remove'>Remove</button></div></div>">
+        <div class="form__collection-items"
+             data-prototype="<div class='form__collection-item'>{{ form_widget(form.vars.prototype)|e }}<div class='form__collection-item-footer'><button class='button js-collection-remove'>Remove</button></div></div>">
             {% for children in form.children %}
                 <div class="form__collection-item">
                     {{ form_row(children) }}
@@ -28,8 +29,8 @@
                     </div>
                     <div class="form__collection-item-toggle">
                         {% include '@LIN3SAdmin/svg/toggle.svg.twig' with {
-                            svgClass: 'form__collection-item-toggle-icon'
-                        }%}
+                        svgClass: 'form__collection-item-toggle-icon'
+                        } %}
                     </div>
                 </div>
             {% endfor %}
@@ -61,9 +62,17 @@
 {%- endblock choice_widget_expanded -%}
 
 {% block checkbox_row %}
-    <div class="form__group form__checkbox">
-        {{- form_widget(form) -}}
-        {{- form_label(form) -}}
+    <div class="form__group form__group--inline">
+        {{- form_widget(form, {
+            'attr': {
+                'class': 'form__checkbox-input'
+            }
+        }) -}}
+        {{- form_label(form, null, {
+            'label_attr': {
+                'class': 'form__checkbox-label'
+            }
+        }) -}}
         {{- form_errors(form) -}}
     </div>
 {% endblock %}
@@ -141,9 +150,9 @@
             {% for field in group.fields %}
                 {% set props = field | split('.') %}
                 {% if props | length == 1 %}
-                    {{ form_row(form[props[0]])}}
+                    {{ form_row(form[props[0]]) }}
                 {% elseif props | length == 2 %}
-                    {{ form_row(form[props[0]][props[1]])}}
+                    {{ form_row(form[props[0]][props[1]]) }}
                 {% endif %}
             {% endfor %}
         </div>

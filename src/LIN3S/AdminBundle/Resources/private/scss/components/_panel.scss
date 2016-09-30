@@ -16,6 +16,7 @@ $panel-header-border-color: $color-mercury !default;
 .panel {
   @extend %panel;
   margin-bottom: 30px;
+  overflow: auto;
   width: 100%;
 }
 

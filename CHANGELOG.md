@@ -5,6 +5,8 @@ This changelog references the relevant changes done between versions.
 To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundle/commit/XXX where XXX is the change hash 
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
 
+* 0.3.2
+    * Styles and Twig bug fixes
 * 0.3.1
     * Styles and Twig bug fixes
 * 0.3.0

@@ -1,0 +1,6 @@
+{% set rectSize = 10 %}
+{% set viewBoxSize = 50 %}
+<svg viewBox="0 0 {{ viewBoxSize }} {{ viewBoxSize }}"{% if svgClass is defined %} class="{{ svgClass }}{% endif %}">
+    <rect height="{{ rectSize }}" width="{{ viewBoxSize }}" x="0" y="{{ viewBoxSize / 2 - rectSize / 2}}"/>
+    <rect height="{{ viewBoxSize }}" width="{{ rectSize }}" x="{{ viewBoxSize / 2 - rectSize / 2}}" y="0"/>
+</svg>

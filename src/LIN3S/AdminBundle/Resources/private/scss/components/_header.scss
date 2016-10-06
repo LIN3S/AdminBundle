@@ -8,9 +8,12 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
+@import '../helpers/grid';
+
 .header {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .header__actions {
@@ -18,3 +21,8 @@
   display: flex;
 }
 
+@media #{$medium-up} {
+  .header {
+    margin-top: 0;
+  }
+}

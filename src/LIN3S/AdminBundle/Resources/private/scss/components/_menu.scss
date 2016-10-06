@@ -21,8 +21,12 @@ $menu-link-hover-color: $color-cerulean !default;
   z-index: 1;
 
   .menu-toggle {
-    margin: 10px;
+    margin: 15px 10px 10px;
   }
+}
+
+.menu__toggle {
+
 }
 
 .menu__item {
@@ -39,10 +43,6 @@ $menu-link-hover-color: $color-cerulean !default;
 }
 
 @media #{$medium-up}  {
-  .menu {
-    padding-top: 20px;
-  }
-
   .menu__item {
     padding-left: 20px;
   }

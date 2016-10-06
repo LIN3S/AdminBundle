@@ -11,14 +11,25 @@
 @import '../helpers/grid';
 
 $layout-background-color: $color-seashell !default;
-$layout-menu-height: 50px;
+$layout-menu-height: 50px !default;
+$layout-header-background-color: $color-shark !default;
+$layout-header-height: 30px !default;
 
 .layout {
-  background: $layout-background-color;
-  margin-top: $layout-menu-height;
+
+}
+
+.layout__header {
+  background-color: $layout-header-background-color;
+  height: $layout-header-height;
+  width: 100%;
 }
 
 .layout__content {
+  background: $layout-background-color;
+}
+
+.layout__main {
   flex: 1;
   padding-left: $column-gutter / 2;
   padding-right: $column-gutter / 2;
@@ -34,11 +45,10 @@ $layout-menu-height: 50px;
 }
 
 @media #{$medium-up} {
-  .layout {
+  .layout__content {
     display: flex;
     height: auto;
-    margin-top: 0;
-    min-height: 100vh;
+    min-height: calc(100vh - #{$layout-header-height});
   }
 
   .layout__menu {

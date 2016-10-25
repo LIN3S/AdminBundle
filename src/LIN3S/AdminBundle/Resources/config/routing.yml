@@ -7,6 +7,10 @@
 #
 # @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
+lin3s_admin_switch_locale:
+    path: /locale/{_locale}
+    defaults: { _controller: LIN3SAdminBundle:Locale:switchLocale }
+
 lin3s_admin_list:
     path: /{entity}
     defaults:

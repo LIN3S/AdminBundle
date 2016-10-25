@@ -54,6 +54,12 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 
+    lin3s_admin.event_listener.locale:
+        class: LIN3S\AdminBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 15 }
+
 
     ## FORM ##
     lin3s_admin.form.handler:

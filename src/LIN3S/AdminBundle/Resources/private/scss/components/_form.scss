@@ -107,7 +107,7 @@ select {
   transition: background .2s .1s;
   width: 20px;
 
-  &:after {
+  &::after {
     color: transparent;
     content: '✓';
     left: 50%;
@@ -122,7 +122,7 @@ select {
     border: 1px solid $form-input-checkbox-checked-background-color;
     transition: background .2s;
 
-    &:after {
+    &::after {
       color: $form-input-checkbox-checked-tik-color;
       transform: translate(-50%, -50%);
     }

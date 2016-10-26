@@ -33,7 +33,7 @@ class DefaultQueryBuilder implements QueryBuilder
     protected $manager;
 
     /**
-     * DefaultQueryBuilder constructor.
+     * Constructor.
      *
      * @param EntityManager $manager The entity manager
      */
@@ -81,6 +81,7 @@ class DefaultQueryBuilder implements QueryBuilder
 
             if ($this->isTableRelation($metadata, $request->get('filterBy'))) {
                 $associations = explode('.', $request->get('filterBy'));
+                $fields = $associations;
                 for ($i = 0; $i < count($associations) - 1; ++$i) {
                     if (false === $this->isTableRelation($metadata, $associations[$i] . '.' . $associations[$i + 1])) {
                         break;
@@ -92,9 +93,13 @@ class DefaultQueryBuilder implements QueryBuilder
                             $metadata = $this->manager->getClassMetadata($associationMapping['targetEntity']);
                         }
                     }
+                    unset($fields[$i]);
                 }
+
+                $fields = implode('.', $fields);
+
                 $queryBuilder->where($queryBuilder->expr()->like(
-                    chr($previousId) . '.' . $associations[count($associations) - 1],
+                    chr($previousId) . '.' . $fields,
                     "'%" . $request->get('filter') . "%'"
                 ));
             } else {
@@ -133,7 +138,6 @@ class DefaultQueryBuilder implements QueryBuilder
      *
      * @param EntityConfiguration $config   The entity configuration
      * @param ClassMetadata       $metadata The class metadata
-     * @param Request             $request
      *
      * @return array
      */

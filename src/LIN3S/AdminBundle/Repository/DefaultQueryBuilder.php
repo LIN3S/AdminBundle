@@ -197,6 +197,9 @@ class DefaultQueryBuilder implements QueryBuilder
      */
     private function removeDuplicateJoins(DoctrineQueryBuilder $queryBuilder)
     {
+        if (empty($queryBuilder->getDQLParts()['join'])) {
+            return $queryBuilder;
+        }
         $joinArray = [];
         $joins = $queryBuilder->getDQLParts()['join']['a'];
         foreach ($joins as $join) {

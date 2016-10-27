@@ -66,9 +66,9 @@ class DefaultQueryBuilder implements QueryBuilder
             $queryBuilder
         );
 
-        if ($alias) {
+        if (null !== $alias) {
             null === $fields
-                ? $queryBuilder->addOrderBy($alias . $request->get('orderBy'), $request->get('order', 'ASC'))
+                ? $queryBuilder->addOrderBy($alias . '.' . $request->get('orderBy'), $request->get('order', 'ASC'))
                 : $queryBuilder->addOrderBy($alias . '.' . $fields, $request->get('order', 'ASC'));
         }
 
@@ -80,7 +80,7 @@ class DefaultQueryBuilder implements QueryBuilder
             $queryBuilder
         );
 
-        if ($alias) {
+        if (null !== $alias) {
             null === $fields
                 ? $queryBuilder->where($queryBuilder->expr()->like(
                 $alias . '.' . $request->get('filterBy'),
@@ -156,6 +156,9 @@ class DefaultQueryBuilder implements QueryBuilder
         ClassMetadata $metadata,
         DoctrineQueryBuilder $queryBuilder
     ) {
+        $alias = null;
+        $fields = null;
+
         if ($criteriaBy && $criteria) {
             $previousId = 97;
 
@@ -175,17 +178,17 @@ class DefaultQueryBuilder implements QueryBuilder
                     }
                     unset($fields[$i]);
                 }
+                $alias = chr($previousId);
                 $fields = implode('.', $fields);
-
-                return [
-                    chr($previousId), $fields,
-                ];
+            } else {
+                $alias = chr($previousId);
             }
-
-            return [
-                chr($previousId),
-            ];
         }
+
+        return [
+            $alias,
+            $fields,
+        ];
     }
 
     /**

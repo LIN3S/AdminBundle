@@ -73,6 +73,18 @@ class Configuration implements ConfigurationInterface
                                         ->children()
                                             ->scalarNode('class')->end()
                                             ->arrayNode('options')
+                                                ->beforeNormalization()
+                                                ->ifArray()
+                                                ->then(function ($options) {
+                                                    foreach ($options as $key => $option) {
+                                                        if (is_array($option)) {
+                                                            $options[$key] = json_encode($option);
+                                                        }
+                                                    }
+
+                                                    return $options;
+                                                })
+                                                ->end()
                                                 ->prototype('scalar')->end()
                                             ->end()
                                         ->end()

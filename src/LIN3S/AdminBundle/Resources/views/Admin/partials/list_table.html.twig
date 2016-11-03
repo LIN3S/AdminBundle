@@ -9,10 +9,9 @@
                class="table__sortable
                 {{ app.request.get('orderBy') == field.name ? ' table__sortable--selected'}}
                 {{ app.request.get('orderBy') == field.name and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">
-                {{ field.name }}</th>
+                {{ field.type.header(field.options, entityConfig) | raw }}</th>
             </a>
     {% endfor %}
-    <th>{% trans %}lin3s_admin.list.table.actions{% endtrans %}</th>
     </thead>
     <tbody>
     {% for entity in entities %}
@@ -24,22 +23,8 @@
             {% endif %}
             {% block lin3s_admin_list_table_row_fields %}
                 {% for field in entityConfig.listFields %}
-                    <td>{{ field.type.render(entity, field.options) }}</td>
+                    <td>{{ field.type.render(entity, field.options, entityConfig) | raw }}</td>
                 {% endfor %}
-            {% endblock %}
-            {% block lin3s_admin_list_table_row_actions %}
-                <td>
-                    {% for action in entityConfig.listActions %}
-                        {% block lin3s_admin_list_table_row_action %}
-                            <a class="table__action table__action--{{ action.name }}"
-                               href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name , 'id': entity.id , 'action': action.name }) }}">
-                                {% block lin3s_admin_list_table_row_action_name %}
-                                    {{ action.name | capitalize }}
-                                {% endblock %}
-                            </a>
-                        {% endblock %}
-                    {% endfor %}
-                </td>
             {% endblock %}
         </tr>
     {% endfor %}

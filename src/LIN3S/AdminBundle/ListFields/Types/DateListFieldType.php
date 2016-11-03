@@ -11,6 +11,7 @@
 
 namespace LIN3S\AdminBundle\ListFields\Types;
 
+use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use LIN3S\AdminBundle\ListFields\ListFieldType;
 
 /**
@@ -20,10 +21,21 @@ use LIN3S\AdminBundle\ListFields\ListFieldType;
  */
 class DateListFieldType implements ListFieldType
 {
+    public function header($options, EntityConfiguration $configuration)
+    {
+        if (!isset($options['name'])) {
+            throw new \InvalidArgumentException('Field to be rendered must be passed as string');
+        }
+
+        return $options['name'];
+
+        //return $this->translator->trans($options['name']);
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function render($entity, $options)
+    public function render($entity, $options, EntityConfiguration $configuration)
     {
         if (!isset($options['field'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');

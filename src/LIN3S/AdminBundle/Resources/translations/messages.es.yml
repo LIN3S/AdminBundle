@@ -8,6 +8,9 @@
 # @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
 lin3s_admin:
+    action:
+        new: Nuevo
+        edit: Editar
     list:
         table:
             actions: Acciones

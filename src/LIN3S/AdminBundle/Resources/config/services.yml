@@ -70,6 +70,14 @@ services:
         class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
         tags:
             - {name: lin3s_admin.list_field_type}
+    lin3s_admin.list_field_type.actions:
+        class: LIN3S\AdminBundle\ListFields\Types\ActionsListFieldType
+        arguments:
+            - '@translator'
+            - '@twig'
+            - '@router'
+        tags:
+            - {name: lin3s_admin.list_field_type}
 
 
     ## LIST FILTERS ##

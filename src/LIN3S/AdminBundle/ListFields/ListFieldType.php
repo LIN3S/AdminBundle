@@ -10,6 +10,7 @@
  */
 
 namespace LIN3S\AdminBundle\ListFields;
+use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 
 /**
  * List field type.
@@ -18,13 +19,16 @@ namespace LIN3S\AdminBundle\ListFields;
  */
 interface ListFieldType
 {
+    public function header($options, EntityConfiguration $configuration);
+
     /**
      * Methods that renders the field type with the given params.
      *
      * @param mixed $entity  The related entity
      * @param array $options Array which contains options
+     * @param EntityConfiguration $configuration
      *
      * @return mixed
      */
-    public function render($entity, $options);
+    public function render($entity, $options, EntityConfiguration $configuration);
 }

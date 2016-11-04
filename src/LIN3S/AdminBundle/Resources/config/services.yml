@@ -68,8 +68,10 @@ services:
         class: LIN3S\AdminBundle\ListFields\ListFieldTypeRegistry
     lin3s_admin.list_field_type.string:
         class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
+        arguments:
+            - "@translator.default"
         tags:
-            - {name: lin3s_admin.list_field_type}
+            - { name: lin3s_admin.list_field_type }
     lin3s_admin.list_field_type.actions:
         class: LIN3S\AdminBundle\ListFields\Types\ActionsListFieldType
         arguments:

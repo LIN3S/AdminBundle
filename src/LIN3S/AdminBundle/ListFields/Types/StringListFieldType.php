@@ -13,6 +13,7 @@ namespace LIN3S\AdminBundle\ListFields\Types;
 
 use LIN3S\AdminBundle\Configuration\EntityConfiguration;
 use LIN3S\AdminBundle\ListFields\ListFieldType;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * String list field type.
@@ -21,15 +22,20 @@ use LIN3S\AdminBundle\ListFields\ListFieldType;
  */
 class StringListFieldType implements ListFieldType
 {
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function header($options, EntityConfiguration $configuration)
     {
         if (!isset($options['name'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
 
-        return $options['name'];
-
-        //return $this->translator->trans($options['name']);
+        return $this->translator->trans($options['name']);
     }
 
     /**

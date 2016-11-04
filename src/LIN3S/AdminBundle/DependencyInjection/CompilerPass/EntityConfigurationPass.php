@@ -104,7 +104,7 @@ class EntityConfigurationPass implements CompilerPassInterface
                         $listFilters,
                         $entityConfig['list']['globalActions'],
                         $container->getDefinition('lin3s.admin.repository.default_query_builder'),
-                        null === $entityConfig['print_name'] ? $entityName : $entityConfig['print_name'],
+                        $entityConfig['name'],
                         $entityConfig['list']['amount_per_page'],
                     ]
                 )

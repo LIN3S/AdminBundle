@@ -1,7 +1,7 @@
 {% extends '@LIN3SAdmin/layout.html.twig' %}
 
 {% block lin3s_admin_title %}
-    {{ entityConfig.printName | trans }}
+    {{ entityConfig.printNames.plural | trans }}
 {% endblock %}
 
 {% block lin3s_admin_actions %}

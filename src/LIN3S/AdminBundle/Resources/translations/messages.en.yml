@@ -17,7 +17,7 @@ lin3s_admin:
         filters:
             search: Search
     paginator:
-        total_elements: %totalCount% elements
+        total_elements: "%totalCount% elements"
     new:
         title: New %entity%
     edit:

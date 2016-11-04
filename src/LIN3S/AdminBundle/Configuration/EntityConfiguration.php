@@ -89,9 +89,11 @@ class EntityConfiguration
     /**
      * The entity name, for visualization purposes.
      *
-     * @var string
+     * It contains the singular and plural cases.
+     *
+     * @var array
      */
-    private $printName;
+    private $printNames;
 
     /**
      * The query builder.
@@ -111,7 +113,7 @@ class EntityConfiguration
      * @param array        $listFilters         List filters
      * @param array        $listGlobalActions   List global actions
      * @param QueryBuilder $queryBuilder        The query builder
-     * @param string       $printName           The entity name, for visualization purposes
+     * @param array        $printNames          The entity name, for visualization purposes
      * @param int          $listEntitiesPerPage The number of entities per page
      * @param array        $listOrderByDefault  The order by default
      */
@@ -124,7 +126,7 @@ class EntityConfiguration
         array $listFilters = [],
         array $listGlobalActions = [],
         QueryBuilder $queryBuilder,
-        $printName,
+        array $printNames,
         $listEntitiesPerPage,
         array $listOrderByDefault = []
     ) {
@@ -137,7 +139,7 @@ class EntityConfiguration
         $this->listActions = $listActions;
         $this->listGlobalActions = $listGlobalActions;
         $this->queryBuilder = $queryBuilder;
-        $this->printName = $printName;
+        $this->printNames = $printNames;
         $this->listEntitiesPerPage = $listEntitiesPerPage;
         $this->listOrderByDefault = $listOrderByDefault;
 
@@ -331,13 +333,13 @@ class EntityConfiguration
     }
 
     /**
-     * Gets the print name.
+     * Gets the print names.
      *
-     * @return string
+     * @return array
      */
-    public function printName()
+    public function printNames()
     {
-        return $this->printName;
+        return $this->printNames;
     }
 
     /**

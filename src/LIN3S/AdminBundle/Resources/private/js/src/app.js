@@ -22,7 +22,6 @@ import './filter';
 import './form-collection-type';
 import './menu';
 import './panel';
-import './table-list-action';
 
 function initialize() {
   FastClick(document.body);

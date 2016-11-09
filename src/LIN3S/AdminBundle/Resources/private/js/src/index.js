@@ -16,10 +16,8 @@
 import ConfirmationModal from './ConfirmationModal/App';
 import filter from './filter';
 import formCollectionType from './form-collection-type';
-import ImagePopup from './image-popup';
 import menu from './menu';
 import panel from './panel';
-import tableListAction from './table-list-action';
 
 import {EventPublisher} from 'lin3s-event-bus';
 
@@ -28,8 +26,6 @@ export {
   filter,
   formCollectionType,
   menu,
-  ImagePopup,
   panel,
-  tableListAction,
   EventPublisher
 }

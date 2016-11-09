@@ -149,7 +149,8 @@ gulp.task('sprites', () => {
 gulp.task('js:lib', () => {
   return gulp.src(`${paths.js}/**/*.js`)
     .pipe(babel({
-      presets: ['es2015']
+      presets: ['es2015', 'react', 'stage-2'],
+      plugins: ['transform-class-properties'],
     }))
     .pipe(plumber({
       errorHandler: plumberOnError
@@ -159,7 +160,11 @@ gulp.task('js:lib', () => {
 
 gulp.task('js:dist', () => {
   return browserify(`${paths.js}/app.js`)
-    .transform('babelify', {presets: ['es2015'], comments: false})
+    .transform('babelify', {
+      presets: ['es2015', 'react', 'stage-2'],
+      plugins: ['transform-class-properties'],
+      comments: false
+    })
     .bundle()
     .pipe(source('app.min.js'))
     .pipe(plumber({

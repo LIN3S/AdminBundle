@@ -14,8 +14,9 @@ lin3s_admin_list:
     methods:
         - GET
 
+# TODO: we need to build a route like /{entity}/{id}/{action}
 lin3s_admin_custom:
-    path: /{entity}/{id}/{action}
+    path: /{entity}/{action}/{id}
     defaults:
         _controller: LIN3SAdminBundle:Admin:custom
         id: null

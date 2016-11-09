@@ -6,9 +6,9 @@
 
 {% block lin3s_admin_actions %}
     {% for listGlobalAction in entityConfig.listGlobalActions %}
-        <a href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name }) }}"
+        <a href="{{ url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name}) }}"
            class="button button--secondary">
-            {{ listGlobalAction.name | capitalize }}
+            {{ listGlobalAction.options.name | trans| capitalize }}
         </a>
     {% endfor %}
 {% endblock %}

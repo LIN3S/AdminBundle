@@ -12,7 +12,8 @@
 
 'use strict';
 
-import ConfirmDialog from './confirm-dialog';
+
+import ConfirmationModal from './ConfirmationModal/App';
 import filter from './filter';
 import formCollectionType from './form-collection-type';
 import ImagePopup from './image-popup';
@@ -23,7 +24,7 @@ import tableListAction from './table-list-action';
 import {EventPublisher} from 'lin3s-event-bus';
 
 export {
-  ConfirmDialog,
+  ConfirmationModal,
   filter,
   formCollectionType,
   menu,

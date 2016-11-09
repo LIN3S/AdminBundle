@@ -3,11 +3,7 @@
 {% form_theme form '@LIN3SAdmin/form.html.twig' %}
 
 {% block lin3s_admin_title %}
-    {% set entityName = entityConfig.printNames.singular | trans | lower %}
-
-    {% trans with {'%entity%': entityName} %}
-        lin3s_admin.new.title
-    {% endtrans %}
+    {{ entityConfig.printNames.singular | trans | capitalize }}
 {% endblock %}
 
 {% block lin3s_admin_content %}

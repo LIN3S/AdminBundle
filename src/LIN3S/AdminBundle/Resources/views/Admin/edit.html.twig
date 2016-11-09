@@ -1,9 +1,1 @@
 {% extends '@LIN3SAdmin/Admin/new.html.twig' %}
-
-{% block lin3s_admin_title %}
-    {% set entityName = entityConfig.printNames.singular | trans | lower %}
-
-    {% trans with {'%entity%': entityName} %}
-        lin3s_admin.edit.title
-    {% endtrans %}
-{% endblock %}

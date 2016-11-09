@@ -6,6 +6,7 @@
 # file that was distributed with this source code.
 #
 # @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+# @author Beñat Espiña <benatespina@gmail.com>
 
 lin3s_admin:
     action:
@@ -18,10 +19,6 @@ lin3s_admin:
             search: Search
     paginator:
         total_elements: "%totalCount% elements"
-    new:
-        title: New %entity%
-    edit:
-        title: Edit %entity%
     form:
         save_changes: Save changes
         publish: Publish

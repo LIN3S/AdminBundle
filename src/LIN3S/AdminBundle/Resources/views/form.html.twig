@@ -86,7 +86,7 @@
 
 {% block form_row -%}
     {% if form.children | length == 0 %}
-        <div class="form__group">
+        <div class="form__group{% if form.vars.attr.class is defined %} {{ form.vars.attr.class }}{% endif %}">
             {{- form_widget(form) -}}
             {{- form_label(form) -}}
             {{- form_errors(form) -}}

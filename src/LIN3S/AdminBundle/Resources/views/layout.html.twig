@@ -23,6 +23,7 @@
 </head>
 
 <body class="layout">
+{% block body %}
     <section class="layout__header">
         {% include '@LIN3SAdmin/partial/layout_header.html.twig' %}
     </section>
@@ -53,6 +54,8 @@
             </div>
         </main>
     </section>
+{% endblock %}
+
 {% block javascripts %}
     {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
 {% endblock %}

@@ -12,6 +12,7 @@
 $table-border-color: $color-dark-mercury !default;
 $table-row-odd-color: $color-alabaster !default;
 $table-row-even-color: $color-white !default;
+$table-head-row-color: $color-alto !default;
 
 table {
   text-align: left;
@@ -20,6 +21,10 @@ table {
 
 thead {
   border-bottom: 1px solid $table-border-color;
+
+  > tr {
+    background: $table-head-row-color;
+  }
 }
 
 th,

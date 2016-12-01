@@ -129,6 +129,10 @@ class DefaultQueryBuilder implements QueryBuilder
         foreach ($metadata->getAssociationMappings() as $associationMapping) {
             $fieldName = $associationMapping['fieldName'];
             $fieldClass = array_filter($config->listFields(), function (ListField $field) use ($fieldName) {
+                if (!isset($field->options()['field'])) {
+                    return;
+                }
+
                 return $fieldName === explode('.', $field->options()['field'])[0];
             });
 

@@ -21,7 +21,7 @@ use LIN3S\AdminBundle\Configuration\EntityConfiguration;
  */
 trait EntityId
 {
-    protected function getEntityId($entity, EntityConfiguration $config)
+    private function getEntityId($entity, EntityConfiguration $config)
     {
         if (method_exists($entity, $config->idField())) {
             return call_user_func([$entity, $config->idField()]);

@@ -36,4 +36,6 @@ ListFieldTypes are usually generic and need to be associated with an entity in t
 A list filter is an implementation that defines how an a filter input has to be rendered. This works together with the
 `AdminRepository` that receives the submitted form that was built using list filter types.
 
+### Configuration reference
 
+[Configuration reference docs](configuration_reference.md)

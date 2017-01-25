@@ -1,0 +1,3 @@
+lin3s_admin:
+    resource: "@LIN3SAdminBundle/Resources/config/routing.yml"
+    prefix: "admin/"

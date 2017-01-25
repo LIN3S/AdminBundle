@@ -41,4 +41,42 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
 
+
+lin3_s_admin:
+    entities:
+        product:
+            name:
+                singular: Product
+                plural: Products
+            class: Tests\Application\ExampleBundle\Entity\Product
+            actions:
+                new:
+                    class: lin3s_admin.action.type.new
+                    options:
+                        name: lin3s_admin.action.new
+                        form: Tests\Application\ExampleBundle\Form\Type\ProductType
+                edit:
+                    class: lin3s_admin.action.type.edit
+                    options:
+                        name: lin3s_admin.action.edit
+                        form: Tests\Application\ExampleBundle\Form\Type\ProductType
+            list:
+                fields:
+                    id:
+                        class: lin3s_admin.list_field_type.string
+                        options:
+                            name: 'Id'
+                            field: id
+                    title:
+                        class: lin3s_admin.list_field_type.string
+                        options:
+                            name: 'Title'
+                            field: getTitle
+                    actions:
+                        class: lin3s_admin.list_field_type.actions
+                        options:
+                            actions: ['edit']
+                            name: lin3s_admin.list.table.actions
+                globalActions: ['new']

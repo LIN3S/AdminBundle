@@ -2,7 +2,7 @@
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-final class AppKernel extends \Symfony\Component\HttpKernel\Kernel
+class AppKernel extends \Symfony\Component\HttpKernel\Kernel
 {
     /**
      * {@inheritdoc}
@@ -13,7 +13,9 @@ final class AppKernel extends \Symfony\Component\HttpKernel\Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \LIN3S\AdminBundle\LIN3SAdminBundle()
+            new \LIN3S\AdminBundle\LIN3SAdminBundle(),
+
+            new Tests\Application\ExampleBundle\ApplicationExampleBundle()
         ];
     }
 

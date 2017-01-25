@@ -42,53 +42,9 @@ class EntityConfigurationPass implements CompilerPassInterface
         $config = $container->getParameter('lin3s_admin.config');
 
         foreach ($config['entities'] as $entityName => $entityConfig) {
-            // Define list fields
-            $listFields = [];
-            foreach ($entityConfig['list']['fields'] as $fieldName => $field) {
-                $container->setDefinition(
-                    sprintf('lin3s_admin.config.%s.field.%s', $entityName, $fieldName),
-                    new Definition(
-                        ListField::class, [
-                            $fieldName,
-                            $container->getDefinition($field['class']),
-                            $field['options'],
-                        ]
-                    )
-                )->setPublic(false);
-                $listFields[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.field.%s', $entityName, $fieldName));
-            }
-
-            // Define actions
-            $actions = [];
-            foreach ($entityConfig['actions'] as $actionName => $action) {
-                $container->setDefinition(
-                    sprintf('lin3s_admin.config.%s.action.%s', $entityName, $actionName),
-                    new Definition(
-                        Action::class, [
-                            $actionName,
-                            $container->getDefinition($action['class']),
-                            $action['options'],
-                        ]
-                    )
-                )->setPublic(false);
-                $actions[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.action.%s', $entityName, $actionName));
-            }
-
-            // Define filters
-            $listFilters = [];
-            foreach ($entityConfig['list']['filters'] as $filterName => $filter) {
-                $container->setDefinition(
-                    sprintf('lin3s_admin.config.%s.filter.%s', $entityName, $filterName),
-                    new Definition(
-                        ListFilter::class, [
-                            $filterName,
-                            $container->getDefinition($filter['class']),
-                            $filter['field'],
-                        ]
-                    )
-                )->setPublic(false);
-                $listFilters[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.filter.%s', $entityName, $filterName));
-            };
+            $listFields = $this->getListFields($container, $entityConfig, $entityName);
+            $actions = $this->getActions($container, $entityConfig, $entityName);
+            $listFilters = $this->getListFilters($container, $entityConfig, $entityName);
 
             // Define config class
             $container->setDefinition(
@@ -113,5 +69,66 @@ class EntityConfigurationPass implements CompilerPassInterface
                 new Reference(sprintf('lin3s_admin.config.%s', $entityName)),
             ]);
         }
+    }
+
+    private function getListFields(ContainerBuilder $container, $entityConfig, $entityName)
+    {
+        $listFields = [];
+
+        foreach ($entityConfig['list']['fields'] as $fieldName => $field) {
+            $container->setDefinition(
+                sprintf('lin3s_admin.config.%s.field.%s', $entityName, $fieldName),
+                new Definition(
+                    ListField::class, [
+                        $fieldName,
+                        $container->getDefinition($field['class']),
+                        $field['options'],
+                    ]
+                )
+            )->setPublic(false);
+            $listFields[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.field.%s', $entityName, $fieldName));
+        }
+
+        return $listFields;
+    }
+
+    private function getActions(ContainerBuilder $container, $entityConfig, $entityName)
+    {
+        $actions = [];
+        foreach ($entityConfig['actions'] as $actionName => $action) {
+            $container->setDefinition(
+                sprintf('lin3s_admin.config.%s.action.%s', $entityName, $actionName),
+                new Definition(
+                    Action::class, [
+                        $actionName,
+                        $container->getDefinition($action['class']),
+                        $action['options'],
+                    ]
+                )
+            )->setPublic(false);
+            $actions[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.action.%s', $entityName, $actionName));
+        }
+
+        return $actions;
+    }
+
+    private function getListFilters(ContainerBuilder $container, $entityConfig, $entityName)
+    {
+        $listFilters = [];
+        foreach ($entityConfig['list']['filters'] as $filterName => $filter) {
+            $container->setDefinition(
+                sprintf('lin3s_admin.config.%s.filter.%s', $entityName, $filterName),
+                new Definition(
+                    ListFilter::class, [
+                        $filterName,
+                        $container->getDefinition($filter['class']),
+                        $filter['field'],
+                    ]
+                )
+            )->setPublic(false);
+            $listFilters[] = $container->getDefinition(sprintf('lin3s_admin.config.%s.filter.%s', $entityName, $filterName));
+        };
+
+        return $listFilters;
     }
 }

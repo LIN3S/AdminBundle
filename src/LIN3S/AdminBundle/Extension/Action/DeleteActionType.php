@@ -25,7 +25,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  *
  * @author Beñat Espiña <benatespina@gmail.com>
  */
-class DeleteActionType implements ActionType
+final class DeleteActionType implements ActionType
 {
     use EntityId;
 

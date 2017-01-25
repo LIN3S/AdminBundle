@@ -17,7 +17,7 @@ use LIN3S\AdminBundle\Configuration\Type\ListFilterType;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class ListFilter
+final class ListFilter
 {
     /**
      * The name.

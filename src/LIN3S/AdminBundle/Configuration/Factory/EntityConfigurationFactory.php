@@ -11,7 +11,6 @@
 
 namespace LIN3S\AdminBundle\Configuration\Factory;
 
-
 use LIN3S\AdminBundle\Configuration\Model\Action;
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
@@ -19,7 +18,7 @@ use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 use LIN3S\AdminBundle\Registry\ServiceRegistry;
 use LIN3S\AdminBundle\Repository\QueryBuilder;
 
-class EntityConfigurationFactory
+final class EntityConfigurationFactory
 {
     private $config;
     private $actions;

@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
-class LIN3SAdminExtension extends Extension
+final class LIN3SAdminExtension extends Extension
 {
     /**
      * {@inheritdoc}

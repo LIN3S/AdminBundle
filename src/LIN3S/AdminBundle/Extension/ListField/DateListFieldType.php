@@ -19,7 +19,7 @@ use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
  *
  * @author Jagoba Perez <jagoba@lin3s.com>
  */
-class DateListFieldType implements ListFieldType
+final class DateListFieldType implements ListFieldType
 {
     public function header($options, Entity $configuration)
     {

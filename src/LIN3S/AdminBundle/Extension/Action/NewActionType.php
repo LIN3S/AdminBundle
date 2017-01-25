@@ -25,7 +25,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class NewActionType implements ActionType
+final class NewActionType implements ActionType
 {
     use EntityId;
 

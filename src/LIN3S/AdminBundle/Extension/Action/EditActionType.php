@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class EditActionType implements ActionType
+final class EditActionType implements ActionType
 {
     use EntityId;
 

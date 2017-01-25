@@ -19,7 +19,7 @@ use LIN3S\AdminBundle\Configuration\Type\ListFilterType;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class TextListFilterType implements ListFilterType
+final class TextListFilterType implements ListFilterType
 {
     public function render(ListFilter $filter, $currentValue, $options)
     {

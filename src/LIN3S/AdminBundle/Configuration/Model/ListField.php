@@ -18,7 +18,7 @@ use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class ListField
+final class ListField
 {
     /**
      * The field name.

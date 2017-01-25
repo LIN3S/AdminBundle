@@ -20,7 +20,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class StringListFieldType implements ListFieldType
+final class StringListFieldType implements ListFieldType
 {
     private $translator;
 

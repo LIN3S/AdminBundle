@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
-class ListFieldTypePass implements CompilerPassInterface
+final class ListFieldTypePass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}

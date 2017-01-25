@@ -22,7 +22,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  * @author Beñat Espiña <gorka.lauzirika@gmail.com>
  */
-class ActionsListFieldType implements ListFieldType
+final class ActionsListFieldType implements ListFieldType
 {
     /**
      * The translator.

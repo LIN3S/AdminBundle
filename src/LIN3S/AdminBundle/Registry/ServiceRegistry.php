@@ -16,7 +16,7 @@ namespace LIN3S\AdminBundle\Registry;
  *
  * @author Paweł Jędrzejewski <pawel@sylius.org>
  */
-class ServiceRegistry
+final class ServiceRegistry
 {
     /**
      * @var array

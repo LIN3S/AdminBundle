@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class Action
+final class Action
 {
     /**
      * The name.

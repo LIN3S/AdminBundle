@@ -18,7 +18,7 @@ use LIN3S\AdminBundle\Repository\QueryBuilder;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class Entity
+final class Entity
 {
     /**
      * Collection of actions.

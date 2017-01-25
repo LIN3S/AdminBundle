@@ -14,7 +14,6 @@ lin3s_admin_list:
     methods:
         - GET
 
-# TODO: we need to build a route like /{entity}/{id}/{action}
 lin3s_admin_custom:
     path: /{entity}/{action}/{id}
     defaults:

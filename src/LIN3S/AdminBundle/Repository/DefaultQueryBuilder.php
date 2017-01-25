@@ -14,8 +14,8 @@ namespace LIN3S\AdminBundle\Repository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder;
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\ListFields\ListField;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
+use LIN3S\AdminBundle\Configuration\Model\ListField;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -47,7 +47,7 @@ class DefaultQueryBuilder implements QueryBuilder
     /**
      * {@inheritdoc}
      */
-    public function generate(Request $request, EntityConfiguration $config)
+    public function generate(Request $request, Entity $config)
     {
         $queryBuilder = $this->manager->getRepository($config->className())->createQueryBuilder('a');
         $metadata = $this->manager->getClassMetadata($config->className());
@@ -118,12 +118,12 @@ class DefaultQueryBuilder implements QueryBuilder
     /**
      * Resolves associations.
      *
-     * @param EntityConfiguration $config   The entity configuration
-     * @param ClassMetadata       $metadata The class metadata
+     * @param Entity        $config   The entity configuration
+     * @param ClassMetadata $metadata The class metadata
      *
      * @return array
      */
-    private function resolveAssociations(EntityConfiguration $config, ClassMetadata $metadata)
+    private function resolveAssociations(Entity $config, ClassMetadata $metadata)
     {
         $associations = [];
         foreach ($metadata->getAssociationMappings() as $associationMapping) {

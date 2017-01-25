@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Action\Type;
+namespace LIN3S\AdminBundle\Extension\Action;
 
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
 
 /**
  * Entity id trait.
@@ -21,7 +21,7 @@ use LIN3S\AdminBundle\Configuration\EntityConfiguration;
  */
 trait EntityId
 {
-    private function getEntityId($entity, EntityConfiguration $config)
+    private function getEntityId($entity, Entity $config)
     {
         if (method_exists($entity, $config->idField())) {
             return call_user_func([$entity, $config->idField()]);

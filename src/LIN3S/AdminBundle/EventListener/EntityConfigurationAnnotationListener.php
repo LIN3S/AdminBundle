@@ -13,7 +13,7 @@ namespace LIN3S\AdminBundle\EventListener;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
-use LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistryInterface;
+use LIN3S\AdminBundle\Registry\ServiceRegistry;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 /**
@@ -33,17 +33,17 @@ class EntityConfigurationAnnotationListener
     /**
      * The entity configuration.
      *
-     * @var EntityConfigurationRegistryInterface
+     * @var ServiceRegistry
      */
     protected $entityConfiguration;
 
     /**
      * Constructor.
      *
-     * @param Reader                               $annotationReader    The annotation reader
-     * @param EntityConfigurationRegistryInterface $entityConfiguration The entity configuration
+     * @param Reader          $annotationReader    The annotation reader
+     * @param ServiceRegistry $entityConfiguration The entity configuration
      */
-    public function __construct(Reader $annotationReader, EntityConfigurationRegistryInterface $entityConfiguration)
+    public function __construct(Reader $annotationReader, ServiceRegistry $entityConfiguration)
     {
         $this->annotationReader = $annotationReader;
         $this->entityConfiguration = $entityConfiguration;

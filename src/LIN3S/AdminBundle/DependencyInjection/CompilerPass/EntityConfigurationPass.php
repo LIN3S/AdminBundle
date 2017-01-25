@@ -11,10 +11,10 @@
 
 namespace LIN3S\AdminBundle\DependencyInjection\CompilerPass;
 
-use LIN3S\AdminBundle\Action\Action;
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\ListFields\ListField;
-use LIN3S\AdminBundle\ListFilters\ListFilter;
+use LIN3S\AdminBundle\Configuration\Model\Action;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
+use LIN3S\AdminBundle\Configuration\Model\ListField;
+use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -50,7 +50,7 @@ class EntityConfigurationPass implements CompilerPassInterface
             $container->setDefinition(
                 sprintf('lin3s_admin.config.%s', $entityName),
                 new Definition(
-                    EntityConfiguration::class,
+                    Entity::class,
                     [
                         $entityName,
                         $entityConfig['class'],
@@ -65,7 +65,8 @@ class EntityConfigurationPass implements CompilerPassInterface
                     ]
                 )
             )->setPublic(false);
-            $registry->addMethodCall('add', [
+            $registry->addMethodCall('register', [
+                $entityName,
                 new Reference(sprintf('lin3s_admin.config.%s', $entityName)),
             ]);
         }

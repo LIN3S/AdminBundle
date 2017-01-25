@@ -32,8 +32,10 @@ class ListFieldTypePass implements CompilerPassInterface
         }
 
         $registry = $container->getDefinition('lin3s_admin.list_field_type.registry');
-        foreach ($container->findTaggedServiceIds('lin3s_admin.list_field_type') as $id => $attributes) {
-            $registry->addMethodCall('add', [new Reference($id)]);
+        foreach ($container->findTaggedServiceIds('lin3s_admin.list_field_type') as $id => $tags) {
+            foreach($tags as $attributes) {
+                $registry->addMethodCall('register', [$attributes['alias'], new Reference($id)]);
+            }
         }
     }
 }

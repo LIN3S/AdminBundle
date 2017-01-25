@@ -9,11 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Configuration;
+namespace LIN3S\AdminBundle\Configuration\Model;
 
-use LIN3S\AdminBundle\Action\Action;
-use LIN3S\AdminBundle\ListFields\ListField;
-use LIN3S\AdminBundle\ListFilters\ListFilter;
 use LIN3S\AdminBundle\Repository\QueryBuilder;
 
 /**
@@ -21,7 +18,7 @@ use LIN3S\AdminBundle\Repository\QueryBuilder;
  *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class EntityConfiguration
+class Entity
 {
     /**
      * Collection of actions.

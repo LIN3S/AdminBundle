@@ -5,6 +5,23 @@ This changelog references the relevant changes done between versions.
 To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundle/commit/XXX where XXX is the change hash 
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
 
+* 0.5.0
+    * Refactored and unified registries
+    * [BC break] `lin3s_admin.action`, `lin3s_admin.list_field` and `lin3s_admin.list_filter` tags now require an `alias` 
+    * [BC break] Moved configuration type implementations to `Extension` folder
+    * [BC break] Full change of configuration namespaces
+    
+| Previous                                            | New                                                   |
+| --------                                            | ---                                                   |
+| LIN3S\AdminBundle\Action\Action                     | LIN3S\AdminBundle\Configuration\Model\Action          |
+| LIN3S\AdminBundle\Action\ActionType                 | LIN3S\AdminBundle\Configuration\Type\ActionType       |
+| LIN3S\AdminBundle\Action\ActionType                 | LIN3S\AdminBundle\Configuration\Type\ActionType       |
+| LIN3S\AdminBundle\Configuration\EntityConfiguration | LIN3S\AdminBundle\Configuration\Model\Entity          |
+| LIN3S\AdminBundle\ListField\ListFieldType           | LIN3S\AdminBundle\Configuration\Type\ListFieldType    |
+| LIN3S\AdminBundle\ListFilter\ListFilter             | LIN3S\AdminBundle\Configuration\Model\ListFilter      |
+| LIN3S\AdminBundle\ListFilter\ListFilterType         | LIN3S\AdminBundle\Configuration\Type\ListFilterType   |
+
+    
 * 0.4.0
     * Improvements in gulpfile
     * [BC break] Made `getEntityId()` private in `EntityId` trait.

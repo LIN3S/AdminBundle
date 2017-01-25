@@ -9,29 +9,29 @@
 
 services:
     lin3s_admin.action.type.new:
-        class: LIN3S\AdminBundle\Action\Type\NewActionType
+        class: LIN3S\AdminBundle\Extension\Action\NewActionType
         arguments:
             - '@lin3s_admin.form.handler'
             - '@twig'
             - '@session'
             - '@router'
         tags:
-            - { name: 'lin3s_admin.action' }
+            - { name: 'lin3s_admin.action', alias: new }
     lin3s_admin.action.type.edit:
-        class: LIN3S\AdminBundle\Action\Type\EditActionType
+        class: LIN3S\AdminBundle\Extension\Action\EditActionType
         arguments:
             - '@lin3s_admin.form.handler'
             - '@doctrine.orm.default_entity_manager'
             - '@twig'
             - '@session'
         tags:
-            - { name: 'lin3s_admin.action' }
+            - { name: 'lin3s_admin.action', alias: edit }
     lin3s_admin.action.type.delete:
-        class: LIN3S\AdminBundle\Action\Type\DeleteActionType
+        class: LIN3S\AdminBundle\Extension\Action\DeleteActionType
         arguments:
             - '@router'
             - '@doctrine.orm.default_entity_manager'
             - '@twig'
             - '@session'
         tags:
-            - { name: 'lin3s_admin.action' }
+            - { name: 'lin3s_admin.action', alias: delete }

@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Action\Type;
+namespace LIN3S\AdminBundle\Extension\Action;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use LIN3S\AdminBundle\Action\ActionType;
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
+use LIN3S\AdminBundle\Configuration\Type\ActionType;
 use LIN3S\AdminBundle\Form\FormHandler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,7 +80,7 @@ class EditActionType implements ActionType
     /**
      * {@inheritdoc}
      */
-    public function execute($entity, EntityConfiguration $config, Request $request, $options = null)
+    public function execute($entity, Entity $config, Request $request, $options = null)
     {
         if (!isset($options['form'])) {
             throw new \InvalidArgumentException(

@@ -9,16 +9,16 @@
 
 services:
     lin3s_admin.list_field_type.string:
-        class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
+        class: LIN3S\AdminBundle\Extension\ListField\StringListFieldType
         arguments:
             - "@translator.default"
         tags:
-            - { name: lin3s_admin.list_field_type }
+            - { name: lin3s_admin.list_field_type, alias: string }
     lin3s_admin.list_field_type.actions:
-        class: LIN3S\AdminBundle\ListFields\Types\ActionsListFieldType
+        class: LIN3S\AdminBundle\Extension\ListField\ActionsListFieldType
         arguments:
             - '@translator'
             - '@twig'
             - '@router'
         tags:
-            - {name: lin3s_admin.list_field_type}
+            - {name: lin3s_admin.list_field_type, alias: actions}

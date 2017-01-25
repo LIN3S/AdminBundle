@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\ListFields;
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+namespace LIN3S\AdminBundle\Configuration\Type;
+
+use LIN3S\AdminBundle\Configuration\Model\Entity;
 
 /**
  * List field type.
@@ -19,16 +20,16 @@ use LIN3S\AdminBundle\Configuration\EntityConfiguration;
  */
 interface ListFieldType
 {
-    public function header($options, EntityConfiguration $configuration);
+    public function header($options, Entity $configuration);
 
     /**
      * Methods that renders the field type with the given params.
      *
      * @param mixed $entity  The related entity
      * @param array $options Array which contains options
-     * @param EntityConfiguration $configuration
+     * @param Entity $configuration
      *
      * @return mixed
      */
-    public function render($entity, $options, EntityConfiguration $configuration);
+    public function render($entity, $options, Entity $configuration);
 }

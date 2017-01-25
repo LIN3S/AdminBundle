@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Action\Type;
+namespace LIN3S\AdminBundle\Extension\Action;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 

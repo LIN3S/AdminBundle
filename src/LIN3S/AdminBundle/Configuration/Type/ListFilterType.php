@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\ListFilters;
+namespace LIN3S\AdminBundle\Configuration\Type;
+
+use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 
 /**
  * List filter type.

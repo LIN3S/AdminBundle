@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\ListFilters\Types;
+namespace LIN3S\AdminBundle\Extension\ListFilter;
 
-use LIN3S\AdminBundle\ListFilters\ListFilter;
-use LIN3S\AdminBundle\ListFilters\ListFilterType;
+use LIN3S\AdminBundle\Configuration\Model\ListFilter;
+use LIN3S\AdminBundle\Configuration\Type\ListFilterType;
 
 /**
  * Text list filter field type.

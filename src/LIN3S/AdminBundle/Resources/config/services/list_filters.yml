@@ -9,10 +9,10 @@
 
 services:
     lin3s_admin.list_filter_type.text:
-        class: LIN3S\AdminBundle\ListFilters\Types\TextListFilterType
+        class: LIN3S\AdminBundle\Extension\ListFilter\TextListFilterType
         tags:
-            - {name: lin3s_admin.list_filter_type}
+            - {name: lin3s_admin.list_filter_type, alias: text}
     lin3s_admin.list_field_type.date:
-        class: LIN3S\AdminBundle\ListFields\Types\DateListFieldType
+        class: LIN3S\AdminBundle\Extension\ListField\DateListFieldType
         tags:
-            - {name: lin3s_admin.list_filter_date}
+            - {name: lin3s_admin.list_filter_date, alias: date}

@@ -32,8 +32,10 @@ class ActionPass implements CompilerPassInterface
         }
 
         $registry = $container->getDefinition('lin3s_admin.action.registry');
-        foreach ($container->findTaggedServiceIds('lin3s_admin.action') as $id => $attributes) {
-            $registry->addMethodCall('add', [new Reference($id)]);
+        foreach ($container->findTaggedServiceIds('lin3s_admin.action') as $id => $tags) {
+            foreach($tags as $attributes) {
+                $registry->addMethodCall('register', [$attributes['alias'], new Reference($id)]);
+            }
         }
     }
 }

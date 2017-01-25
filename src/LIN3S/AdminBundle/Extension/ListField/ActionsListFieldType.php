@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\ListFields\Types;
+namespace LIN3S\AdminBundle\Extension\ListField;
 
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\ListFields\ListFieldType;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
+use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -65,7 +65,7 @@ class ActionsListFieldType implements ListFieldType
     /**
      * {@inheritdoc}
      */
-    public function header($options, EntityConfiguration $configuration)
+    public function header($options, Entity $configuration)
     {
         if (!isset($options['name'])) {
             throw new \InvalidArgumentException('Name key is required');
@@ -77,7 +77,7 @@ class ActionsListFieldType implements ListFieldType
     /**
      * {@inheritdoc}
      */
-    public function render($entity, $options, EntityConfiguration $configuration)
+    public function render($entity, $options, Entity $configuration)
     {
         if (!isset($options['actions'])) {
             throw new \InvalidArgumentException('Actions key is required');

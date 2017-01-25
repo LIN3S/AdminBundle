@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Action;
+namespace LIN3S\AdminBundle\Configuration\Model;
 
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+use LIN3S\AdminBundle\Configuration\Type\ActionType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -89,13 +89,13 @@ class Action
     /**
      * Executes the action type "execute" method with the given params.
      *
-     * @param mixed               $entity        Entity in which you can apply changes
-     * @param EntityConfiguration $configuration The entity configuration
-     * @param Request             $request       The request
+     * @param mixed   $entity        Entity in which you can apply changes
+     * @param Entity  $configuration The entity configuration
+     * @param Request $request       The request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function execute($entity, EntityConfiguration $configuration, Request $request)
+    public function execute($entity, Entity $configuration, Request $request)
     {
         return $this->type->execute($entity, $configuration, $request, $this->options);
     }

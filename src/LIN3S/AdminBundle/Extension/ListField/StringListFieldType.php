@@ -9,33 +9,39 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\ListFields\Types;
+namespace LIN3S\AdminBundle\Extension\ListField;
 
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
-use LIN3S\AdminBundle\ListFields\ListFieldType;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
+use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * Date list field type.
+ * String list field type.
  *
- * @author Jagoba Perez <jagoba@lin3s.com>
+ * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class DateListFieldType implements ListFieldType
+class StringListFieldType implements ListFieldType
 {
-    public function header($options, EntityConfiguration $configuration)
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
+    public function header($options, Entity $configuration)
     {
         if (!isset($options['name'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
 
-        return $options['name'];
-
-        //return $this->translator->trans($options['name']);
+        return $this->translator->trans($options['name']);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function render($entity, $options, EntityConfiguration $configuration)
+    public function render($entity, $options, Entity $configuration)
     {
         if (!isset($options['field'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
@@ -46,10 +52,7 @@ class DateListFieldType implements ListFieldType
         foreach ($properties as $property) {
             $value = $value->$property();
         }
-        if (!$value instanceof \DateTimeInterface) {
-            throw new \Exception(sprintf('%s must implement the \DateTimeInterface', $value));
-        }
 
-        return $value->format('d M Y');
+        return $value;
     }
 }

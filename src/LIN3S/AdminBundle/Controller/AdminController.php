@@ -12,7 +12,7 @@
 namespace LIN3S\AdminBundle\Controller;
 
 use LIN3S\AdminBundle\Annotation\EntityConfiguration as EntityConfigurationAnnotation;
-use LIN3S\AdminBundle\Configuration\EntityConfiguration;
+use LIN3S\AdminBundle\Configuration\Model\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -28,13 +28,13 @@ class AdminController extends Controller
      *
      * List action.
      *
-     * @param string              $entity       The entity name
-     * @param EntityConfiguration $entityConfig The entity configuration
-     * @param Request             $request      The request
+     * @param string  $entity       The entity name
+     * @param Entity  $entityConfig The entity configuration
+     * @param Request $request      The request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction($entity, EntityConfiguration $entityConfig, Request $request)
+    public function listAction($entity, Entity $entityConfig, Request $request)
     {
         $entities = $this->get('lin3s_admin.repository')->findByRequest($request, $entityConfig);
         $totalCount = $this->get('lin3s_admin.repository')->countAll($request, $entityConfig);
@@ -51,15 +51,15 @@ class AdminController extends Controller
      *
      * Custom action.
      *
-     * @param string              $entity       The entity name
-     * @param string              $action       The action name
-     * @param string              $id           The id of the object to be edited.
-     * @param EntityConfiguration $entityConfig The entity configuration
-     * @param Request             $request      The request
+     * @param string  $entity       The entity name
+     * @param string  $action       The action name
+     * @param string  $id           The id of the object to be edited.
+     * @param Entity  $entityConfig The entity configuration
+     * @param Request $request      The request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function customAction($entity, $action, $id = null, EntityConfiguration $entityConfig, Request $request)
+    public function customAction($entity, $action, $id = null, Entity $entityConfig, Request $request)
     {
         $entityObject = null;
         if ($id) {

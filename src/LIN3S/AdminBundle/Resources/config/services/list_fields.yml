@@ -1,0 +1,24 @@
+# This file is part of the Admin Bundle.
+#
+# Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+#
+# @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+
+services:
+    lin3s_admin.list_field_type.string:
+        class: LIN3S\AdminBundle\ListFields\Types\StringListFieldType
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: lin3s_admin.list_field_type }
+    lin3s_admin.list_field_type.actions:
+        class: LIN3S\AdminBundle\ListFields\Types\ActionsListFieldType
+        arguments:
+            - '@translator'
+            - '@twig'
+            - '@router'
+        tags:
+            - {name: lin3s_admin.list_field_type}

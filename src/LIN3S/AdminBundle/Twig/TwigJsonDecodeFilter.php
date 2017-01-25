@@ -15,6 +15,8 @@ namespace LIN3S\AdminBundle\Twig;
  * Twig json decode filter.
  *
  * @author Beñat Espiña <benatespina@gmail.com>
+ *
+ * @deprecated since 0.4.0, will be removed in 0.5.0. Use custom implementation instead.
  */
 class TwigJsonDecodeFilter extends \Twig_Extension
 {

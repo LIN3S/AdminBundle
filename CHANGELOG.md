@@ -16,9 +16,11 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * [BC break] Added entity configuration parameter to `ListFieldType::render()`.
     * [BC break] Added `header()` to `ListFieldType` interface.
     * Added new `ActionsListFieldType` allowing to list actions that can be performed for an entity in each table row.
-    * Minor fix in `DefaultQueryBuilder`
-    * Improvements in frontend scripts
-    * Added `TwigActionTranslation` and `TwigJsonDecodeFilter`
+    * Minor fix in `DefaultQueryBuilder`.
+    * Improvements in frontend scripts.
+    * Added `TwigActionTranslation`.
+    * Deprecated `TwigJsonDecodeFilter`.
+    
 * 0.3.2
     * Styles and Twig bug fixes
 * 0.3.1

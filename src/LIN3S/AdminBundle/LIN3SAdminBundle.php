@@ -33,7 +33,6 @@ class LIN3SAdminBundle extends Bundle
     {
         $container->addCompilerPass(new ListFieldTypePass());
         $container->addCompilerPass(new ListFiltersTypePass());
-        $container->addCompilerPass(new EntityConfigurationPass());
         $container->addCompilerPass(new ActionPass());
     }
 

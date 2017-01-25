@@ -11,7 +11,7 @@ services:
     lin3s_admin.action.registry:
         class: LIN3S\AdminBundle\Registry\ServiceRegistry
         arguments:
-            - LIN3S\AdminBundle\Configuration\Model\Action
+            - LIN3S\AdminBundle\Configuration\Type\ActionType
 
     lin3s_admin.configuration.entity_configuration_registry:
         class: LIN3S\AdminBundle\Registry\ServiceRegistry
@@ -21,9 +21,9 @@ services:
     lin3s_admin.list_field_type.registry:
         class: LIN3S\AdminBundle\Registry\ServiceRegistry
         arguments:
-            - LIN3S\AdminBundle\Configuration\Model\ListField
+            - LIN3S\AdminBundle\Configuration\Type\ListFieldType
 
     lin3s_admin.list_filter_type.registry:
         class: LIN3S\AdminBundle\Registry\ServiceRegistry
         arguments:
-            - LIN3S\AdminBundle\Configuration\Model\ListFilter
+            - LIN3S\AdminBundle\Configuration\Type\ListFilterType

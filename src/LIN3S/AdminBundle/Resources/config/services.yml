@@ -15,16 +15,15 @@ imports:
     - { resource: services/twig.yml }
 
 services:
-    ## EVENT LISTENERS ##
-    lin3s_admin.event_listener.entity_configuration_annotation:
-        class: LIN3S\AdminBundle\EventListener\EntityConfigurationAnnotationListener
+    lin3s_admin.configuration.factory.entity:
+        class: LIN3S\AdminBundle\Configuration\Factory\EntityConfigurationFactory
         arguments:
-            - '@annotation_reader'
-            - '@lin3s_admin.configuration.entity_configuration_registry'
-        tags:
-            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            - '%lin3s_admin.config%'
+            - '@lin3s_admin.action.registry'
+            - '@lin3s_admin.list_field_type.registry'
+            - '@lin3s_admin.list_filter_type.registry'
+            - '@lin3s.admin.repository.default_query_builder'
 
-    ## FORM ##
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler
         arguments:

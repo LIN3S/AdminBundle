@@ -11,7 +11,6 @@
 
 namespace LIN3S\AdminBundle\Controller;
 
-use LIN3S\AdminBundle\Annotation\EntityConfiguration as EntityConfigurationAnnotation;
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,8 +23,6 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
-     * @EntityConfigurationAnnotation()
-     *
      * List action.
      *
      * @param string  $entity       The entity name
@@ -34,8 +31,9 @@ class AdminController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction($entity, Entity $entityConfig, Request $request)
+    public function listAction($entity, Request $request)
     {
+        $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entities = $this->get('lin3s_admin.repository')->findByRequest($request, $entityConfig);
         $totalCount = $this->get('lin3s_admin.repository')->countAll($request, $entityConfig);
 
@@ -47,20 +45,18 @@ class AdminController extends Controller
     }
 
     /**
-     * @EntityConfigurationAnnotation()
-     *
      * Custom action.
      *
      * @param string  $entity       The entity name
      * @param string  $action       The action name
      * @param string  $id           The id of the object to be edited.
-     * @param Entity  $entityConfig The entity configuration
      * @param Request $request      The request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function customAction($entity, $action, $id = null, Entity $entityConfig, Request $request)
+    public function customAction($entity, $action, $id = null, Request $request)
     {
+        $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entityObject = null;
         if ($id) {
             $manager = $this->getDoctrine()->getRepository($entityConfig->className());

@@ -5,6 +5,8 @@ This changelog references the relevant changes done between versions.
 To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundle/commit/XXX where XXX is the change hash 
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
 
+* 0.4.1
+    * Removed Sylius registry dependency
 * 0.4.0
     * Improvements in gulpfile
     * [BC break] Made `getEntityId()` private in `EntityId` trait.

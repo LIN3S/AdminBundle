@@ -5,16 +5,16 @@
     {% endif %}
     {% for field in entityConfig.listFields %}
         <th>
-            {% if field.options.field is defined and field.options.name is defined %}
-                    <a href="{{ filterPath(field.options.field, app.request.get('orderBy'), app.request.get('order')) }}"
-                       class="table__sortable
+            {% if field.options.field is defined and field.name is defined %}
+                <a href="{{ filterPath(field.options.field, app.request.get('orderBy'), app.request.get('order')) }}"
+                   class="table__sortable
                         {{ app.request.get('orderBy') == field.name ? ' table__sortable--selected' }}
                         {{ app.request.get('orderBy') == field.name
-                       and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">
-                        {{ field.type.header(field.options, entityConfig) | raw }}
-                    </a>
+                   and app.request.get('order') == "DESC" ? ' table__sortable--desc' : ' table__sortable--asc' }}">
+                    {{ field.type.header(field.name, entityConfig) | raw }}
+                </a>
             {% else %}
-                {{ field.type.header(field.options, entityConfig) | raw }}
+                {{ field.type.header(field.name, entityConfig) | raw }}
             {% endif %}
         </th>
     {% endfor %}

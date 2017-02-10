@@ -96,7 +96,7 @@ final class EntityConfigurationFactory
             $listFilters[] = new ListFilter(
                 $id,
                 $this->listFilters->get($filter['type']),
-                $filter['options']
+                $filter['field']
             );
         }
 

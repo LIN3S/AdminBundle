@@ -35,7 +35,8 @@ lin3_s_admin:
                     # .... 
                 filters:
                     id:
-                        class: text
+                        name: id
+                        type: text
                         field: id
                     # ....
                 global_actions: ['new']

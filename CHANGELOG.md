@@ -11,7 +11,7 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * [BC break] Made configuration, dependency injection, extension, registry final.
     * [BC break] `lin3s_admin.action`, `lin3s_admin.list_field` and `lin3s_admin.list_filter` tags now require an `alias`
     * [BC break] In config, `class` was replaced by `type` and now config type `alias` must be used instead service name
-     for action, list field and list filters. Check [configuration reference](docs/reference_configuration.md) for further info.
+     for action, list field and list filters. Check [reference_configuration](docs/reference_configuration.md) for further info.
     * [BC break] Moved configuration type implementations to `Extension` folder
     * [BC break] Full change of configuration namespaces
     

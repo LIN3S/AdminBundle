@@ -29,13 +29,13 @@ final class StringListFieldType implements ListFieldType
         $this->translator = $translator;
     }
 
-    public function header($options, Entity $configuration)
+    public function header($name, Entity $configuration)
     {
-        if (!isset($options['name'])) {
+        if (!isset($name)) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
 
-        return $this->translator->trans($options['name']);
+        return $this->translator->trans($name);
     }
 
     /**

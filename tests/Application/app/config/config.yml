@@ -44,7 +44,7 @@ doctrine:
         auto_mapping: true
 
 
-lin3_s_admin:
+lin3s_admin:
     entities:
         product:
             name:

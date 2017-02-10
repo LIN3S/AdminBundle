@@ -113,7 +113,7 @@ final class EditActionType implements ActionType
         }
 
         return new Response(
-            $this->twig->render('LIN3SAdminBundle:Admin:edit.html.twig', [
+            $this->twig->render('Lin3sAdminBundle:Admin:edit.html.twig', [
                 'entity'       => $entity,
                 'entityConfig' => $config,
                 'form'         => $form->createView(),

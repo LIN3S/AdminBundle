@@ -6,35 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-    <title>{% block title %}{% include '@LIN3SAdmin/partial/title.html.twig' %}{% endblock %}</title>
+    <title>{% block title %}{% include '@Lin3sAdmin/partial/title.html.twig' %}{% endblock %}</title>
 
     {% block fonts %}
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300" type="text/css">
     {% endblock %}
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/lin3sadmin/css/app.min.css') }}" type="text/css">
-        {% include '@LIN3SAdmin/partial/stylesheets.html.twig' %}
+        <link rel="stylesheet" href="{{ asset('bundles/Lin3sAdmin/css/app.min.css') }}" type="text/css">
+        {% include '@Lin3sAdmin/partial/stylesheets.html.twig' %}
     {% endblock %}
 
     {% block head_javascripts %}
-        <script src="{{ asset('bundles/lin3sadmin/js/modernizr.js') }}"></script>
-        {% include '@LIN3SAdmin/partial/head_javascripts.html.twig' %}
+        <script src="{{ asset('bundles/Lin3sAdmin/js/modernizr.js') }}"></script>
+        {% include '@Lin3sAdmin/partial/head_javascripts.html.twig' %}
     {% endblock %}
 </head>
 
 <body class="layout">
 {% block body %}
     <section class="layout__header">
-        {% include '@LIN3SAdmin/partial/layout_header.html.twig' %}
+        {% include '@Lin3sAdmin/partial/layout_header.html.twig' %}
     </section>
     <section class="layout__content">
         <nav class="layout__menu menu">
             <div class="menu__toggle">
-                {% include '@LIN3SAdmin/svg/menu_toggle.svg.twig' %}
+                {% include '@Lin3sAdmin/svg/menu_toggle.svg.twig' %}
             </div>
             {% block lin3s_admin_aside_links %}
-                {% include '@LIN3SAdmin/partial/menu.html.twig' %}
+                {% include '@Lin3sAdmin/partial/menu.html.twig' %}
             {% endblock %}
         </nav>
         <main class="row row--centered layout__main">
@@ -48,7 +48,7 @@
                     </div>
                 </header>
                 {% block lin3s_admin_flash_messages %}
-                    {% include '@LIN3SAdmin/partial/flash.html.twig' %}
+                    {% include '@Lin3sAdmin/partial/flash.html.twig' %}
                 {% endblock %}
                 {% block lin3s_admin_content_top %}{% endblock %}
                 {% block lin3s_admin_content %}{% endblock %}
@@ -58,8 +58,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/lin3sadmin/js/app.min.js') }}"></script>
-    {% include '@LIN3SAdmin/partial/javascripts.html.twig' %}
+    <script src="{{ asset('bundles/Lin3sAdmin/js/app.min.js') }}"></script>
+    {% include '@Lin3sAdmin/partial/javascripts.html.twig' %}
 {% endblock %}
 </body>
 </html>

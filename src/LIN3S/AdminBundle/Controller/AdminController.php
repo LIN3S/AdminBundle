@@ -37,7 +37,7 @@ class AdminController extends Controller
         $entities = $this->get('lin3s_admin.repository')->findByRequest($request, $entityConfig);
         $totalCount = $this->get('lin3s_admin.repository')->countAll($request, $entityConfig);
 
-        return $this->render('@LIN3SAdmin/Admin/list.html.twig', [
+        return $this->render('@Lin3sAdmin/Admin/list.html.twig', [
             'entities'     => $entities,
             'entityConfig' => $entityConfig,
             'totalCount'   => $totalCount,

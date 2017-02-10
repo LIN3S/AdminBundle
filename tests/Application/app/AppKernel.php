@@ -13,7 +13,7 @@ class AppKernel extends \Symfony\Component\HttpKernel\Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \LIN3S\AdminBundle\LIN3SAdminBundle(),
+            new \LIN3S\AdminBundle\Lin3sAdminBundle(),
 
             new Tests\Application\ExampleBundle\ApplicationExampleBundle()
         ];

@@ -12,10 +12,9 @@
 namespace LIN3S\AdminBundle;
 
 use LIN3S\AdminBundle\DependencyInjection\CompilerPass\ActionPass;
-use LIN3S\AdminBundle\DependencyInjection\CompilerPass\EntityConfigurationPass;
 use LIN3S\AdminBundle\DependencyInjection\CompilerPass\ListFieldTypePass;
 use LIN3S\AdminBundle\DependencyInjection\CompilerPass\ListFiltersTypePass;
-use LIN3S\AdminBundle\DependencyInjection\LIN3SAdminExtension;
+use LIN3S\AdminBundle\DependencyInjection\Lin3sAdminExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -24,7 +23,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
-class LIN3SAdminBundle extends Bundle
+class Lin3sAdminBundle extends Bundle
 {
     /**
      * {@inheritdoc}
@@ -41,6 +40,6 @@ class LIN3SAdminBundle extends Bundle
      */
     public function getContainerExtension()
     {
-        return new LIN3SAdminExtension();
+        return new Lin3sAdminExtension();
     }
 }

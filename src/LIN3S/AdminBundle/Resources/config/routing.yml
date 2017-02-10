@@ -10,14 +10,14 @@
 lin3s_admin_list:
     path: /{entity}
     defaults:
-        _controller: LIN3SAdminBundle:Admin:list
+        _controller: Lin3sAdminBundle:Admin:list
     methods:
         - GET
 
 lin3s_admin_custom:
     path: /{entity}/{action}/{id}
     defaults:
-        _controller: LIN3SAdminBundle:Admin:custom
+        _controller: Lin3sAdminBundle:Admin:custom
         id: null
     methods:
         - GET
@@ -25,4 +25,4 @@ lin3s_admin_custom:
 
 lin3s_admin_dashboard:
     path: /
-    defaults: { _controller: LIN3SAdminBundle:Dashboard:index }
+    defaults: { _controller: Lin3sAdminBundle:Dashboard:index }

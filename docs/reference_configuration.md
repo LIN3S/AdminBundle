@@ -1,7 +1,7 @@
 #Configuration reference
 
 ```yaml
-lin3_s_admin:
+lin3s_admin:
     entities:
         pages:
             name:

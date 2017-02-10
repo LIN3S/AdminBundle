@@ -27,7 +27,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('lin3_s_admin')
+        $treeBuilder->root('lin3s_admin')
             ->children()
                 ->arrayNode('entities')->requiresAtLeastOneElement()
                 ->prototype('array')

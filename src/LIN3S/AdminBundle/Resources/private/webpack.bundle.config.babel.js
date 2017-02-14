@@ -11,6 +11,7 @@
 
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ModernizrWebpackPlugin from 'modernizr-webpack-plugin';
 import {join, resolve} from 'path';
 import precss from 'precss';
 import Webpack from 'webpack';
@@ -68,6 +69,12 @@ export default {
           configFile: join(__dirname, '.eslint.yml')
         }
       }
+    }),
+    new ModernizrWebpackPlugin({
+      minify: true,
+      filename: 'modernizr.js',
+      options: [ 'setClasses', 'addTest', 'html5printshiv', 'testProp', 'fnBind' ],
+      'feature-detects': [ 'css/flexbox', 'css/objectfit', 'touchevents' ]
     })
   ],
   devtool: 'source-map'

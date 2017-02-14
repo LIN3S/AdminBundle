@@ -39,6 +39,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "lin3s-event-bus": "^0.3.2",
+    "modernizr-webpack-plugin": "^1.0.5",
     "picturefill": "^3.0.2",
     "svg4everybody": "^2.1.4"
   }

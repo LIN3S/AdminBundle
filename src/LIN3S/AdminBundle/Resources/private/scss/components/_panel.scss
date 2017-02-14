@@ -7,8 +7,9 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
+@import './../../node_modules/lin3s-css-grid/scss/variables';
+
 @import '../variables/colors';
-@import '../variables/grid';
 @import '../helpers/panel';
 
 $panel-header-border-color: $color-mercury !default;

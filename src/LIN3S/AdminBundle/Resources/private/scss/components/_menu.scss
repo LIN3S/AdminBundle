@@ -7,8 +7,9 @@
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 
+@import './../../node_modules/lin3s-css-grid/scss/variables';
+
 @import '../variables/colors';
-@import '../helpers/grid';
 @import '../variables/typography';
 
 $menu-background-color: $color-shark !default;

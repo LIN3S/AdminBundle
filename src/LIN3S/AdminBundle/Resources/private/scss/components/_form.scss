@@ -8,9 +8,11 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
+@import './../../node_modules/lin3s-css-grid/scss/variables';
+
 @import '../variables/colors';
 @import '../helpers/form';
-@import '../helpers/grid';
+
 
 $form-input-default-color: $color-black !default;
 $form-main-color: $color-cerulean !default;

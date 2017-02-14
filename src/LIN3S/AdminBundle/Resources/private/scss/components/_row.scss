@@ -8,13 +8,31 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../helpers/grid';
+@import './../../node_modules/lin3s-css-grid/scss/functions';
+@import './../../node_modules/lin3s-css-grid/scss/mixins';
+@import './../../node_modules/lin3s-css-grid/scss/variables';
 
-@include grid__row('.row');
+$small-cols: 6, 12;
+$medium-cols: 4, 6, 12;
+$large-cols: 3, 4, 6, 8, 10, 12;
+$xlarge-cols: 12;
+
+$small-breakpoint: 640;
+$medium-breakpoint: 1024;
+$large-breakpoint: 1279;
+$xlarge-breakpoint: 1440;
+
+$fluid-row-width: 1290;
+
+@include grid__row('.row', 'adaptive');
 
 .row .row {
   margin-left: -#{$column-gutter / 2};
   margin-right: -#{$column-gutter / 2};
+}
+
+.row__column {
+  @include grid__column(12);
 }
 
 .row--centered {
@@ -22,4 +40,20 @@
   margin-right: auto;
 }
 
-@include grid__columns;
+.row--collapse {
+  padding-left: $column-gutter / 2;
+  padding-right: $column-gutter / 2;
+
+  > .row__column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@include grid-column-for-media-query('small', $small-cols, $small-up);
+@include grid-column-for-media-query('medium', $medium-cols, $medium-up);
+@include grid-column-for-media-query('large', $large-cols, $large-up);
+@include grid-column-for-media-query('xlarge', $xlarge-cols, $xlarge-up);
+
+@include grid-column-push-for-media-query('large', $large-cols, $large-up);
+@include grid-column-push-for-media-query('xlarge', $xlarge-cols, $xlarge-up);

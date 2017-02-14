@@ -2469,6 +2469,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lin3s-css-grid@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/lin3s-css-grid/-/lin3s-css-grid-0.1.0.tgz#02e4c291ed0df561f23a7b38c703faa5769f922a"
+
 lin3s-event-bus@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/lin3s-event-bus/-/lin3s-event-bus-0.3.2.tgz#60688dd48573541dfc494b18a4c6a613689119a9"

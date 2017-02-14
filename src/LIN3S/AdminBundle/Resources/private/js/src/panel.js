@@ -12,7 +12,7 @@
 
 'use strict';
 
-import {EventPublisher, DOMReadyEventSubscriber} from 'lin3s-event-bus';
+import {onDomReady} from 'lin3s-event-bus';
 
 import $ from 'jquery';
 
@@ -22,12 +22,4 @@ function onReady() {
   });
 }
 
-const init = () => {
-  EventPublisher.subscribe(
-    new DOMReadyEventSubscriber(
-      onReady
-    )
-  );
-};
-
-export default init();
+onDomReady(onReady);

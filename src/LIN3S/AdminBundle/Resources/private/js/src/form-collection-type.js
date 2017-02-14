@@ -12,20 +12,20 @@
 
 'use strict';
 
-import {EventPublisher, DOMReadyEventSubscriber} from 'lin3s-event-bus';
+import {onDomReady} from 'lin3s-event-bus';
 
 import $ from 'jquery';
 
 let $form, $collectionHolder;
 
-function addFormType($collectionHolder) {
+function addFormType($aCollectionHolder) {
   let
-    prototype = $collectionHolder.attr('data-prototype'),
-    index = $collectionHolder.find(':input').length,
+    prototype = $aCollectionHolder.attr('data-prototype'),
+    index = $aCollectionHolder.find(':input').length,
     newForm = prototype.replace(/__name__/g, index);
 
-  $(newForm).appendTo($collectionHolder);
-  $collectionHolder.data('index', index + 1);
+  $(newForm).appendTo($aCollectionHolder);
+  $aCollectionHolder.data('index', index + 1);
 }
 
 function onReady() {
@@ -49,12 +49,4 @@ function onReady() {
   });
 }
 
-const init = () => {
-  EventPublisher.subscribe(
-    new DOMReadyEventSubscriber(
-      onReady
-    )
-  );
-};
-
-export default init();
+onDomReady(onReady);

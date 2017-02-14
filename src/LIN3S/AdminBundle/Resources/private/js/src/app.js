@@ -12,11 +12,11 @@
 
 'use strict';
 
-import {EventPublisher, DOMReadyEvent} from 'lin3s-event-bus';
+import {listenDomReady, listenDomLoaded, onDomReady} from 'lin3s-event-bus';
 
 import 'picturefill';
 import svg4everybody from 'svg4everybody';
-import FastClick from 'fastclick';
+import fastClick from 'fastclick';
 
 import './filter';
 import './form-collection-type';
@@ -24,13 +24,10 @@ import './menu';
 import './panel';
 
 function initialize() {
-  FastClick(document.body);
+  fastClick.attach(document.body); // eslint-disable-line new-cap
   svg4everybody();
 }
 
-(() => {
-  document.addEventListener('DOMContentLoaded', () => {
-    initialize();
-    EventPublisher.publish(new DOMReadyEvent());
-  });
-})();
+listenDomReady();
+listenDomLoaded();
+onDomReady(initialize);

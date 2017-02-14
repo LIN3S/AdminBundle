@@ -13,13 +13,18 @@
     {% endblock %}
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/Lin3sAdmin/css/app.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('bundles/Lin3sAdmin/css/bundle.min.css') }}" type="text/css">
         {% include '@Lin3sAdmin/partial/stylesheets.html.twig' %}
     {% endblock %}
 
     {% block head_javascripts %}
         <script src="{{ asset('bundles/Lin3sAdmin/js/modernizr.js') }}"></script>
         {% include '@Lin3sAdmin/partial/head_javascripts.html.twig' %}
+    {% endblock %}
+
+    {% block javascripts %}
+        <script async defer src="{{ asset('bundles/Lin3sAdmin/js/bundle.min.js') }}"></script>
+        {% include '@Lin3sAdmin/partial/javascripts.html.twig' %}
     {% endblock %}
 </head>
 
@@ -55,11 +60,6 @@
             </div>
         </main>
     </section>
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('bundles/Lin3sAdmin/js/app.min.js') }}"></script>
-    {% include '@Lin3sAdmin/partial/javascripts.html.twig' %}
 {% endblock %}
 </body>
 </html>

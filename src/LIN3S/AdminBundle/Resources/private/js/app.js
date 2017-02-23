@@ -12,7 +12,7 @@
 
 'use strict';
 
-import {listenDomReady, listenDomLoaded, onDomReady} from 'lin3s-event-bus';
+import {onDomReady} from 'lin3s-event-bus';
 
 import 'picturefill';
 import svg4everybody from 'svg4everybody';
@@ -23,11 +23,9 @@ import './form-collection-type';
 import './menu';
 import './panel';
 
-function initialize() {
+const onReady = () => {
   fastClick.attach(document.body); // eslint-disable-line new-cap
   svg4everybody();
-}
+};
 
-listenDomReady();
-listenDomLoaded();
-onDomReady(initialize);
+onDomReady(onReady);

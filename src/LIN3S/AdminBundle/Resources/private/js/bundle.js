@@ -11,4 +11,4 @@
 
 import './../scss/app.scss';
 
-import './src/app';
+import './app';

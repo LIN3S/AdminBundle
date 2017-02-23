@@ -8,9 +8,17 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import './../../node_modules/lin3s-css-grid/scss/functions';
-@import './../../node_modules/lin3s-css-grid/scss/mixins';
-@import './../../node_modules/lin3s-css-grid/scss/variables';
+@import '../../node_modules/lin3s-css-grid/scss/functions';
+@import '../../node_modules/lin3s-css-grid/scss/mixins';
+@import '../../node_modules/lin3s-css-grid/scss/variables';
+
+$grid-type: 'adaptive'; // also, it can be fluid
+
+$row-padding: 15px;
+$row-width: 1290;
+
+$column-count: 12;
+$column-gutter: 30px;
 
 $small-cols: 6, 12;
 $medium-cols: 4, 6, 12;
@@ -22,38 +30,4 @@ $medium-breakpoint: 1024;
 $large-breakpoint: 1279;
 $xlarge-breakpoint: 1440;
 
-$fluid-row-width: 1290;
-
-@include grid__row('.row', 'adaptive');
-
-.row .row {
-  margin-left: -#{$column-gutter / 2};
-  margin-right: -#{$column-gutter / 2};
-}
-
-.row__column {
-  @include grid__column(12);
-}
-
-.row--centered {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.row--collapse {
-  padding-left: $column-gutter / 2;
-  padding-right: $column-gutter / 2;
-
-  > .row__column {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@include grid-column-for-media-query('small', $small-cols, $small-up);
-@include grid-column-for-media-query('medium', $medium-cols, $medium-up);
-@include grid-column-for-media-query('large', $large-cols, $large-up);
-@include grid-column-for-media-query('xlarge', $xlarge-cols, $xlarge-up);
-
-@include grid-column-push-for-media-query('large', $large-cols, $large-up);
-@include grid-column-push-for-media-query('xlarge', $xlarge-cols, $xlarge-up);
+@import '../../node_modules/lin3s-css-grid/scss/row';

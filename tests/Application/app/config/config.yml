@@ -44,7 +44,7 @@ doctrine:
         auto_mapping: true
 
 
-lin3_s_admin:
+lin3s_admin:
     entities:
         product:
             name:
@@ -53,30 +53,30 @@ lin3_s_admin:
             class: Tests\Application\ExampleBundle\Entity\Product
             actions:
                 new:
-                    class: lin3s_admin.action.type.new
+                    type: new
                     options:
                         name: lin3s_admin.action.new
                         form: Tests\Application\ExampleBundle\Form\Type\ProductType
                 edit:
-                    class: lin3s_admin.action.type.edit
+                    type: edit
                     options:
                         name: lin3s_admin.action.edit
                         form: Tests\Application\ExampleBundle\Form\Type\ProductType
             list:
                 fields:
                     id:
-                        class: lin3s_admin.list_field_type.string
+                        type: string
                         options:
                             name: 'Id'
                             field: id
                     title:
-                        class: lin3s_admin.list_field_type.string
+                        type: string
                         options:
                             name: 'Title'
                             field: getTitle
                     actions:
-                        class: lin3s_admin.list_field_type.actions
+                        type: actions
                         options:
                             actions: ['edit']
                             name: lin3s_admin.list.table.actions
-                globalActions: ['new']
+                global_actions: ['new']

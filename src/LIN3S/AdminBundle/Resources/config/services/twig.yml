@@ -15,20 +15,11 @@ services:
             - '@request_stack'
         tags:
             - { name: twig.extension }
+
     lin3s_admin.twig.paginator_path:
         class: LIN3S\AdminBundle\Twig\TwigPaginatorPathFunction
         arguments:
             - '@router'
             - '@request_stack'
-        tags:
-            - { name: twig.extension }
-    lin3s_admin.twig.json_decode_filter:
-        class: LIN3S\AdminBundle\Twig\TwigJsonDecodeFilter
-        tags:
-            - { name: twig.extension }
-    lin3s_admin.twig.action_translation_filter:
-        class: LIN3S\AdminBundle\Twig\TwigActionTranslationFilter
-        arguments:
-            - "@translator"
         tags:
             - { name: twig.extension }

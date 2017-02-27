@@ -1,4 +1,4 @@
-{% extends '@LIN3SAdmin/layout.html.twig' %}
+{% extends '@Lin3sAdmin/layout.html.twig' %}
 
 {% block lin3s_admin_title %}
     {{ entityConfig.printNames.plural | trans }}
@@ -7,8 +7,8 @@
 {% block lin3s_admin_actions %}
     {% for listGlobalAction in entityConfig.listGlobalActions %}
         {% set url = url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name}) %}
-        {% set options = listGlobalAction.options | action_translation  %}
-        {% set actionName = options.name | capitalize %}
+        {% set options = listGlobalAction.options | action_translation %}
+        {% set actionName = options.confirm.title | capitalize %}
 
         {% if options.confirm is defined %}
             <div id="react-confirm-global-action"
@@ -25,18 +25,18 @@
 {% endblock %}
 
 {% block lin3s_admin_content_top %}
-    {% include '@LIN3SAdmin/Admin/partials/list_filters.html.twig' %}
+    {% include '@Lin3sAdmin/Admin/partials/list_filters.html.twig' %}
 {% endblock %}
 
 {% block lin3s_admin_content %}
     <div class="admin__batch-actions"></div>
     <div class="admin__list">
-            {% include '@LIN3SAdmin/Admin/partials/list_table.html.twig' %}
-            {% include '@LIN3SAdmin/Admin/partials/paginator.html.twig' with {
-                currentPage: app.request.get('page') ?: 1,
-                totalCount: totalCount,
-                perPage: entityConfig.listEntitiesPerPage
-            } %}
-        </div>
+        {% include '@Lin3sAdmin/Admin/partials/list_table.html.twig' %}
+        {% include '@Lin3sAdmin/Admin/partials/paginator.html.twig' with {
+            currentPage: app.request.get('page') ?: 1,
+            totalCount: totalCount,
+            perPage: entityConfig.listEntitiesPerPage
+        } %}
+    </div>
     </div>
 {% endblock %}

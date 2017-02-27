@@ -19,7 +19,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * @author Gorka Laucirica <gorka.lauzirka@gmail.com>
  */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('lin3_s_admin')
+        $treeBuilder->root('lin3s_admin')
             ->children()
                 ->arrayNode('entities')->requiresAtLeastOneElement()
                 ->prototype('array')
@@ -44,7 +44,8 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('actions')
                             ->prototype('array')
                                 ->children()
-                                    ->scalarNode('class')->end()
+                                    ->scalarNode('name')->end()
+                                    ->scalarNode('type')->end()
                                     ->arrayNode('options')
                                         ->beforeNormalization()
                                             ->ifArray()
@@ -74,7 +75,8 @@ class Configuration implements ConfigurationInterface
                                 ->arrayNode('fields')
                                     ->prototype('array')
                                         ->children()
-                                            ->scalarNode('class')->end()
+                                            ->scalarNode('name')->end()
+                                            ->scalarNode('type')->end()
                                             ->arrayNode('options')
                                                 ->beforeNormalization()
                                                 ->ifArray()
@@ -96,15 +98,13 @@ class Configuration implements ConfigurationInterface
                                 ->arrayNode('filters')
                                     ->prototype('array')
                                         ->children()
-                                            ->scalarNode('class')->end()
+                                            ->scalarNode('type')->end()
+                                            ->scalarNode('name')->end()
                                             ->scalarNode('field')->end()
-                                            ->arrayNode('options')
-                                                ->prototype('scalar')->end()
-                                            ->end()
                                         ->end()
                                     ->end()
                                 ->end()
-                                ->arrayNode('globalActions')
+                                ->arrayNode('global_actions')
                                     ->prototype('scalar')->end()
                                 ->end()
                                 ->arrayNode('orderBy')->end()

@@ -27,6 +27,6 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('@LIN3SAdmin/Dashboard/index.html.twig');
+        return $this->render('@Lin3sAdmin/Dashboard/index.html.twig');
     }
 }

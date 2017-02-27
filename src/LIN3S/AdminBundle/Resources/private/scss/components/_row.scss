@@ -8,18 +8,26 @@
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../helpers/grid';
+@import '../../node_modules/lin3s-css-grid/scss/functions';
+@import '../../node_modules/lin3s-css-grid/scss/mixins';
+@import '../../node_modules/lin3s-css-grid/scss/variables';
 
-@include grid__row('.row');
+$grid-type: 'adaptive'; // also, it can be fluid
 
-.row .row {
-  margin-left: -#{$column-gutter / 2};
-  margin-right: -#{$column-gutter / 2};
-}
+$row-padding: 15px;
+$row-width: 1290;
 
-.row--centered {
-  margin-left: auto;
-  margin-right: auto;
-}
+$column-count: 12;
+$column-gutter: 30px;
 
-@include grid__columns;
+$small-cols: 6, 12;
+$medium-cols: 4, 6, 12;
+$large-cols: 3, 4, 6, 8, 10, 12;
+$xlarge-cols: 12;
+
+$small-breakpoint: 640;
+$medium-breakpoint: 1024;
+$large-breakpoint: 1279;
+$xlarge-breakpoint: 1440;
+
+@import '../../node_modules/lin3s-css-grid/scss/row';

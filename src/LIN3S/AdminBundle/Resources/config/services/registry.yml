@@ -9,13 +9,21 @@
 
 services:
     lin3s_admin.action.registry:
-        class: LIN3S\AdminBundle\Action\Registry\ActionRegistry
+        class: LIN3S\AdminBundle\Registry\ServiceRegistry
+        arguments:
+            - LIN3S\AdminBundle\Configuration\Type\ActionType
 
     lin3s_admin.configuration.entity_configuration_registry:
-        class: LIN3S\AdminBundle\Configuration\Registry\EntityConfigurationRegistry
+        class: LIN3S\AdminBundle\Registry\ServiceRegistry
+        arguments:
+            - LIN3S\AdminBundle\Configuration\Model\Entity
 
     lin3s_admin.list_field_type.registry:
-        class: LIN3S\AdminBundle\ListFields\ListFieldTypeRegistry
+        class: LIN3S\AdminBundle\Registry\ServiceRegistry
+        arguments:
+            - LIN3S\AdminBundle\Configuration\Type\ListFieldType
 
     lin3s_admin.list_filter_type.registry:
-        class: LIN3S\AdminBundle\ListFilters\ListFilterTypeRegistry
+        class: LIN3S\AdminBundle\Registry\ServiceRegistry
+        arguments:
+            - LIN3S\AdminBundle\Configuration\Type\ListFilterType

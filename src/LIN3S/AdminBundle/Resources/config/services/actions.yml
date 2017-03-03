@@ -17,6 +17,7 @@ services:
             - '@router'
         tags:
             - { name: 'lin3s_admin.action', alias: new }
+
     lin3s_admin.action.type.edit:
         class: LIN3S\AdminBundle\Extension\Action\EditActionType
         arguments:
@@ -26,6 +27,7 @@ services:
             - '@session'
         tags:
             - { name: 'lin3s_admin.action', alias: edit }
+
     lin3s_admin.action.type.delete:
         class: LIN3S\AdminBundle\Extension\Action\DeleteActionType
         arguments:
@@ -35,3 +37,14 @@ services:
             - '@session'
         tags:
             - { name: 'lin3s_admin.action', alias: delete }
+
+    lin3s_admin.action.type.handle_command:
+        class: LIN3S\AdminBundle\Extension\Action\HandleCommandActionType
+        arguments:
+            - "@lin3s_admin.form.handler"
+            - "@lin3s.cms_kernel.application.command_bus"
+            - "@twig"
+            - "@session.flash_bag"
+            - "@router"
+        tags:
+            - { name: "lin3s_admin.action", alias: handle_command }

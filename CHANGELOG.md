@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
 
 * 0.5.0
+    * Added novalidate by default in the admin form theme.
     * Added HandleCommandActionType.
     * [BC break] Refactored the whole js and scss files.
     * [BC break] Changed LIN3SAdminBundle to Lin3sAdminBundle so, be caution with `lin3_s`

@@ -2,3 +2,5 @@
 
 /var/
 !/var/.gitkeep
+
+/web/bundles

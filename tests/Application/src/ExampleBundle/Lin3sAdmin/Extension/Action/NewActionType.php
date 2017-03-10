@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace LIN3S\AdminBundle\Extension\Action;
+namespace Tests\Application\ExampleBundle\Lin3sAdmin\Extension\Action;
 
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Type\ActionType;
@@ -27,8 +27,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 final class NewActionType implements ActionType
 {
-    use EntityId;
-
     /**
      * The form handler.
      *

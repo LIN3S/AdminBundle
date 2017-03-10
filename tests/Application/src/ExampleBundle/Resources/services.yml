@@ -1,0 +1,10 @@
+services:
+    example.lin3s_admin.type.new:
+        class: Tests\Application\ExampleBundle\Lin3sAdmin\Extension\Action\NewActionType
+        arguments:
+            - '@lin3s_admin.form.handler'
+            - '@twig'
+            - '@session'
+            - '@router'
+        tags:
+            - { name: 'lin3s_admin.action', alias: example_new }

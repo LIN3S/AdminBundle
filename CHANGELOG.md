@@ -18,6 +18,9 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * [BC break] In config, `class` was replaced by `type` and now config type `alias` must be used instead service name
      for action, list field and list filters. Check [reference_configuration](docs/reference_configuration.md) for further info.
     * [BC break] Moved configuration type implementations to `Extension` folder
+    * [BC break] Removed Redirect, EntityId and OptionResolver traits
+    * [BC break] Moved NewActionType, EditActionType and DeleteActionType to LIN3SAdminCRUDExtensionBundle
+    * [BC break] Moved HandleCommandActionType to LIN3SAdminDDDExtensionBundle
     * [BC break] Full change of configuration namespaces
     
 | Previous                                            | New                                                   |

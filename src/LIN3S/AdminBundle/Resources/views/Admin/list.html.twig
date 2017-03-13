@@ -6,7 +6,7 @@
 
 {% block lin3s_admin_global_actions %}
     {% for listGlobalAction in entityConfig.listGlobalActions %}
-        {% set url = url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name}) %}
+        {% set url = url('lin3s_admin_custom_global', {'entity': entityConfig.name, 'action': listGlobalAction.name}) %}
 
         {% block lin3s_admin_global_action %}
             <a href="{{ url }}" class="button button--secondary">{{ listGlobalAction.options.name | trans }}</a>

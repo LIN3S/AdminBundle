@@ -25,6 +25,7 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * [BC break] Removed code used by external dependencies from list views
     * [BC break] Renamed `lin3s_admin_actions` to `lin3s_admin_global_actions` in list view
     * [BC break] Full change of configuration namespaces
+    * Changed routing strategy now it's /{entity}/{id}/{action}
     
 | Previous                                            | New                                                   |
 | --------                                            | ---                                                   |

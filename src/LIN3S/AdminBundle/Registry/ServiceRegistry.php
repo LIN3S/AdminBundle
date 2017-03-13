@@ -11,11 +11,6 @@
 
 namespace LIN3S\AdminBundle\Registry;
 
-/**
- * Class ServiceRegistry
- *
- * @package LIN3S\AdminBundle\Registry
- */
 final class ServiceRegistry
 {
     /**

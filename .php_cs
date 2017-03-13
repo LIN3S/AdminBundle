@@ -32,6 +32,7 @@ return Symfony\CS\Config\Config::create()
     ->fixers([
         '-unalign_double_arrow',
         '-concat_without_spaces',
+        '-method_argument_default_value',
         'align_double_arrow',
         'concat_with_spaces',
         'header_comment',

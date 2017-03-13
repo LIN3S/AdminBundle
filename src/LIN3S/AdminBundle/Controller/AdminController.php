@@ -54,7 +54,7 @@ class AdminController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function customAction($entity, $action, $id, Request $request)
+    public function customAction($entity, $action, $id = null, Request $request)
     {
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entityObject = null;

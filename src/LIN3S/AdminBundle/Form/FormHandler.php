@@ -74,7 +74,7 @@ class FormHandler
      *
      * @return FormInterface
      */
-    public function handleForm($formClass, $object, Request $request, array $formOptions = [])
+    public function handleForm($formClass, $object = null, Request $request, array $formOptions = [])
     {
         $form = $this->createForm($formClass, $object, $formOptions);
         if ($request->isMethod('POST') || $request->isMethod('PUT') || $request->isMethod('PATCH')) {

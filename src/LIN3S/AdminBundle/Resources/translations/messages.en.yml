@@ -9,9 +9,6 @@
 # @author Beñat Espiña <benatespina@gmail.com>
 
 lin3s_admin:
-    action:
-        new: New
-        edit: Edit
     list:
         table:
             actions: Actions

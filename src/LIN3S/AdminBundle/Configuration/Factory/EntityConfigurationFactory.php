@@ -3,7 +3,7 @@
 /*
  * This file is part of the Admin Bundle.
  *
- * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+ * Copyright (c) 2015-present LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -40,7 +40,8 @@ final class EntityConfigurationFactory
         $this->queryBuilder = $queryBuilder;
     }
 
-    public function createFor($entity) {
+    public function createFor($entity)
+    {
         $entityConfig = $this->config[$entity];
 
         return new Entity(
@@ -61,7 +62,7 @@ final class EntityConfigurationFactory
     {
         $actions = [];
 
-        foreach($this->config[$entity]['actions'] as $id => $action) {
+        foreach ($this->config[$entity]['actions'] as $id => $action) {
             $actions[] = new Action(
                 $id,
                 $this->actions->get($action['type']),
@@ -76,8 +77,7 @@ final class EntityConfigurationFactory
     {
         $listFields = [];
 
-        foreach($this->config[$entity]['list']['fields'] as $id => $field)
-        {
+        foreach ($this->config[$entity]['list']['fields'] as $id => $field) {
             $listFields[] = new ListField(
                 $id,
                 $this->listFields->get($field['type']),
@@ -92,7 +92,7 @@ final class EntityConfigurationFactory
     {
         $listFilters = [];
 
-        foreach($this->config[$entity]['list']['filters'] as $id => $filter) {
+        foreach ($this->config[$entity]['list']['filters'] as $id => $filter) {
             $listFilters[] = new ListFilter(
                 $id,
                 $this->listFilters->get($filter['type']),

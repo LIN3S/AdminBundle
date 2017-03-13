@@ -3,7 +3,7 @@
 /*
  * This file is part of the Admin Bundle.
  *
- * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+ * Copyright (c) 2015-present LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,9 +12,9 @@
 namespace LIN3S\AdminBundle\Registry;
 
 /**
- * Cannot be final, because it is proxied
+ * Class ServiceRegistry
  *
- * @author Paweł Jędrzejewski <pawel@sylius.org>
+ * @package LIN3S\AdminBundle\Registry
  */
 final class ServiceRegistry
 {
@@ -31,7 +31,7 @@ final class ServiceRegistry
     private $interface;
 
     /**
-     * Human readable context for these services, e.g. "grid field"
+     * Human readable context for these services, e.g. "grid field".
      *
      * @var string
      */

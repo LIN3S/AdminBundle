@@ -3,7 +3,7 @@
 /*
  * This file is part of the Admin Bundle.
  *
- * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+ * Copyright (c) 2015-present LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,7 +33,7 @@ final class ListFieldTypePass implements CompilerPassInterface
 
         $registry = $container->getDefinition('lin3s_admin.list_field_type.registry');
         foreach ($container->findTaggedServiceIds('lin3s_admin.list_field_type') as $id => $tags) {
-            foreach($tags as $attributes) {
+            foreach ($tags as $attributes) {
                 $registry->addMethodCall('register', [$attributes['alias'], new Reference($id)]);
             }
         }

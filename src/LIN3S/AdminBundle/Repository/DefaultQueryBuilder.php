@@ -3,7 +3,7 @@
 /*
  * This file is part of the Admin Bundle.
  *
- * Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+ * Copyright (c) 2015-present LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -71,7 +71,6 @@ class DefaultQueryBuilder implements QueryBuilder
                 ? $queryBuilder->addOrderBy($alias . '.' . $request->get('orderBy'), $request->get('order', 'ASC'))
                 : $queryBuilder->addOrderBy($alias . '.' . $fields, $request->get('order', 'ASC'));
         }
-
 
         list($alias, $fields) = $this->getQueryAliasAndFields(
             $request->get('filterBy'),

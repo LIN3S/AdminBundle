@@ -24,8 +24,8 @@
     },
     "scripts": {
         "cs": [
-            "php-cs-fixer fix --config-file=.php_cs",
-            "php-cs-fixer fix --config-file=.phpspec_cs"
+            "vendor/bin/php-cs-fixer fix --config-file=.php_cs",
+            "vendor/bin/php-cs-fixer fix --config-file=.phpspec_cs"
         ],
         "test": "phpspec run"
     },

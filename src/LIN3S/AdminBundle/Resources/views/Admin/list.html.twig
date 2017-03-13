@@ -4,23 +4,13 @@
     {{ entityConfig.printNames.plural | trans }}
 {% endblock %}
 
-{% block lin3s_admin_actions %}
+{% block lin3s_admin_global_actions %}
     {% for listGlobalAction in entityConfig.listGlobalActions %}
         {% set url = url('lin3s_admin_custom', {'entity': entityConfig.name, 'action': listGlobalAction.name}) %}
-        {% set options = listGlobalAction.options | action_translation %}
-        {% set actionName = options.confirm.title | capitalize %}
 
-        {% if options.confirm is defined %}
-            <div id="react-confirm-global-action"
-                 data-url="{{ url }}"
-                 data-message-button="{{ options.confirm.button }}"
-                 data-message-title="{{ options.confirm.title }}"
-                 data-message-content="{{ options.confirm.content | json_encode }}"
-                 data-button-title="{{ actionName }}"
-                 data-button-style="button button--secondary"></div>
-        {% else %}
-            <a href="{{ url }}" class="button button--secondary">{{ actionName }}</a>
-        {% endif %}
+        {% block lin3s_admin_global_action %}
+            <a href="{{ url }}" class="button button--secondary">{{ listGlobalAction.options.name | trans }}</a>
+        {% endblock %}
     {% endfor %}
 {% endblock %}
 

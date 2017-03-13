@@ -21,6 +21,9 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * [BC break] Removed Redirect, EntityId and OptionResolver traits
     * [BC break] Moved NewActionType, EditActionType and DeleteActionType to LIN3SAdminCRUDExtensionBundle
     * [BC break] Moved HandleCommandActionType to LIN3SAdminDDDExtensionBundle
+    * Added `lin3s_admin_global_action` block in list view
+    * [BC break] Removed code used by external dependencies from list views
+    * [BC break] Renamed `lin3s_admin_actions` to `lin3s_admin_global_actions` in list view
     * [BC break] Full change of configuration namespaces
     
 | Previous                                            | New                                                   |

@@ -1,3 +1,6 @@
+imports:
+    - { resource: '@ApplicationExampleBundle/Resources/services.yml' }
+
 parameters:
     locale: en_US
     database_host:     127.0.0.1
@@ -53,14 +56,9 @@ lin3s_admin:
             class: Tests\Application\ExampleBundle\Entity\Product
             actions:
                 new:
-                    type: new
+                    type: example_new
                     options:
                         name: lin3s_admin.action.new
-                        form: Tests\Application\ExampleBundle\Form\Type\ProductType
-                edit:
-                    type: edit
-                    options:
-                        name: lin3s_admin.action.edit
                         form: Tests\Application\ExampleBundle\Form\Type\ProductType
             list:
                 fields:
@@ -74,9 +72,4 @@ lin3s_admin:
                         options:
                             name: 'Title'
                             field: getTitle
-                    actions:
-                        type: actions
-                        options:
-                            actions: ['edit']
-                            name: lin3s_admin.list.table.actions
                 global_actions: ['new']

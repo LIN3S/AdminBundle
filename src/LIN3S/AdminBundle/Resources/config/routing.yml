@@ -18,7 +18,6 @@ lin3s_admin_custom_global:
     path: /{entity}/{action}
     defaults:
         _controller: Lin3sAdminBundle:Admin:custom
-        id: null
     methods:
         - GET
         - POST
@@ -27,7 +26,6 @@ lin3s_admin_custom:
     path: /{entity}/{id}/{action}
     defaults:
         _controller: Lin3sAdminBundle:Admin:custom
-        id: null
     methods:
         - GET
         - POST

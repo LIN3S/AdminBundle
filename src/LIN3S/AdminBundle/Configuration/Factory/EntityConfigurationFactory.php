@@ -79,7 +79,7 @@ final class EntityConfigurationFactory
 
         foreach ($this->config[$entity]['list']['fields'] as $id => $field) {
             $listFields[] = new ListField(
-                $id,
+                isset($field['name']) ? $field['name'] : $id,
                 $this->listFields->get($field['type']),
                 $field['options']
             );
@@ -94,7 +94,7 @@ final class EntityConfigurationFactory
 
         foreach ($this->config[$entity]['list']['filters'] as $id => $filter) {
             $listFilters[] = new ListFilter(
-                $id,
+                isset($filter['name']) ? $filter['name'] : $id,
                 $this->listFilters->get($filter['type']),
                 $filter['field']
             );

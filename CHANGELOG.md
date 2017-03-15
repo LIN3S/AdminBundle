@@ -3,31 +3,31 @@
 This changelog references the relevant changes done between versions.
 
 To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundle/commit/XXX where XXX is the change hash 
-To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.2.0...v0.3.0
+To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.5.0
+    * Decoupled with Twig include the `lin3s_admin_global_action` block in list view.
     * Added `id` getter method in the Entity configuration class.
     * Added novalidate by default in the admin form theme.
     * Added HandleCommandActionType.
     * [BC break] Refactored the whole js and scss files.
-    * [BC break] Changed LIN3SAdminBundle to Lin3sAdminBundle so, be caution with `lin3_s`
-    configuration, now it is `lin3s_admin`
-    * Added fr translation messages
-    * Refactored and unified registries
+    * [BC break] Changed LIN3SAdminBundle to Lin3sAdminBundle so, be caution with `lin3_s` configuration, now it is `lin3s_admin`.
+    * Added fr translation messages.
+    * Refactored and unified registries.
     * [BC break] Made configuration, dependency injection, extension, registry final.
-    * [BC break] `lin3s_admin.action`, `lin3s_admin.list_field` and `lin3s_admin.list_filter` tags now require an `alias`
-    * [BC break] In config, `class` was replaced by `type` and now config type `alias` must be used instead service name
+    * [BC break] `lin3s_admin.action`, `lin3s_admin.list_field` and `lin3s_admin.list_filter` tags now require an `alias`.
+    * [BC break] In config, `class` was replaced by `type` and now config type `alias` must be used instead service name.
      for action, list field and list filters. Check [reference_configuration](docs/reference_configuration.md) for further info.
-    * [BC break] Moved configuration type implementations to `Extension` folder
-    * [BC break] Removed Redirect, EntityId and OptionResolver traits
-    * [BC break] Moved NewActionType, EditActionType and DeleteActionType to LIN3SAdminCRUDExtensionBundle
-    * [BC break] Moved HandleCommandActionType to LIN3SAdminDDDExtensionBundle
-    * Added `lin3s_admin_global_action` block in list view
-    * [BC break] Removed code used by external dependencies from list views
-    * [BC break] Renamed `lin3s_admin_actions` to `lin3s_admin_global_actions` in list view
-    * [BC break] Full change of configuration namespaces
-    * [BC break] Removed new.html.twig and edit.html.twig and unified in form.html.twig page
-    * Changed routing strategy now it's /{entity}/{id}/{action}
+    * [BC break] Moved configuration type implementations to `Extension` folder.
+    * [BC break] Removed Redirect, EntityId and OptionResolver traits.
+    * [BC break] Moved NewActionType, EditActionType and DeleteActionType to LIN3SAdminCRUDExtensionBundle.
+    * [BC break] Moved HandleCommandActionType to LIN3SAdminDDDExtensionBundle.
+    * Added `lin3s_admin_global_action` block in list view.
+    * [BC break] Removed code used by external dependencies from list views.
+    * [BC break] Renamed `lin3s_admin_actions` to `lin3s_admin_global_actions` in list view.
+    * [BC break] Full change of configuration namespaces.
+    * [BC break] Removed new.html.twig and edit.html.twig and unified in form.html.twig page.
+    * Changed routing strategy now it's /{entity}/{id}/{action}.
     
 | Previous                                            | New                                                   |
 | --------                                            | ---                                                   |
@@ -39,9 +39,9 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
 | LIN3S\AdminBundle\ListFilter\ListFilter             | LIN3S\AdminBundle\Configuration\Model\ListFilter      |
 | LIN3S\AdminBundle\ListFilter\ListFilterType         | LIN3S\AdminBundle\Configuration\Type\ListFilterType   |    
 * 0.4.1
-    * Removed Sylius registry dependency
+    * Removed Sylius registry dependency.
 * 0.4.0
-    * Improvements in gulpfile
+    * Improvements in gulpfile.
     * [BC break] Made `getEntityId()` private in `EntityId` trait.
     * [BC break] `LocaleController` removed.
     * `OptionResolver` trait added to check options exist in actions.
@@ -57,9 +57,9 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * Deprecated `TwigJsonDecodeFilter`.
     
 * 0.3.2
-    * Styles and Twig bug fixes
+    * Styles and Twig bug fixes.
 * 0.3.1
-    * Styles and Twig bug fixes
+    * Styles and Twig bug fixes.
 * 0.3.0
     * Relocated `app.min.js` and `app.min.css` to inside `javascripts.html.twig` and `stylesheets.html.twig` Twig includes.
         * Be careful overriding this twig components if you are not using ES2015.

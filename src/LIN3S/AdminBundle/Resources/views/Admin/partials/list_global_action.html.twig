@@ -1,0 +1,10 @@
+{##
+    entityName: The name of the related entity
+    globalAction: The global action itself
+#}
+
+{% set url = url('lin3s_admin_custom_global', {'entity': entityName, 'action': globalAction.name}) %}
+
+<a href="{{ url }}" class="button button--secondary">
+    {{ globalAction.options.name | trans }}
+</a>

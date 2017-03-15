@@ -1,4 +1,4 @@
-{% extends 'Lin3sAdminBundle:layout.html.twig' %}
+{% extends '@Lin3sAdmin/layout.html.twig' %}
 
 {% block lin3s_admin_title %}
     {{ entityConfig.printNames.plural | trans }}
@@ -7,7 +7,7 @@
 {% block lin3s_admin_global_actions %}
     {% for listGlobalAction in entityConfig.listGlobalActions %}
         {% block lin3s_admin_global_action %}
-            {% include 'Lin3sAdminBundle:Admin/partials:list_global_action.html.twig' with {
+            {% include '@Lin3sAdmin/Admin/partials/list_global_action.html.twig' with {
                 entityName: entityConfig.name,
                 globalAction: listGlobalAction
             } %}
@@ -16,14 +16,14 @@
 {% endblock %}
 
 {% block lin3s_admin_content_top %}
-    {% include 'Lin3sAdminBundle:Admin/partials/list_filters.html.twig' %}
+    {% include '@Lin3sAdmin/Admin/partials/list_filters.html.twig' %}
 {% endblock %}
 
 {% block lin3s_admin_content %}
     <div class="admin__batch-actions"></div>
     <div class="admin__list">
-        {% include 'Lin3sAdminBundle:Admin/partials/list_table.html.twig' %}
-        {% include 'Lin3sAdminBundle:Admin/partials/paginator.html.twig' with {
+        {% include '@Lin3sAdmin/Admin/partials/list_table.html.twig' %}
+        {% include '@Lin3sAdmin/Admin/partials/paginator.html.twig' with {
             currentPage: app.request.get('page') ?: 1,
             totalCount: totalCount,
             perPage: entityConfig.listEntitiesPerPage

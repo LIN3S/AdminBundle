@@ -11,7 +11,6 @@
 
 namespace LIN3S\AdminBundle\Controller;
 
-use LIN3S\AdminBundle\Configuration\Model\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,7 +25,6 @@ class AdminController extends Controller
      * List action.
      *
      * @param string  $entity       The entity name
-     * @param Entity  $entityConfig The entity configuration
      * @param Request $request      The request
      *
      * @return \Symfony\Component\HttpFoundation\Response

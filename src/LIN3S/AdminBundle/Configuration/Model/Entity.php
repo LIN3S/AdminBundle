@@ -186,6 +186,32 @@ final class Entity
     }
 
     /**
+     * Gets the id of the given entity.
+     *
+     * @param mixed $entity The entity
+     *
+     * @return mixed The entity id
+     * @throws \Exception when the id does not exist
+     */
+    public function id($entity)
+    {
+        $idField = $this->idField();
+
+        if (method_exists($entity, $idField)) {
+            return call_user_func([$entity, $idField]);
+        } elseif (method_exists($entity, 'get' . ucfirst($idField))) {
+            return call_user_func([$entity, 'get' . ucfirst($idField)]);
+        }
+
+        throw new \Exception(
+            sprintf(
+                'You have configured "%s" as id field, not %s public property found nor %s() ' .
+                'nor, get%s() methods found', $idField, $idField, $idField, ucfirst($idField)
+            )
+        );
+    }
+
+    /**
      * Gets the entity name.
      *
      * @return string

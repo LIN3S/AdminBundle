@@ -13,6 +13,7 @@ namespace LIN3S\AdminBundle\Extension\ListField;
 
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Date list field type.
@@ -21,15 +22,33 @@ use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
  */
 final class DateListFieldType implements ListFieldType
 {
-    public function header($options, Entity $configuration)
+    /**
+     * The translator.
+     *
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    /**
+     * Constructor.
+     *
+     * @param TranslatorInterface $translator The Translator
+     */
+    public function __construct(TranslatorInterface $translator)
     {
-        if (!isset($options['name'])) {
+        $this->translator = $translator;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function header($name, Entity $configuration)
+    {
+        if (!isset($name)) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
 
-        return $options['name'];
-
-        //return $this->translator->trans($options['name']);
+        return $this->translator->trans($name);
     }
 
     /**

@@ -22,3 +22,9 @@ services:
             - '@router'
         tags:
             - {name: lin3s_admin.list_field_type, alias: actions}
+    lin3s_admin.list_field_type.datetime:
+        class: LIN3S\AdminBundle\Extension\ListField\DateListFieldType
+        arguments:
+            - '@translator'
+        tags:
+            - { name: lin3s_admin.list_field_type,  alias: datetime }

@@ -14,6 +14,9 @@ lin3s_admin:
             actions: Actions
         filters:
             search: Search
+        field_type:
+            date:
+                not_available: Not available
     paginator:
         total_elements: "%totalCount% elements"
     form:

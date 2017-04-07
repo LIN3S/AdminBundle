@@ -65,6 +65,9 @@ final class DateListFieldType implements ListFieldType
         foreach ($properties as $property) {
             $value = $value->$property();
         }
+        if (null === $value) {
+            return $this->translator->trans('lin3s_admin.list.field_type.date.not_available');
+        }
         if (!$value instanceof \DateTimeInterface) {
             throw new \Exception(sprintf('%s must implement the \DateTimeInterface', $value));
         }

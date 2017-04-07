@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.5.0
+    * Made date list field nullable.
     * Made translatables filters and list fields.
     * Decoupled with Twig include the `lin3s_admin_global_action` block in list view.
     * Added `id` getter method in the Entity configuration class.

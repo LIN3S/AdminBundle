@@ -93,7 +93,7 @@ final class ActionsListFieldType implements ListFieldType
                 'action' => $action->name(),
             ]);
 
-            $html .= $this->twig->render('@Lin3sAdmin/Admin/partials/table_action_link.twig', [
+            $html .= $this->twig->render('@Lin3sAdmin/Admin/partials/table_action_link.html.twig', [
                 'action' => $actionName,
                 'name'   => $this->translator->trans(
                     array_key_exists('name', $action->options())

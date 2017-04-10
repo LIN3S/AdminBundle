@@ -6,7 +6,6 @@
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
-
 @import '../variables/colors';
 
 $table-border-color: $color-dark-mercury !default;
@@ -81,4 +80,10 @@ tr {
       width: 1px;
     }
   }
+}
+
+.table__action--crud-delete,
+.table__action--delete,
+.table__action--remove {
+  margin-right: 0;
 }

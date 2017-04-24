@@ -6,12 +6,15 @@
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+// @author Beñat Espiña <benatespina@gmail.com>
+
 @import '../variables/colors';
 
 $table-border-color: $color-dark-mercury !default;
 $table-row-odd-color: $color-alabaster !default;
 $table-row-even-color: $color-white !default;
 $table-head-row-color: $color-alto !default;
+$table-action-margin: 16px !default;
 
 table {
   text-align: left;
@@ -67,7 +70,7 @@ tr {
 }
 
 .table__action {
-  margin-right: 15px;
+  margin-right: $table-action-margin;
   position: relative;
 
   &:not(:last-child) {
@@ -76,14 +79,17 @@ tr {
       content: '';
       height: 100%;
       position: absolute;
-      right: -5px;
+      right: -#{$table-action-margin / 2};
       width: 1px;
     }
   }
 }
 
+// Hack to prevent the block content because this kind
+// of actions are rendered by React.js and their root
+// node is a "div" instead of "a".
 .table__action--crud-delete,
 .table__action--delete,
 .table__action--remove {
-  margin-right: 0;
+  display: inline;
 }

@@ -12,6 +12,7 @@ lin3s_admin:
     list:
         table:
             actions: Actions
+            no_records: No records found for the given filters
         filters:
             search: Search
         field_type:

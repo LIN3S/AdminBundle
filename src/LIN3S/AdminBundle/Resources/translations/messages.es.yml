@@ -12,6 +12,7 @@ lin3s_admin:
     list:
         table:
             actions: Acciones
+            no_records: No hay elementos para los filtros actuales
         filters:
             search: Buscar
         field_type:

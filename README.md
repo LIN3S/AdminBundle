@@ -13,8 +13,9 @@
 
 ## Features
 
+* No need to touch your existing entities, domain models or symfony forms
+* Configuration driven admin panel, with customizable actions, lists, filters and pagination.
 * Extensible with already available CRUD and DDD extensions.
-* Fully customizable actions, lists, filters and pagination.
 * Responsive admin panel theme.
 
 [Show me the docs!](docs/index.md)

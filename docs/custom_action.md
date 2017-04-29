@@ -1,3 +1,3 @@
-#Creting a custom action
+# Creating a custom action
 
 > TODO

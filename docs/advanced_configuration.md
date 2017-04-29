@@ -6,7 +6,7 @@ To adapt the admin to your needs some extension points have been created. These,
 Take a look to the following example config:
 
 ```yaml
-# app/Resources/config.tml
+# app/Resources/config.yml
 lin3s_admin:
     entities:
         pages:

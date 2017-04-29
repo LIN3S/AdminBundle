@@ -33,6 +33,8 @@
                 {% endfor %}
             {% endblock %}
         </tr>
+    {% else %}
+        <td colspan="{{ entityConfig.listFields | length }}">{{ 'lin3s_admin.list.table.no_records' | trans }}</td>
     {% endfor %}
     </tbody>
 </table>

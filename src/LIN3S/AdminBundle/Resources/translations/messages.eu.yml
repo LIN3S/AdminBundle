@@ -12,6 +12,7 @@ lin3s_admin:
     list:
         table:
             actions: Ekintzak
+            no_records: Ez dago sarrerarik egin duzun bilaketarentzat
         filters:
             search: Bilatu
         field_type:

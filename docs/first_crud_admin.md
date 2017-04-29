@@ -29,7 +29,16 @@ class AppKernel extends Kernel
 }
 ```
 
-3. Create your first entity
+3. Add routing config:
+
+```yaml
+# app/config/routing.yml
+
+lin3s_admin:
+    resource: "@Lin3sAdminBundle/Resources/config/routing.yml"
+    prefix: "admin/"
+```
+4. Create your first entity
 
 ```php
 <?php
@@ -95,7 +104,7 @@ class Product
 }
 ```
 
-4. Create the schema for our Product
+5. Create the schema for our Product
 
 ```bash
 $ doctrine:schema:update --force
@@ -103,7 +112,7 @@ $ doctrine:schema:update --force
 
 > Make sure you have correctly [configured the database connection](http://symfony.com/doc/current/doctrine.html#configuring-the-database)
 
-5. Create a form for our entity
+6. Create a form for our entity
 
 ```php
 <?php
@@ -152,9 +161,11 @@ class ProductType extends AbstractType
 
 ```
 
-6. Add admin configuration
+7. Add admin configuration
 
 ```yaml
+# app/config/config.yml
+
 lin3s_admin:
     entities:
         products:
@@ -204,6 +215,6 @@ lin3s_admin:
                 global_actions: ['new']
 ```
 
-7. Access the product list in /admin/products
+8. Access the product list in /admin/products
 
 To take full advantage of this admin you may can check the [advanced configuration docs](docs/advanced_configuration.md)

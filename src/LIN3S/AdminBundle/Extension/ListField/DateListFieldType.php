@@ -59,6 +59,7 @@ final class DateListFieldType implements ListFieldType
         if (!isset($options['field'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
+
         $properties = explode('.', $options['field']);
 
         $value = $entity;
@@ -72,6 +73,8 @@ final class DateListFieldType implements ListFieldType
             throw new \Exception(sprintf('%s must implement the \DateTimeInterface', $value));
         }
 
-        return $value->format('d M Y');
+        $format = isset($options['format']) ? $options['format'] : 'd M Y';
+
+        return $value->format($format);
     }
 }

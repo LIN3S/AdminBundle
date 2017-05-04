@@ -13,7 +13,6 @@
 @import '../variables/colors';
 @import '../helpers/form';
 
-
 $form-input-default-color: $color-black !default;
 $form-main-color: $color-cerulean !default;
 $form-input-font-color: $color-shark !default;
@@ -22,7 +21,7 @@ $form-input-checkbox-checked-background-color: $color-bondi-blue !default;
 $form-input-checkbox-checked-tik-color: $color-white !default;
 $form-label-required-color: $color-thunderbird !default;
 $form-error-font-color: $color-thunderbird !default;
-$form-collection-item-even-background-color: $color-seashell !default;
+$form-collection-item-even-background-color: $color-mercury !default;
 $form-collection-footer-border-color: $color-seashell !default;
 $form-collection-item-toggle-background-color: $color-white !default;
 $form-collection-item-toggle-border-color: $color-mercury !default;
@@ -136,17 +135,20 @@ select {
   padding-left: 0;
 }
 
-.form__collection {
-  margin: 0 -15px;
-}
-
 .form__collection-item {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   position: relative;
+
+  &:not(:first-child) {
+    padding-top: 30px;
+  }
 
   &:nth-child(even) {
     background: $form-collection-item-even-background-color;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
@@ -196,11 +198,6 @@ select {
   color: $form-error-font-color;
   margin-top: 5px;
   order: 3;
-}
-
-// Froala
-.fr-box {
-  order: 2;
 }
 
 @media #{$large-up} {

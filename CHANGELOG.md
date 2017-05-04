@@ -29,9 +29,9 @@ To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle
     * Added `lin3s_admin_global_action` block in list view.
     * [BC break] Removed code used by external dependencies from list views.
     * [BC break] Renamed `lin3s_admin_actions` to `lin3s_admin_global_actions` in list view.
-    * [BC break] Full change of configuration namespaces.
     * [BC break] Removed new.html.twig and edit.html.twig and unified in form.html.twig page.
     * Changed routing strategy now it's /{entity}/{id}/{action}.
+    * [BC break] Full change of configuration namespaces:
     
 | Previous                                            | New                                                   |
 | --------                                            | ---                                                   |

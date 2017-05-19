@@ -152,7 +152,7 @@
 {% block lin3s_admin_panel %}
     <div class="panel">
         <div class="panel__header">
-            <h2 class="panel__title">{{ group.name }}</h2>
+            <h2 class="panel__title">{{ group.name | trans }}</h2>
         </div>
         <div class="panel__content">
             {% for field in group.fields %}

@@ -1,7 +1,7 @@
 #Configuration reference
 
 ```yaml
-lin3_s_admin:
+lin3s_admin:
     entities:
         pages:
             name:
@@ -41,6 +41,9 @@ lin3_s_admin:
                         class: lin3s_admin.list_filter_type.text
                         field: id
                     # .... Add as many filters as you need .... #
-                globalActions: ['new']
+                global_actions: ['new']
+                order_by:
+                    created_at: DESC
+                    
 
 ```

@@ -73,3 +73,5 @@ lin3s_admin:
                             name: 'Title'
                             field: getTitle
                 global_actions: ['new']
+                order_by:
+                    created_at: DESC

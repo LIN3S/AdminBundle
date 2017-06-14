@@ -54,7 +54,8 @@ final class EntityConfigurationFactory
             $entityConfig['list']['global_actions'],
             $this->queryBuilder,
             $entityConfig['name'],
-            $entityConfig['list']['amount_per_page']
+            $entityConfig['list']['amount_per_page'],
+            $entityConfig['list']['order_by']
         );
     }
 

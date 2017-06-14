@@ -70,6 +70,8 @@ class DefaultQueryBuilder implements QueryBuilder
             null === $fields
                 ? $queryBuilder->addOrderBy($alias . '.' . $request->get('orderBy'), $request->get('order', 'ASC'))
                 : $queryBuilder->addOrderBy($alias . '.' . $fields, $request->get('order', 'ASC'));
+        } else {
+            $queryBuilder = $this->addDefaultOrderBy($queryBuilder, $request, $config, 'a');
         }
 
         list($alias, $fields) = $this->getQueryAliasAndFields(
@@ -221,6 +223,24 @@ class DefaultQueryBuilder implements QueryBuilder
         $queryBuilder->resetDQLPart('join');
         foreach ($joins as $join) {
             $queryBuilder->join($join->getJoin(), $join->getAlias());
+        }
+
+        return $queryBuilder;
+    }
+
+    private function addDefaultOrderBy(
+        DoctrineQueryBuilder $queryBuilder,
+        Request $request,
+        Entity $config,
+        $alias = null
+    ) {
+        if (false === $request->query->has('orderBy')) {
+            $sort = key($config->listOrderByDefault());
+
+            $queryBuilder->orderBy(
+                null === $alias ? $sort : $alias . '.' . $sort,
+                $config->listOrderByDefault()[$sort]
+            );
         }
 
         return $queryBuilder;

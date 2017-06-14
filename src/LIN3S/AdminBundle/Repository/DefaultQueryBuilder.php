@@ -234,7 +234,7 @@ class DefaultQueryBuilder implements QueryBuilder
         Entity $config,
         $alias = null
     ) {
-        if (false === $request->query->has('orderBy')) {
+        if (false === $request->query->has('orderBy') && false === empty($config->listOrderByDefault())) {
             $sort = key($config->listOrderByDefault());
 
             $queryBuilder->orderBy(

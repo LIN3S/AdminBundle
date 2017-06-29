@@ -11,6 +11,8 @@
 @import 'base/reset';
 @import 'base/common';
 
+@import '../node_modules/lin3s-front-foundation/src/scss/atoms/_parsley-form-error.scss';
+
 @import 'components/button';
 @import 'components/confirm-dialog';
 @import 'components/flash';

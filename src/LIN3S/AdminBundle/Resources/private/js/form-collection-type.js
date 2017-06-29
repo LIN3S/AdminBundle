@@ -22,7 +22,7 @@ function addFormType($aCollectionHolder) {
   let
     prototype = $aCollectionHolder.attr('data-prototype'),
     prototypeName = $aCollectionHolder.attr('data-prototype-name'),
-    regExp = new RegExp( prototypeName === undefined ? '__name__' : prototypeName , 'g'),
+    regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
     index = $aCollectionHolder.find(':input').length,
     newForm = prototype.replace(regExp, index);
 

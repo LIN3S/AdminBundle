@@ -2583,7 +2583,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@^3.2.1:
+jquery@>=1.8.0, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -2711,6 +2711,10 @@ lin3s-css-grid@^0.3.0:
 lin3s-event-bus@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/lin3s-event-bus/-/lin3s-event-bus-0.4.0.tgz#b443c1ce7d1fd60f0f749ee322a552643f7fcd89"
+
+lin3s-front-foundation@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/lin3s-front-foundation/-/lin3s-front-foundation-0.3.1.tgz#d07361e12211c28f908f1304417306cbf571834d"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -3254,6 +3258,12 @@ parse-json@^2.2.0:
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
   dependencies:
     error-ex "^1.2.0"
+
+parsleyjs@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/parsleyjs/-/parsleyjs-2.7.2.tgz#8e64e2a2975ce0455edacc45cb1867d0885fca66"
+  dependencies:
+    jquery ">=1.8.0"
 
 path-browserify@0.0.0:
   version "0.0.0"

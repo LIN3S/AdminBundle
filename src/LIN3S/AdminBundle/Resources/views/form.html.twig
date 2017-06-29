@@ -20,7 +20,7 @@
 {% block collection_row -%}
     <div class="form__collection">
         {{- block('form_label') -}}
-        <div class="form__collection-items"
+        <div class="form__collection-items" {% if attr %}{{ block('attributes') }}{% endif %}
              data-prototype="<div class='form__collection-item'>{{ form_widget(form.vars.prototype)|e }}<div class='form__collection-item-footer'><button class='button js-collection-remove'>{% trans %}lin3s_admin.form.remove{% endtrans %}</button></div></div>">
             {% for children in form.children %}
                 <div class="form__collection-item">

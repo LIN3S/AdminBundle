@@ -17,6 +17,7 @@ import {onDomReady} from 'lin3s-event-bus';
 import 'picturefill';
 import FastClick from 'fastclick';
 import svg4everybody from 'svg4everybody';
+import {initParsley} from 'lin3s-front-foundation';
 
 import './filter';
 import './form-collection-type';
@@ -24,6 +25,7 @@ import './menu';
 import './panel';
 
 const onReady = () => {
+  initParsley();
   new FastClick(document.body);
   svg4everybody();
 };

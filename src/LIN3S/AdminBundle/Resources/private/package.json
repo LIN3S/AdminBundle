@@ -45,8 +45,10 @@
     "jquery": "^3.2.1",
     "lin3s-css-grid": "^0.3.0",
     "lin3s-event-bus": "^0.4.0",
+    "lin3s-front-foundation": "^0.3.1",
     "magnific-popup": "^1.1.0",
     "modernizr-webpack-plugin": "^1.0.5",
+    "parsleyjs": "^2.7.2",
     "picturefill": "^3.0.2",
     "svg4everybody": "^2.1.4"
   }

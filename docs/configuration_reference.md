@@ -1,4 +1,4 @@
-#Configuration reference
+# Configuration reference
 
 ```yaml
 lin3s_admin:

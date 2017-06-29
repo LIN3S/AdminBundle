@@ -1,22 +1,22 @@
 # LIN3S Admin Bundle
 
-> A foundation to create your own admin panel
+> A lightweight foundation to create an extensible admin panel with ease on top of Symfony
 
-## Requirements
+* [Installation](docs/installation.md)
+* [Creating Your First CRUD Admin](docs/first_crud_admin.md)
+* [Advanced configuration ](docs/advanced_configuration.md)
+* Extending
+    * [Actions](docs/custom_action.md)
+    * [List field](docs/custom_list_field.md)
+    * [List filter](docs/custom_list_filter.md)
+* [Creating Your First DDD Admin](docs/first_ddd_admin.md)
 
-* PHP >= 5.5
-* Symfony >= 2.8 
+## Features
 
-## Installation
-The easiest way to install this component is using **[Composer][1]**
-
-```bash
-$ composer require lin3s/admin-bundle
-```
-
-## Documentation
-
-All the documentation is stored in the `docs` folder.
+* No need to touch your existing entities, domain models or symfony forms
+* Configuration driven admin panel, with customizable actions, lists, filters and pagination.
+* Extensible with already available CRUD and DDD extensions.
+* Responsive admin panel theme.
 
 [Show me the docs!](docs/index.md)
 

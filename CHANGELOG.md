@@ -6,6 +6,8 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.5.0
+    * Fixed bug related with nested collection's prototype.
+    * Added parsley for error validations.
     * Added default order by implementation for the list view.
     * Minor improvements inside form collection and remove coupled froala styles.
     * Added portuguese translations.

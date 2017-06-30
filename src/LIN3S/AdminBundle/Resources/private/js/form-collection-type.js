@@ -37,17 +37,17 @@ function onReady() {
     $(this).parents('.form__collection-item').toggleClass('form__collection-item--hidden')
   });
 
-  $form.on('click', '.js-collection-add', function (e) {
-    e.preventDefault();
-
+  $form.on('click', '.js-collection-add', function () {
     $collectionHolder = $(this).closest('.form__collection').find('.form__collection-items').first();
     addFormType($collectionHolder);
+
+    return false;
   });
 
-  $form.on('click', '.js-collection-remove', function (e) {
-    e.preventDefault();
-
+  $form.on('click', '.js-collection-remove', function () {
     $(this).closest('.form__collection-item').remove();
+
+    return false;
   });
 }
 

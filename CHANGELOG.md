@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.5.0
+    * Made compatible with Twig v2.
     * Changed collection buttons for "a" to avoid unexpected submit events.
     * Removed hardcoded lang from DOM.
     * Fixed bug related with nested collection's prototype.

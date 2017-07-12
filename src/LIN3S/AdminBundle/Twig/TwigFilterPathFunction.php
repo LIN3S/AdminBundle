@@ -76,17 +76,8 @@ class TwigFilterPathFunction extends \Twig_Extension
      */
     public function filterPath($field, $currentOrderBy, $currentOrder = 'ASC')
     {
-        $properties = explode('.', $field);
+        $field = $this->normalizeField($field);
 
-        foreach ($properties as &$property) {
-            if (substr($property, 0, strlen('get')) == 'get') {
-                $property = substr($property, strlen('get'));
-                $property = lcfirst($property);
-            }
-        }
-
-        $properties = implode('.', $properties);
-        
         $request = $this->requestStack->getMasterRequest();
         if ($currentOrderBy === $field) {
             $currentOrder = $currentOrder === 'DESC' ? 'ASC' : 'DESC';
@@ -103,5 +94,26 @@ class TwigFilterPathFunction extends \Twig_Extension
                 'page'    => 1,
             ])
         );
+    }
+
+    /**
+     * Converts anemic getter functions into property names
+     * 
+     * @param string $field        The field
+     *
+     * @return string
+     */
+    private function normalizeField($field)
+    {
+        $properties = explode('.', $field);
+
+        foreach ($properties as &$property) {
+            if (substr($property, 0, strlen('get')) == 'get') {
+                $property = substr($property, strlen('get'));
+                $property = lcfirst($property);
+            }
+        }
+
+        return implode('.', $properties);
     }
 }

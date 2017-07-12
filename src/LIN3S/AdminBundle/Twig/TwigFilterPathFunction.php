@@ -76,6 +76,17 @@ class TwigFilterPathFunction extends \Twig_Extension
      */
     public function filterPath($field, $currentOrderBy, $currentOrder = 'ASC')
     {
+        $properties = explode('.', $field);
+
+        foreach ($properties as &$property) {
+            if (substr($property, 0, strlen('get')) == 'get') {
+                $property = substr($property, strlen('get'));
+                $property = lcfirst($property);
+            }
+        }
+
+        $properties = implode('.', $properties);
+        
         $request = $this->requestStack->getMasterRequest();
         if ($currentOrderBy === $field) {
             $currentOrder = $currentOrder === 'DESC' ? 'ASC' : 'DESC';

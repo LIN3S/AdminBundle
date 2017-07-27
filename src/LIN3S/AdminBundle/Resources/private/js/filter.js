@@ -10,25 +10,22 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-'use strict';
-
 import {onDomReady} from 'lin3s-event-bus';
-
 import $ from 'jquery';
 
-function onReady() {
+const onReady = () => {
   if ($('.filter').length === 0) {
     return;
   }
 
-  $('.filter__filter-by').change(function () {
-    var $options = $('.filter__options');
+  const $options = $('.filter__options');
 
+  $('.filter__filter-by').on('change', () => {
     $options.children().addClass('filter__option--hidden').attr('name', '');
     $options
       .find('[data-filter-field="' + $(this).val() + '"]')
-      .removeClass('filter__option--hidden').attr('name', 'filter').focus();
+      .removeClass('filter__option--hidden').attr('name', 'filter').trigger('focus');
   });
-}
+};
 
 onDomReady(onReady);

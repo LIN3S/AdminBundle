@@ -10,15 +10,13 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-'use strict';
-
 import {onDomReady} from 'lin3s-event-bus';
-
 import 'picturefill';
 import FastClick from 'fastclick';
 import svg4everybody from 'svg4everybody';
 import {initParsley} from 'lin3s-front-foundation';
 
+import './polyfills';
 import './filter';
 import './form-collection-type';
 import './menu';

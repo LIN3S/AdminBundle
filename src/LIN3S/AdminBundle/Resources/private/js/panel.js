@@ -10,16 +10,19 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-'use strict';
-
 import {onDomReady} from 'lin3s-event-bus';
-
 import $ from 'jquery';
 
-function onReady() {
-  $('.panel__header').click(function () {
-    $(this).parent().toggleClass('panel--closed');
+const onReady = () => {
+  const $panelHeaders = $('.panel__header');
+
+  Array.from($panelHeaders).forEach(panelHeader => {
+    const $panelHeader = $(panelHeader);
+
+    $panelHeader.on('click', () => {
+      $panelHeader.parent().toggleClass('panel--closed');
+    });
   });
-}
+};
 
 onDomReady(onReady);

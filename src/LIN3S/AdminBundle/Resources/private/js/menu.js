@@ -10,24 +10,25 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-'use strict';
-
 import {onDomReady} from 'lin3s-event-bus';
-
 import $ from 'jquery';
 
-function onReady() {
-  $('.menu-toggle').click(function () {
-    var $menu = $(this).parents('.menu');
+const onReady = () => {
+  const $menuToggle = $('.menu-toggle');
 
-    $(this).toggleClass('menu-toggle--visible');
+  $menuToggle.on('click', () => {
+    const $menu = $menuToggle.closest('.menu');
+
+    $menuToggle.toggleClass('menu-toggle--visible');
+
     if ($menu.hasClass('menu--open')) {
       $menu.attr('style', '');
     } else {
       $menu.height($menu.get(0).scrollHeight);
     }
+
     $menu.toggleClass('menu--open');
   });
-}
+};
 
 onDomReady(onReady);

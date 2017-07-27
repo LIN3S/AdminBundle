@@ -10,45 +10,53 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-'use strict';
-
 import {onDomReady} from 'lin3s-event-bus';
-
 import $ from 'jquery';
 
-let $form, $collectionHolder;
+const
+  addFormType = ($aCollectionHolder) => {
+    let
+      prototype = $aCollectionHolder.attr('data-prototype'),
+      prototypeName = $aCollectionHolder.attr('data-prototype-name'),
+      regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
+      index = $aCollectionHolder.find(':input').length,
+      newForm = prototype.replace(regExp, index);
 
-function addFormType($aCollectionHolder) {
-  let
-    prototype = $aCollectionHolder.attr('data-prototype'),
-    prototypeName = $aCollectionHolder.attr('data-prototype-name'),
-    regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
-    index = $aCollectionHolder.find(':input').length,
-    newForm = prototype.replace(regExp, index);
+    $(newForm).appendTo($aCollectionHolder);
+    $aCollectionHolder.data('index', index + 1);
+  },
+  onReady = () => {
+    const
+      $formCollectionAddButtons = $('.js-collection-add'),
+      $formCollectionRemoveButtons = $('.js-collection-remove'),
+      $formToggles = $('.form__collection-item-toggle');
 
-  $(newForm).appendTo($aCollectionHolder);
-  $aCollectionHolder.data('index', index + 1);
-}
+    Array.from($formCollectionAddButtons).forEach(formCollectionAddButton => {
+      const $formCollectionAddButton = $(formCollectionAddButton);
 
-function onReady() {
-  $form = $('form');
+      $formCollectionAddButton.on('click', () => {
+        const $collectionHolder = $formCollectionAddButton
+          .closest('.form__collection').find('.form__collection-items').first();
+        addFormType($collectionHolder);
 
-  $('.form__collection-item-toggle').click(function () {
-    $(this).parents('.form__collection-item').toggleClass('form__collection-item--hidden')
-  });
+        return false;
+      });
+    });
 
-  $form.on('click', '.js-collection-add', function () {
-    $collectionHolder = $(this).closest('.form__collection').find('.form__collection-items').first();
-    addFormType($collectionHolder);
+    Array.from($formCollectionRemoveButtons).forEach(formCollectionRemoveButton => {
+      const $formCollectionRemoveButton = $(formCollectionRemoveButton);
+      $formCollectionRemoveButton.closest('.form__collection-item').remove();
 
-    return false;
-  });
+      return false;
+    });
 
-  $form.on('click', '.js-collection-remove', function () {
-    $(this).closest('.form__collection-item').remove();
+    Array.from($formToggles).forEach(formToggle => {
+      const $formToggle = $(formToggle);
 
-    return false;
-  });
-}
+      $formToggle.on('click', function () {
+        $formToggle.closest('.form__collection-item').toggleClass('form__collection-item--hidden')
+      });
+    });
+  };
 
 onDomReady(onReady);

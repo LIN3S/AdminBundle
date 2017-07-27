@@ -2712,9 +2712,11 @@ lin3s-css-grid@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/lin3s-css-grid/-/lin3s-css-grid-0.3.0.tgz#be4f60bc1ac5a829f117646c73562eab01dc293f"
 
-lin3s-event-bus@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/lin3s-event-bus/-/lin3s-event-bus-0.4.0.tgz#b443c1ce7d1fd60f0f749ee322a552643f7fcd89"
+lin3s-event-bus@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/lin3s-event-bus/-/lin3s-event-bus-0.6.0.tgz#b9047f09dbfebfd23ad1ca44ef20c8c86881cb61"
+  dependencies:
+    lodash.debounce "^4.0.8"
 
 lin3s-front-foundation@^0.3.1:
   version "0.3.1"
@@ -2771,6 +2773,10 @@ lodash.camelcase@^4.3.0:
 lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
 lodash.memoize@^4.1.2:
   version "4.1.2"

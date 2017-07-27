@@ -37,8 +37,8 @@
     ]
   },
   "scripts": {
-    "build": "webpack --config=./webpack.bundle.config.babel.js",
-    "build:prod": "webpack --config=./webpack.bundle.config.babel.js -p"
+    "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
+    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js -p"
   },
   "dependencies": {
     "fastclick": "^1.0.6",

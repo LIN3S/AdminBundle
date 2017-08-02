@@ -4563,10 +4563,6 @@ supports-color@^4.2.1:
   dependencies:
     has-flag "^2.0.0"
 
-svg4everybody@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/svg4everybody/-/svg4everybody-2.1.4.tgz#d930c07e132a11f4b679e4e578f04c4d0c40bed1"
-
 svgo@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-0.7.2.tgz#9f5772413952135c6fefbf40afe6a4faa88b4bb5"

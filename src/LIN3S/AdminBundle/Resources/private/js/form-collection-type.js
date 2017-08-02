@@ -19,7 +19,7 @@ const
       prototype = $aCollectionHolder.attr('data-prototype'),
       prototypeName = $aCollectionHolder.attr('data-prototype-name'),
       regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
-      index = $aCollectionHolder.find(':input').length,
+      index = $aCollectionHolder.find('input, textarea, select, button').length,
       newForm = prototype.replace(regExp, index);
 
     $(newForm).appendTo($aCollectionHolder);

@@ -199,13 +199,7 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
-async@^2.1.2, async@^2.1.5:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.3.0.tgz#1013d1051047dd320fe24e494d5c66ecaf6147d9"
-  dependencies:
-    lodash "^4.14.0"
-
-async@^2.4.1:
+async@^2.1.2, async@^2.1.5, async@^2.4.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
@@ -2788,9 +2782,11 @@ lin3s-event-bus@^0.6.0:
   dependencies:
     lodash.debounce "^4.0.8"
 
-lin3s-front-foundation@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/lin3s-front-foundation/-/lin3s-front-foundation-0.3.1.tgz#d07361e12211c28f908f1304417306cbf571834d"
+lin3s-front-foundation@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/lin3s-front-foundation/-/lin3s-front-foundation-0.5.0.tgz#11b3c04b442ecf7f03e3f583f310202e791cebfc"
+  dependencies:
+    parsleyjs "^2.7.2"
 
 load-json-file@^1.0.0:
   version "1.1.0"

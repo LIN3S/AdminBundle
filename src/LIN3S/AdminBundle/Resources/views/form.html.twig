@@ -145,8 +145,7 @@
 {%- endblock form -%}
 
 {%- block form_start -%}
-    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form')|trim,
-    novalidate: 'novalidate', 'data-parsley-validate': 'data-parsley-validate'}) -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form')|trim, novalidate: 'novalidate'}) -%}
     {{- parent() -}}
 {%- endblock %}
 

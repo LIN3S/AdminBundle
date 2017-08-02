@@ -39,7 +39,7 @@
   "scripts": {
     "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
     "build:watch": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js --watch",
-    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js"
+    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js -p"
   },
   "dependencies": {
     "array-from": "^2.1.1",
@@ -47,10 +47,9 @@
     "jquery": "^3.2.1",
     "lin3s-css-grid": "^0.3.0",
     "lin3s-event-bus": "^0.6.0",
-    "lin3s-front-foundation": "^0.3.1",
+    "lin3s-front-foundation": "^0.5.0",
     "magnific-popup": "^1.1.0",
     "modernizr-webpack-plugin": "^1.0.5",
-    "parsleyjs": "^2.7.2",
     "picturefill": "^3.0.2",
     "svg4everybody": "^2.1.4"
   }

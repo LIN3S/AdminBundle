@@ -10,53 +10,75 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-import {onDomReady} from 'lin3s-event-bus';
+import {onDomReady, NodeAddedObserver} from 'lin3s-event-bus';
 import $ from 'jquery';
 
-const
-  addFormType = ($aCollectionHolder) => {
-    let
-      prototype = $aCollectionHolder.attr('data-prototype'),
-      prototypeName = $aCollectionHolder.attr('data-prototype-name'),
-      regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
-      index = $aCollectionHolder.find('input, textarea, select, button').length,
-      newForm = prototype.replace(regExp, index);
+const addFormType = ($aCollectionHolder) => {
+  let
+    prototype = $aCollectionHolder.attr('data-prototype');
+  const
+    prototypeName = $aCollectionHolder.attr('data-prototype-name'),
+    regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
+    index = $aCollectionHolder.find('input, textarea, select, button').length,
+    newForm = prototype.replace(regExp, index);
 
-    $(newForm).appendTo($aCollectionHolder);
-    $aCollectionHolder.data('index', index + 1);
-  },
-  onReady = () => {
-    const
-      $formCollectionAddButtons = $('.js-collection-add'),
-      $formCollectionRemoveButtons = $('.js-collection-remove'),
-      $formToggles = $('.form__collection-item-toggle');
+  $aCollectionHolder
+    .append(newForm)
+    .data('index', index + 1);
+};
 
-    Array.from($formCollectionAddButtons).forEach(formCollectionAddButton => {
-      const $formCollectionAddButton = $(formCollectionAddButton);
+const bindCollectionAddListener = (buttonNodes) => {
+  buttonNodes.forEach(buttonNode => {
+    const $buttonNode = $(buttonNode);
 
-      $formCollectionAddButton.on('click', () => {
-        const $collectionHolder = $formCollectionAddButton
-          .closest('.form__collection').find('.form__collection-items').first();
-        addFormType($collectionHolder);
-
-        return false;
-      });
-    });
-
-    Array.from($formCollectionRemoveButtons).forEach(formCollectionRemoveButton => {
-      const $formCollectionRemoveButton = $(formCollectionRemoveButton);
-      $formCollectionRemoveButton.closest('.form__collection-item').remove();
+    $buttonNode.on('click', () => {
+      const $collectionHolder = $buttonNode
+        .closest('.form__collection')
+        .find('.form__collection-items')
+        .first();
+      addFormType($collectionHolder);
 
       return false;
     });
+  });
+};
 
-    Array.from($formToggles).forEach(formToggle => {
-      const $formToggle = $(formToggle);
+const bindCollectionRemoveListener = (buttonNodes) => {
+  buttonNodes.forEach(buttonNode => {
+    const $buttonNode = $(buttonNode);
 
-      $formToggle.on('click', function () {
-        $formToggle.closest('.form__collection-item').toggleClass('form__collection-item--hidden')
-      });
+    $buttonNode.on('click', () => {
+      $buttonNode.closest('.form__collection-item').remove();
+
+      return false;
     });
-  };
+  });
+};
+
+const onReady = () => {
+  const
+    $formCollectionAddButtons = $('.js-collection-add'),
+    $formCollectionRemoveButtons = $('.js-collection-remove'),
+    $formToggles = $('.form__collection-item-toggle');
+
+  bindCollectionAddListener(Array.from($formCollectionAddButtons));
+  bindCollectionRemoveListener(Array.from($formCollectionRemoveButtons));
+
+  Array.from($formToggles).forEach(formToggle => {
+    const $formToggle = $(formToggle);
+
+    $formToggle.on('click', () => {
+      $formToggle.closest('.form__collection-item').toggleClass('form__collection-item--hidden')
+    });
+  });
+
+  NodeAddedObserver.subscribe('js-collection-remove', nodeAddedEvent =>
+    bindCollectionRemoveListener(nodeAddedEvent.nodes)
+  );
+
+  NodeAddedObserver.subscribe('js-collection-add', nodeAddedEvent =>
+    bindCollectionAddListener(nodeAddedEvent.nodes)
+  );
+};
 
 onDomReady(onReady);

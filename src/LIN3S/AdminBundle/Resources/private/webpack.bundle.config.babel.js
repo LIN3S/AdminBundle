@@ -47,10 +47,10 @@ export default {
       },
       {
         test: /\.(s?css)$/,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           publicPath: '/',
           fallback: 'style-loader',
-          loader: ['css-loader', 'postcss-loader', 'sass-loader']
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       }
     ]

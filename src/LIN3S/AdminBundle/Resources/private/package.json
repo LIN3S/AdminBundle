@@ -24,7 +24,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
     "uglify-js": "^2.7.5",
-    "webpack": "^2.2.1"
+    "webpack": "^3.4.1"
   },
   "babel": {
     "presets": [

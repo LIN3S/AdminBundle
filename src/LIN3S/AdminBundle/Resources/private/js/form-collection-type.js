@@ -10,7 +10,7 @@
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 
-import {onDomReady, NodeAddedObserver} from 'lin3s-event-bus';
+import {NodeAddedObserver} from 'lin3s-event-bus';
 import $ from 'jquery';
 
 const addFormType = ($aCollectionHolder) => {
@@ -81,4 +81,7 @@ const onReady = () => {
   );
 };
 
-onDomReady(onReady);
+$(() => {
+ onReady();
+});
+

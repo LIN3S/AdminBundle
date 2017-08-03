@@ -1,0 +1,45 @@
+{% macro render_form_collection_item_footer() %}
+    {% import 'Lin3sAdminBundle:components/macros:buttons.html.twig' as buttons %}
+
+    <div class="form-collection__remove">
+        {{- buttons.primary('lin3s_admin.form.remove'|trans, 'js-form-collection-remove') -}}
+    </div>
+    <div class="form-collection__toggle js-form-collection-visibility-toggle">
+        {% include '@Lin3sAdmin/svg/toggle.svg.twig' %}
+    </div>
+{% endmacro %}
+
+{% macro render_form_collection_item(child) %}
+    {% import _self as form_collection %}
+
+    <div class="form-collection__item">
+        {{- child|raw -}}
+        {{- form_collection.render_form_collection_item_footer() -}}
+    </div>
+{% endmacro %}
+
+{% set form_collection_label %}{%- block form_collection_label -%}{%- endblock -%}{% endset %}
+{% set form_collection_attributes %}{%- block form_collection_attributes -%}{%- endblock form_collection_attributes -%}{% endset %}
+{% set form_collection_prototype %}{%- block form_collection_prototype -%}{%- endblock form_collection_prototype -%}{% endset %}
+{% set form_collection_items %}{%- block form_collection_items -%}{%- endblock form_collection_items -%}{% endset %}
+
+{%- set form_collection_data_prototype -%}
+    {% import _self as form_collection %}
+
+    <div class="form-collection__item">
+        {{- form_collection_prototype -}}
+        {{- form_collection.render_form_collection_item_footer() -}}
+    </div>
+{%- endset -%}
+
+{% import 'Lin3sAdminBundle:components/macros:buttons.html.twig' as buttons %}
+
+<div class="form-collection">
+    {{- form_collection_label -}}
+    <div class="form-collection__items" {{ form_collection_attributes }} data-prototype='{{- form_collection_data_prototype -}}'>
+        {{- form_collection_items -}}
+    </div>
+    <div class="form-collection__footer">
+        {{- buttons.primary('lin3s_admin.form.add'|trans, 'js-form-collection-add') -}}
+    </div>
+</div>

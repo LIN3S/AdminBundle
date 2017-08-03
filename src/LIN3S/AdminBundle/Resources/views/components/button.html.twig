@@ -1,0 +1,4 @@
+{% set button_class = button_class|default ? 'button ' ~ button_class : 'button' %}
+{% set js_action = js_action|default ? ' ' ~ js_action : '' %}
+
+<button class="{{ button_class }}{{ js_action }}">{{- button_title -}}</button>

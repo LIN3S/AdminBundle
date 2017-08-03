@@ -3,33 +3,31 @@
 {%- block collection_row -%}
     {% set form_label = block('form_label') %}
     {% set attributes = block('attributes') %}
+    {% set children = form.children %}
 
-    {% embed 'Lin3sAdminBundle:Form:collection.html.twig' %}
-        {% set children = form.children %}
-
-        {%- block collection_label -%}
+    {% embed 'Lin3sAdminBundle:components:form_collection.html.twig' %}
+        {%- block form_collection_label -%}
             {{- form_label|raw -}}
-        {%- endblock collection_label -%}
+        {%- endblock form_collection_label -%}
 
-        {%- block collection_attributes -%}
+        {%- block form_collection_attributes -%}
             {{- attributes -}}
-        {%- endblock collection_attributes -%}
+        {%- endblock form_collection_attributes -%}
 
-        {%- block collection_prototype -%}
+        {%- block form_collection_prototype -%}
             {{ form_widget(form.vars.prototype)|e }}
-        {%- endblock collection_prototype -%}
+        {%- endblock form_collection_prototype -%}
 
-        {%- block collection_items -%}
-            {% import '@Lin3sAdmin/Form/collection.html.twig' as collection %}
+        {%- block form_collection_items -%}
+            {% import 'Lin3sAdminBundle:components:form_collection.html.twig' as form_collection %}
 
             {% for child in children %}
                 {% set child %}
                     {{- form_row(child) -}}
-                    {{- collection_item_footer -}}
                 {% endset %}
-                {{ collection.render_collection_item(child) }}
+                {{- form_collection.render_form_collection_item(child) -}}
             {% endfor %}
-        {%- endblock collection_items -%}
+        {%- endblock form_collection_items -%}
     {% endembed %}
 {%- endblock -%}
 

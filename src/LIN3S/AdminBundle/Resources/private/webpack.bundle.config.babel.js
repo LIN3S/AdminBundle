@@ -1,18 +1,20 @@
 /*
- * This file is part of the CMS Kernel library.
+ * This file is part of the Admin Bundle.
  *
- * Copyright (c) 2017-2018 LIN3S <info@lin3s.com>
+ * Copyright (c) 2015-present LIN3S <info@lin3s.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author Mikel Tuesta <mikel@lin3s.com>
+ * @author Beñat Espiña <benatespina@gmail.com>
+ * @author Mikel Tuesta <mikeltuesta@gmail.com>
  */
 
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ModernizrWebpackPlugin from 'modernizr-webpack-plugin';
 import {join, resolve} from 'path';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
 import precss from 'precss';
 import Webpack from 'webpack';
 
@@ -56,6 +58,11 @@ export default {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: '.stylelintrc.js',
+      sintax: 'scss',
+      quiet: false
+    }),
     new ExtractTextPlugin('./../css/bundle.min.css'),
     new Webpack.LoaderOptionsPlugin({
       options: {
@@ -66,7 +73,7 @@ export default {
           precss
         ],
         eslint: {
-          configFile: join(__dirname, '.eslint.yml')
+          configFile: join(__dirname, '.eslintrc.js')
         }
       }
     }),

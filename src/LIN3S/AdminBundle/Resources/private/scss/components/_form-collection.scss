@@ -1,0 +1,95 @@
+// This file is part of the Admin Bundle.
+//
+// Copyright (c) 2015-present LIN3S <info@lin3s.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+// @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+// @author Beñat Espiña <benatespina@gmail.com>
+
+@import '../variables/colors';
+
+$form-collection-item-even-background-color: $color-mercury !default;
+$form-collection-footer-border-color: $color-seashell !default;
+$form-collection-item-toggle-background-color: $color-bondi-blue !default;
+$form-collection-item-toggle-icon-color: $color-mercury !default;
+
+.form-collection {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+}
+
+.form-collection__items {
+  order: 2;
+}
+
+.form-collection__item {
+  padding: 15px;
+  position: relative;
+
+  &:not(:first-child) {
+    padding-top: 30px;
+  }
+
+  &:nth-child(even) {
+    background: $form-collection-item-even-background-color;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    .form-collection__toggle {
+      right: 5px;
+    }
+  }
+}
+
+.form-collection__item--hidden {
+  height: 50px;
+
+  > *:not(.form-collection__toggle) {
+    display: none;
+  }
+
+  .form-collection__toggle {
+    rect:nth-child(2) {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.form-collection__item-footer {
+  align-items: center;
+  display: flex;
+  height: 50px;
+}
+
+.form-collection__footer {
+  border-top: 1px solid $form-collection-footer-border-color;
+  order: 3;
+  padding: 15px;
+  text-align: right;
+}
+
+.form-collection__toggle {
+  background: $form-collection-item-toggle-background-color;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 25px;
+  padding: 5px;
+  position: absolute;
+  right: -10px;
+  top: 25px;
+  transform: translateY(-50%);
+  width: 25px;
+
+  .toggle {
+    fill: $form-collection-item-toggle-icon-color;
+  }
+
+  rect:nth-child(2) {
+    transform: rotate(90deg);
+  }
+}

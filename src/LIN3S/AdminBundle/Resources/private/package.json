@@ -17,6 +17,7 @@
     "eslint-plugin-class-property": "^1.0.3",
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "modernizr-webpack-plugin": "^1.0.6",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.1",
     "postcss-loader": "^1.2.2",
@@ -48,7 +49,6 @@
     "lin3s-css-grid": "^0.3.0",
     "lin3s-event-bus": "^0.6.0",
     "lin3s-front-foundation": "^0.5.0",
-    "magnific-popup": "^1.1.0",
-    "modernizr-webpack-plugin": "^1.0.5"
+    "magnific-popup": "^1.1.0"
   }
 }

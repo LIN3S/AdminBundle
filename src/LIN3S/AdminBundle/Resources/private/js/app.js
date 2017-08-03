@@ -15,7 +15,7 @@ import FastClick from 'fastclick';
 
 import './polyfills';
 import './filter';
-import './form-collection-type';
+import './Form';
 import './menu';
 import './panel';
 

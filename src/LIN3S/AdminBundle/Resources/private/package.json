@@ -1,21 +1,22 @@
 {
   "name": "lin3s-admin-bundle",
+  "description": "Admin Bundle in the LIN3S way",
   "author": "LIN3S",
+  "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
+    "build:watch": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js --watch",
+    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js -p"
+  },
   "babel": {
     "presets": [
       "stage-2",
-      "react",
       "es2015"
     ],
     "plugins": [
       "transform-class-properties"
     ]
-  },
-  "scripts": {
-    "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
-    "build:watch": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js --watch",
-    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js -p"
   },
   "dependencies": {
     "array-from": "^2.1.1",
@@ -23,8 +24,7 @@
     "jquery": "^3.2.1",
     "lin3s-css-grid": "^0.3.0",
     "lin3s-event-bus": "^0.6.0",
-    "lin3s-front-foundation": "^0.5.0",
-    "magnific-popup": "^1.1.0"
+    "lin3s-front-foundation": "^0.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

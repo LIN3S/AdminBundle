@@ -69,7 +69,8 @@ $form-collection-item-toggle-icon-color: $color-mercury !default;
 .form-collection__footer {
   border-top: 1px solid $form-collection-footer-border-color;
   order: 3;
-  padding: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
   text-align: right;
 }
 

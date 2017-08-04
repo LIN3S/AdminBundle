@@ -1,17 +1,18 @@
 // This file is part of the Admin Bundle.
 //
-// Copyright (c) 2015-2016 LIN3S <info@lin3s.com>
+// Copyright (c) 2015-present LIN3S <info@lin3s.com>
 //
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
-
-@import './../../node_modules/lin3s-css-grid/scss/variables';
+// @author Beñat Espiña <benatespina@gmail.com>
 
 @import '../variables/colors';
+@import '../variables/grid';
 
 $filter-background-color: $color-white !default;
+$filter-element-height: 37px;
 
 .filter {
   align-items: center;
@@ -22,12 +23,17 @@ $filter-background-color: $color-white !default;
 }
 
 .filter__filter-by {
+  margin-right: -1px; // Solves 1px border-width sum
   order: 0;
 }
 
 .filter__filter-by,
 .filter__options .form__input {
   width: 100%;
+
+  &:focus {
+    z-index: 1;
+  }
 }
 
 .filter__option--hidden {
@@ -35,8 +41,14 @@ $filter-background-color: $color-white !default;
 }
 
 .filter__button {
-  margin-top: 15px;
-  width: 100%;
+  height: $filter-element-height;
+
+  .button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    box-shadow: none;
+    height: 100%;
+  }
 }
 
 @media #{$medium-up} {
@@ -46,9 +58,6 @@ $filter-background-color: $color-white !default;
 
   .filter__button.button {
     align-self: stretch;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    box-shadow: none;
     margin-top: 0;
     width: auto;
   }

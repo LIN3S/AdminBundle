@@ -13,11 +13,11 @@
 import {onDomReady} from 'lin3s-event-bus';
 import FastClick from 'fastclick';
 
+import './components/Filter';
 import './components/FormCollection';
+import './components/MenuToggle';
+import './components/Panel';
 import './polyfills';
-import './filter';
-import './menu';
-import './panel';
 
 const onReady = () => {
   new FastClick(document.body);

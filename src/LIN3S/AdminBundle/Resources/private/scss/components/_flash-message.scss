@@ -11,19 +11,19 @@
 @import '../variables/typography';
 @import '../helpers/panel';
 
-$flash-success-color: $color-chateau-green !default;
-$flash-error-color: $color-thunderbird !default;
+$flash-message-success-color: $color-chateau-green !default;
+$flash-message-error-color: $color-thunderbird !default;
 
-.flash {
+.flash-message {
   @extend %panel;
   margin-bottom: 30px;
   padding: 10px 15px;
 }
 
-.flash--success {
-  border-left: 3px solid $flash-success-color;
+.flash-message--success {
+  border-left: 3px solid $flash-message-success-color;
 }
 
-.flash--error {
-  border-left: 3px solid $flash-error-color;
+.flash-message--error {
+  border-left: 3px solid $flash-message-error-color;
 }

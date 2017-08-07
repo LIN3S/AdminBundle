@@ -136,7 +136,6 @@ blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-  // scss-lint:disable DuplicateProperty
   content: '';
   content: none;
 }

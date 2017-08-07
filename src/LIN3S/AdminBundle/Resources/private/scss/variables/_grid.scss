@@ -7,4 +7,9 @@
 //
 // @author Beñat Espiña <benatespina@gmail.com>
 
+$small-cols: 6, 12;
+$medium-cols: 4, 6, 12;
+$large-cols: 3, 4, 6, 8, 10, 12;
+$xlarge-cols: 12;
+
 @import '../../node_modules/lin3s-css-grid/scss/variables';

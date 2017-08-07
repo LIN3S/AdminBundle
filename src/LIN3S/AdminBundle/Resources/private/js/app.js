@@ -11,6 +11,7 @@
  */
 
 import {onDomReady} from 'lin3s-event-bus';
+import {initParsley} from 'lin3s-front-foundation';
 import FastClick from 'fastclick';
 
 import './components/Filter';
@@ -20,6 +21,7 @@ import './components/Panel';
 import './polyfills';
 
 const onReady = () => {
+  initParsley();
   new FastClick(document.body);
 };
 

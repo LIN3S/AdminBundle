@@ -11,12 +11,12 @@
 @import 'base/reset';
 @import 'base/common';
 
-@import '../node_modules/lin3s-front-foundation/src/scss/atoms/_parsley-form-error.scss';
-
 @import 'components/button';
 @import 'components/confirm-dialog';
-@import 'components/flash';
+@import 'components/flash-message';
 @import 'components/form';
+@import 'components/form-collection';
+@import 'components/form-error';
 @import 'components/filter';
 @import 'components/header';
 @import 'components/layout';
@@ -24,6 +24,5 @@
 @import 'components/menu-toggle';
 @import 'components/paginator';
 @import 'components/panel';
-@import 'components/popup';
 @import 'components/row';
 @import 'components/table';

@@ -53,9 +53,19 @@
                     </div>
                 </header>
                 {% block lin3s_admin_flash_messages %}
-                    {% include 'Lin3sAdminBundle:partial:flash.html.twig' %}
+                    {% import 'Lin3sAdminBundle:components/macros:flash_messages.html.twig' as flash_messages %}
+
+                    {% for message in app.session.flashbag.get('lin3s_admin_error') %}
+                        {{ flash_messages.error(message) }}
+                    {% endfor %}
+
+                    {% for message in app.session.flashbag.get('lin3s_admin_success') %}
+                        {{ flash_messages.success(message) }}
+                    {% endfor %}
                 {% endblock %}
+
                 {% block lin3s_admin_content_top %}{% endblock %}
+
                 {% block lin3s_admin_content %}{% endblock %}
             </div>
         </main>

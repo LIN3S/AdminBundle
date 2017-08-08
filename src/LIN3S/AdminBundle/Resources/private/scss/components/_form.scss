@@ -21,10 +21,6 @@ $form-input-checkbox-checked-background-color: $color-bondi-blue !default;
 $form-input-checkbox-checked-tik-color: $color-white !default;
 $form-label-required-color: $color-thunderbird !default;
 $form-error-font-color: $color-thunderbird !default;
-$form-collection-item-even-background-color: $color-mercury !default;
-$form-collection-footer-border-color: $color-seashell !default;
-$form-collection-item-toggle-background-color: $color-white !default;
-$form-collection-item-toggle-border-color: $color-mercury !default;
 
 input,
 textarea,
@@ -133,65 +129,6 @@ select {
 .form__checkbox-label {
   margin-right: 15px;
   padding-left: 0;
-}
-
-.form__collection-item {
-  padding: 15px;
-  position: relative;
-
-  &:not(:first-child) {
-    padding-top: 30px;
-  }
-
-  &:nth-child(even) {
-    background: $form-collection-item-even-background-color;
-    margin-left: -15px;
-    margin-right: -15px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-.form__collection-item--hidden {
-  height: 50px;
-
-  > *:not(.form__collection-item-toggle) {
-    display: none;
-  }
-
-  .form__collection-item-toggle {
-    rect:nth-child(2) {
-      transform: rotate(0deg);
-    }
-  }
-}
-
-.form__collection-item-footer {
-  padding-bottom: 15px;
-}
-
-.form__collection-footer {
-  border-top: 1px solid $form-collection-footer-border-color;
-  padding: 15px;
-  text-align: right;
-}
-
-.form__collection-item-toggle {
-  background: $form-collection-item-toggle-background-color;
-  border: 1px solid $form-collection-item-toggle-border-color;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 30px;
-  padding: 5px;
-  position: absolute;
-  right: -15px;
-  top: 25px;
-  transform: translateY(-50%);
-  width: 30px;
-
-  rect:nth-child(2) {
-    transform: rotate(90deg);
-  }
 }
 
 .form__errors {

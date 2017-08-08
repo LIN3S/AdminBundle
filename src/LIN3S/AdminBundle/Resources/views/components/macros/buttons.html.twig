@@ -1,0 +1,14 @@
+{% macro primary(title, js_action) %}
+    {% include 'Lin3sAdminBundle:components:button.html.twig' with {
+        button_title: title,
+        js_action: js_action|default
+    } %}
+{% endmacro %}
+
+{% macro secondary(title, js_action) %}
+    {% include 'Lin3sAdminBundle:components:button.html.twig' with {
+        button_title: title,
+        button_class: 'button--secondary',
+        js_action: js_action|default
+    } %}
+{% endmacro %}

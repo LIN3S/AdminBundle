@@ -5,8 +5,11 @@
 // For the full copyright and license information, please view the LICENSE
 // file that was distributed with this source code.
 //
-// @author Gorka Laucirica <gorka.lauzirika@gmail.com>
 // @author Beñat Espiña <benatespina@gmail.com>
 
-@import '../variables/grid';
-@import '../../node_modules/lin3s-css-grid/scss/row';
+$small-cols: 6, 12;
+$medium-cols: 4, 6, 12;
+$large-cols: 3, 4, 6, 8, 10, 12;
+$xlarge-cols: 12;
+
+@import '../../node_modules/lin3s-css-grid/scss/variables';

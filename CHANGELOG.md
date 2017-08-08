@@ -5,6 +5,13 @@ This changelog references the relevant changes done between versions.
 To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundle/commit/XXX where XXX is the change hash 
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
+* 0.6.0
+    * Full refactor of AdminBundle's JavaScript.
+        * Removed jQuery dependency
+        * Migrated code to ES2015 standards using `class` approach
+    * [BC break] Refactored Twig components.
+        * Button, filter flash_message and form_collection components are moved from partial to components directory so,
+        please, check out before upgrade if your project extends this components.
 * 0.5.1
     * Updated Webpack to v3 to solve bug related with the production build
     * Improved general js code to avoid minor bugs

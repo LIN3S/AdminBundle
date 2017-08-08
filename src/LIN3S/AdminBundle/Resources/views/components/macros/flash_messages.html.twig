@@ -1,0 +1,12 @@
+{% macro success(message) %}
+    {% include 'Lin3sAdminBundle:components:flash_message.html.twig' with {
+        flash_message: message
+    } %}
+{% endmacro %}
+
+{% macro error(message) %}
+    {% include 'Lin3sAdminBundle:components:flash_message.html.twig' with {
+        type: 'error',
+        flash_message: message
+    } %}
+{% endmacro %}

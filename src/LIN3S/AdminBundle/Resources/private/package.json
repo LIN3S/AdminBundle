@@ -1,7 +1,30 @@
 {
   "name": "lin3s-admin-bundle",
+  "description": "Admin Bundle in the LIN3S way",
   "author": "LIN3S",
+  "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
+    "build:watch": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js --watch",
+    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js -p"
+  },
+  "babel": {
+    "presets": [
+      "stage-2",
+      "es2015"
+    ],
+    "plugins": [
+      "transform-class-properties"
+    ]
+  },
+  "dependencies": {
+    "array-from": "^2.1.1",
+    "fastclick": "^1.0.6",
+    "lin3s-css-grid": "^0.3.0",
+    "lin3s-event-bus": "^0.6.0",
+    "lin3s-front-foundation": "^0.5.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
     "babel-cli": "^6.18.0",
@@ -14,44 +37,21 @@
     "css-loader": "^0.28.0",
     "eslint": "^3.15.0",
     "eslint-loader": "^1.6.1",
+    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-class-property": "^1.0.3",
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "modernizr-webpack-plugin": "^1.0.6",
     "node-sass": "^4.5.0",
-    "npm-run-all": "^4.0.1",
     "postcss-loader": "^1.2.2",
     "precss": "^1.4.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
+    "stylelint-order": "^0.6.0",
+    "stylelint-scss": "^2.0.0",
+    "stylelint-selector-bem-pattern": "^1.1.0",
+    "stylelint-webpack-plugin": "^0.9.0",
     "uglify-js": "^2.7.5",
     "webpack": "^3.4.1"
-  },
-  "babel": {
-    "presets": [
-      "stage-2",
-      "react",
-      "es2015"
-    ],
-    "plugins": [
-      "transform-class-properties"
-    ]
-  },
-  "scripts": {
-    "build": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js",
-    "build:watch": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js --watch",
-    "build:prod": "node_modules/.bin/webpack --config=./webpack.bundle.config.babel.js"
-  },
-  "dependencies": {
-    "array-from": "^2.1.1",
-    "fastclick": "^1.0.6",
-    "jquery": "^3.2.1",
-    "lin3s-css-grid": "^0.3.0",
-    "lin3s-event-bus": "^0.6.0",
-    "lin3s-front-foundation": "^0.3.1",
-    "magnific-popup": "^1.1.0",
-    "modernizr-webpack-plugin": "^1.0.5",
-    "parsleyjs": "^2.7.2",
-    "picturefill": "^3.0.2",
-    "svg4everybody": "^2.1.4"
   }
 }

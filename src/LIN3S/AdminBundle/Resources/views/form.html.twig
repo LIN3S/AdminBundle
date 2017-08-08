@@ -119,35 +119,35 @@
 {%- endblock form_errors %}
 
 {%- block form -%}
-    {{ form_start(form) }}
-    {% if(form.vars.groups is defined) %}
+    {{- form_start(form) -}}
+
+    {% if form.vars.groups is defined %}
         <div class="form__column form__column--left">
             {% for group in form.vars.groups %}
                 {% if group.position is not defined or group.position == 'left' %}
-                    {{ block('lin3s_admin_panel') }}
+                    {{- block('lin3s_admin_panel') -}}
                 {% endif %}
             {% endfor %}
         </div>
         <div class="form__column form__column--right">
-            {{ block('lin3s_admin_submit') }}
+            {{- block('lin3s_admin_submit') -}}
             {% for group in form.vars.groups %}
                 {% if group.position is defined and group.position == 'right' %}
-                    {{ block('lin3s_admin_panel') }}
+                    {{- block('lin3s_admin_panel') -}}
                 {% endif %}
             {% endfor %}
         </div>
     {% else %}
-        <div class="panel">
-            <div class="panel__content">
+        {% embed 'Lin3sAdminBundle:components:panel.html.twig' %}
+            {%- block panel_content -%}
                 {{- form_widget(form) -}}
-                <input type="submit"
-                       class="button"
-                       value="{% trans %}lin3s_admin.form.save_changes{% endtrans %}">
-            </div>
-        </div>
-        {{ block('lin3s_admin_submit') }}
+            {%- endblock panel_content -%}
+        {% endembed %}
+
+        {{- block('lin3s_admin_submit') -}}
     {% endif %}
-    {{ form_end(form) }}
+
+    {{- form_end(form) -}}
 {%- endblock form -%}
 
 {%- block form_start -%}
@@ -158,36 +158,38 @@
     {{- parent() -}}
 {%- endblock %}
 
-{% block lin3s_admin_panel %}
-    <div class="panel">
-        <div class="panel__header">
-            <h2 class="panel__title">{{ group.name | trans }}</h2>
-        </div>
-        <div class="panel__content">
-            {% for field in group.fields %}
-                {% set props = field | split('.') %}
-                {% if props | length == 1 %}
-                    {{ form_row(form[props[0]]) }}
-                {% elseif props | length == 2 %}
-                    {{ form_row(form[props[0]][props[1]]) }}
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-{% endblock %}
+{%- block lin3s_admin_panel -%}
+    {% embed 'Lin3sAdminBundle:components:panel.html.twig' %}
+        {%- block panel_title -%}
+            {{- group.name|trans -}}
+        {%- endblock panel_title -%}
 
-{% block lin3s_admin_submit %}
-    <div class="panel">
-        <div class="panel__header">
-            <h2 class="panel__title">{% trans %}lin3s_admin.form.publish{% endtrans %}</h2>
-        </div>
-        <div class="panel__content">
+        {%- block panel_content -%}
+            {%- for field in group.fields %}
+                {% set props = field|split('.') %}
+                {% if props|length == 1 %}
+                    {{- form_row(form[props[0]]) -}}
+                {% elseif props|length == 2 %}
+                    {{- form_row(form[props[0]][props[1]]) -}}
+                {% endif %}
+            {% endfor -%}
+        {%- endblock panel_content -%}
+    {% endembed %}
+{%- endblock lin3s_admin_panel -%}
+
+{%- block lin3s_admin_submit -%}
+    {% embed 'Lin3sAdminBundle:components:panel.html.twig' %}
+        {% import 'Lin3sAdminBundle:components/macros:buttons.html.twig' as buttons %}
+
+        {%- block panel_title -%}
+            {{- 'lin3s_admin.form.publish'|trans -}}
+        {%- endblock panel_title -%}
+
+        {%- block panel_content -%}
             <div class="form__group">
                 <label>&nbsp;</label>
-                <input type="submit"
-                       class="button button--secondary"
-                       value="{% trans %}lin3s_admin.form.save_changes{% endtrans %}">
+                {{ buttons.submit('lin3s_admin.form.save_changes'|trans) }}
             </div>
-        </div>
-    </div>
-{% endblock %}
+        {%- endblock panel_content -%}
+    {% endembed %}
+{%- endblock lin3s_admin_submit -%}

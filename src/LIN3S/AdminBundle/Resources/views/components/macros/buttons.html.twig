@@ -1,7 +1,16 @@
+{% macro submit(title, js_action) %}
+    {% include 'Lin3sAdminBundle:components:button.html.twig' with {
+        button_type: 'submit',
+        button_title: title,
+        button_class: 'button--secondary',
+        button_js_action: js_action|default
+    } %}
+{% endmacro %}
+
 {% macro primary(title, js_action) %}
     {% include 'Lin3sAdminBundle:components:button.html.twig' with {
         button_title: title,
-        js_action: js_action|default
+        button_js_action: js_action|default
     } %}
 {% endmacro %}
 
@@ -9,6 +18,6 @@
     {% include 'Lin3sAdminBundle:components:button.html.twig' with {
         button_title: title,
         button_class: 'button--secondary',
-        js_action: js_action|default
+        button_js_action: js_action|default
     } %}
 {% endmacro %}

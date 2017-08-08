@@ -6,6 +6,8 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.6.0
+    * Extracted panel independent Twig component.
+    * Improved button component adding type parameter.
     * Full refactor of AdminBundle's JavaScript.
         * Removed jQuery dependency
         * Migrated code to ES2015 standards using `class` approach

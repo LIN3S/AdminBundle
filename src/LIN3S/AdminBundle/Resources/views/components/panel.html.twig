@@ -1,0 +1,13 @@
+{% set panel_title %}{%- block panel_title -%}{%- endblock panel_title -%}{% endset %}
+{% set panel_content %}{%- block panel_content -%}{%- endblock panel_content -%}{% endset %}
+
+<div class="panel">
+    <div class="panel__header">
+        <h2 class="panel__title">
+            {{- panel_title -}}
+        </h2>
+    </div>
+    <div class="panel__content">
+        {{- panel_content -}}
+    </div>
+</div>

@@ -1,4 +1,5 @@
+{% set button_type = button_type|default ? button_type : 'button' %}
 {% set button_class = button_class|default ? 'button ' ~ button_class : 'button' %}
-{% set js_action = js_action|default ? ' ' ~ js_action : '' %}
+{% set button_js_action = js_action|default ? ' ' ~ js_action : '' %}
 
-<button class="{{ button_class }}{{ js_action }}">{{- button_title -}}</button>
+<button type="{{ button_type }}" class="{{ button_class }}{{ button_js_action }}">{{- button_title -}}</button>

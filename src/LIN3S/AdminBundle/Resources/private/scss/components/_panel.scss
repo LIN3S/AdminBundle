@@ -6,15 +6,19 @@
 // file that was distributed with this source code.
 //
 // @author Gorka Laucirica <gorka.lauzirika@gmail.com>
+// @author Beñat Espiña <benatespina@gmail.com>
 
 @import '../variables/colors';
 @import '../variables/grid';
-@import '../helpers/panel';
 
+$panel-background-color: $color-white !default;
+$panel-box-shadow-color: rgba($color-black, .04) !default;
 $panel-header-border-color: $color-mercury !default;
+$panel-padding: $column-gutter / 2;
 
 .panel {
-  @extend %panel;
+  background: $panel-background-color;
+  box-shadow: 0 1px 1px $panel-box-shadow-color;
   display: inline-block;
   margin-bottom: 30px;
   width: 100%;
@@ -37,8 +41,8 @@ $panel-header-border-color: $color-mercury !default;
   background-size: 15px;
   border-bottom: 1px solid $panel-header-border-color;
   cursor: pointer;
-  padding-left: $column-gutter / 2;
-  padding-right: $column-gutter / 2;
+  padding-left: $panel-padding;
+  padding-right: $panel-padding;
 }
 
 .panel__title {
@@ -48,8 +52,8 @@ $panel-header-border-color: $color-mercury !default;
 }
 
 .panel__content {
-  padding-left: $column-gutter / 2;
-  padding-right: $column-gutter / 2;
+  padding-left: $panel-padding;
+  padding-right: $panel-padding;
 }
 
 .panel__content--hidden {

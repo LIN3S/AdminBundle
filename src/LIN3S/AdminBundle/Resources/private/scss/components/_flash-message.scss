@@ -9,13 +9,15 @@
 
 @import '../variables/colors';
 @import '../variables/typography';
-@import '../helpers/panel';
 
 $flash-message-success-color: $color-chateau-green !default;
 $flash-message-error-color: $color-thunderbird !default;
+$flash-message-background-color: $color-white !default;
+$flash-message-box-shadow-color: rgba($color-black, .04) !default;
 
 .flash-message {
-  @extend %panel;
+  background: $flash-message-background-color;
+  box-shadow: 0 1px 1px $flash-message-box-shadow-color;
   margin-bottom: 30px;
   padding: 10px 15px;
 }

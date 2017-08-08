@@ -24,11 +24,6 @@
 </head>
 
 <body class="layout">
-{% block javascripts %}
-    <script async defer src="{{ asset('bundles/lin3sadmin/js/bundle.min.js') }}"></script>
-    {% include 'Lin3sAdminBundle:partial:javascripts.html.twig' %}
-{% endblock %}
-
 {% block body %}
     <section class="layout__header">
         {% include 'Lin3sAdminBundle:partial:layout_header.html.twig' %}
@@ -70,6 +65,11 @@
             </div>
         </main>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script async defer src="{{ asset('bundles/lin3sadmin/js/bundle.min.js') }}"></script>
+    {% include 'Lin3sAdminBundle:partial:javascripts.html.twig' %}
 {% endblock %}
 </body>
 </html>

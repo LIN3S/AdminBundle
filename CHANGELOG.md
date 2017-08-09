@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.6.0
+    * Made translatable the value of the string list field content.
     * Moved the `javascripts` Twig block from top to bottom in the body.
     * Extracted panel independent Twig component.
     * Improved button component adding type parameter.

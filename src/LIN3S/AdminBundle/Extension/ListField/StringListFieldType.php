@@ -16,8 +16,6 @@ use LIN3S\AdminBundle\Configuration\Type\ListFieldType;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * String list field type.
- *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 final class StringListFieldType implements ListFieldType
@@ -38,9 +36,6 @@ final class StringListFieldType implements ListFieldType
         return $this->translator->trans($name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function render($entity, $options, Entity $configuration)
     {
         if (!isset($options['field'])) {
@@ -53,6 +48,6 @@ final class StringListFieldType implements ListFieldType
             $value = $value->$property();
         }
 
-        return $value;
+        return $this->translator->trans($value);
     }
 }

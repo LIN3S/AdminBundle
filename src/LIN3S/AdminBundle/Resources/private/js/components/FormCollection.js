@@ -35,8 +35,8 @@ class FormCollection {
       this.bindRemoveListeners(nodeAddedEvent.nodes)
     );
     NodeAddedObserver.subscribe('js-form-collection-visibility-toggle', nodeAddedEvent =>
-    this.bindVisibilityToggleListeners(nodeAddedEvent.nodes)
-  );
+      this.bindVisibilityToggleListeners(nodeAddedEvent.nodes)
+    );
   }
 
   bindAddListeners(addButtons) {
@@ -73,8 +73,8 @@ class FormCollection {
     event.preventDefault();
 
     const collectionHolder = event.currentTarget
-        .closest('.form-collection')
-        .querySelectorAll('.form-collection__items')[0];
+      .closest('.form-collection')
+      .querySelector('.form-collection__items');
 
     this.addFormType(collectionHolder);
   }
@@ -83,12 +83,12 @@ class FormCollection {
     const
       prototype = collectionHolder.getAttribute('data-prototype'),
       prototypeName = collectionHolder.getAttribute('data-prototype-name'),
-      regExp = new RegExp(prototypeName === undefined ? '__name__' : prototypeName, 'g'),
-      index = collectionHolder.querySelectorAll('input, textarea, select, button') !== null,
-      newForm = prototype.replace(regExp, index);
+      regExp = new RegExp(!prototypeName ? '__name__' : prototypeName.replace(/[\'\"]/g, () => ''), 'g'),
+      index = collectionHolder.querySelectorAll('.form-collection__item').length,
+      newForm = prototype.replace(regExp, index.toString());
 
     collectionHolder.insertAdjacentHTML('beforeend', newForm);
-    collectionHolder.setAttribute('data-index', index + 1);
+    collectionHolder.setAttribute('data-index', (index + 1).toString());
   }
 
   onClickRemoved(event) {

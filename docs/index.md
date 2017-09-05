@@ -19,6 +19,8 @@ Common responses are a rendered twig template or a `RedirectResponse`.
 
 ActionTypes are usually generic and need to be associated with an entity in the configuration.
 
+[More details](custom_action.md)
+
 ###ListFieldType
 
 A list field type is an implementation that defines how a list table column will be rendered. This bundle implements
@@ -31,10 +33,14 @@ string, can be HTML but be careful as it will be printed in the list without bee
 
 ListFieldTypes are usually generic and need to be associated with an entity in the configuration.
 
+[More details](custom_list_field.md)
+
 ###ListFilters
 
 A list filter is an implementation that defines how an a filter input has to be rendered. This works together with the
 `AdminRepository` that receives the submitted form that was built using list filter types.
+
+[More details](custom_list_filter.md)
 
 ### Configuration reference
 

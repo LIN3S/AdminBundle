@@ -13,6 +13,7 @@
 import {onDomReady} from 'lin3s-event-bus';
 import {Parsley} from 'lin3s-front-foundation';
 import FastClick from 'fastclick';
+import 'parsleyjs';
 
 import './components/Filter';
 import './components/FormCollection';

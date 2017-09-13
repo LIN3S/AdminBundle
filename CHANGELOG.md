@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.6.0
+    * Imported `parsleyjs` module in the js entry file.
     * Updated lin3s-front-foundation dependency from v0.6.0 to v0.6.1.
     * Updated lin3s-front-foundation dependency from v0.5.0 to v0.6.0.
     * Made translatable the value of the string list field content.

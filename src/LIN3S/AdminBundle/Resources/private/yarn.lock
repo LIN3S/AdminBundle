@@ -2871,9 +2871,9 @@ lin3s-event-bus@^0.6.0:
   dependencies:
     lodash.debounce "^4.0.8"
 
-lin3s-front-foundation@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/lin3s-front-foundation/-/lin3s-front-foundation-0.6.0.tgz#8cd7cc38d4372dcefa1bfae8b721a833f1026b8a"
+lin3s-front-foundation@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/lin3s-front-foundation/-/lin3s-front-foundation-0.6.1.tgz#75e00480adc5f20fb40f4d07234047647e3c9f5e"
   dependencies:
     parsleyjs "^2.7.2"
 

@@ -50,7 +50,7 @@ $layout-header-height: 30px !default;
 
   .layout__menu {
     height: auto;
-    position: initial;
+    position: inherit;
     width: 200px;
 
     .menu-toggle {

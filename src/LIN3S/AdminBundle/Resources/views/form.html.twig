@@ -121,6 +121,10 @@
 {%- block form -%}
     {{- form_start(form) -}}
 
+    {% set lin3s_admin_submit %}
+        {{ block('lin3s_admin_submit') }}
+    {% endset %}
+
     {% if form.vars.groups is defined %}
         <div class="form__column form__column--left">
             {% for group in form.vars.groups %}
@@ -130,12 +134,16 @@
             {% endfor %}
         </div>
         <div class="form__column form__column--right">
-            {{- block('lin3s_admin_submit') -}}
-            {% for group in form.vars.groups %}
-                {% if group.position is defined and group.position == 'right' %}
-                    {{- block('lin3s_admin_panel') -}}
-                {% endif %}
-            {% endfor %}
+            {% embed 'Lin3sAdminBundle:components:form_sidebar.html.twig' %}
+                {% block form_sidebar_content %}
+                    {{- lin3s_admin_submit -}}
+                    {% for group in form.vars.groups %}
+                        {% if group.position is defined and group.position == 'right' %}
+                            {{- block('lin3s_admin_panel') -}}
+                        {% endif %}
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
         </div>
     {% else %}
         {% embed 'Lin3sAdminBundle:components:panel.html.twig' %}

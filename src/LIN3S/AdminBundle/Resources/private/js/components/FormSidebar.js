@@ -29,17 +29,15 @@ class FormSidebar {
   }
 
   onScroll() {
-//    var width = parseInt(this.fixedElementWidth);
-
     if (document.body.scrollTop > this.offsetTop() - 20) {
-      (this.rootNode).style.position = 'relative';
+      this.rootNode.style.position = 'relative';
 
-      (this.fixedElement).style.position = 'fixed';
-      (this.fixedElement).style.top = '20px';
-      (this.fixedElement).style.width = this.fixedElementWidth + 'px';
+      this.fixedElement.style.position = 'fixed';
+      this.fixedElement.style.top = '20px';
+      this.fixedElement.style.width = `${this.fixedElementWidth}px`;
     } else {
-      this.rootNode.style = '';
-      this.fixedElement.style = '';
+      this.rootNode.removeAttribute('style');
+      this.fixedElement.removeAttribute('style');
     }
   }
 }

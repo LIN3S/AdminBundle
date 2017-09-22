@@ -60,12 +60,16 @@ final class DateListFieldType implements ListFieldType
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
 
-        $properties = explode('.', $options['field']);
-
-        $value = $entity;
-        foreach ($properties as $property) {
-            $value = $value->$property();
+        if (is_array($entity)) {
+            $value = new \DateTimeImmutable($entity[$options['field']]);
+        } else {
+            $properties = explode('.', $options['field']);
+            $value = $entity;
+            foreach ($properties as $property) {
+                $value = $value->$property();
+            }
         }
+
         if (null === $value) {
             return $this->translator->trans('lin3s_admin.list.field_type.date.not_available');
         }

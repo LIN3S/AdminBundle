@@ -22,7 +22,6 @@ services:
             - '@lin3s_admin.action.registry'
             - '@lin3s_admin.list_field_type.registry'
             - '@lin3s_admin.list_filter_type.registry'
-            - '@lin3s_admin.repository_factory'
 
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler

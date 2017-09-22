@@ -16,6 +16,7 @@ use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
 use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 use LIN3S\AdminBundle\Registry\ServiceRegistry;
+use LIN3S\AdminBundle\Repository\AdminRepository;
 use LIN3S\AdminBundle\Repository\AdminRepositoryFactory;
 
 final class EntityConfigurationFactory
@@ -24,20 +25,17 @@ final class EntityConfigurationFactory
     private $actions;
     private $listFields;
     private $listFilters;
-    private $repositoryFactory;
 
     public function __construct(
         $config,
         ServiceRegistry $actions,
         ServiceRegistry $listFields,
-        ServiceRegistry $listFilters,
-        AdminRepositoryFactory $repositoryFactory
+        ServiceRegistry $listFilters
     ) {
         $this->config = $config['entities'];
         $this->actions = $actions;
         $this->listFields = $listFields;
         $this->listFilters = $listFilters;
-        $this->repositoryFactory = $repositoryFactory;
     }
 
     public function createFor($entity)
@@ -52,7 +50,7 @@ final class EntityConfigurationFactory
             $this->listFieldsForEntity($entity),
             $this->listFiltersForEntity($entity),
             $entityConfig['list']['global_actions'],
-            $this->repositoryFactory->build($entityConfig['persistence_strategy']),
+            $entityConfig['repository_service_id'],
             $entityConfig['name'],
             $entityConfig['list']['amount_per_page'],
             $entityConfig['list']['order_by']

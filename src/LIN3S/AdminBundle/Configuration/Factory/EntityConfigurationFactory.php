@@ -16,8 +16,6 @@ use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
 use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 use LIN3S\AdminBundle\Registry\ServiceRegistry;
-use LIN3S\AdminBundle\Repository\AdminRepository;
-use LIN3S\AdminBundle\Repository\AdminRepositoryFactory;
 
 final class EntityConfigurationFactory
 {

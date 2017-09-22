@@ -12,7 +12,10 @@ services:
         class: LIN3S\AdminBundle\Extension\ListFilter\TextListFilterType
         tags:
             - {name: lin3s_admin.list_filter_type, alias: text}
+
     lin3s_admin.list_field_type.date:
         class: LIN3S\AdminBundle\Extension\ListField\DateListFieldType
+        arguments:
+            - "@translator"
         tags:
             - {name: lin3s_admin.list_filter_date, alias: date}

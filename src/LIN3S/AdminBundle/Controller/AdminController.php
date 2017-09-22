@@ -24,16 +24,17 @@ class AdminController extends Controller
     /**
      * List action.
      *
-     * @param string  $entity       The entity name
-     * @param Request $request      The request
+     * @param string  $entity  The entity name
+     * @param Request $request The request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction($entity, Request $request)
     {
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
-        $entities = $this->get('lin3s_admin.repository')->findByRequest($request, $entityConfig);
-        $totalCount = $this->get('lin3s_admin.repository')->countAll($request, $entityConfig);
+        $repository = $entityConfig->repository();
+        $entities = $repository->findByRequest($request, $entityConfig);
+        $totalCount = $repository->countAll($request, $entityConfig);
 
         return $this->render('@Lin3sAdmin/Admin/list.html.twig', [
             'entities'     => $entities,
@@ -57,8 +58,7 @@ class AdminController extends Controller
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entityObject = null;
         if ($id) {
-            $manager = $this->getDoctrine()->getRepository($entityConfig->className());
-            $entityObject = $manager->find($id);
+            $entityObject = $entityConfig->repository()->find($entityConfig, $id);
         }
         if ($id && !$entityObject) {
             throw $this->createNotFoundException(
@@ -73,7 +73,11 @@ class AdminController extends Controller
             $callableAction = $entityConfig->getAction($action);
         } catch (\Exception $e) {
             throw $this->createNotFoundException(
-                sprintf('Action "%s" for entity "%s" not found, did you registered it in the config?', $action, $entity)
+                sprintf(
+                    'Action "%s" for entity "%s" not found, did you registered it in the config?',
+                    $action,
+                    $entity
+                )
             );
         }
 

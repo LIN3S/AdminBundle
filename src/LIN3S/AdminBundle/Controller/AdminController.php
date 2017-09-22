@@ -32,7 +32,7 @@ class AdminController extends Controller
     public function listAction($entity, Request $request)
     {
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
-        $repository = $entityConfig->repository();
+        $repository = $this->get($entityConfig->repositoryServiceId());
         $entities = $repository->findByRequest($request, $entityConfig);
         $totalCount = $repository->countAll($request, $entityConfig);
 
@@ -58,7 +58,7 @@ class AdminController extends Controller
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entityObject = null;
         if ($id) {
-            $entityObject = $entityConfig->repository()->find($entityConfig, $id);
+            $entityObject = $this->get($entityConfig->repositoryServiceId())->find($entityConfig, $id);
         }
         if ($id && !$entityObject) {
             throw $this->createNotFoundException(

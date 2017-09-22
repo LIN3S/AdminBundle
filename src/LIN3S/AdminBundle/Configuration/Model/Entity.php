@@ -28,7 +28,7 @@ final class Entity
     private $listGlobalActions;
     private $listOrderByDefault;
     private $printNames;
-    private $repository;
+    private $repositoryServiceId;
 
     public function __construct(
         $name,
@@ -38,7 +38,7 @@ final class Entity
         array $listFields = [],
         array $listFilters = [],
         array $listGlobalActions = [],
-        AdminRepository $repository,
+        $repositoryServiceId,
         array $printNames,
         $listEntitiesPerPage,
         array $listOrderByDefault = []
@@ -51,7 +51,7 @@ final class Entity
         $this->actions = $actions;
         $this->listActions = $listActions;
         $this->listGlobalActions = $listGlobalActions;
-        $this->repository = $repository;
+        $this->repositoryServiceId = $repositoryServiceId;
         $this->printNames = $printNames;
         $this->listEntitiesPerPage = $listEntitiesPerPage;
         $this->listOrderByDefault = $listOrderByDefault;
@@ -282,12 +282,12 @@ final class Entity
     }
 
     /**
-     * Gets the query builder.
+     * Gets the repository service id.
      *
-     * @return AdminRepository
+     * @return string
      */
-    public function repository()
+    public function repositoryServiceId()
     {
-        return $this->repository;
+        return $this->repositoryServiceId;
     }
 }

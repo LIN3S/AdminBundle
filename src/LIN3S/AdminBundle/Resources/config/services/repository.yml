@@ -15,15 +15,3 @@ services:
         class: LIN3S\AdminBundle\Repository\DoctrineAdminRepository
         arguments:
             - '@doctrine.orm.entity_manager'
-
-    lin3s_admin.pdo_repository:
-        class: LIN3S\AdminBundle\Repository\PdoAdminRepository
-        arguments:
-            - '@lin3s_admin.pdo'
-
-    lin3s_admin.repository_factory:
-        class: LIN3S\AdminBundle\Repository\AdminRepositoryFactory
-        arguments:
-            -
-                pdo: '@lin3s_admin.pdo_repository'
-                doctrine: '@lin3s_admin.doctrine_repository'

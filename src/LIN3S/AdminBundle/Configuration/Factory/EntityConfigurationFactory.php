@@ -16,7 +16,7 @@ use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
 use LIN3S\AdminBundle\Configuration\Model\ListFilter;
 use LIN3S\AdminBundle\Registry\ServiceRegistry;
-use LIN3S\AdminBundle\Repository\QueryBuilder;
+use LIN3S\AdminBundle\Repository\AdminRepositoryFactory;
 
 final class EntityConfigurationFactory
 {
@@ -24,20 +24,20 @@ final class EntityConfigurationFactory
     private $actions;
     private $listFields;
     private $listFilters;
-    private $queryBuilder;
+    private $repositoryFactory;
 
     public function __construct(
         $config,
         ServiceRegistry $actions,
         ServiceRegistry $listFields,
         ServiceRegistry $listFilters,
-        QueryBuilder $queryBuilder
+        AdminRepositoryFactory $repositoryFactory
     ) {
         $this->config = $config['entities'];
         $this->actions = $actions;
         $this->listFields = $listFields;
         $this->listFilters = $listFilters;
-        $this->queryBuilder = $queryBuilder;
+        $this->repositoryFactory = $repositoryFactory;
     }
 
     public function createFor($entity)
@@ -52,7 +52,7 @@ final class EntityConfigurationFactory
             $this->listFieldsForEntity($entity),
             $this->listFiltersForEntity($entity),
             $entityConfig['list']['global_actions'],
-            $this->queryBuilder,
+            $this->repositoryFactory->build($entityConfig['persistence_strategy']),
             $entityConfig['name'],
             $entityConfig['list']['amount_per_page'],
             $entityConfig['list']['order_by']

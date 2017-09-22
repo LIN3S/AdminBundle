@@ -17,11 +17,25 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-interface AdminRepository
+class PdoAdminRepository implements AdminRepository
 {
-    public function find(Entity $config, $id);
+    private $pdo;
 
-    public function findByRequest(Request $request, Entity $config);
+    public function __construct(\PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
 
-    public function countAll(Request $request, Entity $config);
+    public function find(Entity $config, $id)
+    {
+        // TODO: Implement find() method.
+    }
+
+    public function findByRequest(Request $request, Entity $config)
+    {
+    }
+
+    public function countAll(Request $request, Entity $config)
+    {
+    }
 }

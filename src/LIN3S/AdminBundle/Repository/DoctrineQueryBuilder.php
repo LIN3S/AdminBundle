@@ -13,40 +13,25 @@ namespace LIN3S\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder;
+use Doctrine\ORM\QueryBuilder as DoctrineQB;
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Default implementation of QueryBuilder.
- *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  * @author Jagoba Perez <jagoba@lin3s.com>
  * @author Beñat Espiña <benatespina@gmail.com>
  */
-class DefaultQueryBuilder implements QueryBuilder
+class DoctrineQueryBuilder
 {
-    /**
-     * The entity manager.
-     *
-     * @var EntityManager
-     */
-    protected $manager;
+    private $manager;
 
-    /**
-     * Constructor.
-     *
-     * @param EntityManager $manager The entity manager
-     */
     public function __construct(EntityManager $manager)
     {
         $this->manager = $manager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function generate(Request $request, Entity $config)
     {
         $queryBuilder = $this->manager->getRepository($config->className())->createQueryBuilder('a');
@@ -148,10 +133,10 @@ class DefaultQueryBuilder implements QueryBuilder
     /**
      * Gets the result query alias and related fields.
      *
-     * @param string               $criteriaBy   The criteria key
-     * @param string               $criteria     The criteria value
-     * @param ClassMetadata        $metadata     The Doctrine class metadata
-     * @param DoctrineQueryBuilder $queryBuilder The query builder
+     * @param string        $criteriaBy   The criteria key
+     * @param string        $criteria     The criteria value
+     * @param ClassMetadata $metadata     The Doctrine class metadata
+     * @param DoctrineQB    $queryBuilder The query builder
      *
      * @return array
      */
@@ -159,7 +144,7 @@ class DefaultQueryBuilder implements QueryBuilder
         $criteriaBy,
         $criteria,
         ClassMetadata $metadata,
-        DoctrineQueryBuilder $queryBuilder
+        DoctrineQB $queryBuilder
     ) {
         $alias = null;
         $fields = null;
@@ -199,11 +184,11 @@ class DefaultQueryBuilder implements QueryBuilder
     /**
      * Removes the duplicate joins of given query builder.
      *
-     * @param DoctrineQueryBuilder $queryBuilder The query builder
+     * @param DoctrineQB $queryBuilder The query builder
      *
-     * @return DoctrineQueryBuilder
+     * @return DoctrineQB
      */
-    private function removeDuplicateJoins(DoctrineQueryBuilder $queryBuilder)
+    private function removeDuplicateJoins(DoctrineQB $queryBuilder)
     {
         if (empty($queryBuilder->getDQLParts()['join'])) {
             return $queryBuilder;
@@ -229,7 +214,7 @@ class DefaultQueryBuilder implements QueryBuilder
     }
 
     private function addDefaultOrderBy(
-        DoctrineQueryBuilder $queryBuilder,
+        DoctrineQB $queryBuilder,
         Request $request,
         Entity $config,
         $alias = null

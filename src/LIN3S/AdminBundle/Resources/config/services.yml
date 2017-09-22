@@ -11,6 +11,7 @@ imports:
     - { resource: services/list_fields.yml }
     - { resource: services/list_filters.yml }
     - { resource: services/registry.yml }
+    - { resource: services/repository.yml }
     - { resource: services/twig.yml }
 
 services:
@@ -21,19 +22,10 @@ services:
             - '@lin3s_admin.action.registry'
             - '@lin3s_admin.list_field_type.registry'
             - '@lin3s_admin.list_filter_type.registry'
-            - '@lin3s.admin.repository.default_query_builder'
+            - '@lin3s_admin.repository_factory'
 
     lin3s_admin.form.handler:
         class: LIN3S\AdminBundle\Form\FormHandler
         arguments:
             - '@form.factory'
-            - '@doctrine.orm.default_entity_manager'
-
-    ## REPOSITORY ##
-    lin3s_admin.repository:
-        class: LIN3S\AdminBundle\Repository\AdminRepository
-
-    lin3s.admin.repository.default_query_builder:
-        class: LIN3S\AdminBundle\Repository\DefaultQueryBuilder
-        arguments:
             - '@doctrine.orm.default_entity_manager'

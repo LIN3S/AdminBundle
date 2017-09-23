@@ -138,15 +138,18 @@ select {
 }
 
 @media #{$large-up} {
+  $one-third: 100% / 3;
+  $two-thirds: 100% / 3 * 2;
+
   .form__column--left {
-    flex: 1 1 66.666%;
-    max-width: 66.666%;
+    flex: 1 1 $two-thirds;
+    max-width: $two-thirds;
     padding-right: 15px;
   }
 
   .form__column--right {
-    flex: 1 1 33.333%;
-    max-width: 33.333%;
+    flex: 1 1 $one-third;
+    max-width: $one-third;
     padding-left: 15px;
   }
 }

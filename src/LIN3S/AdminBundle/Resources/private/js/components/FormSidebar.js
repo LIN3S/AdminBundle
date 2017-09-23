@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  *
  * @author Andrés Montejo <andres@lin3s.com>
+ * @author Beñat Espiña <benatespina@gmail.com>
  */
 
 import {onDomReady} from 'lin3s-event-bus';
@@ -43,14 +44,13 @@ class FormSidebar {
 }
 
 const onReady = () => {
-  const rootNode = document.querySelector('.form-sidebar');
+  const formSidebars = document.querySelectorAll('.form-sidebar');
 
-  if (null === rootNode) {
+  if (formSidebars.length === 0) {
     return;
   }
 
-  new FormSidebar(rootNode);
-
+  Array.from(formSidebars).forEach((rootNode) => new FormSidebar(rootNode));
 };
 
 onDomReady(onReady);

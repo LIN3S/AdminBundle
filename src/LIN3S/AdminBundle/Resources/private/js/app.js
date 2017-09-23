@@ -17,6 +17,7 @@ import 'parsleyjs';
 
 import './components/Filter';
 import './components/FormCollection';
+import './components/FormSidebar';
 import './components/MenuToggle';
 import './components/Panel';
 import './polyfills';

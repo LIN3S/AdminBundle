@@ -34,6 +34,12 @@ class DoctrineAdminRepository implements AdminRepository
         return $this->manager->find($config->className(), $id);
     }
 
+    public function remove($entity)
+    {
+        $this->manager->remove($entity);
+        $this->manager->flush();
+    }
+
     public function findByRequest(Request $request, Entity $config)
     {
         $queryBuilder = $this->queryBuilder->generate($request, $config);

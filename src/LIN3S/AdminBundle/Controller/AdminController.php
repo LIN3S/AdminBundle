@@ -57,8 +57,11 @@ class AdminController extends Controller
     {
         $entityConfig = $this->get('lin3s_admin.configuration.factory.entity')->createFor($entity);
         $entityObject = null;
+        $repository = $this->get($entityConfig->repositoryServiceId());
+        $entityConfig->loadRepository($repository);
+
         if ($id) {
-            $entityObject = $this->get($entityConfig->repositoryServiceId())->find($entityConfig, $id);
+            $entityObject = $repository->find($entityConfig, $id);
         }
         if ($id && !$entityObject) {
             throw $this->createNotFoundException(

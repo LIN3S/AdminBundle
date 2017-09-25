@@ -29,6 +29,7 @@ final class Entity
     private $listOrderByDefault;
     private $printNames;
     private $repositoryServiceId;
+    private $repository;
 
     public function __construct(
         $name,
@@ -281,13 +282,24 @@ final class Entity
         return $this->printNames;
     }
 
-    /**
-     * Gets the repository service id.
-     *
-     * @return string
-     */
     public function repositoryServiceId()
     {
         return $this->repositoryServiceId;
+    }
+
+    public function repository()
+    {
+        if (!$this->repository instanceof AdminRepository) {
+            throw new \Exception(
+                sprintf('The repository is not loaded yet')
+            );
+        }
+
+        return $this->repository;
+    }
+
+    public function loadRepository(AdminRepository $repository)
+    {
+        $this->repository = $repository;
     }
 }

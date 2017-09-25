@@ -21,6 +21,8 @@ interface AdminRepository
 {
     public function find(Entity $config, $id);
 
+    public function remove($entity);
+
     public function findByRequest(Request $request, Entity $config);
 
     public function countAll(Request $request, Entity $config);

@@ -13,7 +13,7 @@ namespace LIN3S\AdminBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Doctrine\ORM\QueryBuilder as DoctrineQB;
+use Doctrine\ORM\QueryBuilder;
 use LIN3S\AdminBundle\Configuration\Model\Entity;
 use LIN3S\AdminBundle\Configuration\Model\ListField;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @author Jagoba Perez <jagoba@lin3s.com>
  * @author Beñat Espiña <benatespina@gmail.com>
  */
-class DoctrineQueryBuilder
+final class DoctrineQueryBuilder
 {
     private $manager;
 
@@ -136,7 +136,7 @@ class DoctrineQueryBuilder
      * @param string        $criteriaBy   The criteria key
      * @param string        $criteria     The criteria value
      * @param ClassMetadata $metadata     The Doctrine class metadata
-     * @param DoctrineQB    $queryBuilder The query builder
+     * @param QueryBuilder  $queryBuilder The query builder
      *
      * @return array
      */
@@ -144,7 +144,7 @@ class DoctrineQueryBuilder
         $criteriaBy,
         $criteria,
         ClassMetadata $metadata,
-        DoctrineQB $queryBuilder
+        QueryBuilder $queryBuilder
     ) {
         $alias = null;
         $fields = null;
@@ -184,11 +184,11 @@ class DoctrineQueryBuilder
     /**
      * Removes the duplicate joins of given query builder.
      *
-     * @param DoctrineQB $queryBuilder The query builder
+     * @param QueryBuilder $queryBuilder The query builder
      *
-     * @return DoctrineQB
+     * @return QueryBuilder
      */
-    private function removeDuplicateJoins(DoctrineQB $queryBuilder)
+    private function removeDuplicateJoins(QueryBuilder $queryBuilder)
     {
         if (empty($queryBuilder->getDQLParts()['join'])) {
             return $queryBuilder;
@@ -214,7 +214,7 @@ class DoctrineQueryBuilder
     }
 
     private function addDefaultOrderBy(
-        DoctrineQB $queryBuilder,
+        QueryBuilder $queryBuilder,
         Request $request,
         Entity $config,
         $alias = null

@@ -89,7 +89,7 @@ final class ActionsListFieldType implements ListFieldType
 
             $url = $this->urlGenerator->generate('lin3s_admin_custom', [
                 'entity' => $configuration->name(),
-                'id'     => $entity->id(),
+                'id'     => is_array($entity)? $entity['id'] : $entity->id(),
                 'action' => $action->name(),
             ]);
 

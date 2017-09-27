@@ -41,11 +41,15 @@ final class StringListFieldType implements ListFieldType
         if (!isset($options['field'])) {
             throw new \InvalidArgumentException('Field to be rendered must be passed as string');
         }
-        $properties = explode('.', $options['field']);
 
-        $value = $entity;
-        foreach ($properties as $property) {
-            $value = $value->$property();
+        if (is_array($entity)) {
+            $value = $entity[$options['field']];
+        } else {
+            $properties = explode('.', $options['field']);
+            $value = $entity;
+            foreach ($properties as $property) {
+                $value = $value->$property();
+            }
         }
 
         return $this->translator->trans($value);

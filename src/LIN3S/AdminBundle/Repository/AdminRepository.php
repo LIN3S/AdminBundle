@@ -15,48 +15,15 @@ use LIN3S\AdminBundle\Configuration\Model\Entity;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Admin repository.
- *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
-class AdminRepository
+interface AdminRepository
 {
-    /**
-     * Finds the result about request criteria and given entity configuration.
-     *
-     * @param Request $request The request
-     * @param Entity  $config  The entity configuration
-     *
-     * @return array
-     */
-    public function findByRequest(Request $request, Entity $config)
-    {
-        $queryBuilder = $config->queryBuilder()->generate($request, $config);
+    public function find(Entity $config, $id);
 
-        $postPerPage = $config->listEntitiesPerPage();
+    public function remove($entity);
 
-        $offset = ($request->get('page', 1) - 1) * $postPerPage;
-        $limit = $postPerPage;
+    public function findByRequest(Request $request, Entity $config);
 
-        $queryBuilder->setFirstResult($offset);
-        $queryBuilder->setMaxResults($limit);
-
-        return $queryBuilder->getQuery()->getResult();
-    }
-
-    /**
-     * Counts all the result about request criteria and given entity configuration.
-     *
-     * @param Request $request The request
-     * @param Entity  $config  The entity configuration
-     *
-     * @return int
-     */
-    public function countAll(Request $request, Entity $config)
-    {
-        $queryBuilder = $config->queryBuilder()->generate($request, $config);
-        $queryBuilder->select($queryBuilder->expr()->count('a'));
-
-        return count($queryBuilder->getQuery()->getScalarResult());
-    }
+    public function countAll(Request $request, Entity $config);
 }

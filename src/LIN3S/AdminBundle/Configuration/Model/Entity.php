@@ -11,109 +11,26 @@
 
 namespace LIN3S\AdminBundle\Configuration\Model;
 
-use LIN3S\AdminBundle\Repository\QueryBuilder;
+use LIN3S\AdminBundle\Repository\AdminRepository;
 
 /**
- * Entity configuration.
- *
  * @author Gorka Laucirica <gorka.lauzirika@gmail.com>
  */
 final class Entity
 {
-    /**
-     * Collection of actions.
-     *
-     * @var array
-     */
-    protected $actions;
-
-    /**
-     * The entity name.
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * The class name.
-     *
-     * @var string
-     */
-    protected $className;
-
-    /**
-     * The list actions.
-     *
-     * @var array
-     */
-    protected $listActions;
-
-    /**
-     * The list fields.
-     *
-     * @var array
-     */
-    protected $listFields;
-
-    /**
-     * The list filters.
-     *
-     * @var array
-     */
-    protected $listFilters;
-
-    /**
-     * The entities per page.
-     *
-     * @var int
-     */
-    protected $listEntitiesPerPage;
-
-    /**
-     * The list global actions.
-     *
-     * @var array
-     */
-    protected $listGlobalActions;
-
-    /**
-     * The list order by default.
-     *
-     * @var array
-     */
-    protected $listOrderByDefault;
-
-    /**
-     * The entity name, for visualization purposes.
-     *
-     * It contains the singular and plural cases.
-     *
-     * @var array
-     */
+    private $actions;
+    private $name;
+    private $className;
+    private $listActions;
+    private $listFields;
+    private $listFilters;
+    private $listEntitiesPerPage;
+    private $listGlobalActions;
+    private $listOrderByDefault;
     private $printNames;
+    private $repositoryServiceId;
+    private $repository;
 
-    /**
-     * The query builder.
-     *
-     * @var QueryBuilder
-     */
-    protected $queryBuilder;
-
-    /**
-     * EntityConfiguration constructor.
-     *
-     * @param string       $name                The entity name
-     * @param string       $className           The class name
-     * @param array        $actions             Collection of actions
-     * @param array        $listActions         List actions
-     * @param array        $listFields          List fields
-     * @param array        $listFilters         List filters
-     * @param array        $listGlobalActions   List global actions
-     * @param QueryBuilder $queryBuilder        The query builder
-     * @param array        $printNames          The entity name, for visualization purposes
-     * @param int          $listEntitiesPerPage The number of entities per page
-     * @param array        $listOrderByDefault  The order by default
-     */
     public function __construct(
         $name,
         $className,
@@ -122,7 +39,7 @@ final class Entity
         array $listFields = [],
         array $listFilters = [],
         array $listGlobalActions = [],
-        QueryBuilder $queryBuilder,
+        $repositoryServiceId,
         array $printNames,
         $listEntitiesPerPage,
         array $listOrderByDefault = []
@@ -135,7 +52,7 @@ final class Entity
         $this->actions = $actions;
         $this->listActions = $listActions;
         $this->listGlobalActions = $listGlobalActions;
-        $this->queryBuilder = $queryBuilder;
+        $this->repositoryServiceId = $repositoryServiceId;
         $this->printNames = $printNames;
         $this->listEntitiesPerPage = $listEntitiesPerPage;
         $this->listOrderByDefault = $listOrderByDefault;
@@ -365,13 +282,24 @@ final class Entity
         return $this->printNames;
     }
 
-    /**
-     * Gets the query builder.
-     *
-     * @return QueryBuilder
-     */
-    public function queryBuilder()
+    public function repositoryServiceId()
     {
-        return $this->queryBuilder;
+        return $this->repositoryServiceId;
+    }
+
+    public function repository()
+    {
+        if (!$this->repository instanceof AdminRepository) {
+            throw new \Exception(
+                sprintf('The repository is not loaded yet')
+            );
+        }
+
+        return $this->repository;
+    }
+
+    public function loadRepository(AdminRepository $repository)
+    {
+        $this->repository = $repository;
     }
 }

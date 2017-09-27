@@ -6,6 +6,7 @@ To get the diff for a specific change, go to https://github.com/LIN3S/AdminBundl
 To get the diff between two versions, go to https://github.com/LIN3S/AdminBundle/compare/v0.4.0...v0.5.0
 
 * 0.6.0
+    * Made AdminBundle compatible with multiple persistence strategies; for now is compatible with DoctrineORM and PDO.
     * Added sticky behaviour to the form right sidebar.
     * Made JavaScript and CSS code compatible with IE11.
     * Imported `parsleyjs` module in the js entry file.
